@@ -11,7 +11,7 @@
 \usepackage[hyphens]{url}
 \usepackage{emptypage} % Wirklich leer bei leeren Seiten
 
-\usepackage{newcent}
+\usepackage{mathpazo} % Palatino, mal was anderes
 \usepackage{microtype}
 \usepackage[paper=a4paper,width=14cm,left=35mm,height=22cm]{geometry}
 \setlength{\parskip}{0.5em}
@@ -29,6 +29,9 @@
 %\fancyfoot[L]{\textsf{\small \kurztitel}}
 \fancyfoot[C]{\ } % keine Seitenzahl unten
 %\fancyfoot[R]{\textsf{\small Medieninformatik}}
+
+\usepackage{abstract}
+% \renewcommand{\abstractname}{Test} 
 
 \usepackage{hsrmlogo}
 
@@ -211,10 +214,9 @@ doi=true,isbn=false,url=false, eprint=false]{biblatex}
 \tableofcontents
 \listoffigures
 \listoftables
-\listofalgorithms
 
 
-\chapter{Introduction}
+\chapter{Einführung}
 \pagenumbering{arabic}
 \blindtext
 
@@ -245,14 +247,18 @@ This references a \figref{fig:scientific_graph_quality} while this references a 
 A citation looks like this \cite{hadash2018estimate}. To embed a citation in the text flow use textcite,
 \eg \textcite{hadash2018estimate} said you should use a lot of citations.
 
-\chapter{Methods}
+\chapter{Hintergrund}
+
+\section{Kontext} \label{sec:was}
 
 
+\chapter{Analyse}
 
-\chapter{Results and Discussion}
+\chapter{Methodik}
 
+\chapter{Ergebnisse}
 
-\chapter{Conclusion}
+\chapter{Ausblick}
 
 
 \chapter*{Acknowledgements}
