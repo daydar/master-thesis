@@ -5,10 +5,37 @@
 	BCOR=10mm
 ]{scrreprt}
 
+\usepackage[german]{babel} % deutsch und deutsche Rechtschreibung
+\usepackage[T1]{fontenc} % Umlaute und deutsches Trennen
+\usepackage{textcomp} % Euro
+\usepackage[hyphens]{url}
+\usepackage{emptypage} % Wirklich leer bei leeren Seiten
+
+\usepackage{newcent}
+\usepackage{microtype}
+\usepackage[paper=a4paper,width=14cm,left=35mm,height=22cm]{geometry}
+\setlength{\parskip}{0.5em}
+\setlength{\parindent}{0em} % im Deutschen Einrückung nicht üblich, leider
+
+% Seitenmarkierungen 
+\newcommand{\phv}{\fontfamily{phv}\fontseries{m}\fontsize{9}{11}\selectfont}
+\usepackage{fancyhdr} % Schickere Header und Footer
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+%\fancyhead[L]{\phv \leftmark}
+\fancyhead[RE,LO]{\phv \nouppercase{\leftmark}}
+\fancyhead[LE,RO]{\phv \thepage}
+% Unten besser auf alles Verzichten
+%\fancyfoot[L]{\textsf{\small \kurztitel}}
+\fancyfoot[C]{\ } % keine Seitenzahl unten
+%\fancyfoot[R]{\textsf{\small Medieninformatik}}
+
+\usepackage{hsrmlogo}
+
 \usepackage[utf8]{inputenc}
  
  
-\usepackage[onehalfspacing]{setspace}
+\usepackage{setspace}
 \usepackage{csquotes} % Context sensitive quotation.
 \usepackage{amsmath} % Standard math.
 \usepackage{amsthm} % Math theorems.
@@ -59,7 +86,7 @@ doi=true,isbn=false,url=false, eprint=false]{biblatex}
   }
 }
 
-%\linespread{1.5} % set line spacing
+\linespread{1.15} % set line spacing
  
 \usepackage{listings} % rendering program code
 \lstset{% general command to set parameter(s)
@@ -70,6 +97,7 @@ doi=true,isbn=false,url=false, eprint=false]{biblatex}
 	commentstyle=\color{white}, % white comments
 	stringstyle=\ttfamily,      % typewriter type for strings
 	showstringspaces=false}     % no special string spaces
+\lstset{language=python} % und nur schöne Programmiersprachen ;-)
 
 
 \DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
@@ -86,6 +114,16 @@ doi=true,isbn=false,url=false, eprint=false]{biblatex}
 
 %%% Custom definitions %%%
 % Shorthands
+\newcommand{\welchethesis}{Master}
+\newcommand{\thesisofwas}{of Science}
+\newcommand{\titel}{Data Mining komplexer Datenstrukturen aus PDF-Dokumenten}
+\newcommand{\kurztitel}{Data Mining PDF-Dokumenten}
+\newcommand{\autor}{Deniz Aydar}
+\newcommand{\datum}{25. Juli 2022} % Abgabedatum
+\newcommand{\ort}{Wiesbaden}
+\newcommand{\referent}{Prof.\ Dr.\ Dirk Krechel}
+\newcommand{\korreferent}{Prof.\ Dr.\ Philipp Schaible}
+
 \newcommand{\ie}{i.\,e.~}
 \newcommand{\eg}{e.\,g.~}
 \newcommand{\ind}{\mathbbm{1}}
@@ -153,48 +191,18 @@ doi=true,isbn=false,url=false, eprint=false]{biblatex}
 
 \begin{document}
 
-\begin{titlepage}
-	\begin{flushleft}
-		Universität Osnabrück\\
-		Fachbereich Humanwissenschaften\\
-		Institute of Cognitive Science
-	\end{flushleft}
-
-	\vspace{2cm}
-	\centering{
-		Bachelor/Masterthesis\vspace{1cm}\\
-		\textbf{\Large{\MyTitle}}
-		\vspace{1cm}\\
-		\begin{tabular}{c}
-			\MyAuthor                          \\
-			968684                             \\
-			Bachelor's/Master's Program Cognitive Science \\
-			Starting month and year - end month and year
-		\end{tabular}}
-	\vspace{1cm}
-
-	\begin{tabular}{ll}
-		First supervisor:  & Rüdiger Busche, M.Sc.          \\
-		                   & inserve GmbH                   \\
-		                   & Hannover                       \\\\
-		Second supervisor: & Prof. Dr. Someone Else         \\
-		                   & Institute of Cognitive Science \\
-		                   & Osnabrück
-	\end{tabular}
-
-\end{titlepage}
+\include{vorspann} % Titelseite, Erklärungen, etc.
 
 
-\chapter*{Declaration of Authorship}
-I hereby certify that the work presented here is, to the best of my knowledge and belief, original and the result of my own investigations, except as acknowledged, and has not been submitted, either in part or whole, for a degree at this or any other university.
+\begin{abstract} 
 
-\namesigdate
-\pagenumbering{gobble}
-\pagebreak
-
-\begin{abstract}
-	\textbf{\LARGE{Abstract}}\\\\
-	%TODO summarize the main objectives and outcomes of your work. The abstract should fit on one page.
+	In der Welt der berufsbedingten Mobilität können digitale Lösungsansätze die Arbeit erleichtern.
+	So auch in der Personenschifffahrt, bei der neben den üblichen Aufgaben der Arbeit Hindernisse unterschiedlicher Art auftreten können.
+	Treten dort weitere Probleme wie das Fehlen einer Internetverbindung auf, kann die digitale Lösung nur bedingt weiterhelfen.
+	Damit der Kapitän dies bei der Fahrt und bei der Anlegung vermeidet, bedarf es eine Webanwendung, die auch einen Netzwerkverlust handhaben kann und dabei funktionsfähig bleibt.
+	So soll die Anwendung dem Kapitän erlauben, während den Fahrten die Anlegezeiten zu betrachten und die Betankung von Trinkwasser an den Schiffsanleger interaktiv verfolgen zu können.
+	Schwerpunkt in dieser Arbeit ist daher die Verarbeitung der Ressourcen an den Anlegestellen am Beispiel der Landebrücken und die Aufarbeitung mit der Problematik des Offline-Zustandes.
+	
 \end{abstract}
 
 
