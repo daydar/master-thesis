@@ -1,0 +1,977 @@
+\documentclass[11pt,a4paper]{report} 
+
+% Für doppelseitigen Ausdruck (nur bei > 60 Seiten sinnvoll)
+% \usepackage{ifthen}
+% \setboolean{@twoside}{true}
+% \setboolean{@openright}{true} 
+
+\include{preamble} % alle Pakete und Einstellungen
+
+% Hier anpassen 
+\newcommand{\welchethesis}{Bachelor}
+% \newcommand{\welchethesis}{Master}
+\newcommand{\thesisofwas}{of Science}
+\newcommand{\titel}{Offlinefähige Webanwendung für die Ressourcenabrechnung in der Personenschifffahrt}
+\newcommand{\kurztitel}{Template Offlinefähige Webanwendung}
+\newcommand{\autor}{Deniz Aydar}
+\newcommand{\datum}{13. Mai 2020} % Abgabedatum
+\newcommand{\ort}{Wiesbaden}
+\newcommand{\referent}{Prof.\ Dr.\ Jörg Berdux}
+\newcommand{\korreferent}{Prof.\ Dr.\ Wolfgang Weitz}
+
+\begin{document}
+\include{vorspann} % Titelseite, Erklärungen, etc.
+
+\begin{abstract} 
+
+An der Welt der berufsbedingten Mobilität können digitale Lösungsansätze die Arbeit erleichtern.
+So auch in der Personenschifffahrt, bei der neben den üblichen Aufgaben der Arbeit Hindernisse unterschiedlicher Art auftreten können.
+Treten dort weitere Probleme wie das Fehlen einer Internetverbindung auf, kann die digitale Lösung nur bedingt weiterhelfen.
+Damit der Kapitän dies bei der Fahrt und bei der Anlegung vermeidet, bedarf es eine Webanwendung, die auch einen Netzwerkverlust handhaben kann und dabei funktionsfähig bleibt.
+So soll die Anwendung dem Kapitän erlauben, während den Fahrten die Anlegezeiten zu betrachten und die Betankung von Trinkwasser an den Schiffsanleger interaktiv verfolgen zu können.
+Schwerpunkt in dieser Arbeit ist daher die Verarbeitung der Ressourcen an den Anlegestellen am Beispiel der Landebrücken und die Aufarbeitung mit der Problematik des Offline-Zustandes.
+
+\end{abstract}
+
+\tableofcontents
+
+
+\chapter{Einführung} \label{chap:einf}
+
+In der heutigen Zeit ist die Nutzung von mobilen Endgeräten wie Tablets und Smartphones keine Besonderheit mehr. 
+Sie erlauben es uns auf kompakten Bildschirmen Aufgaben zu erledigen, für die es früher noch einen Desktop-Computer bedurfte.
+Außerdem können diese mit der Nutzung von Mobilfunknetzen und WLAN unterwegs einen Zugriff auf das Internet erlauben. 
+Auch Webanwendungen sind bereits Technologien, die bekannt und verbreitet sind.
+In allen möglichen Bereichen werden sie genutzt um dem Benutzer Funktionalitäten zu ermöglichen, die auf klassischen Webseiten nur eingeschränkt möglich sind.
+
+Eines dieser Bereiche ist die Personenschifffahrt, in der Fahrgäste von einem Ort zum nächsten transportiert werden. 
+Ein Ziel hierbei können die Landebrücken (anderer Begriff für Schiffsanlegestellen) in Rüdesheim am Rhein, einer Stadt mit touristischem Hintergrund, sein.
+Doch um an einer der Landebrücken anzulegen, muss im Buchungsportal der Stadt eine bestätigte Buchung für das Schiff existieren.
+An diesen Anleger kann dann der Kapitän für das Schiff Ressourcen wie Trinkwasser aufnehmen, wobei die Entnahme zukünftig elektronisch erfasst und digital verarbeitet wird.
+
+Für die Unterstützung dieses Arbeitsprozesses wird daher eine Webanwendung konzipiert, die es ihm erlaubt mit diesen Ressourcen zu interagieren. 
+Dazu soll die Anwendung dem Benutzer ermöglichen weitere Informationen, wie die Anlegebuchungen darzubieten.
+Da das Nutzungsszenario in einer Umgebung stattfindet, die Netzwerkverluste nicht ausschließt, muss die Anwendung solch eine Problematik handhaben können.
+Daher stellt sich die Frage, wie man diese Problematik hinsichtlich einer On- /Offline Aktivität einer Anwendung löst.
+
+Im Rahmen der Thesis wird die Anwendung prototypartig bei dem Unternehmen ilexius GmbH, die das Buchungsportal erstellt haben, entworfen und entwickelt. 
+Für die Abschlussarbeit liegt der Fokus auf das Anzeigen und Verwalten der Trinkwasserentnahme und auf der Konzeption der Offlinefähigkeit der Webanwendung.
+Dabei wird zwischen den Zuständigkeiten der Aufgaben der Webanwendung und den weiteren Systemen, wie dem Buchungsportal, unterschieden.
+
+Um die Ausarbeitung zu gliedern wird im Kapitel "`Übersicht"' die Problemstellung analysiert, indem der Kontext der Anwendung in seine Bestandteile zerlegt und dargestellt wird und um weitere mögliche Probleme zu finden.
+
+Mit dieser Grundlage wird dann im Kapitel "`Interaktionskonzept"' durch die Perspektive des Benutzers die Webanwendung und dessen Nutzung in Abhängigkeit  mit der Offline-Situation gestaltet.
+Hier wird zunächst die Zielgruppe genauer betrachtet um weitere Erkenntnisse zu erhalten.
+Danach werden Layout-Ansätze für die jeweiligen Zustände der Schiffsfahrt skizziert.
+Hierbei wird sich auf das Layout der mobilen Endgeräte konzentriert, da die Webanwendung auf die mobile Nutzung der Zielgruppe ausgelegt ist.
+
+Das Kapitel "`Technisches Konzept"' präsentiert die softwaretechnische Auseinandersetzung mit den Anforderungen aus den Konzepten der Interaktion und den Funktionalitäten und beschreibt die Änderungen für die möglichen Implementierungen in der Webanwendung und im Buchungsportal.
+Des Weiteren wird aus den existierenden Technologien der Offline-Funktionalität ein Entwurf für die Webanwendung, die den Kontext berücksichtigt, erstellt.
+
+Im Kapitel "`Umsetzung"' werden die Schritte beschrieben, die es für die Entwicklung eines Prototyps benötigt.
+So werden die Rahmenbedingungen für die Implementierung und die Nutzung der Werkzeuge beschrieben und das Zusammenspiel der ausgewählten Technologien dargestellt.
+
+Das letzte Kapitel "`Ausblick und Fazit"' zeigt weitere Perspektiven, die im Bezug zur Webanwendung entworfen werden können, auf.
+Außerdem werden zukünftige Prozesse im Zusammenhang der Anwendung beschrieben.
+Ein Fazit stellt dann die Ergebnisse dar und schließt die Thesis ab. 
+
+\chapter{Übersicht} \label{chap:sicht}
+
+Um die Problematik darzustellen und um eine Übersicht zu ermöglichen, werden in diesem Kapitel die bereits im Betrieb genommenen Prozesse für die Buchungen der Anlegestellen anhand der Interaktionen des Benutzers analysiert. 
+Dazu wird der aktuelle Verlauf der Ressourcenabrechnung am Beispiel der Trinkwasserentnahme an den Anlegestellen erklärt um daraus einen Lösungsentwurf zu skizzieren.
+
+\section{Kontext} \label{sec:was}
+
+Die Stadt Rüdesheim am Rhein ist bekannt für seine Weinberge und seinen touristischen Attraktionen, die Gäste aus der gesamten Welt anziehen.
+Um den Verkehr und den Tourismus gesondert zu verwalten, wurde daher die Fremdenverkehrsgesellschaft im Jahre 1967 von der Stadt gegründet. 
+Die Gesellschaft betreibt neben einem Freibad, einem Park und weiteren Sehenswürdigkeiten mehrere Schiffslandebrücken am rechten Rheinufer.
+Diese Schiffslandebrücken sind Anlegestellen, die für Fahrgast- und Hotelschiffe zur Verfügung gestellt werden und über ein Buchungssystem zu reservieren sind. 
+Das Buchungssystem steht als Portal im Web zur Verfügung und erlaubt für jeden Kunden wie zum Beispiel Reedereien folgende Funktionen:
+
+\begin{itemize}
+\item Selbständige Buchung von Anlegungen
+\item Stornierung von Anlegungen
+\item Ansicht von Informationen zu Anlegungen, zum Beispiel zugewiesene Anlegestelle
+\item Ansicht und Aktualisierung von Schiffsdaten und Rechnungsanschriften
+\end{itemize}
+
+Über das Buchungsportal mit dem Namen "`Landebrücken"' kann sich der Kunde zunächst als Benutzer registrieren. Sobald die Registrierung verifiziert wurde, kann er sich einloggen und bekommt die Hauptseite anzeigt. 
+Auf dieser Seite stehen ihm die Optionen zur Verfügung, dass er Adressen und Schiffe registrieren und Buchungen erstellen kann, wofür eingetragene Schiffe benötigt werden. 
+
+Für einen neuen Benutzer ist daher der erste Schritt eine Adresse zu erstellen, zu denen die Rechnungen der Schiffe und der Buchungen geschickt werden.
+Daher legt der Benutzer ein neues Schiff an und gibt Informationen über dessen Namen, Zugehörigkeit und Größe an.
+Danach wird das Schiff ausgewählt und in einem Formular werden die Ankunfts- und Abfahrtszeiten, die Dauer und die erwartete Passagieranzahl angeben.
+Nachdem dies vom Benutzer bestätigt wird, können weitere Buchungen angelegt oder alle bisher angelegten abgeschickt werden. Ab diesem Zeitpunkt tauchen in einer Bestätigungsliste in der Ansicht der Administration neue Einträge auf.
+
+Diese Buchungsanfragen werden dann von den Verantwortlichen der Fremdenverkehrsgesellschaft entweder bestätigt oder storniert.
+In beiden Fällen wird dem Benutzer eine Benachrichtigung per E-Mail geschickt. 
+Im Falle der Bestätigung enthält diese E-Mail eine Rechnung, die es dann nach der Abfahrt neben der Abrechnung der Ressourcen zu zahlen gilt. 
+
+Durch die Anwesenheit des Schiffes kann das Trinkwasser an der Anlegestelle, welches von der Stadt bereitgestellt wird, aufgefüllt werden.
+Im Vorfeld muss daher der Kunde die Teilnahme am Wasserentnahmeprogramm beantragen, welches den rechtlichen Rahmen, die Datenschutz-Grundverordnung und Informationen über die Haftung bei möglichen Schäden beinhaltet.
+Die Betankung findet über einen Wasserentnahmeschrank an der Anlegestelle statt. 
+Für das Festhalten des Entnahmevorgangs ist ein Mitarbeiter von der Fremdenverkehrsgesellschaft zuständig, der die betankte Menge in einem Papierordner in den Wasserentnahmeschränken einträgt. 
+Dieser Ordner dient dann als Grundlage um die Abrechnungen für die Wasserentnahme der Schiffe an die angegebenen Adressen zu schicken.
+
+Während der Prozess der Buchungen bereits produktiv bereitgestellt wird, hat die Stadtverwaltung eine technische Lösung für die Trinkwasserabrechnung in Auftrag gegeben. 
+Da die Informationen der Ressourcen für die Besatzung der Schiffe als Grundlage für die Schiffsfahrt notwendig sind, kam die Anforderung für die Entwicklung einer weiteren Anwendung hinzu. 
+Diese Anwendung soll eine Übersicht der bisherigen Buchungen und deren Ressourcenabrechnungen, sowie den Prozess der Trinkwasserentnahme während der Betankung präsentieren und daher die Informationen zur Menge während und nach dem Aufenthalt des Schiffes für die Kapitäne bereitstellen. 
+
+\section{Daten und Ressourcen} \label{sec:dar}
+
+Das Buchungssystem bietet für die Kunden eine moderne Verwaltung aller mit der Anlegung von Schiffen in der Stadt verbundenen Vorgänge an. 
+Um dies zu ermöglichen sind die Daten, die der Kunde angibt, elementar um Buchungen als auch Rechnungen zu realisieren. 
+Diese Daten werden durch eine objektrelationale Abbildung als Eigenschaften der Datenmodelle in der Datenbank persistent gespeichert und mithilfe von Business Logiken verarbeitet.
+
+Die Datenmodelle präsentieren dabei die Entitätsklassen, die wiederum die Realität abbilden und für das System benötigt werden.
+So stellen die in der Abbildung angezeigten Entitätsklassen die relevanten Datenmodelle in vereinfachter Form dar, die für das Buchungssystem genutzt werden.
+
+Die Attribute mit der Endung „id“ oder „Id“ kennzeichnen die Primärschlüssel und die Fremdschlüssel und zeigen die Beziehungen zwischen den Entitätsklassen. 
+Die Relationen werden durch Linien nach der Martin-Notation dargestellt. 
+So wird die 1 zu N Beziehung mithilfe der Krähenfußnotation wie zum Beispiel bei der Beziehung von „User“ und „Ship“ verwendet.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.9\textwidth]{images/erdBookingSimpSW}
+\caption{Datenmodellausschnitt des Buchungssystems}
+\label{fig:ebp}
+\end{figure}
+
+In der Abbildung \ref{fig:ebp} werden Kunden und Mitarbeiter der Fremdenverkehrsgesellschaft durch das Datenmodell „User“ abgedeckt. 
+Bei beiden Arten des Benutzers sind die Logindaten mit E-Mail Adresse vorhanden. 
+Wenn der Benutzer sich als Kunde registriert hat, wird der Name als Name der Reederei und die Adresse als Adresse des Unternehmens interpretiert und für weitere Prozesse mit diesem Kontext verarbeitet. Der Kunde wird daher als Manager oder als Organisator der Reederei behandelt.
+
+Das Datenmodell „Ship“ bildet die Schiffe, die vom Kunden mit dem Namen des Schiffes, der Länge des Schiffes, der Einstiegshöhe des Schiffes, dem Tiefgang des Schiffes, der Passagieranzahl des Schiffes und die Telefonnummer des Kapitäns im System eingetragen wurden, ab.  
+Über das Attribut „Active“ wird die Freigabe des Schiffes von der Stadtverwaltung bestimmt. Die „Manager\_User\_id“ ist die Kennzeichnung des Managers der Schiffe, „Organizer\_partner\_id“ ist der Identifikator (ID) für die Adresse der Reederei beziehungsweise des Veranstalters und „Invoice\_partner\_id“ referenziert die dazugehörige Rechnungsadresse.
+
+Das Datenmodell „Pier“ ist die Abbildung einer Anlegestelle. 
+Sie besitzt einen Namen, welcher die Nummer der Schiffslandebrücken enthält, ein Attribut „Position“ welches den Standort der Schiffslandebrücke anhand dem Abstand zur Quelle des Rheins angibt und das Attribut ''Active'' welches den Zustand der allgemeinen Benutzung wiederspiegelt.
+
+Die Entitätsklasse „Sale\_order“ stellt ein Verkaufsauftrag dar.
+Ein Verkaufsauftrag hat einen Attribut „State“, welches, die Zustände des Buchungsprozesses anzeigt. 
+Zu einem Auftrag ist die ID des Managers, der den Auftrag erstellt hat, die ID der Reederei und der Name der Reederei angegeben. 
+Der Buchungsauftrag in welchem sich der Verkaufsauftrag befindet, wird über seine ID und über die ID des Erstellers referenziert.
+
+Für einen Auftrag sind dazu die Attribute des ausgewählten Schiffes über den Namen und der ID referenziert.
+Dazu wird eine ID der Landebrücke angegeben, an der das Schiff anlegt. 
+Ein Auftrag besitzt des Weiteren Attribute für den Zeitpunkt der An- und Abfahrt.
+Für einen Buchungsauftrag wird nach einer Entnahme von Trinkwasser und der Abgabe von Abwasser ein Auftrag von der Stadtverwaltung. 
+
+Dafür hat das Datenmodell „Sale\_order“ die Attribute „Drinking\_water\_qty“ für die Menge des entnommenen Trinkwassers, „Drinking\_water\_price“ für den Preis pro Kubikmeter Trinkwasser und in dieser Anordnung auch für die Attribute „Waste\_water\_qty“ und „Waste\_water\_price“. 
+Zu diesem Datenmodell gehören noch der Preis der Buchung und der ID für die Abrechnung. 
+
+Die Abrechnung wird über das Datenmodell „Invoice“ abgebildet und besitzt einen aus den Verkaufsaufträgen generieten Namen, den Namen des Schiffes, für den die Abrechnung erstellt wird und eine ID die alle Verkaufsaufträge, die für die Abrechnung benötigt werden, referenziert.
+Die „Booking\_order“ stellt den Buchungsauftrag, der eine Sammlung von Verkaufsaufträgen, die vom Kunden unter anderem erstellt wurden, dar. 
+
+Daher besitzt dieses Datenmodell mit dem Namen „Booking\_order“ einen generierten Namen, eine ID zum Kunden, eine ID zum Ersteller der Buchung, alle IDs der Verkaufsaufträge, die mit der Buchung zusammenhängen, einem Zustandsattribut, welches den Zustand der Bestätigung anzeigt und einer ID der Reederei des Schiffes. 
+Dazu hat ein Buchungsauftrag mehrere Verkaufsaufträge und ein Buchungsaufträge wird von mehreren Benutzern verwaltet.
+
+Die Ressourcen, die die Stadt für die Schiffe über die Anlegestellen anbieten, sind eine weitere Quelle für Daten.
+Diese Ressourcen unterteilen sich in Trinkwasser und elektrischen Strom und sind an jeder Anlegestelle vorhanden.
+Während der Strom von externen Stromanbietern angezapft wird, wird das Trinkwasser von den Stadtwerken von Rüdesheim an den Anlegestellen durch eine Anlage zur Wasserentnahme zur Verfügung gestellt. 
+Diese Anlage ist mit dem Wasserentnahmeschrank verknüpft, welcher wiederum eine speicherprogrammierbare Steuerung (SPS) besitzt.
+
+Die Stadtwerke besitzen ein Prozessleitsystem (PLS) und werden von einem Wassermeister geleitet, welcher für eine ausreichende Menge mit ausreichendem Druck von einwandfreier Qualität des Trinkwassers verantwortlich ist. 
+Um diese Aufgabe neben den Stadtgebieten auch für die Anlegestellen zu erfüllen, ist der Wassermeister auch für die Bestimmung des Durchflusses der Anlegestationen verantwortlich. 
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.9\textwidth]{images/dfStationen}
+\caption{Durchflussregler der Anlegestellen}
+\label{fig:df}
+\end{figure}
+
+Hierfür steht eine maximale Tagesmenge von $100 m^3$ für alle Anlegestellen zusammen zur Verfügung. 
+Dazu gibt es eine aktuelle Tagesmenge, welche durch die entnommene Wassermenge für den aktuellen Tag von allen Stationen summiert wird. 
+Wenn der Wert der maximalen Wassermenge erreicht wird, wird die Anlage in einem reduzierten Betrieb gefahren. 
+
+Im reduzierten Betrieb liegt der Wert des Durchflusses bei $5\frac{m^3}{h}$ für jede Anlegestation. 
+Dieser Betrieb kann beendet werden, wenn ein neuer Tag beginnt oder die maximale Tagesmenge über die aktuelle Tagesmenge gesetzt wird.
+Jede Wasserentnahmestation an der Anlegestelle hat einen einstellbaren maximalen Durchflusswert, einen einstellbaren Regelwert für den Normalbetrieb und einen Durchflusswert für den Notbetrieb.
+ 
+Während der maximale Durchflusswert und der Regelwert im Normalbetrieb vom Wassermeister eingestellt werden, ist beim Notbetrieb der Durchflusswert im in der speicherprogrammierbaren Steuerung (SPS) fest hinterlegt, welche bei Verbindungsausfall geregelt wird.
+Für den Normalbetrieb muss der Regelwert zwischen $1\frac{m^3}{h}$ und dem eingestelltem maximalen Durchfluss liegen.
+Außerdem kann der Regelwert im Normalbetrieb für alle Stationen gleich oder individuell eingestellt werden.
+Die Stationen messen bei einem aktuellen Vorgang der Entnahme die entnommene Wassermenge und haben einen Tageszähler, der den Tageszählwert des entnommen Wassers festhält.
+
+Beim Prozess der Betankung von Trinkwasser durch den Kapitän werden weitere Daten erfasst.
+So besitzt der Kapitän eine „Radio-frequency indentification“ (RFID)-Karte, die sein Schiffsunternehmen von der Fremdenverkehrsgesellschaft beantragt und für ihn bereitgestellt hat. 
+Mit der Karte kann das Tor des Anlegers von beiden Seiten entriegelt und geöffnet werden.
+Wenn das Tor wieder ins Schloss fällt, womit es geschlossen ist, muss der Kapitän das Tor mit der Karte erneut öffnen.
+Der Zustand des Tores wird durch Endschalter überwacht und an das Prozessleitsystem weitergeleitet. 
+
+Mit der RFID-Karte wird der Wasserentnahmeschrank entriegelt und der Kapitän kann die Seiten- und die Fronttür zur Wasserentnahme öffnen.
+Werden die Türen des Schranks geöffnet und es erfolgt über 30 Minuten keine Wasserentnahme, startet der Alarmierungsablauf für die Türschließung.
+Das Blinklicht am Schrank wird gestartet und eine Warnmeldung wird an das Prozessleitsystem geschickt. 
+Nach 15 Minuten ertönt ein Warnton im 5 Minuten Abstand, welcher nach weiteren 15 Minuten sich auf 30 Sekunden reduziert. Wenn darauf weitere 15 Minuten folgen, indem die Wasserentnahme nicht erfolgt, wird eine Alarmmeldung an das Prozessleitsystem geschickt.
+Dort wird der Bereitschaftsdienstplan angestoßen und der zuständige Mitarbeiter informiert.  
+
+Wenn der Kapitän die RFID-Karte vor die Antenne am Schrank hält, wird der Code der Karte von einem RFID-Lesemodul an die speicherprogrammierbare Steuerung im Wasserentnahmeschrank weitergeleitet. 
+Diese schickt daraufhin ein Protokoll über General Packet Radio Service (GPRS) mit der Schiffskennung, der Zeit und der Station und weiteren Daten zum Prozessleitsystem im Betriebsgebäude der Stadtwerke. 
+
+Dort befindet sich eine Datenbank, in der hinterlegt wird, welches Schiff zu welcher Reederei gehört und ob das Schiff gesperrt oder freigegeben ist. 
+Das PLS sendet abhängig von den Einträgen in der Datenbank eine Bestätigung und die hinterlegte Sprache des Schifffahrtunternehmens an die speicherprogrammierbaren Steuerung vor Ort, die den Schrank entriegelt und den Kapitän über das Display durch das Programm führt.
+Displayanzeige ist dabei von der hinterlegten Sprache abhängig.
+
+Während der kompletten Trinkwasserentnahme schickt die speicherprogrammierbare Steuerung in regelmäßigen Abständen Daten wie zum Beispiel Durchfluss und Menge in Paketen an das Prozessleitsystem, die dort wiederum passend zum Schiff und dem Anleger zugeordnet und aufgezeichnet werden.
+Durch einen Tastendruck kann die Wasserentnahme jederzeit beendet werden. 
+Nach dem Ende schickt die Steuerung nochmal ein Endprotokoll an das Prozessleitsystem.
+
+Der Wassermeister kann über das Prozessleitsystem hinterlegen, ob ein Schiff gesperrt ist und die Wasserentnahme verweigert wird.
+Der Kapitän bekommt eine kurze Meldung, dass der Betankungsvorgang nicht gestartet werden kann und bekommt eine Telefonnummer angezeigt, mit dieser er sich dann weitere Informationen holen kann.
+
+Nach erfolgreicher Freigabe kann der Kapitän über ein Auswahlmenü entscheiden, ob er auf eigene Verantwortung die Wasserzufuhr dauerhaft laufen lassen möchte  oder ob er einen Sollfüllwert einstellen möchte, bei dem die Wasserzufuhr automatisch gestoppt wird. 
+Sobald der erfolgreiche mechanische Anschluss an der Wasserentnahme erfolgt, drückt der Kapitän die Start Taste und die Betankung beginnt.
+
+Der Kapitän bekommt aktuelle Werte angezeigt, auf der er nachverfolgen kann, wie viel Wasser er schon entnommen hat und sein eventuell eingestelltes Limit. Nach der erfolgten Entnahme wird der Schlauch entfernt und nach dem Schließen der Seiten- und Fronttür wird diese elektrisch verriegelt und der Betankungsvorgang wird damit beendet.
+Die Fremdenverkehrsgesellschaft bekommt eine E-Mail mit einer abschließenden Zusammenfassung der Betankung vom Prozessleitsystem.
+
+Wenn die Verbindung gestört wird, wird dem Kapitän durch eine Mitteilung auf dem Bildschirm angezeigt, dass der Betankungsvorgang nun in einem Notprogramm stattfindet.
+Wenn die Wasserentnahmestelle die Verbindung zum Prozessleitsystem verliert, während ein Betankungsvorgang läuft, muss die Steuerung die Daten so lange Zwischenspeichern, bis eine Verbindung zum PLS wieder gewährleistet werden kann.
+Dann müssen alle Daten wieder zum Prozessleitsystem geschickt werden. 
+
+Während des Verbindungsausfalles muss die Speicherprogrammierbare Steuerung in ein Notprogramm schalten.
+In diesem wird der fester Durchflusswert für den Notbetrieb geregelt.
+Wenn die Verbindung zum Prozessleitsystem wieder gewährleistet werden kann, fahren die aktuellen Betankungsvorgänge aber immer noch im Notprogramm, bis diese neu gestartet werden.
+
+Wenn der Betankungsvorgang im Notbetrieb beendet wird, ohne dass wieder eine Verbindung zum Prozessleitsystem aufgebaut werden konnte, wird der Kapitän darauf hingewiesen, die Betankungsdaten händisch zu notieren. Sobald eine Verbindung zum PLS wieder besteht, werden die Daten der letzten Betankung erneut verschickt.
+
+Sollte die Verbindung zum Prozessleitsystem ausgefallen sein und ein Schiff möchte anlegen gibt es die Möglichkeit den Schrank über eine Service-Karte zu entriegeln. 
+Dafür wird die Fix-ID dieser Karte/n in der speicherprogrammierbaren Steuerung hinterlegt. Nach Entriegelung des Schranks mit der Servicekarte ist es möglich, die Einstellung am Display per Hand vor zu nehmen. 
+Der Zählerstand beziehungsweise die entnommene Wassermenge des Betankungsvorgangs muss händisch notiert werden und der Schrank muss bei Beendung des Vorgangs von dem Servicemitarbeiter wieder verschlossen werden.
+
+Da die Anwendung für den Kapitän auf eine Netzwerkverbindung angewiesen ist, kann es auch hier zu Unterbrechungen der Verbindung kommen. 
+Die Phasen in denen dies auftreten kann, sind die Hinfahrt zur Anlegestelle, der Aufenthalt des Schiffes an der Anlegestelle, der Betankung von Trinkwasser vor Ort und die Abfahrt von der Anlegestelle. 
+
+Die Anzapfung des Landstroms kann zukünftig als weitere Phase auch beachtet werden. 
+Um diesen möglichen Fällen entgegen zu wirken, sind Konzepte und Ideen für solche Offline Situationen notwendig um den Arbeitsprozess für den Kapitän möglichst problemfrei zu halten.
+
+
+\chapter{Interaktionskonzept} \label{chap:inter} %KAPITEL
+
+Die Webanwendung soll das Anzeigen und Verwalten des Trinkwasserentnahme und die Darstellung der Anlegebuchungen als Funktionalität für die neue Zielgruppe anbieten um somit die zukünftigen Arbeitsprozesse zu unterstützen. 
+Um dies zu ermöglichen, müssen die Interaktionen der Zielgruppe in Abhängigkeit der On-/Offline Situationen gestaltet werden. 
+Dies findet im Rahmen der Feinkonzeption \cite{Jacobsen.2014} statt.
+Dort werden Layout-Ansätze entwickelt und Wireframes erstellt, die die Interaktionen der Zielgruppe mit der Webanwendung abbilden sollen.
+%aktuelle Interaktion + aktuelle Sicht des Kapitäns => Kapitänsansicht gegenteilig
+
+\section{User Expierence} \label{sec:ux}
+Die Feinkonzeption legt den Fahr- und Konstruktionsplan fest und beschreibt die Interaktionen mit den Elementen einer Webseite. 
+Damit die daraus resultierende Webseite nicht nur mit den Anforderungen der Funktionalitäten übereinstimmt, sondern auch erfolgreich sein soll, muss neben der Nützlichkeit und der Benutzerfreundlichkeit auch eine positive Emotion bei der Benutzung der Webanwendung existieren.
+Dieses Empfinden wird auch als Begriff „ Joy of Use“ \cite{joyofuse} verwendet.
+
+Die Kombination dieser Aspekte definiert die User Experience \cite{Hartson.2019}.
+Es ist ein Design Prozess, welcher die Eindrücke, die ein Nutzer bei der gesamten Interaktion mit dem System fühlt, beschreibt. 
+Für die Gestaltung der User Experience ist das Einnahmen der Perspektive der Zielgruppe wichtig, um ein tieferes Verständnis von der Zielgruppe zu bekommen und um mögliche Probleme zu erkennen und diese mithilfe der Konzeption zu lösen oder zu vermeiden. 
+Denn durch eine bessere Interaktion mit der Anwendung kann der Benutzer zufriedener mit der Benutzung der Funktionalitäten sein.
+
+\subsection{Persona} \label{sec:per}
+Das Einnehmen dieser Perspektive geschieht durch die Erstellung einer Persona \cite{puttingpersonas}, welche wiederum für die Webanwendung die Zielgruppe als Benutzer darstellt.
+Eine Persona beschreibt zudem sein Verhalten, seine Ziele, seine Motivationen und weitere Informationen in welcher der Benutzer tätig ist.
+Da die Zielgruppe sich auf ein Berufsfeld abbildet, ist es hierfür wichtig zu verstehen woraus die Tätigkeit besteht, in der die Benutzer die Anwendung verwenden.
+
+Als Kommandant eines Passagierschiffes sind Kapitäne in der Personenschifffahrt bei Reedereien angestellt. 
+Die Schiffsunternehmen übertragen die Verantwortung des Schiffes an den Kapitän, welcher die Durchführung aller zugewiesenen Aufgaben obliegt \cite{BERUFENET}. 
+
+So kümmert er sich um das Wohlbefinden der Besatzung und die Vermeidung von Unfällen. 
+Er achtet auf die Gewässerverschmutzung und auf weitere Beeinträchtigungen der Umwelt und inspiziert regulär den Zustand des Schiffes.
+Des Weiteren leitet er die Aufgaben der Besatzung und überwacht die Verrichtung der Besatzung.
+
+Die Navigation des Schiffes wird vom Kapitän mithilfe von Seekarten, Radar und weiteren Geräten durchgeführt \cite{Maritime}.
+Dazu finden Signalisierungen mithilfe von Lichtern zwischen den Schiffen statt.
+Jeden Tag auf dem Schiff beobachtet er den Zustand des Schiffes, der Geschwindigkeit des Schiffes, den Druck des Schiffmotors und die Wassertiefe.
+
+Das Budget, das Einkaufen und das Beladen von Treibstoff, die Vorräte und die Ausrüstungen sind weitere Eigenschaften des Schiffes, die der Kapitän überschauen muss.
+Dazu weiß er über die Fracht Bescheid, die auf dem Schiff transportiert wird und er kennt sich in den Softwares, die sich auf dem Schiff im Betrieb befinden, aus.
+
+Durch die hohe Verantwortung und Aufgaben muss der Kapitän also eine disziplinierte Person sein, welcher geduldig arbeitet.
+Des Weiteren besitzt der Kapitän die Kenntnis zur Benutzung der Software auf dem Schiff, die im Betrieb genutzt wird. 
+Daher ist ihm der Umgang mit der allgemeinen Bedienung einer Software nicht fremd.
+ 
+Der Kapitän hat entweder eine Ausbildung zum Binnenschiffer \cite{binnenschiffer} vollzogen und hat mit weiteren Berufsjahren sich den Einsatz als Schiffsführer erlangt oder er ist für seine Tätigkeiten mit einem Hochschulabschluss in Nautik oder in einem ähnlichen Studiengang ausgebildet und besitzt somit eine Qualifikation für die Schifffahrt. 
+In Deutschland gibt es als weitere Option das Befähigungszeugnis „Nautischer Wachoffizier“ an einer Fachschule oder Fachhochschule durch erfolgreichen Abschluss zu erhalten \cite{mystipendium}.
+
+Mit diesen gesammelten Informationen über den Kapitän lässt sich eine Persona folgendermaßen erstellen:
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.8\textwidth]{images/persona}
+\caption{Steckbrief der Persona}
+\label{fig:per}
+\end{figure}
+
+In der Abbildung \ref{fig:per} ist die Persona des Kapitäns zu sehen.
+Diese heißt Jan Wind, ist 41 Jahre alt, Familienvater und leidenschaftlicher Reisender. 
+Er studierte an einer Hochschule Nautik und fing nach dem Abschluss als Schiffsoffizier an zu arbeiten.
+Nach Jahren der Berufserfahrungen hatte er dann einen weiteren Lehrgang abgeschlossen um das Binnenschifferpatent zu erlangen. 
+Er lebt in Köln und ist gewohnt daran tage- oder auch wochenlang unterwegs zu sein und seine Familie nicht zu sehen.
+
+Ihn motiviert es abwechslungsreiche und neue Reisen im Rahmen seiner Tätigkeit zu erleben und Herausforderungen, die sich auf einer Fahrt ergeben können, zu meistern.
+Jan ist hilfsbereit und verantwortungsbewusst, will aber auch im Gegensatz dazu eine Mannschaft an Bord haben, die seine Anweisungen genauestens befolgt. 
+Sein Ziel ist es neben der Absolvierung einer Schiffsfahrt neue Orte und Menschen kennen zu lernen. 
+Dafür nimmt er gerne die Unregelmäßigkeiten wie die Arbeitszeiten und die Wetterbedingungen, die in seinem Arbeitsalltag passieren, in Kauf.
+
+\subsection{Szenarien} \label{sec:sze}
+Als Nächstes können mit dieser Persona Szenarien erstellen werden.
+Ein Szenario beinhaltet eine Situation, in welcher die Herangehensweise einer Persona mit der Webanwendung in einem festgelegten Kontext, beschrieben wird um sein jeweiliges Ziel zu erreichen. \cite{puttingpersonas}.
+Es definiert somit wann, wo und wie die Geschichte der Persona stattfindet und wie sich die Persona verhält.
+
+Die Szenarien, die einem Kapitän während seiner Arbeit auftreten können also nun mithilfe des Personas gestaltet werden.
+Aus den vielen Situationen, die sich aus den Tätigkeiten des Kapitäns im Bezug zur Webanwendung gestalten können, gehören die folgenden Szenarien zu der relevanten Menge:
+
+Szenario 1:
+
+Jan will auf der Hinfahrt die letzte Anlegung des Schiffes in Rüdesheim mit der aktuellen Buchung vergleichen. 
+Dafür schaut er sich die vergangenen und die aktuellen Anlegungen an.
+
+Szenario 2:
+
+Jan legt das Schiff an, startet an der Anlegestelle die Trinkwasserentnahme und begibt sich während der Entnahme auf die Schiffsbrücke um andere Aufgaben durchzuführen.
+Kurz vor dem Ende der Entnahme kehrt er zum Wasserentnahmeschrank zurück um dies abzuschießen.
+
+Szenario 3:
+
+Jan legt das Schiff an, startet an der Anlegestelle die Trinkwasserentnahme und begibt sich während der Entnahme in ein Café gegenüber der Anlegestelle.
+Dort verliert er die Netzwerkverbindung mit der Anwendung.
+Kurz vor dem Ende der Entnahme kehrt er zum Wasserentnahmeschrank zurück um dies abzuschließen.
+
+Während die ersten beiden Szenarien, den erwartbaren Anwendungsfällen entsprechen, bezieht sich das dritte Szenario auf den möglichen Offline-Zustand, der in jeder Situation auftreten kann.
+
+\subsection{User Journeys} \label{sec:uj}
+Im nächsten Schritt der User Experience verbinden wir die Persona mit jeweils einem Szenario und kreieren damit eine User Journey. 
+Dies beschreibt dann die Schritte die ein Nutzer geht, um ein gewisses Ziel mit dem interaktiven System zu erreichen \cite{webwissen}.
+Dabei werden die Schritte als  "`Stages"' dargestellt, die mit der Aktivität, den Gedankten und den Gefühlen beschrieben werden.
+Zu diesem Ablauf kommt als weiterer Aspekt der Netzwerkzustand dazu, der für die Offline-Funktionalität als relevante Eigenschaft dient.
+Die User Journeys sind in den folgenden drei Abbildungen \ref{fig:uja}, \ref{fig:ujb}, und \ref{fig:ujbo} zu finden.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{images/User Journeys-Journey Map Anlegungen}
+\caption{User Journey von einer Anlegung}
+\label{fig:uja}
+\end{figure}
+
+In Abbildung \ref{fig:uja} ist eine User Journey mit dem ersten Szenario zu sehen. 
+Hier überwacht Jan das Schiff, führt ein Login der Anwendung durch und schaut sich die vergangenen und die aktuelle Anlegebuchungen an.
+Während er beim ersten Schritt noch leicht negative Gefühle hat, passen sich diese im Verlauf an bis er dann im letzten Schritt positive Gefühle zeigt.
+Das Gerät, welches für die Anwendung benutzt wird, ist bei allen Schritten mit dem Internet verbunden und wird erst ab dem zweiten Schritt benutzt.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{images/User Journeys-Journey Map Betankung}
+\caption{User Journey von einer Betankung}
+\label{fig:ujb}
+\end{figure}
+
+Abbildung \ref{fig:ujb} zeigt eine weitere User Journey mit dem zweiten Szenario.
+Dort führt Jan die Anlegung durch, entriegelt den Wasserentnahmeschrank, stellt über einem Bildschirm am Schrank anhand der Daten wie Durchfluss und Preis die Entnahmen ein, startet die Betankung, begibt sich währenddessen auf die Brücke und schließt durch Zurückkehren zum Schrank die Betankung ab.
+
+Während er noch beim zweiten Schritt, wo er sich unschlüssig fühlt, anwesend sein muss, erlaubt ihm im dritten Schritt die Nutzung der Anwendung die Betankung von der Ferne neugierig zu verfolgen.
+Dadurch ist es ihm möglich den vierten Schritt zeitnah auszuführen, was ihm die Arbeit erleichtert und freudig stimmt.
+In allen "`Stages"' ist er mit dem Netzwerk verbunden, benutzt aber die Anwendung erst sobald er sich von dem Wasserentnahmeschrank entfernt beziehungsweise entfernen will.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{images/User Journeys-Journey Map Betankung Offline}
+\caption{User Journey von einer Betankung mit einer Offline-Aktivität}
+\label{fig:ujbo}
+\end{figure}
+
+Die letzte User Journey wird in Abbildung \ref{fig:ujbo} angezeigt.
+Das Szenario ist hier ähnlich zum zweiten Szenario mit dem Unterschied, dass Jan sich während der Betankung in einer Gaststätte aufhält und die Verbindung zum Netzwerk dort verliert.
+
+Durch den Ausfall der Verbindung wird er im dritten Schritt unruhig, doch kannmithilfe des letzten Stands der Betankung, welche von der Anwendung angezeigt wird, die Lage besser einschätzen und sich zum Wasserentnahmeschrank begeben.
+So kann er trotz dem Offline-Zustand der Anwendung die Betankung rechtzeitig abschließen.
+
+
+\subsection{Wireframes} \label{sec:wire}
+
+Durch die Erstellung der User Journeys haben sich weitere Informationen für die Interaktion ergeben.
+Doch um diese Informationen für die Gestaltung der Wireframes zu verwenden, müssen diese zunächst durch die Nutzung einer Informationsarchitektur \cite{Jacobsen.2014} verarbeitet werden. 
+Es erlaubt die sinnvolle Platzierung der Informationen in der Webanwendung um den Benutzer eine Orientierung zu ermöglichen. 
+Die Wireframes können basierend auf der Ordnung gestaltet werden und somit das initiale Design der Webseite präsentieren \cite{wireframes}.
+
+Die erste Aufbereitung der Informationen findet in den Rahmenbedingungen der Webanwendung statt.
+Das bedeutet, dass die Gestaltung abhängig von der Nutzung der Zielgruppe ist.
+Bedingt durch die Tätigkeit des Kapitäns und den Szenarien passt die Ausrichtung der Webanwendung auf mobilen Endgeräten.
+Doch mit diesem Medium kommen weitere Bedingungen.
+
+So müssen die langsame, nicht ständig vorhandene Internetverbindung und die kleineren Bildschirme im Vergleich zu Desktop Computern beachtet werden.
+Doch bezüglich des Buchungssystems ist es für die Zielgruppe wichtig unterwegs durch die Anwendung die Zeiten der verschiedenen Anlegungen zu erhalten.
+
+Des Weiteren will ein Kapitän während einer Betankung andere Aufgaben parallel ausführen und trotzdem noch den Zustand der Betankung, die er nur mit einem festen Aufenthalt am Wasserentnahmeschrank erfahren würde, verfolgen können.
+Für diese Anforderungen setzt es daher ein mobiles und internetfähiges Endgerät voraus.
+Auch passt hier ein responsives Design um eine Desktop Version zu unterstützen.
+
+Bevor die Hauptinteraktion konzipiert wird, muss sich überlegt werden, wie die Authentifizierung gestaltet werden soll.
+Dies könnte über eine für die Webanwendung eigens erstellte Anmeldeseite oder über die bereits existierende Seite des Buchungssystem stattfinden.
+
+Da es aus der technischen Sicht und den nötigen Informationen passender erscheint, wird die Login Seite des Buchungssystems benutzt.
+Um einen einfacheren Zugang für die Kapitäne zu ermöglichen, wird ein weiteres Login Formular mit einen Eingabefeld zur Startseite hinzugefügt.
+Statt einer E-Mail-Adresse und einem Passwort, wird für den Kapitän ein Zugangscode vom Buchungssystem generiert, welcher ihm vom Manager des Schiffes, welchem er zugeteilt ist, erhält.
+Dazu ist die Login Seite umrahmt von einem Header, der das Logo des Unternehmens und Menü für den Account beinhaltet und einem Footer, in dem das Impressum und weitere Daten zum System verlinkt werden. 
+
+Es ergeben sich zwei mögliche Darstellungen für die Login Seite wie es in der Abbildung \ref{fig:wfl} zu sehen ist.
+Die Darstellung \ref{fig:wfl1} zeigt eine Version bei der über Tabs zwischen den Formularen gewechselt kann. 
+Bei \ref{fig:wfl2} hingegen wird eine einfache Anordnung vertikal abgebildet.
+
+Beide Darstellungen zeigen dazu eine Ansicht, die eine durch die Anordnung zu einer Gewichtung des Kapitäns führt.
+Hierbei ist die Idee, dass die Reihenfolge abhängig zum benutzten Endgerät seien soll, da die mobile Ansicht wahrscheinlicher von dem Kapitän genutzt werden.
+Die anderen Benutzer dagegen melden sich über einen Desktop Computer an.
+
+\begin{figure}[htb]
+\centering
+\subfloat[Mit Tabs]{\label{fig:wfl1}
+\includegraphics[width=.5\textwidth]{images/ship_frontend_wireframes-Login Mobile Tabs}}
+\subfloat[Ohne Tabs]{\label{fig:wfl2}
+\includegraphics[width=.5\textwidth]{images/ship_frontend_wireframes-Login Mobile}}
+\caption{Wireframes von der Loginansicht}
+\label{fig:wfl}
+\end{figure}
+
+Nachdem die Entwürfe für die Login Seite stehen, müssen die Informationen für die Übersichtsseite des Kapitäns gegliedert werden.
+Diese besitzt wie die Login Seite auch einen Header und Footer um das gleiche Erscheinungsbild wie vom Buchungssystem darzustellen.
+Die User Journeys zeigen, dass der Kapitän die Anwendung für folgende Daten benutzen will: 
+
+\begin{itemize}
+\item Der Zustand der Trinkwasserentnahme
+\item Die letzten Trinkwasserentnahmen 
+\item Die Anlegebuchungen des ihm zugeteilten Schiffes
+\end{itemize}
+
+Aus diesen Daten lassen sich zwei Themen erkennen, die man zunächst zwischen den zwei Gruppen Wasserentnahme und Anlegebuchungen aufteilen kann.
+Da der Vorgang der Betankung aber ein empfindlicher Prozess ist und übersichtlich bleiben soll, eignet es sich die letzten Trinkwasserentnahmen als eigene Gruppe zu betrachten.
+
+Die Gruppe brauchen eine Priorisierung um die Anordnung und Position festzulegen. 
+Diese Priorisierung findet durch eine Gewichtung der Funktionalitäten statt.
+So ist die Trinkwasserentnahme die wichtigste Funktionalität der Anwendung und gilt daher in der aktuellen Planung als Fokus der Webseite.
+Um dies auch zu gewichten muss daher der Zustand der Betankung im oberen Bereich der Webseite dargestellt werden, da dies das erste Element einer Webseite ist welches durch das Leseverhalten \cite{leseverhalten} eines Benutzers auftaucht.
+Das Leseverhalten bestimmt hierbei die Anordnung.
+
+Der Zustand soll den Status der Entnahme darstellen.
+So kann die Menge der Zustände aus einer nicht stattfindenden Betankung, einer aktiven Betankung, einer aktiven Betankung mit Warnhinweisen (zum Beispiel auf Verbindungsstörungen oder auf die Türschließung durch den Alarmierungsablauf), einer abgeschlossenen Betankung oder einer fehlerhaften Betankung bestehen.
+Zu diesem  Zustand der Betankung gehören auch wichtige Informationen wie die aktuelle Betankungsmenge, sowie die gewünschte Menge hervorgehoben. 
+
+Als weitere Gewichtung können die Zustände mit der bekannten Assoziierung der Farben wie zum Beispiel Grün für Erfolg, Gelb für Warnung und Rot für auftretende Fehler markiert werden. 
+Beim Zustand kann dann ein Untertitel für weitere Informationen dargestellt werden.
+Dies wäre bei Fällen in denen die Betankung in einem Notbetrieb läuft oder die speicherprogrammierbare Steuerung einen Verbindungsausfall hat, geeignet.
+
+Danach können weiteren Daten wie der Durchfluss, der Start- und Endzeitpunkt und Informationen über das Schiff dargestellt werden.
+So werden für die jeweiligen Daten die Bezeichnungen linksbündig und die Werte rechtsbündig angezeigt um Kollisionen der Anzeige auf kleineren Bildschirmen zu vermeiden.
+ 
+Der Wert der gewünschten Menge kann durch ein Doppel-Tippen mit einem Eingabefeld angepasst werden.
+Während sich der Startzeitpunkt bei einer Betankung nur einmal ändert, wird der Endzeitpunkt abhängig von dem Wert der gewünschten Menge und dem Wert des Durchflusses. 
+Im unteren Bereich der Betankungsanzeige werden allgemeinere Informationen zur Anlegestelle, zum Schiff und zum Veranstalter des Schiffes abgebildet.
+Diese können als redundant aufgefasst werden, sollen aber den Kontext spezifizierter für den Kapitän darstellen, um mögliche Problemfälle zu vermeiden.
+
+Als nächste Funktionalität werden die bestätigten Anlegebuchungen in einer Tabelle als Liste angezeigt.
+Von diesen Anlegungen braucht der Kapitän daher die relevanten Informationen wie den Startzeitpunkt, Endzeitpunkt und die Dauer.
+Um die Ansicht auf einem mobilen Endgerät übersichtlich zu halten, ist die Tabelle einklappbar.
+Außerdem besitzt die Tabelle weitere Filter, womit die Liste noch überschaubarer wird.
+
+\begin{figure}[htb]
+\centering
+\subfloat[mit einer Kurzübersicht]{\label{fig:wfk}
+\includegraphics[width=.5\textwidth]{images/ship_frontend_wireframes-Übersicht vergrößern mobile}}
+\subfloat[mit einer vergrößerten Übersicht]{\label{fig:wfv}
+\includegraphics[width=.5\textwidth]{images/ship_frontend_wireframes-Übersicht verkleinern Mobile}}
+\caption{Wireframes von der Übersichtsseite}
+\label{fig:wfkv}
+\end{figure}
+
+Die letzte Hauptfunktionalität betrifft die letzten Trinkwasserentnahmen.
+Hier wird wie bei den Anlegebuchungen eine einklappbare Tabelle  angezeigt.
+Da die Länge der Tabelle in Relation kleiner ausfällt als die Liste der Anlegebuchungen und es thematisch zur Hauptfunktionalität passt, wird die Tabelle der letzte Trinkwasserentnahmen nach der Anzeige der Trinkwasserentnahme angeordnet.
+
+In Abbildung \ref{fig:wfkv} sind die beschriebenen Bereiche zu sehen.
+Hier wird außerdem gezeigt, dass die Anzeige der Trinkwasserentnahme vergrößert beziehungsweise verkleinert werden kann um den Fokus auf die wichtigsten Daten zu ermöglichen. 
+Des Weiteren werden alle Inhalte kurz und präzise gehalten um nicht nur den Anzeigebereich nicht zu überfüllen sondern auch da längere Inhalte wie Texte wahrscheinlicher überflogen und Webseiten seltener gescrollt werden\cite{Butz.}.
+So werden auf ausführlichere Erklärungen in eine Anleitung ausgelagert womit die Seite simpel und übersichtlich bleibt.
+
+
+\section{Offline-Aktivitäten} \label{sec:wire}
+% schätzung der trinkwassermenge in offline -> wie können gui elemente dies signalisieren?
+In den Szenarien und User Journeys tritt eine weitere Problematik auf.
+Während die ersten zwei User Journeys erwartbare Abläufe beschreiben, ist dies bei der dritten User Journey nicht der Fall.
+Dort erscheinen weitere Probleme für den Benutzer die ihn verwirren können und im Unklaren lassen.
+
+Der Verlust einer Netzwerkverbindung kann dem Benutzer jederzeit während der Benutzung der Webanwendung passieren und möglicherweise auch während er einer Aufgabe nachgeht, bei der er sich auf die angezeigten Daten verlässt.
+
+So ist die Betankung des Trinkwassers ein kritischer Prozess bei dem die Zeitnähe der Daten elementar ist um diesen Prozess erfolgreich abzuschließen.
+Die Anpassungen sollen daher Transparenz für das Zusammenspiel zwischen dem Netzwerkverlust und der Webanwendung schaffen.
+Dem Benutzer muss über die Interaktion klar werden, wie das Verhalten der Anwendung in solch einem Szenario aussieht.
+
+Eine fehlende Benachrichtigung beziehungsweise Signalisierung kann des Weiteren zu Frustrationen des Benutzers führen und Aspekte wie Nutzbarkeit, Benutzerfreundlichkeit und das positive Empfinden verschlechtern.
+Anzeichen dafür wären, dass er wahllos auf der Seite herum tippt, herum scrollt, zur Seite davor navigieren will, die Seite versucht neu zu laden oder den Browser zu schließen und zu öffnen \cite{uxfrust}.
+
+Damit dies vermieden werden kann, müssen Änderungen wie der Netzwerkzustand angezeigt werden und die Daten bestimmt werden, die trotz dem Offline-Zustand bereitgestellt werden können \cite{offlinecon}.
+Des Weiteren kann der Verlust der zuletzt angefragten Daten vermieden werden, indem die Seite bei einem Neuladen keine leere Ansicht darstellt, sondern die Anzeige wie zuvor wieder aufruft.
+Auch Farbveränderungen können dem Benutzer aufmerksam auf die entstandene Situation machen.
+So wird der Übergang zwischen On- und Offline für den Benutzer angenehmer gestaltet.
+
+Um den Benutzer über diesen Zustand in Kenntnis zu setzen, erscheint eine Benachrichtigungsfeld über der Betankungsanzeige, welches in der Abbildung \ref{fig:wfvn} zu sehen ist. 
+Dies wird farblich markiert und beinhaltet die Angabe des letzten Zeitpunktes der Daten.
+Hierbei soll es eine Farbe benutzt werden welches eine Warnung an den Benutzer signalisiert.
+
+\begin{figure}[htb]
+\centering
+\subfloat[ohne Schätzung der Daten]{\label{fig:wfvn1}
+\includegraphics[width=.5\textwidth]{images/ship_frontend_wireframes-Übersicht verkleinern Offline}}
+\subfloat[mit Schätzung der Daten]{\label{fig:wfvn2}
+\includegraphics[width=.5\textwidth]{images/ship_frontend_wireframes-Übersicht verkleinern Offline V2}}
+\caption{Wireframes von der Übersichtsseite mit einer Netzwerkmeldung}
+\label{fig:wfvn}
+\end{figure}
+
+Passende Farben für den Kapitän wären hierfür Gelb oder Orange, welche ihm aus dem Schiffsbetrieb bekannt seien \cite{maritimepro} können und ihm einen Bezug zu einer Warnung vermitteln.
+Da die Farbe Gelb für den Zustand der Betankung genutzt wird und das Benachrichtigungsfeld aufgrund der Nutzung im Freien kontrastreich dargestellt werden soll, wäre Orange für diesen Fall geeignet.
+Die Wiederverbindung mit dem Netzwerk wird über ein weiteres Benachrichtigungsfeld kommuniziert, welches für wenige Sekunden präsentiert wird.
+Die Zustandsanzeige passt sich inhaltlich an und die restlichen Werte der Betankung werden vom letzten verfügbaren Stand angezeigt.
+
+Hier kann dann die aktuelle Menge als geschätzter Wert unterhalb in einer helleren Schriftfarbe angezeigt werden, um so eine mögliche Fortführung der Informationen abzubilden.
+Die Anpassung der gewünschten Menge kann hierbei durch ein Ausgrauen deaktiviert werden oder trotzdem noch anpassbar sein mit der Erwartung, dass die Eingabe zwischengespeichert und beim Wiederverbinden dann aktualisiert wird.
+Der Endzeitpunkt wird durch eine Schätzung gleich bleiben aber auch mit einer helleren Schriftfarbe dargestellt um zu zeigen, dass dieser Zeitpunkt nicht mehr auf aktuellen Daten basiert.
+
+Weitere Daten über das Schiff sind in einem Offline-Zustand weniger relevant, da sich die Werte selten ändern.
+Die Anlegenummer könnte durch einen Vergleich mit der Anlegungsbuchung und der aktuellen Uhrzeit des Gerät auch ohne Netz verändert beziehungsweise entfernt werden.
+
+Während die Daten der Betankung zeitnah seien müssen, ist dies für die Listen der letzten Trinkwasserentnahmen und der Anlegungen weniger relevant, da diese sich seltener verändern. 
+Diese zeigen die Liste von dem letzten Neu laden der Seite an, doch müssen für den Benutzer immer noch erreichbar sein.
+Dies gilt auch für die Suchleiste und die Filteroptionen. 
+
+Sobald die Netzwerkverbindung wiederaufgebaut ist, werden alle Daten aktualisiert und die Eingaben werden vom System übernommen.
+Die Schätzungen werden entfernt und die Anzeige wird weiter aktuell gehalten.
+
+\chapter{Technisches Konzept} \label{chap:tech}
+
+Für den Sprung zur Umsetzung bedarf es als Nächstes die Konzeption des technischen Rahmens. 
+Da die Daten vom Prozessleitsystem, welches die Trinkwasserentnahme der Anlegestellen überwacht und verarbeitet, in Form einer Schnittstelle bereitgestellt werden, muss hier geplant werden wie eine Verbindung zwischen den Systemen aussehen könnte.
+
+Hierzu werden Änderungen an den Datenbankmodellen und am Buchungsportal konzipiert. 
+Die technische Integration der Ansicht des Kapitäns ist wiederum abhängig von diesem Buchungssystem, weswegen die Webanwendungen, die die Manager von Schiffsunternehmen und die Kapitäne benutzen, als Frontend \cite{seobility} und die Softwarestrukturen, die für die komplexere Verarbeitung der Daten verantwortlich sind, als Backend \cite{ryte} unterteilt werden. 
+
+\section{Backend} \label{sec:bend}
+
+Wie in Kapitel \ref{sec:dar} beschrieben, ermöglicht das Buchungsportal den Managern Adressen anzulegen, Schiffe im System einzutragen und Anlegebuchungen zu beantragen, die von Mitarbeitern der Fremdenverkehrsgesellschaft über das selbige Portal bearbeitet werden können.
+Des Weiteren verwaltet der Manager auch die Kapitäne, die im selben Schiffsunternehmen angestellt sind und die eingetragenen Schiffe durch die Personenschifffahrt führt.
+
+Das Backend besteht hierbei aus dem ERP-System Odoo \cite{odoo}, welches als primäre Programmiersprache Python \cite{python} benutzt und mit dem Model-View-Controller \cite{mvc} (MVC) Muster ein eigenständiges System darstellt.
+Während die Views zuständig für die Ansichten der Administratoren sind und mit Templates generiert werden und die Controller die Netzwerkanfragen (Requests) verarbeiten, besitzen die Models jeweils Business Logiken \cite{busilogic} und legen die Entitätsklassen in einer objektrelationalen Datenbank über die Objektrelationale Abbildung (ORM) fest.
+Diese Datenbank wird im Odoo durch PostgreSQL \cite{psql} realisiert.
+
+Da die Webanwendung für die Kapitäne inhaltlich abhängig von diesem System ist und die Hauptlogik in den Models stattfindet, müssen zunächst die Änderungen der Models definiert werden, welche durch die ORM zu Anpassungen in der Datenbank führen.
+
+\subsection{Anpassungen der Datenmodelle} \label{sec:db}
+
+In der relationalen Datenbank sind für das existierende System bereits Entitätsklassen definiert (siehe Abbildung \ref{fig:ebp}).
+Das Datenmodell „User“ bildet dabei die Manager und die Mitarbeiter der Fremdenverkehrsgesellschaft, die als Administratoren agieren, ab.
+Auf den ersten Blick passt auch hier der Kapitän für dieses Datenmodell, da sich gewisse Eigenschaften zwischen einem Kapitän und einem Manager und zwischen einem Kapitän und einem Administrator ab, darstellen.
+
+Da aber ein Kapitän einen eingeschränkten Zugriff bekommen soll und er sowohl von einem Administrator als aber auch von einem Manger erstellt werden kann, ist eine einfache Abbildung des Datenmodells nicht möglich.
+Auch das Datenmodell für die Rechnungsadressen, die ein Manager anlegt, überdeckt sich nicht komplett mit den Funktionalitäten eines Kapitäns.
+
+Denn der Kapitän muss sich wie ein User einloggen können, was für das Adressen nicht möglich.
+Genauso muss er von einem Manager angelegt werden können, was einem Manager in diesem Fall nicht möglich ist, da er keine administrativen Berechtigungen für die Erstellung eines Benutzers besitzt.
+
+Bedingt durch die Wireframes von Kapitel \ref{sec:wire} muss ein weiterer Login Mechanismus implementiert werden, da im aktuellen System eine E-Mail Adresse und ein Passwort zum Einloggen eines Benutzers erforderlich ist.
+Daher braucht es für den Kapitän ein eigenes Datenmodell, welches eine Relation zum „User“ besitzt, um so die Eigenschaften eines Benutzers zu haben.
+Außerdem ist die Zuordnung des Kapitäns zu einem Schiff durch den Manager relevant, da dies entscheidet, über welches Schiff der Kapitän die Daten verfügt.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=.9\textwidth]{images/erdBookingSimpPlan}
+\caption{angepasster Datenmodellausschnitt des Buchungssystems}
+\label{fig:ebpp}
+\end{figure}
+
+Hierbei zeigt die Abbildung \ref{fig:ebpp} die möglichen Änderungen an den Datenmodellen und benutzt die gleiche Notation aus dem Kapitel \ref{sec:dar}.
+So beinhaltet das Datenmodell  „Captain“ neben dem „User“ eine Relation zu dem „Ship“ Datenmodell in einem Verhältnis von N:1. 
+Eine Relation zum Manager entsteht durch eine ID, die festhält von wem ein Kapitän erstellt wurde mit einem Verhältnis von 1:N.
+Der Manager kann also zu einem von ihm erstellten Schiff einen oder mehrere Kapitäne zuteilen.   
+Das „Captain“ Datenmodell soll dazu eine 1:1 Beziehung zu dem  „User“ Datenmodell haben, um neben dem Namen die Attribute „login“ und „password“ für den Login Prozess zu besitzen.
+
+Durch die Beziehung zum „Ship“ Datenmodell kann dem Kapitän der Zugriff über alle Anlegebuchungen des ihm zugeteilten Schiffes ermöglicht werden.
+Damit er auch die Informationen über die Betankung erhalten kann, bedarf es weitere Datenmodelle.
+Daher sind für diesen Prozess Abbildungen für die Benutzung des Trinkwassers und für die RFID Karte nötig.
+Es ergeben sich die Datenmodell  „Drinking\_water\_usage“ für die Trinkwasserentnahme und „Rfid\_cart“ für die RFID Karte.
+
+Die RFID Karte wird als Entitätsklasse beschrieben um so eine Verknüpfung zwischen der Betankung und dem Schiff beziehungsweise dem Schiffsunternehmen zu deklarieren. Zusätzlich gibt es noch ein Attribut „Active“ zur Bestimmung der Freigabe der Karte. 
+So steht diese Entität in einer 1:N Beziehung zu dem „Ship“ Datenmodell und zu dem „Drinking\_water\_usage“ Datenmodell. 
+
+Letzteres wird benötigt um die Informationen der jeweiligen Trinkwasserentnahme persistent fest zu halten und um diese mit den Verkaufsaufträgen zu verknüpfen. 
+Dadurch können Rechnungen mit den Preisen von den angeforderten und entnommenen Ressourcen erstellt werden.
+Neben der Verknüpfung wird in dieser Entitätsklasse der Start- und Endzeitpunkt, die angefragte und die ausgelieferte Menge des Trinkwassers und die ID der Anlegestelle eingetragen.
+
+\subsection{Weitere Änderungen} \label{sec:wae}
+
+Nachdem die Datenbank um zusätzliche Datenmodelle erweitert wurde, können weitere Änderungen im Backend betrachtet werden.
+So können weitere Views für die neuen Datenmodelle erstellt werden.
+Damit die Administratoren alle erstellten Kapitäne verwalten können bedarf es für diese Datenmodelle jeweils eine Listenansicht, die alle Einträge mit einem optionalen Filter anzeigt und eine Formularansicht, die es erlaubt Einträge zu erstellen oder zu bearbeiten.
+
+Auf der administrativen Seite sind für die Erstellung die Felder Name und ID des zugeordneten Schiffes notwendig, E-Mail-Adresse und Telefonnummer sind optional.
+Der Manager gibt im Formular seiner Ansicht den Namen des Kapitäns an und weist ihm einen von ihm erstellten Schiff zu.
+Die Erstellung des Kapitäns wird dann in dessen gleichnamigen Datenmodell bearbeitet. 
+
+Nachdem das Formular abgeschickt wird, werden weitere Änderungen an den Werten durchgeführt.
+Die empfangenen Daten werden zunächst validiert, um Sicherheitslücken auszuschließen.
+Danach bedarf es für die Authentifizierung des Kapitäns eine Erstellung eines „User“ mit angepasstem Login und Passwort Feldern.
+Die Idee hierbei ist den Zugangscode für beide Felder zu benutzen umso den selben Login Mechanismus des Systems für den Kapitän zu nutzen.
+Der Zugangscode dient somit als Passwort und muss daher vor dem Prozess erstellt werden.
+
+Obwohl der Kapitän durch diesen Code Zugriff auf Daten erhält, die nur eine geringe Sicherheit erfordern, da sie zu Teilen öffentlich zugänglich sind, bedarf es für eine Mindestsicherheit einen zufällig generierten Code.
+Dies kann dann mit einem Zufallsgenerator oder einer kryptographischen Hashfunktion \cite{hash} realisiert werden.
+Nachdem der Code generiert wird kann dieser als Wert für die Felder Login und Passwort für das „User“ Datenmodell weitergeleitet werden, womit zuerst ein „User“ und danach ein „Captain“ erstellt wird.
+
+Der Manager hat dann die Möglichkeit für einen Schiff einen oder mehrere Kapitäne zuzuweisen und ermöglicht ihm die Daten über Anlegungen und die letzten Trinkwasserentnahmen einzusehen. 
+Damit der Kapitän auch Daten über aktuell durchgeführte Trinkwasserentnahme erhält muss von der administrativen Seite die RFID Karte, die der Kapitän zum Öffnen des Wasserentnahmeschranks benutzt, im System eingetragen und zum Schiff zugewiesen werden. 
+Für die Informationen der entnommenen Ressource bedarf es für den Fall der Betankung des Trinkwassers die Daten, die im Wasserentnahmeschrank erfasst werden.
+Doch um diese Daten zu erhalten, muss das Backend zunächst mit dem zuständigen System kommunizieren.
+Dies ist in der folgenden Abbildung zu sehen.
+
+Für die Übersichtlichkeit zeigt die Abbildung \ref{fig:zds} ein Komponentendiagramm aus der Modellierungssprache Unified Modeling Language (UML) \cite{uml}, welches die Bestandteile für die Durchführung einer Betankung darstellt.
+Die Komponenten werden von den einzelnen Systemen umrahmt.
+Die Kreise präsentieren die Schnittstellen der Komponenten und die gestrichelten Pfeile zeigen die Abhängigkeiten zu dem Gezeigten \cite{kdiagram}.
+Dort sieht man wie die Beziehung von der Nutzung der RFID Karte bis zur Netzwerkanfrage des Frontends führen kann. 
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{images/komponentenDiagramm}
+\caption{Zusammenspiel der Systeme}
+\label{fig:zds}
+\end{figure}
+
+So generiert die SPS durch die Tätigkeit am Wassernentnahmeschrank Daten, die zum Prozessleitsystem weitergeleitet werden und von einer Third-Party Software als eine Schnittstelle bereitgestellt werden.
+Diese Schnittstelle kommuniziert über Hypertext Transfer Protocol Secure (HTTPS) \cite{https} mit Simple Object Access Protocol (SOAP) \cite{soap} oder JavaScript Object Notation (JSON) \cite{json} Daten.
+Um die Schnittstelle zu benutzen muss das Backend sich gegenüber dem Server authentifizieren und kann dann Requests bezüglich der eingetragenen RFID Karten verschicken.
+
+Im Backend fragt dann das Datenmodell „DrinkingWaterUsage“ die Daten von der Schnittstelle an, speichert diese in der Datenbank zunächst ab und leitet die Daten bei einer Netzwerkanfrage über den Controller weiter.
+Dort werden die Daten für das Frontend verarbeitet und als Antwort (Response) bereitgestellt.
+
+Um dies zu ermöglichen, bedarf es für die neue Webanwendung einen weiteren Controller, der für die Netzwerkkommunikation zuständig ist.
+Die Webanwendung wird hierbei mithilfe von einer URL im Browser des Endgerätes aufgerufen und fragt dann weitere Ressourcen vom Backend an.
+Über Routing \cite{routing} werden im Controller diese Requests abgefangen und mit einer Funktionalität verbunden, die eine Response generiert und zurückschickt.
+Zu erwarten sind daher die Requests für die Webanwendung als Ganzes und für die Daten der aktuellen Betankung, der letzten Betankungen, der Anlegungen und die allgemeinen Schiffsinformationen.
+
+\section{Frontend} \label{sec:fend}
+
+Damit dem Benutzer aktuelle Daten auf einer dynamischen Webseite angezeigt werden, bedarf es für das Frontend eine Webanwendung.
+Die Anpassungen des Backends ermöglichen daher die Architektur dieser Anwendung zu gestalten.
+
+Zunächst muss für die Webanwendung die Login Seite angepasst werden.
+Da die Seite aus einzelnen Templates besteht, soll das aktuelle Login Formular durch Vererbung für das Login Formular des Kapitäns angepasst werden und zunächst unter dem anderen Formular hinzugefügt werden.
+
+Da dies ein Hypertext Markup Language (HTML) \cite{html} Formular ist, soll durch das Drücken des Buttons der Wert des Eingabefeldes an die gleiche URL vom bereits existierenden Formular geschickt werden, wo es dann vom zuständigen Controller verarbeitet.
+Bei einer erfolgreichen Anmeldung wird dann der Kapitän zu einem HTML Dokument weitergeleitet, welches als Einstiegspunkt für die Webanwendung dient. 
+  
+Die Anwendung wird zunächst mit dem JavaScript Framework Vue.js \cite{vue} als Single Page Application (SPA) \cite{spa} geplant.
+Dies erlaubt es der Webseite aktuelle Daten ohne ein komplettes Neu laden der Seite zu erhalten, die Navigation im Browser auf die Anwendung einzuschränken und weitere Inhalte per asynchronen JavaScript (AJAX) \cite{ajax} anzufragen.
+Durch die asynchronen Anfragen werden die Ladezeiten kürzer und die Interaktion mit der Anwendung wird nicht blockiert.
+Damit die Anwendung im Browser ausgeführt wird, bedarf es hierfür ein vom Backend bereitgestelltes HTML Dokument als Einstiegspunkt.
+
+Um die Anwendung aus Entwicklungssicht übersichtlich und flexibel für zukünftige Erweiterungen zu halten, ergibt sich eine Strukturierung der Funktionalitäten zu organisieren. 
+Die Funktionalitäten sollen als Komponenten modular entwickelt werden und somit wiederverwendbar sein.
+Da die Komponenten als HTML Elemente aufgerufen werden, ist die Datenstruktur der Anwendung als ein Baum abgebildet.
+Das heißt, dass die Anwendung über ein Wurzelelement, welches die anderen Komponenten beinhaltet, im HTML Einstiegsdokument aufgerufen wird.
+
+So wird die SPA durch die Module, die die jeweiligen Hauptfunktionalitäten beinhalten, komponiert.
+
+Die Module lassen sich in die Übersicht der aktuellen Trinkwasserentnahme, die Anzeige von den letzten Trinkwasserentnahmen und die Ansicht der gebuchten Anlegebuchungen unterteilen (siehe Abbildung \ref{fig:adw}). 
+Für all diese Module gilt, dass sie auf der Präsentationsebene die Darstellung aus den Wireframes realisieren.
+Mithilfe von HTML Templates und Cascading Style Sheets (CSS) \cite{css} wird das Document Object Model (DOM) \cite{dom} mit seiner Darstellung zunächst erstellt.
+Danach werden diese durch die Algorithmen der einzelnen Module mit Daten angepasst.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{images/webapp-aufbau}
+\caption{Aufbau der Webanwendung}
+\label{fig:adw}
+\end{figure}
+
+Die Module deklarieren zunächst in ihrer Business Logik die Daten und initialisieren diese bei der Instanziierung der Komponente. 
+Für das erste Modul werden so die Variablen für den Zustand der Trinkwasserentnahme, der aktuellen Wassermenge, der gewünschten Wassermenge, des Durchflusses, des Startzeitpunktes, des Endzeitpunktes und der Anlegestellennummer innerhalb eines JavaScript Objektes definiert, welche mindestens für die Präsentationsschicht gebraucht werden.
+Weitere Variablen wie der aktuelle Zeitpunkt der Daten werden als Metadaten benutzt.
+
+Um die Werte diese Daten zu füllen, werden asynchrone Requests bei der Instanziierung der Komponente verschickt, welche die Daten im JSON Format zurückgeschickt bekommen.
+Danach werden weitere Requests mit einem festen Zeitintervall geschickt, womit die Daten aktuell bleiben.
+Damit die Zustände konsistent bleiben und fehlerhafte Fälle vermieden werden, muss die Menge der möglichen Zustände eingeschränkt werden.
+Dies geschieht durch die Definition eines Aufzählungstypen (Enums) für die Zustände jeweils im Backend und im Frontend.
+So können die Warnungen, die durch ein Notprogramm vom SPS ausgelöst werden, als mögliche Fälle definiert werden.
+
+Für die Anpassung der gewünschten Menge soll es ermöglicht werden, dass der Wert durch ein Doppeltippen des Benutzers an der dargestellten Stelle mit einem Eingabefeld verändert werden kann. 
+Mögliche Fehlerfälle können vermieden werden, wenn dem Benutzer dies nur für die Fälle bei der eine Betankung bereit zum Starten ist oder bei einer bereits aktiven Betankung.
+Durch ein Tippen an einer anderen Stelle würde die Darstellung dieses Feldes zurück wechseln, die Eingabe würde dann per Request verschickt werden und abhängig der Netzwerkantwort als Bestätigt dargestellt werden. 
+
+Die nächste Komponente soll die letzten Trinkwasserentnahmen darstellen. 
+Hierfür wird bei der Instanziierung der Komponente ein Request abgeschickt, welches ein JSON als Antwort erwartet. 
+Diese Antwort besteht aus einer Liste der vergangenen Entnahmen, durch die dann die Businesslogik iteriert und diese darstellt. 
+
+Im Gegensatz zur Komponente der aktuellen Trinkwasserentnahme bedarf es für diese Liste keine regelmäßige Aktualisierung.
+Die Betankungen finden in Relation zu der Anzahl der Schiffsfahrten seltener statt, weswegen diese Daten beim Neu laden der Seite oder bei einer erneuerten Netzwerkverbindung angefragt werden können.
+Für eine manuelle Aktualisierung kann ein Button oder ein vertikales Runterziehen der Seite implementiert werden. 
+
+Die Anlegebuchungen treten im Bezug zu den Trinkwasserentnahmen häufiger auf, woraus auch ein größerer Datensatz folgt.
+Diese werden auch beim initialen Laden der Seite vom Backend angefragt.
+Da die vergangenen, die aktuellen und zukünftigen Anlegungen dargestellt werden sollen, muss bedacht werden wie viele Einträge der jeweiligen Kategorie angezeigt präsentiert werden.
+
+Denn die jeweiligen Zeitintervalle haben eine unterschiedliche Relevanz.
+Während die vergangenen und zukünftigen Buchungen nur für einzelne Überprüfungen oder Vergleiche benötigt werden, sind die aktuellen Anlegungen für die Mehrheit der Anwendungsfälle essentiell.
+
+Daraus folgt, dass die Anzahl der vergangenen und zukünftigen Anlegungen mit einem Maximalwert eingeschränkt wird, während die aktuellen Buchungen durch ihr Zeitintervall limitiert werden.
+Dieses Intervall nimmt die aktuelle Systemuhrzeit als Mittelwert und legt als Radius einen definierten Wert fest.
+
+Die Anlegungen werden also je nach gewähltem Zeitintervall gefiltert.
+Um weitere Requests bei einem Wechsel des Filters zu vermeiden, wird der komplette Datensatz mithilfe einer tiefen Kopie (deep copy) \cite{dcopy} dupliziert, mit dem ausgewählten Zeitraum gefiltert, dann nach der Ankunftszeit sortiert und in einer weiteren Variable überschrieben, welche als Referenz für die Darstellung dient.
+Somit kann der Datensatz gefiltert präsentiert werden, ohne dass der ursprüngliche Datensatz in der Anwendung gelöscht wird.
+Dieser Ansatz wird auch im Bezug zu einem möglichen Netzwerkverlust relevant sein.
+
+Für die allgemeinen Schiffsdaten, die in verschiedenen Komponenten gebraucht werden, muss beachtet werden, in welchem Modul sie aufzurufen sind.
+Hierfür kann eine bereits existierende Komponente diese Daten anfragen und den anderen Komponenten zur Verfügung stellen oder es wird eine weitere Komponente für diesen Zweck erstellt.
+
+\section{Offline First} \label{sec:db}
+
+Eine weitere Komponente, die es nach den Wireframes bedarf, ist die Anzeige für den Offline-Zustand.
+Hierbei sollen neben dem Zustand weitere Informationen wie der zeitliche Stand der Daten anhand der vorliegenden Daten dargestellt werden.
+Doch bevor diese Komponente aufgerufen werden kann, müssen mögliche Ansätze für das Backend und das Frontend betrachtet werden.
+
+Der Eintritt des Offline Szenarios kann zu verschiedenen Zeitpunkten geschehen.
+Während es bei der Hinfahrt nicht auffällt, ist dieses Auftreten bei einer Entnahme ungünstig für den Benutzer.
+Da in diesem Prozess regelmäßig Requests vom Frontend geschickt werden, kann durch einen Netzwerkausfall dies vom Backend verfolgt werden.
+
+In diesem Ansatz könnte das Backend einen weiteren Request zu der Schnittstelle der Stadtwerke schicken, um auf diese mögliche Situation hinzuweisen.
+Hier wäre eine Idee, dass diese Problematik an das Prozessleitsystem gelangt, welches wiederum die Informationen an die SPS und dadurch an die Anzeige am Wasserentnahmeschrank darstellt.
+
+Problem dabei wäre aber, dass solch eine Annahme zu unpräzise ist, als dass das Backend von solchen Fällen konkret ausgehen kann.
+Denn so kann es sein, dass der Benutzer sich entschlossen hat die Webanwendung vorläufig zu pausieren oder nicht weiter zu benutzen.
+Daher müssten hier die Bedingungen für weitere Vorgehensweisen im Backend für diese Situation präzisiert werden.
+
+Über das Backend können nur Eingriffe durch die Kommunikation der restlichen Systeme, die hingegen eingeschränkt sind, stattfinden
+Im Frontend müssen somit die Technologien im Browser genutzt werden, damit die Anwendung und dessen Komponente Informationen über den Netzwerkzustand erhält.
+
+So besitzen alle gängige Webbrowser das Attribut navigator.onLine \cite{browserstate} welches als booleschen Wert zurückgibt, ob der User Agent \cite{useragent} mit einem Netzwerk verbunden ist.
+Dieses Attribut ändert sich daher sobald der Browser die Verbindung verliert und markiert somit einen Offline-Zustand.
+
+Doch bei einer differenzierteren Betrachtung fällt auf, dass dieses Attribut nicht verlässlich ist, wenn es um den Online Zustand geht.
+Denn je nach Browser wird der Wahrheitswert bei einer Verbindung mit dem lokalen Netzwerk auf True gesetzt anstatt bei einer Verbindung mit dem Internet \cite{Frisbie.2020}.
+
+Auf Grund dieser Inkonsistenz wäre ein weiterer Ansatz die Logik für die jeweiligen Browser anzupassen, indem die jeweiligen Schnittstellen der Browser benutzt werden.
+So könnten mithilfe weiterer Schnittstellen wie zum Beispiel der Network Information API \cite{networkinfo}, die von einigen Browser bereitgestellt wird, dieser Zustand selektiert werden.
+
+Eine weitere Möglichkeit ist es ganz klassisch die fehlerhaften Fälle der regemäßigen Requests abzufangen und anhand dieser zu überprüfen ob es sich um eine fehlende Internetverbindung handelt.
+Bibliotheken wie Offline.js \cite{offlinejs} nehmen diesen Ansatz und schicken die fehlgeschlagenen Requests bei einer erneuten Verbindung.
+
+Falls der Offline-Zustand eintritt, wird also dem Benutzer dies über die zuständige Komponente präsentiert.
+Damit er weiterhin die Webanwendung benutzen kann, müssen die Daten zwischengespeichert werden.
+Um dies zu ermöglichen, bieten die Browser eine Schnittstelle an, die es der Anwendung erlaubt einen Cache der Anwendung zu erstellen.
+Dies wurde mithilfe der Appcache Schnittstelle zum ersten Mal ermöglicht.
+Bei dieser musste eine Manifest Datei angelegt werden, in der die Dateien angegeben werden, die im Browser zwischengespeichert werden damit der Benutzer diese Offline benutzen kann \cite{appcache}.
+ 
+Diese Schnittstelle ist mittlerweile von den Browsern als veraltet eingestuft worden \cite{serviceworker}, da dies zunächst funktionierte aber zu weiteren Mutmaßungen über die Aufgaben der Anwendungen führte.
+Als Ersatz wird hierfür die Service Worker Schnittstelle \cite{serviceworker} empfohlen, welche auch von der Mehrheit der Browser unterstützt wird \cite{caniuse}.
+
+Die Service Worker erlauben es in die Netzwerkkommunikation der Anwendung und des Netzwerkes einzugreifen und die Requests zu bearbeiten. Sie werden asynchron auf einem anderen Thread ausgeführt, wodurch die Nutzung von synchronen Schnittstellen ausgeschlossen wird.
+Die Requests müssen außerdem über HTTPS verschickt werden um mögliche Sicherheitslücken auszuschließen.
+
+In diesem Fall können dadurch die angefragten Ressourcen vom Backend mithilfe eines Skriptes im Cache gespeichert werden.
+Dafür muss dieses Skript zunächst von der Webanwendung abgerufen und im Browser für diese Anwendung registriert werden \cite{Amarasinghe.2016}.
+Ein passender Zeitpunkt dafür ist das Aufrufen der Webseite.
+
+Hierbei muss beachtet werden, dass der Geltungsbereich (Scope) für den Service Worker nur auf Dateien per Default eingeschränkt ist, die in Unterverzeichnissen liegen.
+Dieser Scope ist daher vom Pfad der Datei in der Webanwendung abhängig und kann nur über ein Feld im Header der Response für die Datei angepasst werden.
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{images/ServiceWorker-overview}
+\caption{Requests für neue Daten}
+\label{fig:swov}
+\end{figure}
+
+Über ein Event, welches der Browser nach der Registrierung auslöst, erhält der Service Worker Kontrolle auf die Seite.
+Dort kann er dann ein neues Cache Objekt erstellen, welches die im Service Worker festgelegten Pfade der Quelldateien asynchron anfragt und zwischenspeichert.
+Somit können dem Browser alle nötigen Quelldateien zur Verfügung gestellt werden, um die Anwendung unabhängig von zukünftigen Netzwerkszenarien lauffähig zu halten.
+
+Im nächsten Event können die Service Worker aktiviert und gestartet werden.
+Dieses Event wird beim Laden und beim Neul aden der Webanwendung ausgelöst und ermöglicht außerdem den Service Worker zu aktualisieren.
+Wenn also Änderungen am Service Worker stattfinden, wird die daraus resultierende Version als aktuellere Datei vom Browser erkannt.
+Diese Version wird in einen wartenden Zustand gesetzt, da die Kontrolle bei der aktiven Version liegt.
+Der Browser löst dieses Problem beim Schließen und Neu Laden der Seite, da dann der alte Service Worker nicht mehr aktiv ist und somit die Kontrolle weitergegeben kann.
+Das Event zur Aktivierung ermöglicht dann das alte Cache Objekt zu löschen, falls dieser Speicher nicht benötigt wird.
+
+Durch das Event, welches bei jeder Netzwerkanfrage der Anwendung ausgelöst wird, kann überprüft werden ob die angefragte Datei mit einer Datei im Cache übereinstimmt.
+Trifft dies zu kann der Service Worker die angefragte Datei aus dem Cache anstatt aus dem Netzwerk zurückgeben, was zu kürzeren Ladezeiten führt.
+Die Herangehensweise um solche Webanwendungen zu konstruieren wird auch als„ offline first“ bezeichnet \cite{ofirst}.
+
+Falls dies nicht zutrifft, kann der Request an das Netzwerk weitergeleitet werden. 
+So wird, wie in der Abbildung \ref{fig:swov} dargestellt, der Request von der Anwendung an das Netzwerk abgeschickt, diese wird weitergeleitet an das Backend, welche mit einem Response über das Netzwerk der Webanwendung antwortet.
+Die erfolgreiche Response wird dann, bevor die Webanwendung es erhält, im Cache überschrieben.
+
+
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=1\textwidth]{images/ServiceWorker-offline}
+\caption{Requests für neue Daten im Offline-Zustand}
+\label{fig:swoff}
+\end{figure}
+
+Ein Netzwerkverlust würde sich daher erst erkennbar machen, wenn aktuellere Daten angefragt werden.
+In diesem Fall würde der Service Worker im ersten Schritt die Anfrage zunächst an das Netzwerk weiterschicken, dann eine Response mit einem Fehlerstatus abfangen und daraus folgend die angefragte Datei aus dem Cache aufrufen und zur Webanwendung weiterleiten \cite{offcook}.
+Die Schritte zu diesem Ablauf sind in der Abbildung \ref{fig:swoff} zu sehen.
+
+Als weitere Möglichkeit können die fehlerhaften Requests durch den Service Worker gesammelt und in einer Warteschlange im Browser mit einer anderen Speicher Schnittstelle aufbewahrt werden \cite{sws}. 
+Durch das Reaktivieren des Servie Workers, was bei einem Neu Laden der Seite oder bei einem Wiederöffnen des Browsers geschieht, können die Requests überprüft und nochmal versendet werden. 
+Im Fall einer erneuerten Netzwerkverbindung werden so die Request trotz Netzverlust abgeschickt und aus dem Speicher gelöscht.
+Bleibt jedoch der Offline-Zustand, wiederholt sich der Vorgang bis zum erfolgreichen Absenden weiter.
+
+Der Zweck dieses Ansatzes kann in Teilen zur Anwendung zur passen.
+Während die regelmäßigen Requests der Daten zur aktuellen Betankung davon nicht profitieren, könnte die Eingabe der gewünschten Trinkwassermenge durch den Benutzer trotz fehlendem Internet erstellt werden.
+
+Durch die Nutzung eines Service Worker würde die Webanwendung eines der Kriterien für eine Progressive Web App (PWA) \cite{pwa} erfüllen.
+PWAs haben den Ansatz, die Vorteile wie Verlässlichkeit von nativen Anwendungen und die Technologien von Webanwendungen zu kombinieren. 
+
+Verlässlichkeit bedeutet in diesem Fall, dass die Anwendung unabhängig vom Netzwerk lauffähig ist und Teile der Inhalte und Funktionalitäten darstellen kann.
+Die responsive Gestaltung durch die Webanwendung verschafft es außerdem, dass die Anwendung auf jedem Gerät angezeigt werden kann.
+
+Mit diesen Eigenschaften kann eine PWA plattformübergreifend verfügbar und installierbar werden.
+Dies würde es dem Benutzer erlauben die Webanwendung auch auf seinem mobilen Endgerät zu installieren, was wiederum eine erweiterte User Experience ermöglichen würde. 
+Des Weiteren kann die Webanwendung für Suchmaschinen optimiert werden.
+Da die Anwendung aber nur durch eine Weiterleitung des Buchungsportals und somit nur für autorisierte beziehungsweise private Benutzer erreichbar seien soll, eignet sich eine Optimierung für diesen Fall vorläufig nicht.
+
+\chapter{Umsetzung} \label{chap:impl}
+
+Die Konzepte der Interaktion und der technischen Struktur haben einen Eindruck über die Problematik dargestellt und ermöglichen es durch die Lösungsansätze die Webanwendung zu implementieren. 
+Diese Ansätze sollen daher durch eine konkrete Umsetzung unter der Berücksichtigung der Rahmenbedingungen in die Realität abgebildet werden.
+
+Hier ist zunächst zu beachten, dass die Bestandteile wie das bereits existierende Buchungsportal mit seinem Frontend für die Manager und das Backend entwickelt  wurden.
+Da die Webanwendung für die Kapitäne das Backend des Buchungsportal als inhaltliche Abhängigkeit benutzt, kann die Anwendung im selben Entwicklungsprojekt implementiert werden. 
+Hierfür wird neben dem Verzeichnis der Anwendung des Managers ein Ordner, welches die Quelldateien für die Webanwendung beinhaltet, angelegt.
+
+Das Backend welches Odoo mit der Version 11.0 als Python-Framework benutzt, dient des Weiteren als Webserver für die Anwendung. 
+Für dieses System wird die Entwicklungsumgebung Pycharm \cite{pycharm} benutzt, die auch die Bearbeitung der anderen relevanten Dateiformaten erlaubt.
+Alle Einträge, auf die Odoo zugreift, werden in einer PostgreSQL Datenbank persistent gespeichert.
+Durch die Lage der Anwendung in der Verzeichnisstruktur werden die Quelldateien von dem Versionverwaltungssystem (VCS) Git erfasst.
+Dies ist hilfreich für die Entwicklung, da Änderungen an diesen Dateien versioniert und für mögliche Wiederherstellungen gesichert werden.
+
+Das Projekt wird mithilfe einer Containervirtualisierung entwickelt und ermöglicht damit die gleichen Rahmenbedingungen für alle Entwickler zu schaffen.
+Dafür werden die einzelnen Komponenten eines Systems jeweils in einem Docker \cite{docker} Container isoliert um sie jeglicher Hardware zu abstrahieren.
+Für das Backend bedeutet das, dass das ERP-System, welches das Buchungsportal repräsentiert und die Datenbank von einem Container aus gestartet werden.
+
+Im Backend wird der Kapitän, die RFID-Karte und der Trinkwasserverbrauch als Datenmodell erstellt.
+So wird der Kapitän sich wie ein regulärer Benutzer einloggen können, aber auch vom Manager zugeordnet werden.  
+Die Relationen werden durch Anpassungen an den Models implementiert.
+Die Controller werden die angefragten Einträge aus der Datenbank aufrufen, verarbeiten und in JSON umgewandelt als Response verschickt.
+Für Entwicklungszwecke wird die zuständige Methode der aktuellen Trinkwasserentnahme Responses mit Demo Daten verschicken, da zu dem Zeitpunkt der Entwicklung die Schnittstelle nicht verwendet werden konnte.
+
+Die Webanwendung wird mit dem JavaScript-Framework Vue.js entwickelt.
+Des Weiteren werden die konzipierten Funktionalitäten mithilfe von Single File Components (SFC) \cite{sfc}, welche ein eigenes Format für unabhängige Vue Komponenten einführen, implementiert.
+
+So können die Vorteile eines SFC genutzt werden um die Struktur und die Gestaltung eigenständig für die Komponenten zu realisieren.
+Die Gestaltungen basieren hierbei auf dem CSS-Framework Bootstrap \cite{btrap}, welches durch die Einbindung der Header und Footer des Buchungsportals im Einstiegsdokument der Webanwendung für die SFC verfügbar sind.
+
+Ein weiterer Vorteil der SFC ist die Nutzung von ECMAScript \cite{ecma} der sechsten Ausgabe oder höher, einer standardisierten Skriptsprache basierend auf JavaScript.
+Da diese Sprache nicht mit allen Browsern kompatibel ist, bedarf es hier einen Prozess, der diese Sprache übersetzt.
+
+Um dies zu ermöglichen wird Webpack \cite{webpack}, ein Entwicklungs- und Bereitstellungswerkzeug, der die Quelldateien und Ressourcen einer Webanwendung in eine Datei bündelt, benutzt.
+Davor können diese noch mithilfe von Babel \cite{babel} übersetzt werden, womit die Kompatibilität zu den Browsern entsteht.
+Für die Benutzung von Webpack bedarf es die Plattform Node.js \cite{node}, die als Laufzeitumgebung für den Bundler dient.
+
+Zu dem Zweck, dass diese Plattform nicht vom Buchungsportal benötigt wird und dass eine weitere Abhängigkeit vermieden werden soll, erhält Node.js ein eigener Container.
+Dies erlaubt aus der Entwicklungssicht neben den bereits beschriebenen Funktionalitäten eine dynamischere und zeitnahe Übernahme der Anpassungen der Webanwendung.
+In diesem Container wird dann Webpack ausgeführt, welches die Webanwendung als eine Datei für die Browser bereitstellt.
+Des Weiteren wird mit dieser Plattform der Paketmanager npm \cite{npm} benutzt, was eine Verwaltung weiterer Programmbibliotheken erlaubt.
+
+Ein Zusammenspiel zwischen den Container des Buchungsportals und der Datenbank existiert bereits.
+Hier wird daher der neue Container durch ein Werkzeug von Docker \cite{dcompose} verknüpft, wodurch die Container gleichzeitig gestartet werden und eine Orchestration des Systems weiterhin ermöglicht wird.
+
+Nach dem der Rahmen für die Entwicklung eingestellt wurde, können so die Komponenten aus der Konzeption realisiert werden.
+Hierfür wird ein Einstiegsdokument für die Anwendung erstellt, welches die Header und Footer des Buchungsportals und eine JavaScript Datei, die als Brücke zur Webanwendung dient, referenziert.
+
+In dieser Datei wird zunächst der Service Worker registriert, falls der Browser dies ermöglicht, bevor die Wurzelkomponente der Webanwendung aufgerufen wird.
+So wird die Anwendung durch die SFC in einer Baumstruktur entwickelt.
+Das Wurzelelement der Komponenten importiert die einzelnen Komponenten und ruft diese auf.
+Für die Netzwerkanfragen wird die Bibliothek Axios \cite{axios} genutzt, so auch in der ersten Komponente.
+Von dort werden die Requests für die allgemeinen Schiffsdaten verschickt, da dies Informationen sind, die von jeder Komponente benötigt werden.
+
+Die Komponente der aktuellen Trinkwasserentnahme erfüllt die Darstellung aus den Wireframes, bis auf eine Anpassung der Überschrift für die Übersicht.
+Des Weiteren werden Requests in einem Intervall von einer Sekunde zunächst verschickt.
+Die Responses werden dann verarbeitet und füllen die Werte für die Darstellung.
+Mithilfe von einem Enum, welches sowohl im Backend als auch im Frontend definiert wird, wird der Betankungszustand nur für mögliche Fälle wie einer aktiven Betankung oder eine fehlerhafte Betankung angezeigt.
+
+In der Komponente der letzten Trinkwasserentnahme werden die letzten durchgeführten Betankungen angefragt, als Liste verarbeitet und als Tabelle dargestellt.
+Der Einklapp-Mechanismus wird mithilfe von Bedingungen und Styling ermöglicht.
+Für die Komponente der Anlegebuchungen werden zunächst die Daten angefragt.
+Sobald diese ankommen, werden die Daten nach der Kategorie, die Default eingestellt ist, gefiltert.
+
+Um den Ansatz aus dem technischen Konzept zu ermöglichen wird mithilfe eines Moduls der Bibliothek lodash \cite{lodash} ein deep Copy vor jedem Filterprozess durchgeführt.
+Da die Kopie mit Zeitintervallen gefiltert wird, benötigt es die Hilfsbibliothek Moment.js \cite{moment}, die es erlaubt Fehler mit Zeitformaten zu vermeiden.
+Nach der Filterung wird mit dieser Bibliothek die Liste sortiert und dann als Tabelle angezeigt.
+
+Die Komponente der Benachrichtigung über dem Netzwerkzustand wird mithilfe von der Bibliothek v-offline \cite{voff} realisiert.
+Die Bibliothek erlaubt es der Komponente Informationen über das Netzwerk zu erhalten und über die Vue Direktiven in der Präsentationsschicht darzustellen.
+In dieser Komponente werden die Bedingungen dieses Zustandes genutzt, um die Komponente anzuzeigen und um Elemente der Daten aus den anderen Komponenten anzuzeigen.
+
+Wie bereits beschrieben, wird ein Service Worker für die Anwendung benutzt.
+Der Service Worker wird vor dem Aufrufen der Webanwendung vom Backend zur Registrierung angefragt.
+Dazu wird ein Scope für den Service Worker angegeben, damit nur die Speicherung für die Ressourcen der Anwendung zugänglich ist.
+Um den Scope zu bestätigen, wird der angefragte Service Worker geladen, als Inhalt der Response verwiesen, das Feld für den Scope im Header der Response mit der gleichen URL belegt und die Response verschickt.
+
+Nach der erfolgreichen Registrierung wird das Cache Objekt instanziiert und ein Request erstellt, mit dem die URLs der benötigten Ressourcen angefragt werden.
+Angegebene URLs sind hierbei das Einstiegsdokument und die Anwendung als gebündelte und laufähige Datei.
+Für weitere Requests der Anwendung wird der Ansatz gewählt, dass Responses, die noch nicht im Cache vorhanden sind, gespeichert werden und der Webanwendung weitergeleitet werden.
+Außerdem wird der Service Worker aktualisierbar sein, sodass die alten Cache Objekte auch gelöscht werden.
+ 
+ \chapter{Ausblick und Fazit} \label{chap:zua}
+ 
+Im Rahmen der Abschlussarbeit wurde eine offlinefähige Webanwendung für den Bereich der Personenschifffahrt konzipiert und entwickelt.
+Der Kapitän als Zielgruppe kann mit der Anwendung seinen Arbeitsprozess bei der Trinkwasserentnahme flexibler und interaktiver gestalten. 
+Des Weiteren kann ihm die Offlinefähigkeit Problematiken bei der Arbeit wie den Netzwerkverlust angenehmer formen.
+
+Durch die User Experience wurden Erkenntnisse über die Zielgruppe gesammelt.
+Eine weitere Disziplin, die man hier zukünftig anwenden könnte, wären die Usability Tests \cite{usetest}.
+Bei diesem Testvorgang werden den Benutzern der Zielgruppe Aufgaben, die sich um die Interaktion mit der Anwendung drehen, erteilt, um diese bei der Durchführung zu beobachten und die daraus folgenden Ergebnisse zu evaluieren. 
+Dazu wird das Feedback der Kunden und der Zielgruppe benötigt, um nicht bedachte Probleme, die auftreten können, zu lösen.
+
+Die Schiffsbesatzung könnte als weitere Zielgruppe in Betracht gezogen werden.
+Sollten Aufgaben hinsichtlich der Betankung oder der Anlegung einem Schiffsmitarbeiter zugeteilt werden, muss die Nutzung der Webanwendung über den Kapitän geschehen.
+Hier könnten weitere Einstellungsmöglichkeiten von Seiten des Managers oder des Kapitäns entgegenwirken. 
+
+Die Webanwendung ist neben den Anlegungen vorläufig auf eine Ressource des Schiffes ausgerichtet.
+Dies kann durch die Einführung der Versorgung von Schiffen mit Landstrom, welches zukünftig von der Fremdenverkehrsgesellschaft an den Landebrücken angeboten wird, erweitert werden.
+Mit dieser Ressource muss die Ansicht der Hauptseite dann angepasst werden, damit dort auch eine Übersicht der Anzapfung gewährleistet werden kann.
+
+Auch das Abwasser, dass im Betrieb des Buchungsportals bereits abgerechnet wird, ist eine weitere Ressource, die dem Kapitän über die Anwendung mitgeteilt werden kann.  
+Konzepte wie die Eingabe der gewünschten Menge können ihm erlauben den Prozess der Betankung über die Anwendung zu bestimmen.
+Dies kann mit einer Reservierung des Trinkwassers erweitert werden.
+Hierfür müsste der Kapitän die Eingabe während der Fahrt, beziehungsweise während er nicht anlegt, eingeben.
+
+Aus der Entwicklungssicht werden automatisierte Tests helfen problematische Fälle, insbesondere der Offline-Fälle besser zu betrachten.
+Des Weiteren können weitere technische Funktionalitäten eingeführt werden um dem Kapitän die Webanwendung als PWA anzubieten.
+
+Insgesamt eignen sich Webanwendungen um Ressourcen übersichtlicher darzustellen und mobil zu beobachten.
+Auch können Offline-Zustände dem Benutzer trotzdem erlauben Aspekte der Anwendung weiter zu benutzen.
+Aus den Konzepten und der Umsetzung ergeben sich viele weitere Ideen und Ansätze, die realisierbar sind und implementiert werden können.  
+
+\newpage
+
+% Listen wenn überhaupt ans Ende und nicht an den Anfang.
+% Meist ist das aber unnötig.
+%\listoffigures % Liste der Abbildungen 
+%\listoftables % Liste der Tabellen
+% \newpage
+
+\bibliography{thesis}
+\bibliography{online}
+\bibliographystyle{plain} % Literaturverzeichnis
+\begin{btSect}{thesis} % mit bibtopic Quellen trennen
+\section*{Literaturverzeichnis}
+\btPrintCited
+\end{btSect}
+\begin{btSect}{online}
+\section*{Online-Quellen}
+\btPrintCited
+\end{btSect}
+% dann mit "bibtex thesis1" und "bibtex thesis2" arbeiten
+
+\end{document}
+;;; Local Variables:
+;;; ispell-local-dictionary: "de_DE-neu"
+;;; End:
