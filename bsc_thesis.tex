@@ -36,51 +36,16 @@ Schwerpunkt in dieser Arbeit ist daher die Verarbeitung der Ressourcen an den An
 \tableofcontents
 
 
-\chapter{Einführung} \label{chap:einf}
+\chapter{Einleitung} \label{chap:einf}
 
-In der heutigen Zeit ist die Nutzung von mobilen Endgeräten wie Tablets und Smartphones keine Besonderheit mehr. 
-Sie erlauben es uns auf kompakten Bildschirmen Aufgaben zu erledigen, für die es früher noch einen Desktop-Computer bedurfte.
-Außerdem können diese mit der Nutzung von Mobilfunknetzen und WLAN unterwegs einen Zugriff auf das Internet erlauben. 
-Auch Webanwendungen sind bereits Technologien, die bekannt und verbreitet sind.
-In allen möglichen Bereichen werden sie genutzt um dem Benutzer Funktionalitäten zu ermöglichen, die auf klassischen Webseiten nur eingeschränkt möglich sind.
 
-Eines dieser Bereiche ist die Personenschifffahrt, in der Fahrgäste von einem Ort zum nächsten transportiert werden. 
-Ein Ziel hierbei können die Landebrücken (anderer Begriff für Schiffsanlegestellen) in Rüdesheim am Rhein, einer Stadt mit touristischem Hintergrund, sein.
-Doch um an einer der Landebrücken anzulegen, muss im Buchungsportal der Stadt eine bestätigte Buchung für das Schiff existieren.
-An diesen Anleger kann dann der Kapitän für das Schiff Ressourcen wie Trinkwasser aufnehmen, wobei die Entnahme zukünftig elektronisch erfasst und digital verarbeitet wird.
 
-Für die Unterstützung dieses Arbeitsprozesses wird daher eine Webanwendung konzipiert, die es ihm erlaubt mit diesen Ressourcen zu interagieren. 
-Dazu soll die Anwendung dem Benutzer ermöglichen weitere Informationen, wie die Anlegebuchungen darzubieten.
-Da das Nutzungsszenario in einer Umgebung stattfindet, die Netzwerkverluste nicht ausschließt, muss die Anwendung solch eine Problematik handhaben können.
-Daher stellt sich die Frage, wie man diese Problematik hinsichtlich einer On- /Offline Aktivität einer Anwendung löst.
-
-Im Rahmen der Thesis wird die Anwendung prototypartig bei dem Unternehmen ilexius GmbH, die das Buchungsportal erstellt haben, entworfen und entwickelt. 
-Für die Abschlussarbeit liegt der Fokus auf das Anzeigen und Verwalten der Trinkwasserentnahme und auf der Konzeption der Offlinefähigkeit der Webanwendung.
-Dabei wird zwischen den Zuständigkeiten der Aufgaben der Webanwendung und den weiteren Systemen, wie dem Buchungsportal, unterschieden.
-
-Um die Ausarbeitung zu gliedern wird im Kapitel "`Übersicht"' die Problemstellung analysiert, indem der Kontext der Anwendung in seine Bestandteile zerlegt und dargestellt wird und um weitere mögliche Probleme zu finden.
-
-Mit dieser Grundlage wird dann im Kapitel "`Interaktionskonzept"' durch die Perspektive des Benutzers die Webanwendung und dessen Nutzung in Abhängigkeit  mit der Offline-Situation gestaltet.
-Hier wird zunächst die Zielgruppe genauer betrachtet um weitere Erkenntnisse zu erhalten.
-Danach werden Layout-Ansätze für die jeweiligen Zustände der Schiffsfahrt skizziert.
-Hierbei wird sich auf das Layout der mobilen Endgeräte konzentriert, da die Webanwendung auf die mobile Nutzung der Zielgruppe ausgelegt ist.
-
-Das Kapitel "`Technisches Konzept"' präsentiert die softwaretechnische Auseinandersetzung mit den Anforderungen aus den Konzepten der Interaktion und den Funktionalitäten und beschreibt die Änderungen für die möglichen Implementierungen in der Webanwendung und im Buchungsportal.
-Des Weiteren wird aus den existierenden Technologien der Offline-Funktionalität ein Entwurf für die Webanwendung, die den Kontext berücksichtigt, erstellt.
-
-Im Kapitel "`Umsetzung"' werden die Schritte beschrieben, die es für die Entwicklung eines Prototyps benötigt.
-So werden die Rahmenbedingungen für die Implementierung und die Nutzung der Werkzeuge beschrieben und das Zusammenspiel der ausgewählten Technologien dargestellt.
-
-Das letzte Kapitel "`Ausblick und Fazit"' zeigt weitere Perspektiven, die im Bezug zur Webanwendung entworfen werden können, auf.
-Außerdem werden zukünftige Prozesse im Zusammenhang der Anwendung beschrieben.
-Ein Fazit stellt dann die Ergebnisse dar und schließt die Thesis ab. 
-
-\chapter{Hintergrund} \label{chap:sicht}
+\chapter{Hintergrund} \label{chap:hint}
 
 Um die Problematik darzustellen und um eine Übersicht zu ermöglichen, werden in diesem Kapitel die bereits im Betrieb genommenen Prozesse für die Buchungen der Anlegestellen anhand der Interaktionen des Benutzers analysiert. 
 Dazu wird der aktuelle Verlauf der Ressourcenabrechnung am Beispiel der Trinkwasserentnahme an den Anlegestellen erklärt um daraus einen Lösungsentwurf zu skizzieren.
 
-\section{Kontext} \label{sec:was}
+\section{Analyse} \label{sec:ana}
 
 Die Stadt Rüdesheim am Rhein ist bekannt für seine Weinberge und seinen touristischen Attraktionen, die Gäste aus der gesamten Welt anziehen.
 Um den Verkehr und den Tourismus gesondert zu verwalten, wurde daher die Fremdenverkehrsgesellschaft im Jahre 1967 von der Stadt gegründet. 
@@ -247,7 +212,7 @@ Die Anzapfung des Landstroms kann zukünftig als weitere Phase auch beachtet wer
 Um diesen möglichen Fällen entgegen zu wirken, sind Konzepte und Ideen für solche Offline Situationen notwendig um den Arbeitsprozess für den Kapitän möglichst problemfrei zu halten.
 
 
-\chapter{Interaktionskonzept} \label{chap:inter} %KAPITEL
+\chapter{Konzeption und Umsetzung} \label{chap:konundum} %KAPITEL
 
 Die Webanwendung soll das Anzeigen und Verwalten des Trinkwasserentnahme und die Darstellung der Anlegebuchungen als Funktionalität für die neue Zielgruppe anbieten um somit die zukünftigen Arbeitsprozesse zu unterstützen. 
 Um dies zu ermöglichen, müssen die Interaktionen der Zielgruppe in Abhängigkeit der On-/Offline Situationen gestaltet werden. 
@@ -265,7 +230,7 @@ Es ist ein Design Prozess, welcher die Eindrücke, die ein Nutzer bei der gesamt
 Für die Gestaltung der User Experience ist das Einnahmen der Perspektive der Zielgruppe wichtig, um ein tieferes Verständnis von der Zielgruppe zu bekommen und um mögliche Probleme zu erkennen und diese mithilfe der Konzeption zu lösen oder zu vermeiden. 
 Denn durch eine bessere Interaktion mit der Anwendung kann der Benutzer zufriedener mit der Benutzung der Funktionalitäten sein.
 
-\subsection{Persona} \label{sec:per}
+\subsection{Ausführung} \label{sec:per}
 Das Einnehmen dieser Perspektive geschieht durch die Erstellung einer Persona \cite{puttingpersonas}, welche wiederum für die Webanwendung die Zielgruppe als Benutzer darstellt.
 Eine Persona beschreibt zudem sein Verhalten, seine Ziele, seine Motivationen und weitere Informationen in welcher der Benutzer tätig ist.
 Da die Zielgruppe sich auf ein Berufsfeld abbildet, ist es hierfür wichtig zu verstehen woraus die Tätigkeit besteht, in der die Benutzer die Anwendung verwenden.
@@ -542,7 +507,7 @@ Dies gilt auch für die Suchleiste und die Filteroptionen.
 Sobald die Netzwerkverbindung wiederaufgebaut ist, werden alle Daten aktualisiert und die Eingaben werden vom System übernommen.
 Die Schätzungen werden entfernt und die Anzeige wird weiter aktuell gehalten.
 
-\chapter{Methodik} \label{chap:tech}
+\chapter{Ergebnisse} \label{chap:erg}
 
 Für den Sprung zur Umsetzung bedarf es als Nächstes die Konzeption des technischen Rahmens. 
 Da die Daten vom Prozessleitsystem, welches die Trinkwasserentnahme der Anlegestellen überwacht und verarbeitet, in Form einer Schnittstelle bereitgestellt werden, muss hier geplant werden wie eine Verbindung zwischen den Systemen aussehen könnte.
@@ -919,7 +884,7 @@ Angegebene URLs sind hierbei das Einstiegsdokument und die Anwendung als gebünd
 Für weitere Requests der Anwendung wird der Ansatz gewählt, dass Responses, die noch nicht im Cache vorhanden sind, gespeichert werden und der Webanwendung weitergeleitet werden.
 Außerdem wird der Service Worker aktualisierbar sein, sodass die alten Cache Objekte auch gelöscht werden.
  
- \chapter{Ausblick und Fazit} \label{chap:zua}
+\chapter{Ausblick und Fazit} \label{chap:zua}
  
 Im Rahmen der Abschlussarbeit wurde eine offlinefähige Webanwendung für den Bereich der Personenschifffahrt konzipiert und entwickelt.
 Der Kapitän als Zielgruppe kann mit der Anwendung seinen Arbeitsprozess bei der Trinkwasserentnahme flexibler und interaktiver gestalten. 
