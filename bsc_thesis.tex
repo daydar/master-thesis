@@ -23,13 +23,12 @@
 \include{vorspann} % Titelseite, Erklärungen, etc.
 
 \begin{abstract} 
-
-An der Welt der berufsbedingten Mobilität können digitale Lösungsansätze die Arbeit erleichtern.
-So auch in der Personenschifffahrt, bei der neben den üblichen Aufgaben der Arbeit Hindernisse unterschiedlicher Art auftreten können.
-Treten dort weitere Probleme wie das Fehlen einer Internetverbindung auf, kann die digitale Lösung nur bedingt weiterhelfen.
-Damit der Kapitän dies bei der Fahrt und bei der Anlegung vermeidet, bedarf es eine Webanwendung, die auch einen Netzwerkverlust handhaben kann und dabei funktionsfähig bleibt.
-So soll die Anwendung dem Kapitän erlauben, während den Fahrten die Anlegezeiten zu betrachten und die Betankung von Trinkwasser an den Schiffsanleger interaktiv verfolgen zu können.
-Schwerpunkt in dieser Arbeit ist daher die Verarbeitung der Ressourcen an den Anlegestellen am Beispiel der Landebrücken und die Aufarbeitung mit der Problematik des Offline-Zustandes.
+PDF-Dokumente besitzen viele Informationen aus denen sich neue Daten generieren lassen können.
+Doch das Extrahieren von solchen Daten ist heutzutage immer noch mit Hürden verbunden.
+Dies gilt auch für die Dokumente die in den Prozessen von Autohäusern und Kfz-Werkstätten verwendet 
+und anschließend gelagert werden.
+Um die Frage zu beantworten inwiefern neue Daten aus diese Art von Dokumenten verarbeiten lassen, 
+wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt welches es ermöglichen soll weiteres Wissen zu gestalten.
 
 \end{abstract}
 
@@ -38,77 +37,99 @@ Schwerpunkt in dieser Arbeit ist daher die Verarbeitung der Ressourcen an den An
 
 \chapter{Einleitung} \label{chap:einf}
 
-„Digitalisierung im Alltag voranbringen“ – Das war einer der Wahlslogans während der Bundestagswahl 2021. Gemeint war damit eine zunehmende Digitalisierung im privaten Alltag vieler Bürger:innen, aber auch in der Wirtschaft machte sich wachsend der Wunsch nach mehr digitalen Alternativen breit (vgl. Bundesregierung 2021). Dieser Wunsch beinhaltete vor allem einen Wechsel von gängigen Papierformen verschiedenster Dokumente zu denselben in digitaler Ausprägung. Genau jenes Bedürfnis nach Digitalisierung betrifft auch Arbeitnehmer:innen/Händler:innen in Autohäusern und Kfz-Werkstätten, die durch ihre berufliche Tätigkeiten mit einer Vielzahl an Unterlagen, Dokumenten oder Belege arbeiten müssen. Unter dieser Vielzahl fallen Dokumente wie Werkstatt-, Kauf- und Mietverträge sowie Rechnungen oder Diagnoseberichte. Durch eine Digitalisierung jener Dokumente eröffnen sich Vorteile wie bessere Zugänglichkeit, größere Langlebigkeit und vor allem eine angepasste und leichtere Nutzung, die zu einer höheren Effektivität innerhalb täglicher Arbeitsschritte führt.
-Durch bisherige erste Digitalisierungsschritte sind diese benötigten Dokumente bereits elektronisch aufgearbeitet und den Arbeitnehmenden in Autohäusern und Kfz-Werkstätten zur Verfügung gestellt worden. Die Folge dessen ist, dass alle Dokumente standardisiert sind und dadurch die in den Dokumenten beinhalteten Informationen neu verarbeitet werden können. Eine Extraktion der Daten der einzelnen Dokumente ist jedoch nur eingeschränkt möglich, da die Struktur im gängigen Gebrauch im Dateiformat PDF (Portable Document Format) festgelegt ist. Jene Limitierung der Datenextraktion wirkt sich gleichermaßen auf die Dealer-Management-Systeme (DMS), mit solchen die Abreitnehmenden ihr Prozesse abwickeln, aus. Der daraus resultierende Arbeitsaufwand, welcher dabei entsteht, um die Daten wiederverwendbar zu konstruieren, ist derzeit enorm. Aus diesem Grund möchte ich innerhalb dieser Masterthesis eine Benutzeranwendung entwickeln, die genau jene Problematik erleichtert und löst.
-Innerhalb üblicher Methoden werden die Daten zunächst über eine grafische Anzeige mithilfe einer bereits exisiterenden? Benutzeranwendung via gängiges Kopieren und Einfügen entnommen. Dieser Schritt funktioniert zwar im Regelfall, ist jedoch oftmals stark fehleranfällig und kann lückenhaft sein. In so einem Fall muss das Einfügen und Kopieren manuell durchgeführt werden.  Andernfalls können die Daten eigenhändig abgeschrieben werden – jener Vorgang benötigt jedoch viele Ressourcen.
- Aufgrund dieser bisherigen teils aufwendigen und mit Fehlern verbundenen Möglichkeiten möchte ich mich in meiner Thesis von diesen Optionen abwenden und das Data-Mining nutzen. Das Data-Mining unterstütz eine Automatisierung, mit der Daten aus dem PDF-Dokument extrahiert werden.  Allein über das Data-Mining ist es möglich, Inhalte zu extrahieren und für andere Systeme bereit zu stellen. Der Unterschied zum gängigen Data-Mining liegt dabei in den Einschränkungen des Dateiformats: der Quelltext einer solchen Datei stellt erstens keine klare Hierarchie der Daten dar und zweitens besitzt es durch das Fehlen von Markierungen keine Informationen darüber, was die Daten an sich darstellen sollen (1 in Quellenverzeichnis von Exposé). Mit Hilfe dieser Technik des Data-Minings soll es ermöglicht werden, Prozesse zu steuern und zu überwachen. Des Weiteren können unter anderem Abgleiche von Rechnungen mit dem System durchgeführt werden und weitere Datenanalyse und Reporting kreiert werden.
-Mit dem derzeitigen Stand der Datenextraktion können lediglich Agierende aus dem technischen Bereich arbeiten. Damit jedoch auch andere Agierende jenseits des technischen Bereichs die Anwendung aktiv nutzen können, soll eine Anwendung entwickelt werden, welche eine benutzer:innenfreundliche Verwendung zur Verfügung stellt. Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können. Dazu wird eine symbolische KI benötigt, welche eine vorgegebene Verarbeitung möglich macht. Dazu muss zuerst eine Parametrisierung der Unschärfe der ausgewählten Daten festgelegt werden, damit eine Feineinstellung stattfinden kann. Mit Hilfe von Definitionen der Unschärfe kann sie für eine bessere Erfolgsquote sorgen. Zudem kann der Ansatz des Machine Learnings, wobei erfolgreiche Verarbeitungen einem System antrainiert werden, weitere Dokumente aus Daten extrahieren. 
-Beide Ansätze – der der symbolischen KI und der des Machine Learnings – bieten die Option einer grafischen Entwicklungsumgebung (IDE). Jene soll Definitionen festlegen, mit welchen die Dokumente verarbeitet werden können. Durch diese Festlegung soll dann eine Vorschau des bisherigen Ergebnisses angezeigt werden. 
-Um genau diese optimale Anwendung (ist es das, was du schreibst?) entwickeln zu können, werde ich in dieser Arbeit wie folgt vorgehen: 
+„Digitalisierung im Alltag voranbringen“ – Das war einer der Wahlslogans während der Bundestagswahl 2021. 
+Gemeint war damit eine zunehmende Digitalisierung im privaten Alltag vieler Bürger:innen, 
+aber auch in der Wirtschaft machte sich wachsend der Wunsch nach mehr digitalen Alternativen breit (vgl. Bundesregierung 2021). 
+Dieser Wunsch beinhaltete vor allem einen Wechsel von gängigen Papierformen verschiedenster Dokumente 
+zu denselben in digitaler Ausprägung. 
+
+Genau jenes Bedürfnis nach Digitalisierung betrifft auch Arbeitnehmer:innen / Händler:innen in Autohäusern und Kfz-Werkstätten, 
+die durch ihre berufliche Tätigkeiten mit einer Vielzahl an Unterlagen, 
+Dokumenten oder Belege arbeiten müssen. Unter dieser Vielzahl fallen Dokumente wie Werkstatt-, Kauf- und Mietverträge 
+sowie Rechnungen oder Diagnoseberichte. 
+
+Durch eine Digitalisierung jener Dokumente eröffnen sich Vorteile wie bessere Zugänglichkeit, 
+größere Langlebigkeit und vor allem eine angepasste und leichtere Nutzung, 
+die zu einer höheren Effektivität innerhalb täglicher Arbeitsschritte führt.
+Durch bisherige erste Schritte der Digitalisierung sind diese benötigten Dokumente 
+bereits elektronisch aufgearbeitet und den Arbeitnehmenden in Autohäusern und Kfz-Werkstätten zur Verfügung gestellt worden. 
+
+Die Folge dessen ist, dass alle Dokumente standardisiert sind und dadurch die in den Dokumenten beinhalteten Informationen 
+neu verarbeitet werden können. Eine Extraktion der Daten der einzelnen Dokumente ist jedoch nur eingeschränkt möglich, 
+da die Struktur im gängigen Gebrauch im Dateiformat PDF (Portable Document Format) festgelegt ist. 
+
+Jene Limitierung der Datenextraktion wirkt sich gleichermaßen auf die Dealer-Management-Systeme (DMS), 
+mit solchen die Arbeitnehmenden ihr Prozesse abwickeln, aus. Der daraus resultierende Arbeitsaufwand, 
+welcher dabei entsteht, um die Daten wiederverwendbar zu konstruieren, ist derzeit enorm. 
+
+\section{Zielsetzung}\label{sec:ziel}
+
+Aus diesem Grund möchte ich innerhalb dieser Master-Thesis ein System entwickeln, 
+das genau jene Problematik erleichtert und löst.
+Innerhalb üblicher Methoden werden heutzutage die Daten zunächst über eine grafische Anzeige mithilfe 
+einer bereits existierenden Benutzeranwendung via gängiges Kopieren und Einfügen entnommen. 
+Dieser Schritt funktioniert zwar im Regelfall, ist jedoch oftmals stark fehleranfällig und kann lückenhaft sein. 
+
+In so einem Fall muss das Einfügen und Kopieren manuell durchgeführt werden, was bei einer riesigen Menge an Dokumente zu einer monotonen Arbeit führt. 
+Andernfalls können die Daten eigenhändig abgeschrieben werden – jener Vorgang benötigt jedoch viele Ressourcen.
+Eher geeignet ist es einen Datenkonverter für die PDF Dateien zu nutzen um so die Dokumente in Bilder beispielsweise umzuwandeln, 
+wodurch die Daten zugänglicher aber immer noch verarbeitet werden müssen, was den ganzen Vorgang als eine Notlösung wirken lässt.
+
+Aufgrund dieser bisherigen teils aufwendigen und mit Fehlern verbundenen Möglichkeiten möchte ich mich in meiner Thesis 
+von diesen Optionen abwenden und das Data-Mining nutzen. 
+Das Data-Mining soll eine Automatisierung unterstützen, mit der Daten aus dem PDF-Dokument extrahiert werden. 
+Allein über das Data-Mining ist es möglich, Inhalte zu extrahieren und für andere Systeme bereit zu stellen. 
+
+Der Unterschied zum gängigen Data-Mining liegt dabei in den Einschränkungen des Dateiformats: 
+der Quelltext einer solchen Datei stellt erstens keine klare Hierarchie der Daten dar und zweitens 
+besitzt es durch das Fehlen von Markierungen keine Informationen darüber, 
+was die Daten an sich darstellen sollen \cite{docsumo_pdf_2022}. 
+
+Mit Hilfe dieser Technik des Data-Minings soll es ermöglicht werden, aktuelle Prozesse detaillierter zu steuern und zu überwachen. 
+Des Weiteren können unter anderem Abgleiche von Rechnungen mit dem System durchgeführt werden 
+und weitere Datenanalyse und Reporting kreiert werden.
+Mit dem derzeitigen Stand der Datenextraktion können lediglich Agierende aus dem technischen Bereich arbeiten. 
+
+Damit jedoch auch für Agierende innerhalb des technischen Bereichs die Nutzung nicht zu abstrakt bleibt, 
+soll durch die Entwicklung eines Systems der Zugriff greifbarer gestaltet werden, welches wiederum eine benutzerfreundliche Anwendung zur Verfügung stellen soll. 
+Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können 
+und die Vorgänge sollen außerdem eine niedrigere Fehlerquote aufzeigen. 
+Die Prozesse müssten außerdem das ganze über eine Steuerung und Regelung kontrollieren.
+Solche Prozesse können zum Beispiel über Regeln festgelegt werden, die bei Erfüllung weitere Aktionen auslösen können.
+
+Eine solche Eigenschaft kann durch eine symbolische KI abgedeckt werden, welche eine vorgegebene Verarbeitung möglich macht. 
+Mit Hilfe einer Parametrisierung kann die Unschärfe der ausgewählten Daten festgelegt werden, 
+damit eine Feineinstellung stattfinden kann. 
+Mit Hilfe von Definitionen der Unschärfe kann so für eine bessere Erfolgsquote gesorgt werden. 
+Zudem kann der Ansatz des Machine Learnings, wobei erfolgreiche Verarbeitungen einem System antrainiert werden, 
+weitere Dokumente aus Daten extrahieren. 
+
+Beide Ansätze – der der symbolischen KI und der des Machine Learnings – bieten die Option für die Entwicklung einer grafischen Entwicklungsumgebung (IDE). 
+Jene soll Definitionen festlegen, mit welchen die Dokumente verarbeitet werden können. 
+Durch diese Festlegung soll dann eine Vorschau des bisherigen Ergebnisses angezeigt werden. 
+
+\section{Ablauf}
+
+Um genau diese optimale Anwendung (ist es das, was du schreibst?) entwickeln zu können, 
+werde ich in dieser Arbeit wie folgt vorgehen: 
 Was genau ist eigentlich deine Vorgehensweise? 
 
+Für eine vollständige Auseinandersetzung soll eine weitere Analyse stattfinden 
+um die vorhandenen Grundlagen für den Anwendungsfall zu evaluieren. 
+Das heißt es werden mit hilfe der Funktionalitäten der Bibliotheken Ergebnisse 
+auf Basis der Datensätze erzeugt um die Erfolgsquoten zu überprüfen. 
+Diese werden dann verglichen und ausgewertet. Parallel dazu soll die Umgebung 
+für die Entwicklung eingerichtet werden womit die Implementierung der Systeme stattfinden soll. 
+Danach soll sich der Konzeptionierung und Entwicklung der symbolischen KI gewidmet werden, 
+womit ein direkterer Ansatz ermöglicht werden soll.
 
-\chapter{Hintergrund} \label{chap:hint}
+\chapter{Hintergrund}\label{chap:hint}
 
-Um die Problematik darzustellen und um eine Übersicht zu ermöglichen, werden in diesem Kapitel die bereits im Betrieb genommenen Prozesse für die Buchungen der Anlegestellen anhand der Interaktionen des Benutzers analysiert. 
+Um die Problematik darzustellen und um eine Übersicht zu ermöglichen, 
+werden in diesem Kapitel 
 Dazu wird der aktuelle Verlauf der Ressourcenabrechnung am Beispiel der Trinkwasserentnahme an den Anlegestellen erklärt um daraus einen Lösungsentwurf zu skizzieren.
 
-\section{Analyse} \label{sec:ana}
-
-Die Stadt Rüdesheim am Rhein ist bekannt für seine Weinberge und seinen touristischen Attraktionen, die Gäste aus der gesamten Welt anziehen.
-Um den Verkehr und den Tourismus gesondert zu verwalten, wurde daher die Fremdenverkehrsgesellschaft im Jahre 1967 von der Stadt gegründet. 
-Die Gesellschaft betreibt neben einem Freibad, einem Park und weiteren Sehenswürdigkeiten mehrere Schiffslandebrücken am rechten Rheinufer.
-Diese Schiffslandebrücken sind Anlegestellen, die für Fahrgast- und Hotelschiffe zur Verfügung gestellt werden und über ein Buchungssystem zu reservieren sind. 
-Das Buchungssystem steht als Portal im Web zur Verfügung und erlaubt für jeden Kunden wie zum Beispiel Reedereien folgende Funktionen:
-
-\begin{itemize}
-\item Selbständige Buchung von Anlegungen
-\item Stornierung von Anlegungen
-\item Ansicht von Informationen zu Anlegungen, zum Beispiel zugewiesene Anlegestelle
-\item Ansicht und Aktualisierung von Schiffsdaten und Rechnungsanschriften
-\end{itemize}
-
-Über das Buchungsportal mit dem Namen "`Landebrücken"' kann sich der Kunde zunächst als Benutzer registrieren. Sobald die Registrierung verifiziert wurde, kann er sich einloggen und bekommt die Hauptseite anzeigt. 
-Auf dieser Seite stehen ihm die Optionen zur Verfügung, dass er Adressen und Schiffe registrieren und Buchungen erstellen kann, wofür eingetragene Schiffe benötigt werden. 
-
-Für einen neuen Benutzer ist daher der erste Schritt eine Adresse zu erstellen, zu denen die Rechnungen der Schiffe und der Buchungen geschickt werden.
-Daher legt der Benutzer ein neues Schiff an und gibt Informationen über dessen Namen, Zugehörigkeit und Größe an.
-Danach wird das Schiff ausgewählt und in einem Formular werden die Ankunfts- und Abfahrtszeiten, die Dauer und die erwartete Passagieranzahl angeben.
-Nachdem dies vom Benutzer bestätigt wird, können weitere Buchungen angelegt oder alle bisher angelegten abgeschickt werden. Ab diesem Zeitpunkt tauchen in einer Bestätigungsliste in der Ansicht der Administration neue Einträge auf.
-
-Diese Buchungsanfragen werden dann von den Verantwortlichen der Fremdenverkehrsgesellschaft entweder bestätigt oder storniert.
-In beiden Fällen wird dem Benutzer eine Benachrichtigung per E-Mail geschickt. 
-Im Falle der Bestätigung enthält diese E-Mail eine Rechnung, die es dann nach der Abfahrt neben der Abrechnung der Ressourcen zu zahlen gilt. 
-
-Durch die Anwesenheit des Schiffes kann das Trinkwasser an der Anlegestelle, welches von der Stadt bereitgestellt wird, aufgefüllt werden.
-Im Vorfeld muss daher der Kunde die Teilnahme am Wasserentnahmeprogramm beantragen, welches den rechtlichen Rahmen, die Datenschutz-Grundverordnung und Informationen über die Haftung bei möglichen Schäden beinhaltet.
-Die Betankung findet über einen Wasserentnahmeschrank an der Anlegestelle statt. 
-Für das Festhalten des Entnahmevorgangs ist ein Mitarbeiter von der Fremdenverkehrsgesellschaft zuständig, der die betankte Menge in einem Papierordner in den Wasserentnahmeschränken einträgt. 
-Dieser Ordner dient dann als Grundlage um die Abrechnungen für die Wasserentnahme der Schiffe an die angegebenen Adressen zu schicken.
-
-Während der Prozess der Buchungen bereits produktiv bereitgestellt wird, hat die Stadtverwaltung eine technische Lösung für die Trinkwasserabrechnung in Auftrag gegeben. 
-Da die Informationen der Ressourcen für die Besatzung der Schiffe als Grundlage für die Schiffsfahrt notwendig sind, kam die Anforderung für die Entwicklung einer weiteren Anwendung hinzu. 
-Diese Anwendung soll eine Übersicht der bisherigen Buchungen und deren Ressourcenabrechnungen, sowie den Prozess der Trinkwasserentnahme während der Betankung präsentieren und daher die Informationen zur Menge während und nach dem Aufenthalt des Schiffes für die Kapitäne bereitstellen. 
-
-\section{Daten und Ressourcen} \label{sec:dar}
-
-Das Buchungssystem bietet für die Kunden eine moderne Verwaltung aller mit der Anlegung von Schiffen in der Stadt verbundenen Vorgänge an. 
-Um dies zu ermöglichen sind die Daten, die der Kunde angibt, elementar um Buchungen als auch Rechnungen zu realisieren. 
-Diese Daten werden durch eine objektrelationale Abbildung als Eigenschaften der Datenmodelle in der Datenbank persistent gespeichert und mithilfe von Business Logiken verarbeitet.
-
-Die Datenmodelle präsentieren dabei die Entitätsklassen, die wiederum die Realität abbilden und für das System benötigt werden.
-So stellen die in der Abbildung angezeigten Entitätsklassen die relevanten Datenmodelle in vereinfachter Form dar, die für das Buchungssystem genutzt werden.
-
-Die Attribute mit der Endung „id“ oder „Id“ kennzeichnen die Primärschlüssel und die Fremdschlüssel und zeigen die Beziehungen zwischen den Entitätsklassen. 
-Die Relationen werden durch Linien nach der Martin-Notation dargestellt. 
-So wird die 1 zu N Beziehung mithilfe der Krähenfußnotation wie zum Beispiel bei der Beziehung von „User“ und „Ship“ verwendet.
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=.9\textwidth]{images/erdBookingSimpSW}
-\caption{Datenmodellausschnitt des Buchungssystems}
-\label{fig:ebp}
-\end{figure}
+\section{Analyse}\label{sec:ana}
 
 In der Abbildung \ref{fig:ebp} werden Kunden und Mitarbeiter der Fremdenverkehrsgesellschaft durch das Datenmodell „User“ abgedeckt. 
 Bei beiden Arten des Benutzers sind die Logindaten mit E-Mail Adresse vorhanden. 
@@ -119,40 +140,6 @@ Das Datenmodell „Ship“ bildet die Schiffe, die vom Kunden mit dem Namen des 
 
 Das Datenmodell „Pier“ ist die Abbildung einer Anlegestelle. 
 Sie besitzt einen Namen, welcher die Nummer der Schiffslandebrücken enthält, ein Attribut „Position“ welches den Standort der Schiffslandebrücke anhand dem Abstand zur Quelle des Rheins angibt und das Attribut ''Active'' welches den Zustand der allgemeinen Benutzung wiederspiegelt.
-
-Die Entitätsklasse „Sale\_order“ stellt ein Verkaufsauftrag dar.
-Ein Verkaufsauftrag hat einen Attribut „State“, welches, die Zustände des Buchungsprozesses anzeigt. 
-Zu einem Auftrag ist die ID des Managers, der den Auftrag erstellt hat, die ID der Reederei und der Name der Reederei angegeben. 
-Der Buchungsauftrag in welchem sich der Verkaufsauftrag befindet, wird über seine ID und über die ID des Erstellers referenziert.
-
-Für einen Auftrag sind dazu die Attribute des ausgewählten Schiffes über den Namen und der ID referenziert.
-Dazu wird eine ID der Landebrücke angegeben, an der das Schiff anlegt. 
-Ein Auftrag besitzt des Weiteren Attribute für den Zeitpunkt der An- und Abfahrt.
-Für einen Buchungsauftrag wird nach einer Entnahme von Trinkwasser und der Abgabe von Abwasser ein Auftrag von der Stadtverwaltung. 
-
-Dafür hat das Datenmodell „Sale\_order“ die Attribute „Drinking\_water\_qty“ für die Menge des entnommenen Trinkwassers, „Drinking\_water\_price“ für den Preis pro Kubikmeter Trinkwasser und in dieser Anordnung auch für die Attribute „Waste\_water\_qty“ und „Waste\_water\_price“. 
-Zu diesem Datenmodell gehören noch der Preis der Buchung und der ID für die Abrechnung. 
-
-Die Abrechnung wird über das Datenmodell „Invoice“ abgebildet und besitzt einen aus den Verkaufsaufträgen generieten Namen, den Namen des Schiffes, für den die Abrechnung erstellt wird und eine ID die alle Verkaufsaufträge, die für die Abrechnung benötigt werden, referenziert.
-Die „Booking\_order“ stellt den Buchungsauftrag, der eine Sammlung von Verkaufsaufträgen, die vom Kunden unter anderem erstellt wurden, dar. 
-
-Daher besitzt dieses Datenmodell mit dem Namen „Booking\_order“ einen generierten Namen, eine ID zum Kunden, eine ID zum Ersteller der Buchung, alle IDs der Verkaufsaufträge, die mit der Buchung zusammenhängen, einem Zustandsattribut, welches den Zustand der Bestätigung anzeigt und einer ID der Reederei des Schiffes. 
-Dazu hat ein Buchungsauftrag mehrere Verkaufsaufträge und ein Buchungsaufträge wird von mehreren Benutzern verwaltet.
-
-Die Ressourcen, die die Stadt für die Schiffe über die Anlegestellen anbieten, sind eine weitere Quelle für Daten.
-Diese Ressourcen unterteilen sich in Trinkwasser und elektrischen Strom und sind an jeder Anlegestelle vorhanden.
-Während der Strom von externen Stromanbietern angezapft wird, wird das Trinkwasser von den Stadtwerken von Rüdesheim an den Anlegestellen durch eine Anlage zur Wasserentnahme zur Verfügung gestellt. 
-Diese Anlage ist mit dem Wasserentnahmeschrank verknüpft, welcher wiederum eine speicherprogrammierbare Steuerung (SPS) besitzt.
-
-Die Stadtwerke besitzen ein Prozessleitsystem (PLS) und werden von einem Wassermeister geleitet, welcher für eine ausreichende Menge mit ausreichendem Druck von einwandfreier Qualität des Trinkwassers verantwortlich ist. 
-Um diese Aufgabe neben den Stadtgebieten auch für die Anlegestellen zu erfüllen, ist der Wassermeister auch für die Bestimmung des Durchflusses der Anlegestationen verantwortlich. 
-
-\begin{figure}[htb]
-\centering
-\includegraphics[width=.9\textwidth]{images/dfStationen}
-\caption{Durchflussregler der Anlegestellen}
-\label{fig:df}
-\end{figure}
 
 Hierfür steht eine maximale Tagesmenge von $100 m^3$ für alle Anlegestellen zusammen zur Verfügung. 
 Dazu gibt es eine aktuelle Tagesmenge, welche durch die entnommene Wassermenge für den aktuellen Tag von allen Stationen summiert wird. 
@@ -227,16 +214,6 @@ Um dies zu ermöglichen, müssen die Interaktionen der Zielgruppe in Abhängigke
 Dies findet im Rahmen der Feinkonzeption \cite{Jacobsen.2014} statt.
 Dort werden Layout-Ansätze entwickelt und Wireframes erstellt, die die Interaktionen der Zielgruppe mit der Webanwendung abbilden sollen.
 %aktuelle Interaktion + aktuelle Sicht des Kapitäns => Kapitänsansicht gegenteilig
-
-\section{User Expierence} \label{sec:ux}
-Die Feinkonzeption legt den Fahr- und Konstruktionsplan fest und beschreibt die Interaktionen mit den Elementen einer Webseite. 
-Damit die daraus resultierende Webseite nicht nur mit den Anforderungen der Funktionalitäten übereinstimmt, sondern auch erfolgreich sein soll, muss neben der Nützlichkeit und der Benutzerfreundlichkeit auch eine positive Emotion bei der Benutzung der Webanwendung existieren.
-Dieses Empfinden wird auch als Begriff „ Joy of Use“ \cite{joyofuse} verwendet.
-
-Die Kombination dieser Aspekte definiert die User Experience \cite{Hartson.2019}.
-Es ist ein Design Prozess, welcher die Eindrücke, die ein Nutzer bei der gesamten Interaktion mit dem System fühlt, beschreibt. 
-Für die Gestaltung der User Experience ist das Einnahmen der Perspektive der Zielgruppe wichtig, um ein tieferes Verständnis von der Zielgruppe zu bekommen und um mögliche Probleme zu erkennen und diese mithilfe der Konzeption zu lösen oder zu vermeiden. 
-Denn durch eine bessere Interaktion mit der Anwendung kann der Benutzer zufriedener mit der Benutzung der Funktionalitäten sein.
 
 \subsection{Ausführung} \label{sec:per}
 Das Einnehmen dieser Perspektive geschieht durch die Erstellung einer Persona \cite{puttingpersonas}, welche wiederum für die Webanwendung die Zielgruppe als Benutzer darstellt.
@@ -809,7 +786,6 @@ Dies würde es dem Benutzer erlauben die Webanwendung auch auf seinem mobilen En
 Des Weiteren kann die Webanwendung für Suchmaschinen optimiert werden.
 Da die Anwendung aber nur durch eine Weiterleitung des Buchungsportals und somit nur für autorisierte beziehungsweise private Benutzer erreichbar seien soll, eignet sich eine Optimierung für diesen Fall vorläufig nicht.
 
-\chapter{Umsetzung} \label{chap:impl}
 
 Die Konzepte der Interaktion und der technischen Struktur haben einen Eindruck über die Problematik dargestellt und ermöglichen es durch die Lösungsansätze die Webanwendung zu implementieren. 
 Diese Ansätze sollen daher durch eine konkrete Umsetzung unter der Berücksichtigung der Rahmenbedingungen in die Realität abgebildet werden.
