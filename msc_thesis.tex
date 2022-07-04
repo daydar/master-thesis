@@ -89,123 +89,79 @@ Mit Hilfe dieser Technik des Data-Minings soll es ermöglicht werden, aktuelle P
 Des Weiteren können unter anderem Abgleiche von Rechnungen mit dem System durchgeführt werden 
 und weitere Datenanalyse und Reporting kreiert werden.
 Mit dem derzeitigen Stand der Datenextraktion können jedoch lediglich Agierende aus dem technischen Bereich arbeiten. 
-
+Die Technologien hierfür benutzen unterschiedliche Ansätze und müssen daher zunächst für diesen Fall ausgewählt werden. 
 
 Damit jedoch auch für Agierende innerhalb des technischen Bereichs die Nutzung nicht zu abstrakt bleibt, 
 soll durch die Entwicklung eines Systems der Zugriff greifbarer gestaltet werden, welches wiederum eine benutzerfreundliche Anwendung zur Verfügung stellen soll. 
-Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können 
+Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können, 
 und die Vorgänge sollen außerdem eine niedrigere Fehlerquote aufzeigen. 
 Die Prozesse müssten außerdem das ganze über eine Steuerung und Regelung kontrollieren.
 Solche Prozesse können zum Beispiel über Regeln festgelegt werden, die bei Erfüllung weitere Aktionen auslösen können.
 
-Eine solche Eigenschaft kann durch eine symbolische KI abgedeckt werden, welche eine vorgegebene Verarbeitung möglich macht. 
-Mit Hilfe einer Parametrisierung kann dann die Unschärfe der ausgewählten Daten festgelegt werden, 
+Eine solche Eigenschaft kann durch eine symbolische künstlichen Intelligenz (KI) abgedeckt werden, welche eine vorgegebene Verarbeitung möglich macht. 
+Hiermit bezeichnet man einen altmodischen Ansatz der KI, bei der über das Festlegen von Symbolen 
+menschliches Wissen in einer Logik gehalten wird und diese benutzt wird um weiteres Wissen zu generieren \cite{dickson_what_2019}.
+Durch eine Parametrisierung einer solchen KI kann dann die Unschärfe der ausgewählten Daten festgelegt werden, 
 damit eine Feineinstellung stattfinden kann. 
-Mit Hilfe von Definitionen und Regeln der Unschärfe kann so für eine bessere Erfolgsquote gesorgt werden. 
-Zudem kann der Ansatz des Machine Learnings, wobei erfolgreiche Verarbeitungen einem System antrainiert werden, 
+Das heißt, der Benutzer eines solchen Systems soll sich beginnend von groben Definitionen für die Verarbeitung 
+zu einer detaillierten und angepassteren Definition über Feedback des Systems hinarbeiten. 
+
+Mit Hilfe dieser Annäherung an Definitionen und Regeln kann so für eine bessere Erfolgsquote gesorgt werden. 
+Zudem kann der Ansatz des Machine Learnings (ML), wobei erfolgreiche Verarbeitungen einem System antrainiert werden, 
 weitere Dokumente aus Daten extrahieren. 
+Hierbei ist noch offen, welcher Typ des Machine Learnings sich für diesen Fall eignet.
 
 Beide Ansätze – der der symbolischen KI und der des Machine Learnings – bieten als Option die Entwicklung einer grafischen Entwicklungsumgebung (IDE) an. 
 Jene soll das Festlegen von Definitionen und Regeln erlauben, mit welchen die Dokumente verarbeitet werden können. 
-Durch diese Festlegung soll dann mit Hilfe einer Vorschau des bisherigen Ergebnisses angezeigt werden. 
+Außerdem soll diese Oberfläche verschiedene Funktionalitäten anbieten und auch Feedback sowohl bei einem problemlosen Lauf 
+als auch bei einem fehlerhaften Lauf zurückgeben. 
 
-\section{Ablauf}
+Des Weiteren soll das System es ermöglichen Änderungen der Definitionen anzumerken und Unterschiede zu erstellen, 
+womit auch bisherige Ergebnisse angezeigt werden.
+Die Festlegung von Definitionen und Regeln soll außerdem durch eine Ansicht der Dokumente unterstützt werden.
+Insgesamt wird das System die zwei Ansätze als Subsysteme aufteilen um die Umsetzung zu modularisieren und einen Vergleich zu ermöglichen.
 
-Um genau diese optimale Anwendung (ist es das, was du schreibst?) entwickeln zu können, 
-werde ich in dieser Arbeit wie folgt vorgehen: 
-Was genau ist eigentlich deine Vorgehensweise? 
+\section{Ablauf}\label{sec:ablauf}
 
-Für eine vollständige Auseinandersetzung soll eine weitere Analyse stattfinden 
-um die vorhandenen Grundlagen für den Anwendungsfall zu evaluieren. 
-Das heißt es werden mit hilfe der Funktionalitäten der Bibliotheken Ergebnisse 
-auf Basis der Datensätze erzeugt um die Erfolgsquoten zu überprüfen. 
+Um genau dieses optimale System für das beschriebene Szenario entwickeln zu können, werde ich in dieser Arbeit wie folgt vorgehen: 
+
+Für eine vollständige Auseinandersetzung soll eine weitere Analyse stattfinden,
+damit die vorhandenen Grundlagen für den Anwendungsfall evaluiert werden können. 
+Das heißt, es werden mit Hilfe der Funktionalitäten der Bibliotheken Ergebnisse 
+auf Basis der Datensätze erzeugt, um die Erfolgsquoten zu überprüfen. 
 Diese werden dann verglichen und ausgewertet. Parallel dazu soll die Umgebung 
-für die Entwicklung eingerichtet werden womit die Implementierung der Systeme stattfinden soll. 
-Danach soll sich der Konzeptionierung und Entwicklung der symbolischen KI gewidmet werden, 
-womit ein direkterer Ansatz ermöglicht werden soll.
+für die Entwicklung eingerichtet werden, mit der die Implementierung der Systeme stattfinden soll. 
+
+Danach widme ich mich der Konzeption und der Entwicklung des Systems.
+Dies beginnt mit der symbolischen KI als ein Subsystem des gesamtem Projekts, sodass ein direkterer Ansatz ermöglicht wird. 
+Die Entwicklung hierbei wird im Wasserfall-Ansatz, einem Ansatz bei der phasenweise die Eigenschaften einer solchen KI umgesetzt werden, 
+um eine Grundlage für die nächste Komponente zu bieten.
+
+Bei dieser Komponente handelt es sich um die IDE, die den Zugang für den Benutzer zum System darstellt.
+Deswegen folgt im nächsten Schritt die Konzeptionierung und Entwicklung der IDE, 
+welche sich während der Entwicklung der symbolischen KI parallelisieren lässt. 
+Sobald das Gerüst der Benutzeroberfläche fertiggestellt ist, möchte ich dies mit der symbolischen KI verbinden.
+
+Als Gegenstück wird sich dann mit dem Machine Learning Subsystem, bei der auch eine Konzeptionierung und Entwicklung, gewidmet.
+Hier wird das ganze in einem iterativen Ansatz umgesetzt um so den Hauptteil so früh wie möglich parat zu haben, 
+damit das Training des ML-Systems durch die Dokumente auch zeitnah starten kann. 
+Durch das Auswerten dieses Subsystems wird es daraufhin angepasst. 
+
+Danach wird das Testing für beide Subsysteme eingeführt um so das erfolgreiche Ausführen gewisser Eigenschaften abzudecken.
+Dies dient wiederum als Grundlage um die Continuous Integration (CI) für das System einzuführen, 
+womit eine sichere und konsistente Entwicklung nach dem Prototyping angeboten wird.   
+
+Zum Schluss werden sich die Ergebnisse des gesamten Systems betrachtet und ein Ausblick zu der Thematik dargestellt.
 
 \chapter{Hintergrund}\label{chap:hint}
 
-Um die Problematik darzustellen und um eine Übersicht zu ermöglichen, 
-werden in diesem Kapitel 
-Dazu wird der aktuelle Verlauf der Ressourcenabrechnung am Beispiel der Trinkwasserentnahme an den Anlegestellen erklärt um daraus einen Lösungsentwurf zu skizzieren.
+Um die Problematik detaillierter darzustellen und um eine Übersicht zu ermöglichen, 
+werden in diesem Kapitel der Rahmen der Problematik aus technischer Sicht vertieft dargestellt.
+Hierbei sollen die Technologien abgewogen und evaluiert werden. 
 
 \section{Analyse}\label{sec:ana}
 
-In der Abbildung \ref{fig:ebp} werden Kunden und Mitarbeiter der Fremdenverkehrsgesellschaft durch das Datenmodell „User“ abgedeckt. 
-Bei beiden Arten des Benutzers sind die Logindaten mit E-Mail Adresse vorhanden. 
-Wenn der Benutzer sich als Kunde registriert hat, wird der Name als Name der Reederei und die Adresse als Adresse des Unternehmens interpretiert und für weitere Prozesse mit diesem Kontext verarbeitet. Der Kunde wird daher als Manager oder als Organisator der Reederei behandelt.
-
-Das Datenmodell „Ship“ bildet die Schiffe, die vom Kunden mit dem Namen des Schiffes, der Länge des Schiffes, der Einstiegshöhe des Schiffes, dem Tiefgang des Schiffes, der Passagieranzahl des Schiffes und die Telefonnummer des Kapitäns im System eingetragen wurden, ab.  
-Über das Attribut „Active“ wird die Freigabe des Schiffes von der Stadtverwaltung bestimmt. Die „Manager\_User\_id“ ist die Kennzeichnung des Managers der Schiffe, „Organizer\_partner\_id“ ist der Identifikator (ID) für die Adresse der Reederei beziehungsweise des Veranstalters und „Invoice\_partner\_id“ referenziert die dazugehörige Rechnungsadresse.
-
-Das Datenmodell „Pier“ ist die Abbildung einer Anlegestelle. 
-Sie besitzt einen Namen, welcher die Nummer der Schiffslandebrücken enthält, ein Attribut „Position“ welches den Standort der Schiffslandebrücke anhand dem Abstand zur Quelle des Rheins angibt und das Attribut ''Active'' welches den Zustand der allgemeinen Benutzung wiederspiegelt.
-
-Hierfür steht eine maximale Tagesmenge von $100 m^3$ für alle Anlegestellen zusammen zur Verfügung. 
-Dazu gibt es eine aktuelle Tagesmenge, welche durch die entnommene Wassermenge für den aktuellen Tag von allen Stationen summiert wird. 
-Wenn der Wert der maximalen Wassermenge erreicht wird, wird die Anlage in einem reduzierten Betrieb gefahren. 
-
-Im reduzierten Betrieb liegt der Wert des Durchflusses bei $5\frac{m^3}{h}$ für jede Anlegestation. 
-Dieser Betrieb kann beendet werden, wenn ein neuer Tag beginnt oder die maximale Tagesmenge über die aktuelle Tagesmenge gesetzt wird.
-Jede Wasserentnahmestation an der Anlegestelle hat einen einstellbaren maximalen Durchflusswert, einen einstellbaren Regelwert für den Normalbetrieb und einen Durchflusswert für den Notbetrieb.
- 
-Während der maximale Durchflusswert und der Regelwert im Normalbetrieb vom Wassermeister eingestellt werden, ist beim Notbetrieb der Durchflusswert im in der speicherprogrammierbaren Steuerung (SPS) fest hinterlegt, welche bei Verbindungsausfall geregelt wird.
-Für den Normalbetrieb muss der Regelwert zwischen $1\frac{m^3}{h}$ und dem eingestelltem maximalen Durchfluss liegen.
-Außerdem kann der Regelwert im Normalbetrieb für alle Stationen gleich oder individuell eingestellt werden.
-Die Stationen messen bei einem aktuellen Vorgang der Entnahme die entnommene Wassermenge und haben einen Tageszähler, der den Tageszählwert des entnommen Wassers festhält.
-
-Beim Prozess der Betankung von Trinkwasser durch den Kapitän werden weitere Daten erfasst.
-So besitzt der Kapitän eine „Radio-frequency indentification“ (RFID)-Karte, die sein Schiffsunternehmen von der Fremdenverkehrsgesellschaft beantragt und für ihn bereitgestellt hat. 
-Mit der Karte kann das Tor des Anlegers von beiden Seiten entriegelt und geöffnet werden.
-Wenn das Tor wieder ins Schloss fällt, womit es geschlossen ist, muss der Kapitän das Tor mit der Karte erneut öffnen.
-Der Zustand des Tores wird durch Endschalter überwacht und an das Prozessleitsystem weitergeleitet. 
-
-Mit der RFID-Karte wird der Wasserentnahmeschrank entriegelt und der Kapitän kann die Seiten- und die Fronttür zur Wasserentnahme öffnen.
-Werden die Türen des Schranks geöffnet und es erfolgt über 30 Minuten keine Wasserentnahme, startet der Alarmierungsablauf für die Türschließung.
-Das Blinklicht am Schrank wird gestartet und eine Warnmeldung wird an das Prozessleitsystem geschickt. 
-Nach 15 Minuten ertönt ein Warnton im 5 Minuten Abstand, welcher nach weiteren 15 Minuten sich auf 30 Sekunden reduziert. Wenn darauf weitere 15 Minuten folgen, indem die Wasserentnahme nicht erfolgt, wird eine Alarmmeldung an das Prozessleitsystem geschickt.
-Dort wird der Bereitschaftsdienstplan angestoßen und der zuständige Mitarbeiter informiert.  
-
-Wenn der Kapitän die RFID-Karte vor die Antenne am Schrank hält, wird der Code der Karte von einem RFID-Lesemodul an die speicherprogrammierbare Steuerung im Wasserentnahmeschrank weitergeleitet. 
-Diese schickt daraufhin ein Protokoll über General Packet Radio Service (GPRS) mit der Schiffskennung, der Zeit und der Station und weiteren Daten zum Prozessleitsystem im Betriebsgebäude der Stadtwerke. 
-
-Dort befindet sich eine Datenbank, in der hinterlegt wird, welches Schiff zu welcher Reederei gehört und ob das Schiff gesperrt oder freigegeben ist. 
-Das PLS sendet abhängig von den Einträgen in der Datenbank eine Bestätigung und die hinterlegte Sprache des Schifffahrtunternehmens an die speicherprogrammierbaren Steuerung vor Ort, die den Schrank entriegelt und den Kapitän über das Display durch das Programm führt.
-Displayanzeige ist dabei von der hinterlegten Sprache abhängig.
-
-Während der kompletten Trinkwasserentnahme schickt die speicherprogrammierbare Steuerung in regelmäßigen Abständen Daten wie zum Beispiel Durchfluss und Menge in Paketen an das Prozessleitsystem, die dort wiederum passend zum Schiff und dem Anleger zugeordnet und aufgezeichnet werden.
-Durch einen Tastendruck kann die Wasserentnahme jederzeit beendet werden. 
-Nach dem Ende schickt die Steuerung nochmal ein Endprotokoll an das Prozessleitsystem.
-
-Der Wassermeister kann über das Prozessleitsystem hinterlegen, ob ein Schiff gesperrt ist und die Wasserentnahme verweigert wird.
-Der Kapitän bekommt eine kurze Meldung, dass der Betankungsvorgang nicht gestartet werden kann und bekommt eine Telefonnummer angezeigt, mit dieser er sich dann weitere Informationen holen kann.
-
-Nach erfolgreicher Freigabe kann der Kapitän über ein Auswahlmenü entscheiden, ob er auf eigene Verantwortung die Wasserzufuhr dauerhaft laufen lassen möchte  oder ob er einen Sollfüllwert einstellen möchte, bei dem die Wasserzufuhr automatisch gestoppt wird. 
-Sobald der erfolgreiche mechanische Anschluss an der Wasserentnahme erfolgt, drückt der Kapitän die Start Taste und die Betankung beginnt.
-
-Der Kapitän bekommt aktuelle Werte angezeigt, auf der er nachverfolgen kann, wie viel Wasser er schon entnommen hat und sein eventuell eingestelltes Limit. Nach der erfolgten Entnahme wird der Schlauch entfernt und nach dem Schließen der Seiten- und Fronttür wird diese elektrisch verriegelt und der Betankungsvorgang wird damit beendet.
-Die Fremdenverkehrsgesellschaft bekommt eine E-Mail mit einer abschließenden Zusammenfassung der Betankung vom Prozessleitsystem.
-
-Wenn die Verbindung gestört wird, wird dem Kapitän durch eine Mitteilung auf dem Bildschirm angezeigt, dass der Betankungsvorgang nun in einem Notprogramm stattfindet.
-Wenn die Wasserentnahmestelle die Verbindung zum Prozessleitsystem verliert, während ein Betankungsvorgang läuft, muss die Steuerung die Daten so lange Zwischenspeichern, bis eine Verbindung zum PLS wieder gewährleistet werden kann.
-Dann müssen alle Daten wieder zum Prozessleitsystem geschickt werden. 
-
-Während des Verbindungsausfalles muss die Speicherprogrammierbare Steuerung in ein Notprogramm schalten.
-In diesem wird der fester Durchflusswert für den Notbetrieb geregelt.
-Wenn die Verbindung zum Prozessleitsystem wieder gewährleistet werden kann, fahren die aktuellen Betankungsvorgänge aber immer noch im Notprogramm, bis diese neu gestartet werden.
-
-Wenn der Betankungsvorgang im Notbetrieb beendet wird, ohne dass wieder eine Verbindung zum Prozessleitsystem aufgebaut werden konnte, wird der Kapitän darauf hingewiesen, die Betankungsdaten händisch zu notieren. Sobald eine Verbindung zum PLS wieder besteht, werden die Daten der letzten Betankung erneut verschickt.
-
-Sollte die Verbindung zum Prozessleitsystem ausgefallen sein und ein Schiff möchte anlegen gibt es die Möglichkeit den Schrank über eine Service-Karte zu entriegeln. 
-Dafür wird die Fix-ID dieser Karte/n in der speicherprogrammierbaren Steuerung hinterlegt. Nach Entriegelung des Schranks mit der Servicekarte ist es möglich, die Einstellung am Display per Hand vor zu nehmen. 
-Der Zählerstand beziehungsweise die entnommene Wassermenge des Betankungsvorgangs muss händisch notiert werden und der Schrank muss bei Beendung des Vorgangs von dem Servicemitarbeiter wieder verschlossen werden.
-
-Da die Anwendung für den Kapitän auf eine Netzwerkverbindung angewiesen ist, kann es auch hier zu Unterbrechungen der Verbindung kommen. 
-Die Phasen in denen dies auftreten kann, sind die Hinfahrt zur Anlegestelle, der Aufenthalt des Schiffes an der Anlegestelle, der Betankung von Trinkwasser vor Ort und die Abfahrt von der Anlegestelle. 
-
-Die Anzapfung des Landstroms kann zukünftig als weitere Phase auch beachtet werden. 
-Um diesen möglichen Fällen entgegen zu wirken, sind Konzepte und Ideen für solche Offline Situationen notwendig um den Arbeitsprozess für den Kapitän möglichst problemfrei zu halten.
+Die 
 
 
 \chapter{Konzeption und Umsetzung} \label{chap:konundum} %KAPITEL
@@ -869,7 +825,7 @@ Angegebene URLs sind hierbei das Einstiegsdokument und die Anwendung als gebünd
 Für weitere Requests der Anwendung wird der Ansatz gewählt, dass Responses, die noch nicht im Cache vorhanden sind, gespeichert werden und der Webanwendung weitergeleitet werden.
 Außerdem wird der Service Worker aktualisierbar sein, sodass die alten Cache Objekte auch gelöscht werden.
  
-\chapter{Ausblick und Fazit} \label{chap:zua}
+\chapter{Ausblick und Fazit} \label{chap:auf}
  
 Im Rahmen der Abschlussarbeit wurde eine offlinefähige Webanwendung für den Bereich der Personenschifffahrt konzipiert und entwickelt.
 Der Kapitän als Zielgruppe kann mit der Anwendung seinen Arbeitsprozess bei der Trinkwasserentnahme flexibler und interaktiver gestalten. 
