@@ -149,7 +149,25 @@ Durch das Auswerten dieses Subsystems wird es daraufhin angepasst.
 
 Danach wird das Testing für beide Subsysteme eingeführt um so das erfolgreiche Ausführen gewisser Eigenschaften abzudecken.
 Dies dient wiederum als Grundlage um die Continuous Integration (CI) für das System einzuführen, 
-womit eine sichere und konsistente Entwicklung nach dem Prototyping angeboten wird.   
+womit eine sichere und konsistente Entwicklung nach dem Prototyping angeboten wird.  
+
+Wenn dann aber die Systeme gegeben sind, kann das grafische Tool weiter angepasst werden welches 
+sich dann mit den Systemen verbinden soll um die Ausführbarkeit der Funktionalitäten zu überprüfen. 
+Hier werden dann die Komponenten zusammengeführt um ein gemeinsames System zu ermöglichen, 
+welches dann gegebenenfalls weitere Testschritte bedarf. 
+Sobald diese eine erfolgreiche Form annimmt kommt der Teil der Continuous Integration hinzu, 
+womit das System einen Zustand der Betrieblichkeit annehmen kann. 
+Über Testing sollen so mögliche Fehlerquellen entdeckt werden bevor diese auftreten können.
+
+Unter die Zielsetzung für die beiden Ansätze fallen die Kundendaten mit den Eigenschaften wie 
+Name, Firma, Adresse und Kundennummer, die Fahrzeugdaten worunter Fahrgestellnummer, Modell, 
+Farbe, Motor, Erstzulassung, Letzter/nächster Service und TÜV fallen und 
+die Abrechnungsdaten wie die Jobs mit Arbeitspositionen und Teilen, Preise etc. 
+Dazu stehen als weitere Grundlage mehr als 10.000 annotierte unterschiedliche Dokumente mit genau den Daten, 
+die extrahiert werden sollen als Datenbank zur Verfügung. 
+Für das Mengengerüst sollen mehr als 100.000 Dokumente pro Jahr später bearbeitet werden. 
+Hierbei ist es aber auch möglich aus den bereits bestehenden Daten einen Pool für den Lernprozess bzw. 
+für die Verifikation zu bilden.
 
 Zum Schluss werden sich die Ergebnisse des gesamten Systems betrachtet und ein Ausblick zu der Thematik dargestellt.
 
@@ -179,10 +197,29 @@ bezieht, trifft dieser Fall hier nicht zu.
 
 Für das Data Mining von PDF Dateien existieren bereits Lösungen, die von großen Unternehmen wie Amazon Web Services (AWS) 
 oder Adobe bereits angeboten werden. 
-So nutzen Produkte wie Textractor \cite{amazon_intelligente_nodate} von AWS oder Adobes Extractor API \cite{developers_extract_nodate} Künstliche Intelligenz, 
-Machine Learning und Optical Character Recognition (OCR) um die Extraktion der Daten zu ermöglichen. 
-Unternehmen wie ABBYY \cite{abbyy_pdf_nodate} habe sich bereits auf diesem Gebiet spezialisiert und sind erfolgreich mit der Datenextraktion. 
+So nutzen Produkte wie Textractor \cite{amazon_intelligente_nodate} von AWS oder Adobes Extractor API 
+\cite{developers_extract_nodate} Künstliche Intelligenz, Machine Learning und Optical Character Recognition (OCR) 
+um die Extraktion der Daten zu ermöglichen. 
+Unternehmen wie ABBYY \cite{abbyy_pdf_nodate} habe sich bereits auf diesem Gebiet spezialisiert 
+und sind erfolgreich mit der Datenextraktion. 
 Auch existieren bereits Open-Source Bibliotheken, die sich mit dem Entnehmen der Daten aus PDF Dokumenten beschäftigen.
+
+Die Meisten davon lassen sich hinsichtlich der Aufteilung der Aufgaben gruppieren. 
+So erlauben unter anderem PDFMiner \cite{unixuser_pdfminer_nodate} oder Apache Tika \cite{apache_apache_nodate} Texte aus PDF Dokumenten zu gewinnen. 
+Funktionalitäten für das Extrahieren von Daten aus Tabellen bieten Projekte wie 
+Tabula \cite{tabulapdf_tabulapdftabula_nodate} oder Camelot \cite{camelot_camelot_2022}
+an womit ein weiterer Aspekt durch die Nutzung abgedeckt wäre. 
+
+Bei Beiden zeigen sich niedrige Fehlerquoten auf \cite{atlanhq_comparison_nodate} und die Nutzung von einer Fuzzy Logik. 
+Camelot ermöglicht dazu noch ein Web Interface womit die simple Extraktion über einen Browser lokal stattfinden kann.
+Andere Bibliotheken wie Textricator \cite{measures_measuresforjusticetextricator_nodate} sind umfangreicher gestaltet und ergeben geeignete Schnittstellen für die Anfragen 
+spezifischer Inhalte. 
+Doch auch wenn dies mit textbasierten Dokumenten funktioniert und der Export flexibel ist, 
+können weder nicht-textbasierte noch komplexere PDF Dokumente verarbeitet werden. 
+Des Weiteren sind die Verarbeitungen nicht automatisierbar und die Nutzergruppe 
+wird durch eine fehlende grafische Komponente eingeschränkt.
+
+
 
 \chapter{Konzeption und Umsetzung} \label{chap:konundum} %KAPITEL
 
