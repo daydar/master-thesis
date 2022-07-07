@@ -61,7 +61,7 @@ bereits elektronisch aufgearbeitet und den Arbeitnehmenden in Autohäusern und d
 
 Die Folge dessen ist, dass alle Dokumente standardisiert sind und dadurch die in den Dokumenten beinhalteten Informationen 
 neu verarbeitet werden können. Eine Extraktion der Daten der einzelnen Dokumente ist jedoch nur eingeschränkt möglich, 
-da die Struktur im gängigen Gebrauch im Dateiformat PDF (Portable Document Format) festgelegt ist. 
+da die Struktur im gängigen Gebrauch im Dateiformat Portable Document Format (PDF) festgelegt ist. 
 
 Jene Limitierung der Datenextraktion wirkt sich gleichermaßen auf die Dealer-Management-Systeme (DMS), 
 mit solchen die Arbeitnehmenden ihr Prozesse abwickeln, aus. Der daraus resultierende Arbeitsaufwand, 
@@ -88,7 +88,7 @@ Allein über das Data-Mining ist es möglich, Inhalte zu extrahieren und für an
 Der Unterschied zum gängigen Data-Mining liegt dabei in den Einschränkungen des Dateiformats: 
 der Quelltext einer solchen Datei stellt erstens keine klare Hierarchie der Daten dar und zweitens 
 besitzt es durch das Fehlen von Markierungen keine Informationen darüber, 
-was die Daten an sich darstellen sollen \cite{docsumo_pdf_2022}. 
+was die Daten an sich darstellen sollen \cite{PDFScraperScrape}. 
 
 Mit Hilfe dieser Technik des Data-Minings soll es ermöglicht werden, aktuelle Prozesse detaillierter zu steuern und zu überwachen. 
 Des Weiteren können unter anderem Abgleiche von Rechnungen mit dem System durchgeführt werden 
@@ -188,13 +188,13 @@ Zunächst einmal wird der Kontext ausführlicher eklärt.
 
 Im Automobilbereich wird der Verkauf von Kraftfahrzeugen in zwei Segmente aufgeteilt: dem Sales-Bereich, indem es sich um den Verkauf 
 von Neu- und Gebrauchtwagen dreht und dem After-Sales-Bereich, indem eine Bindung zum Kunden über den Verkauf von 
-Verschleiß- und Ersatzteilen geschaffen wird. "QUELLE" 
-Diese Aufteilung der Segmente wird auch von den Autohäusern angwendet und für diese werden jeweils gängige Abläufe als Prozesse benutzt.
+Verschleiß- und Ersatzteilen geschaffen wird. \cite{theuerer_was_nodate}
+Diese Aufteilung der Segmente wird auch von den Autohäusern angewendet und für diese werden jeweils gängige Abläufe als Prozesse benutzt.
 
 Für den After-Sales-Bereich bietet ilexius GmbH zwei Arten von ERP-Systeme an. 
-Die erste Art ist das von der Automobilmarke Jaguar Land Rover finanzierte "vTab", welches eine Plattform für elektronische Vehikelchecks 
+Die erste Art ist das von der Automobilmarke Jaguar Land Rover finanzierte 'vTab', welches eine Plattform für elektronische Vehikelchecks 
 und ein Backend für Jaguar Land Rover Mitarbeitern, womit die Autohäuser bewertet werden können, anbietet 
-und die zweite Art namens "ATT" ist eine Plattform, womit Autohäuser ihre Arbeitsprozesse in Schrift, Sprache und Bild dokumentieren können.
+und die zweite Art namens 'ATT' ist eine Plattform, womit Autohäuser ihre Arbeitsprozesse in Schrift, Sprache und Bild dokumentieren können.
 Die Dokumentation folgt durch mobile Endgeräte und werden an das ERP-System weitergeleitet um diese zu archivieren.
 
 Die ERP-Systeme, die bereits im Kapitel \ref{sec:ziel} beschrieben wurden, unterstützen damit die Kunden:innen von ilexius GmbH 
@@ -206,6 +206,7 @@ Diese wiederum unterteilen sich in einzelne Jobs die den ganzen Auftrag in einze
 Sind diese Aufträge abgeschlossen, benutzen die Autohäuser ihre DMS, um eine Rechnung zu erstellen und diese im ERP-System zu archivieren.
 Das ERP bietet des Weiteren eine Schnittstelle für diese Dokumente wie z.B die Rechnungen an, die nur über Scanner die Dokumente übertragen. 
 Dort werden die Dokumente verarbeitet und mit Hilfe eines OCR Scanners digitalisiert. 
+
 Aktuell ist aber die Digitalisierung nicht in der Lage einen Kontext beziehungsweise (bzw.) einen Semantik für diese Dokumente zu erstellen.
 Somit bietet sich hier an der Stelle die Möglichkeit einen neuen Ansatz auszuprobieren um die Informationen aus diesen Dokumenten als Daten zu erhalten.
 
@@ -248,6 +249,7 @@ können weder nicht-textbasierte noch komplexere PDF Dokumente verarbeitet werde
 Des Weiteren sind die Verarbeitungen nicht automatisierbar und die Nutzergruppe 
 wird durch eine fehlende grafische Komponente eingeschränkt.
 
+Aus dieser Problematik formte 
 
 
 \chapter{Konzeption und Umsetzung} \label{chap:konundum} %KAPITEL
