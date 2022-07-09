@@ -27,7 +27,7 @@ PDF-Dokumente besitzen viele Informationen aus denen sich neue Daten generieren 
 Doch das Extrahieren von solchen Daten ist heutzutage immer noch mit Hürden verbunden.
 Dies gilt auch für die Dokumente die in den Prozessen von Autohäusern und deren Kfz-Werkstätten verwendet 
 und anschließend gelagert werden.
-Um die Frage zu beantworten inwiefern neue Daten aus diese Art von Dokumenten verarbeiten lassen, 
+Um die Frage zu beantworten, inwiefern neue Daten aus diese Art von Dokumenten verarbeiten lassen, 
 wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt welches es ermöglichen soll weiteres Wissen zu gestalten.
 
 \end{abstract}
@@ -35,12 +35,12 @@ wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt welches es erm
 \tableofcontents
 
 
-\chapter{Einleitung} \label{chap:einf}
+\chapter{Einleitung}\label{chap:einf}
 
 „Digitalisierung im Alltag voranbringen“ – Das war einer der Wahlslogans während der Bundestagswahl 2021. 
 Gemeint war damit eine zunehmende Digitalisierung im privaten Alltag vieler Bürger:innen, 
 aber auch in der Wirtschaft machte sich wachsend der Wunsch nach mehr digitalen Alternativen breit (vgl. Bundesregierung 2021). 
-Dieser Wunsch beinhaltete vor allem einen Wechsel von gängigen Papierformen verschiedenster Dokumente 
+Dieser Wunsch beinhaltete vor allem einen Wechsel von gängigen Papierformen verschiedenster Dokumente hin
 zu denselben in digitaler Ausprägung. 
 
 Genau jenes Bedürfnis nach Digitalisierung betrifft auch die vielen Arbeitnehmer:innen und Händler:innen in Autohäusern und deren Kfz-Werkstätten, 
@@ -48,23 +48,24 @@ die durch ihre beruflichen Tätigkeiten mit einer Vielzahl an Unterlagen,
 Dokumenten oder Belegen arbeiten müssen. Unter dieser Vielzahl fallen Dokumente wie Werkstatt-, Kauf- und Mietverträge 
 sowie Rechnungen oder Diagnoseberichte. 
 
-Jene Arbeitnehmenden in ausgewählten Autohäusern und deren Kfz-Werkstätten sind Kund:innen bei ilexius GmbH. 
+Jene Beschäftigte in einigen Autohäusern und deren Kfz-Werkstätten sind Kund:innen bei ilexius GmbH. 
 Ilexius bietet Enterprise-Resource-Planning (ERP) Systeme an, mit Hilfe derer Arbeitsaufträge und Arbeitsschritte innerhalb des 
 täglichen Arbeitsprozesses in Autohäusern und deren Werkstätten durch Digitalisierung 
-vereinfacht werden. In Kooperation von ilexius GmbH werde ich daher diese Problematik lösen und in die Tat umsetzen.
+vereinfacht werden. In Kooperation von ilexius GmbH werde ich daher die Problematik meiner Thesis, die ich im folgenden
+noch genauer beschreiben werde, lösen und in die Tat umsetzen.
 
 Durch eine Digitalisierung jener Dokumente eröffnen sich Vorteile wie bessere Zugänglichkeit, 
 größere Langlebigkeit und vor allem eine angepasste und leichtere Nutzung, 
 die zu einer höheren Effektivität innerhalb täglicher Arbeitsschritte führt.
 Durch bisherige erste Schritte der Digitalisierung sind diese benötigten Dokumente 
-bereits elektronisch aufgearbeitet und den Arbeitnehmenden in Autohäusern und deren Kfz-Werkstätten zur Verfügung gestellt worden. 
+bereits elektronisch aufgearbeitet und den Beschäftigten in Autohäusern und deren Kfz-Werkstätten zur Verfügung gestellt worden. 
 
 Die Folge dessen ist, dass alle Dokumente standardisiert sind und dadurch die in den Dokumenten beinhalteten Informationen 
 neu verarbeitet werden können. Eine Extraktion der Daten der einzelnen Dokumente ist jedoch nur eingeschränkt möglich, 
 da die Struktur im gängigen Gebrauch im Dateiformat Portable Document Format (PDF) festgelegt ist. 
 
 Jene Limitierung der Datenextraktion wirkt sich gleichermaßen auf die Dealer-Management-Systeme (DMS), 
-mit solchen die Arbeitnehmenden ihr Prozesse abwickeln, aus. Der daraus resultierende Arbeitsaufwand, 
+mit solchen die Mitarbeiter ihr Prozesse abwickeln, aus. Der daraus resultierende Arbeitsaufwand, 
 welcher dabei entsteht, um die Daten wiederverwendbar zu konstruieren, ist derzeit enorm. 
 
 \section{Zielsetzung}\label{sec:ziel}
@@ -88,7 +89,7 @@ Allein über das Data-Mining ist es möglich, Inhalte zu extrahieren und für an
 Der Unterschied zum gängigen Data-Mining liegt dabei in den Einschränkungen des Dateiformats: 
 der Quelltext einer solchen Datei stellt erstens keine klare Hierarchie der Daten dar und zweitens 
 besitzt es durch das Fehlen von Markierungen keine Informationen darüber, 
-was die Daten an sich darstellen sollen \cite{PDFScraperScrape}. 
+was die Daten an sich darstellen sollen~\cite{docsumoPDFScraperScrape2022}. 
 
 Mit Hilfe dieser Technik des Data-Minings soll es ermöglicht werden, aktuelle Prozesse detaillierter zu steuern und zu überwachen. 
 Des Weiteren können unter anderem Abgleiche von Rechnungen mit dem System durchgeführt werden 
@@ -105,7 +106,7 @@ Solche Prozesse können zum Beispiel über Regeln festgelegt werden, die bei Erf
 
 Eine solche Eigenschaft kann durch eine symbolische künstlichen Intelligenz (KI) abgedeckt werden, welche eine vorgegebene Verarbeitung möglich macht. 
 Hiermit bezeichnet man einen altmodischen Ansatz der KI, bei der über das Festlegen von Symbolen 
-menschliches Wissen in einer Logik gehalten wird und diese benutzt wird um weiteres Wissen zu generieren \cite{dickson_what_2019}.
+menschliches Wissen in einer Logik gehalten wird und diese benutzt wird um weiteres Wissen zu generieren~\cite{dicksonWhatSymbolicArtificial2019}.
 Durch eine Parametrisierung einer solchen KI kann dann die Unschärfe der ausgewählten Daten festgelegt werden, 
 damit eine Feineinstellung stattfinden kann. 
 Das heißt, der Benutzer eines solchen Systems soll sich beginnend von groben Definitionen für die Verarbeitung 
@@ -161,7 +162,7 @@ sich dann mit den Systemen verbinden soll um die Ausführbarkeit der Funktionali
 Hier werden dann die Komponenten zusammengeführt um ein gemeinsames System zu ermöglichen, 
 welches dann gegebenenfalls weitere Testschritte bedarf. 
 Sobald diese eine erfolgreiche Form annimmt kommt der Teil der Continuous Integration hinzu, 
-womit das System einen Zustand der Betrieblichkeit annehmen kann. 
+womit das System einen Zustand der Instandhaltung annehmen kann. 
 Über Testing sollen so mögliche Fehlerquellen entdeckt werden bevor diese auftreten können.
 
 Unter die Zielsetzung für die beiden Ansätze fallen die Kundendaten mit den Eigenschaften wie 
@@ -182,38 +183,41 @@ Zum Schluss werden sich die Ergebnisse des gesamten Systems betrachtet und ein A
 Um die Problematik detaillierter darzustellen und um eine Übersicht zu ermöglichen, 
 werden in diesem Kapitel der Rahmen der Problematik aus technischer Sicht vertieft dargestellt.
 Hierbei sollen die möglichen Technologien abgewogen und evaluiert werden. 
-Zunächst einmal wird der Kontext ausführlicher eklärt.
+Zunächst einmal wird der Kontext ausführlicher erklärt.
 
 \section{Kontext}\label{sec:kon}
 
 Im Automobilbereich wird der Verkauf von Kraftfahrzeugen in zwei Segmente aufgeteilt: dem Sales-Bereich, indem es sich um den Verkauf 
 von Neu- und Gebrauchtwagen dreht und dem After-Sales-Bereich, indem eine Bindung zum Kunden über den Verkauf von 
-Verschleiß- und Ersatzteilen geschaffen wird. \cite{theuerer_was_nodate}
+Verschleiß- und Ersatzteilen geschaffen wird.~\cite{theuererWasMachtSales}
 Diese Aufteilung der Segmente wird auch von den Autohäusern angewendet und für diese werden jeweils gängige Abläufe als Prozesse benutzt.
 
 Für den After-Sales-Bereich bietet ilexius GmbH zwei Arten von ERP-Systeme an. 
-Die erste Art ist das von der Automobilmarke Jaguar Land Rover finanzierte 'vTab', welches eine Plattform für elektronische Vehikelchecks 
+Die erste Art ist das von der Automobilmarke Jaguar Land Rover finanzierte `vTab', welches eine Plattform für elektronische Fahrzeugkontrollen 
 und ein Backend für Jaguar Land Rover Mitarbeitern, womit die Autohäuser bewertet werden können, anbietet 
-und die zweite Art namens 'ATT' ist eine Plattform, womit Autohäuser ihre Arbeitsprozesse in Schrift, Sprache und Bild dokumentieren können.
+und die zweite Art namens `ATT' ist eine Plattform, womit Autohäuser ihre Arbeitsprozesse in Schrift, Sprache und Bild dokumentieren können.
 Die Dokumentation folgt durch mobile Endgeräte und werden an das ERP-System weitergeleitet um diese zu archivieren.
 
-Die ERP-Systeme, die bereits im Kapitel \ref{sec:ziel} beschrieben wurden, unterstützen damit die Kunden:innen von ilexius GmbH 
+Die ERP-Systeme, die bereits im Kapitel~\ref{sec:ziel} beschrieben wurden, unterstützen damit die Kunden:innen von ilexius GmbH 
 in den Autohäusern und deren Werkstätten mit der Planung, der Steuerung und der Verwaltung von verschiedenen Aufgaben in diesem After-Sales-Bereich.
 
 Eine Art der Aufgaben sind die Arbeitsaufträge, bei der es sich in den meisten Fällen um die Behandlung eines Autos samt Kundendaten handelt. 
 Diese wiederum unterteilen sich in einzelne Jobs die den ganzen Auftrag in einzelne Teilschritte zur Vervollständigung des Arbeitsauftrags führen.
 
 Sind diese Aufträge abgeschlossen, benutzen die Autohäuser ihre DMS, um eine Rechnung zu erstellen und diese im ERP-System zu archivieren.
-Das ERP bietet des Weiteren eine Schnittstelle für diese Dokumente wie z.B die Rechnungen an, die nur über Scanner die Dokumente übertragen. 
+Das ERP bietet des Weiteren eine Schnittstelle für diese Dokumente wie z.B die Rechnungen oder die Garantieaufträge an, 
+die nur über Scanner die Dokumente übertragen. 
 Dort werden die Dokumente verarbeitet und mit Hilfe eines OCR Scanners digitalisiert. 
 
 Aktuell ist aber die Digitalisierung nicht in der Lage einen Kontext beziehungsweise (bzw.) einen Semantik für diese Dokumente zu erstellen.
-Somit bietet sich hier an der Stelle die Möglichkeit einen neuen Ansatz auszuprobieren um die Informationen aus diesen Dokumenten als Daten zu erhalten.
+Idealerweise soll dies genutzt werden, um aus den Dokumenten Arbeitsaufträge zu generieren und somit zu digitalisieren.
+Somit bietet sich hier an der Stelle die Möglichkeit einen neuen Ansatz auszuprobieren, um die Informationen 
+aus diesen Dokumenten als Daten zu erhalten.
 
 \section{Analyse}\label{sec:ana}
 
 Das Extrahieren von Daten ist eine gängige Methode um Informationen aus verschiedenen Systemen wie Datenbanken 
-oder Software as a Service (SaaS) Plattformen zu beschaffen \cite{stichdata_what_nodate}. 
+oder Software as a Service (SaaS) Plattformen zu beschaffen~\cite{stichdataWhatDataExtraction}. 
 Durch diese Beschaffung können die Daten weiter verarbeitet werden um neue Lösungsmöglichkeiten für das eigene System anzubieten.
 Die Arten des Extrahierens unterscheiden sich hierbei im Zeitverlauf und der Herangehensweise. 
 So können Diese extrahiert werden sobald Änderungen der Daten beobachtet oder mitgeteilt werden, 
@@ -225,42 +229,62 @@ bei Anpassungen der ursprünglichen Information neu verarbeitet werden müssen.
 Da sich die Problematik im Rahmen der Thesis auf Dokumente, die bereits im ERP-System archiviert  wurden, 
 bezieht, trifft dieser Fall hier nicht zu.
 
+\subsection{Extraktionswerkzeuge}\label{sec:exwerk}
+
 Für das Data Mining von PDF Dateien existieren bereits Lösungen, die von großen Unternehmen wie Amazon Web Services (AWS) 
 oder Adobe bereits angeboten werden. 
-So nutzen Produkte wie Textractor \cite{amazon_intelligente_nodate} von AWS oder Adobes Extractor API 
-\cite{developers_extract_nodate} Künstliche Intelligenz, Machine Learning und Optical Character Recognition (OCR) 
+So nutzen Produkte wie Textractor~\cite{amazonIntelligenteExtraktionText} von AWS oder Adobes Extractor API~\cite{developersExtractTextPDF} Künstliche Intelligenz, Machine Learning und Optical Character Recognition (OCR) 
 um die Extraktion der Daten zu ermöglichen. 
-Unternehmen wie ABBYY \cite{abbyy_pdf_nodate} habe sich bereits auf diesem Gebiet spezialisiert 
+Unternehmen wie ABBYY~\cite{abbyyPDFSoftwareOpen} habe sich bereits auf diesem Gebiet spezialisiert 
 und sind erfolgreich mit der Datenextraktion. 
 Auch existieren bereits Open-Source Bibliotheken, die sich mit dem Entnehmen der Daten aus PDF Dokumenten beschäftigen.
 
 Die Meisten davon lassen sich hinsichtlich der Aufteilung der Aufgaben gruppieren. 
-So erlauben unter anderem PDFMiner \cite{unixuser_pdfminer_nodate} oder Apache Tika \cite{apache_apache_nodate} Texte aus PDF Dokumenten zu gewinnen. 
+So erlauben unter anderem PDFMiner~\cite{unixuserPDFMiner} oder Apache Tika~\cite{apacheApacheTikaApache} Texte aus PDF Dokumenten zu gewinnen. 
 Funktionalitäten für das Extrahieren von Daten aus Tabellen bieten Projekte wie 
-Tabula \cite{tabulapdf_tabulapdftabula_nodate} oder Camelot \cite{camelot_camelot_2022}
+Tabula~\cite{tabulapdfTabulapdfTabulaTabula} oder Camelot~\cite{camelotCamelotPDFTable2022}
 an womit ein weiterer Aspekt durch die Nutzung abgedeckt wäre. 
 
-Bei Beiden zeigen sich niedrige Fehlerquoten auf \cite{atlanhq_comparison_nodate} und die Nutzung von einer Fuzzy Logik. 
+Bei Beiden zeigen sich niedrige Fehlerquoten auf~\cite{atlanhqComparisonOtherPDF} und die Nutzung von einer Fuzzy Logik. 
 Camelot ermöglicht dazu noch ein Web Interface womit die simple Extraktion über einen Browser lokal stattfinden kann.
-Andere Bibliotheken wie Textricator \cite{measures_measuresforjusticetextricator_nodate} sind umfangreicher gestaltet und ergeben geeignete Schnittstellen für die Anfragen 
-spezifischer Inhalte. 
+Andere Bibliotheken wie Textricator~\cite{measuresMeasuresforjusticeTextricatorTextricator} sind umfangreicher gestaltet 
+und ergeben geeignete Schnittstellen für die Anfragen spezifischer Inhalte. 
 Doch auch wenn dies mit textbasierten Dokumenten funktioniert und der Export flexibel ist, 
-können weder nicht-textbasierte noch komplexere PDF Dokumente verarbeitet werden. 
+können zunächst weder nicht-textbasierte noch komplexere PDF Dokumente verarbeitet werden. 
 Des Weiteren sind die Verarbeitungen nicht automatisierbar und die Nutzergruppe 
 wird durch eine fehlende grafische Komponente eingeschränkt.
 
-Aus dieser Problematik formte 
+Aus dieser Problematik kommend, zeigt sich, dass community-angetriebene Projekte wie PdfMiner.six~\cite{pdfminerWelcomePdfminerSix}, 
+welches eine Abspaltung des bereits erwähnten PdfMiner ist, und PdfPlumber~\cite{singer-vinePdfplumber2022}, 
+welches wiederum auf PdfMiner.six basiert, als geeignete Alternativen darstellen. 
+PdfPlumber bietet im Vergleich zu seinem Ausgangsprojekt dazu noch eine Tabellenextraktion und bietet für beide Aspekte 
+der Extraktion eine Schnittstelle an. 
 
+Die Hürden für eine komplett automatische Extraktion bestehen trotzdem noch.
+So ist nämlich nicht klar, wie das zu erwartende Verhalten der Logik der Extraktion für den generellen Fall auszusehen hat.
+Eine differenzierte Extraktion für weitere Eigenschaften eines Dokuments wie die Zeilenumbrüche von Absätzen, 
+die Seitennummern, die Kopf- und Fußzeilen, die Formatierung et cetera (etc.) ist daher nötig.
+Die Frage, die sich dabei stellt ist, welche Eigenschaften eines Dokuments genau zusätzlich extrahiert werden sollen. 
+Um eine Auswahl zu treffen, müssen die Arten der Dokumente, die in dem ERP-System auftreten, genauer durchleuchtet werden.
 
-\chapter{Konzeption und Umsetzung} \label{chap:konundum} %KAPITEL
+\subsection{Dokumentarten}\label{sec:dokart}
+
+Bei den Dokumenten, die in das ERP-System eingescannt werden, handelt es sich in der Mehrheit um Garantieaufträge und Rechnungen. 
+Jedes Autohaus benutzt hierbei ein individuelles Dokumentenmuster.
+Dem Umfang dieser Thesis geschuldet werde ich mich auf drei Dokumententypen beschränken und anhand jener drei Typen mein Vorgehen 
+exemplarisch demonstrieren.
+
+In Abbildung ??? wird die erste Art eines Auftrags dargestellt.
+
+\chapter{Konzeption und Umsetzung}\label{chap:konundum} %KAPITEL
 
 Für den Sprung zur Umsetzung bedarf es als Nächstes die Konzeption des technischen Rahmens. 
 
-\chapter{Ergebnisse} \label{chap:erg}
+\chapter{Ergebnisse}\label{chap:erg}
 
 
 
-\chapter{Ausblick und Fazit} \label{chap:auf}
+\chapter{Ausblick und Fazit}\label{chap:auf}
  
 Im Rahmen der Abschlussarbeit wurde 
  technische Funktionalitäten eingeführt werden um dem Kapitän die Webanwendung als PWA anzubieten.
@@ -282,15 +306,15 @@ Aus den Konzepten und der Umsetzung ergeben sich viele weitere Ideen und Ansätz
 \bibliographystyle{plain} % Literaturverzeichnis
 \begin{btSect}{thesis} % mit bibtopic Quellen trennen
 \section*{Literaturverzeichnis}
-\btPrintCited
+\btPrintCited{}
 \end{btSect}
 \begin{btSect}{online}
 \section*{Online-Quellen}
-\btPrintCited
+\btPrintCited{}
 \end{btSect}
 % dann mit "bibtex thesis1" und "bibtex thesis2" arbeiten
 
 \end{document}
 ;;; Local Variables:
-;;; ispell-local-dictionary: "de_DE-neu"
+;;; ispell-local-dictionary: `de_DE-neu'
 ;;; End:
