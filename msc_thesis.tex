@@ -23,12 +23,14 @@
 \include{vorspann} % Titelseite, Erklärungen, etc.
 
 \begin{abstract} 
-PDF-Dokumente besitzen viele Informationen aus denen sich neue Daten generieren lassen können.
+PDF-Dokumente besitzen viele Informationen, aus denen sich neue Daten generieren lassen können.
 Doch das Extrahieren von solchen Daten ist heutzutage immer noch mit Hürden verbunden.
-Dies gilt auch für die Dokumente die in den Prozessen von Autohäusern und deren Kfz-Werkstätten verwendet 
+Dies gilt auch für die Dokumente, die in den Prozessen von Autohäusern und deren Kfz-Werkstätten verwendet 
 und anschließend gelagert werden.
-Um die Frage zu beantworten, inwiefern neue Daten aus diese Art von Dokumenten verarbeiten lassen, 
-wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt welches es ermöglichen soll weiteres Wissen zu gestalten.
+Um die Frage zu beantworten, inwiefern neue Daten aus dieser Art von Dokumenten verarbeitet werden können, 
+wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt, welches es ermöglichen soll, weiteres Wissen zu gestalten.
+Dieses System soll dabei Ansätze aus der künstlichen Intelligenz nutzen und 
+eine grafische Schnittstelle für die Benutzer des Systems anbieten.
 
 \end{abstract}
 
@@ -38,7 +40,7 @@ wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt welches es erm
 \chapter{Einleitung}\label{chap:einf}
 
 „Digitalisierung im Alltag voranbringen“ – Das war einer der Wahlslogans während der Bundestagswahl 2021. 
-Gemeint war damit eine zunehmende Digitalisierung im privaten Alltag vieler Bürger:innen, 
+Gemeint war damit die Forderung nach einer zunehmende Digitalisierung im privaten Alltag vieler Bürger:innen, 
 aber auch in der Wirtschaft machte sich wachsend der Wunsch nach mehr digitalen Alternativen breit (vgl. Bundesregierung 2021). 
 Dieser Wunsch beinhaltete vor allem einen Wechsel von gängigen Papierformen verschiedenster Dokumente hin
 zu denselben in digitaler Ausprägung. 
@@ -65,7 +67,7 @@ neu verarbeitet werden können. Eine Extraktion der Daten der einzelnen Dokument
 da die Struktur im gängigen Gebrauch im Dateiformat Portable Document Format (PDF) festgelegt ist. 
 
 Jene Limitierung der Datenextraktion wirkt sich gleichermaßen auf die Dealer-Management-Systeme (DMS), 
-mit solchen die Mitarbeiter:innen ihr Prozesse abwickeln, aus. Der daraus resultierende Arbeitsaufwand, 
+mit solchen die Mitarbeiter:innen ihre Prozesse abwickeln, aus. Der daraus resultierende Arbeitsaufwand, 
 welcher dabei entsteht, um die Daten wiederverwendbar zu konstruieren, ist derzeit enorm. 
 
 \section{Zielsetzung}\label{sec:ziel}
@@ -77,33 +79,35 @@ einer bereits existierenden Benutzeranwendung via gängiges Kopieren und Einfüg
 Dieser Schritt funktioniert zwar im Regelfall, ist jedoch oftmals stark fehleranfällig und kann lückenhaft sein. 
 
 In so einem Fall muss das Einfügen und Kopieren manuell durchgeführt werden, 
-was bei einer riesigen Menge an Dokumente zu einer monotonen Arbeit führt. 
+was bei einer riesigen Menge an Dokumente zu einer monotonen Arbeit für die Händler der Autohäuser führt. 
 Andernfalls können die Daten eigenhändig abgeschrieben werden – jener Vorgang benötigt jedoch viele Ressourcen.
-Eher geeignet ist es, einen Datenkonverter für die PDF Dateien zu nutzen, um so die Dokumente in Bilder beispielsweise umzuwandeln, 
-wodurch die Daten zugänglicher sind, aber immer noch verarbeitet werden müssen, 
-was den gesamten Vorgang als eine Notlösung wirken lässt.
+Eher geeignet ist es, einen Datenkonverter für die PDF Dateien zu nutzen, um so die Dokumente beispielsweise in Bilder umzuwandeln, 
+wodurch die Daten zugänglicher sind, aber immer noch verarbeitet werden müssen.
+Die letztgenannte Möglichkeit wirkt allerdings eher wie eine Übergangslösung als eine professionelle endgültige Durchführung.
 
 Aufgrund dieser bisherigen teils aufwendigen und mit Fehlern verbundenen Möglichkeiten möchte ich mich in meiner Thesis 
 von diesen Optionen abwenden und das Data-Mining nutzen. 
 Das Data-Mining soll eine Automatisierung unterstützen, mit der Daten aus dem PDF-Dokument extrahiert werden. 
 Allein über das Data-Mining ist es möglich, Inhalte zu extrahieren und für andere Systeme bereit zu stellen. 
 
-Der Unterschied zum gängigen Data-Mining liegt dabei in den Einschränkungen des Dateiformats: 
+Der Unterschied zwischen meiner Verwendung des Data-Minings und zum gängigen Data-Mining 
+liegt dabei in den Einschränkungen des Dateiformats: 
 der Quelltext einer solchen Datei stellt erstens keine klare Hierarchie der Daten dar und zweitens 
 besitzt es durch das Fehlen von Markierungen keine Informationen darüber, 
 was die Daten an sich darstellen sollen~\cite{docsumoPDFScraperScrape2022}. 
 
 Mit Hilfe dieser Technik des Data-Minings soll es ermöglicht werden, aktuelle Prozesse detaillierter zu steuern und zu überwachen. 
 Des Weiteren können unter anderem Abgleiche von Rechnungen mit dem System durchgeführt werden 
-und weitere Datenanalyse und Reporting kreiert werden.
-Mit dem derzeitigen Stand der Datenextraktion können jedoch lediglich Agierende aus dem technischen Bereich arbeiten. 
+und weitere Datenanalysen und Reporting kreiert werden.
+Mit dem derzeitigen Stand der Datenextraktion können jedoch lediglich Agierende aus dem technischen Bereich arbeiten, 
+da allein sie das dafür technisch notwendige Know-how besitzen. 
 Die Technologien hierfür benutzen unterschiedliche Ansätze und müssen daher zunächst für diesen Fall ausgewählt werden. 
 
 Damit jedoch auch für Agierende innerhalb des technischen Bereichs die Nutzung nicht zu abstrakt bleibt, 
 soll durch die Entwicklung eines Systems der Zugriff greifbarer gestaltet werden, 
-welches wiederum eine benutzerfreundliche Anwendung zur Verfügung stellen soll. 
-Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können. 
-Des Weiteren sollen die Vorgänge eine niedrigere Fehlerquote aufzeigen. 
+welches wiederum allein durch eine benutzerfreundliche Anwendung ermöglicht wird. 
+Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können;
+zudem sollen die Vorgänge eine niedrigere Fehlerquote aufzeigen. 
 Die Prozesse müssen außerdem während des gesamten Ablaufs über eine Steuerung und Regelung kontrollierbar sein.
 Solche Prozesse können zum Beispiel über Regeln festgelegt beziehungsweise gesteuert werden, 
 die bei einer Erfüllung weitere Aktionen oder Regeln auslösen können.
@@ -301,7 +305,7 @@ Dem Umfang dieser Thesis geschuldet werde ich mich daher auf drei Dokumententype
 und anhand jener drei Typen mein Vorgehen exemplarisch demonstrieren.
 
 In Abbildung~\ref{fig:care_g} wird die erste Art eines Auftrags dargestellt.
-Bei diesem digitalen Schriftstück handelt es sich zunächst von der Form her um eine Garantierechnung.
+Bei diesem digitalen Schriftstück handelt es sich zunächst von der Form her um eine Garantierechnung des Care Warranty DMS.
 Das Dokument besitzt hierbei drei Bereiche, die relevante Informationen für einen Arbeitsauftrag enthalten.
 In der oberen Hälfte befindet sich zunächst das Adressfeld, welches die Kundeninformationen im genormten Adressformat enthält, 
 und ein weiterer Abschnitt, welches die Fahrzeugdaten festhält.
@@ -326,8 +330,8 @@ den zuletzt abgelesen Kilometerzählerstand, der Arbeitsauftragsnummer, der Fahr
 Dagegen wird im unteren Bereich eine Tabelle durch die Aufzählung der einzelnen Jobs und Joblines dargestellt.
 Die Tabelle ist an der Kopfzeile zu erkennen, welche die Jobs und Joblines in den Arbeitswert beziehungsweise in die Teilenummer, 
 in der Bezeichnung, in die Menge des Arbeitswertes, in den Preis und in den Betrag übersichtlich aufteilt.
-Die Menge wird hierbei als Reparaturzeit 
-Bei dieser Tabelle existiert nur für die Kopfzeile eine untere Trennlinie.
+Die Menge wird hierbei als Reparaturzeit oder Anzahl angegeben.
+AUßerdem existiert b<ei dieser Tabelle nur für die Kopfzeile eine untere Trennlinie.
 Auch hier sind Probleme bezüglich (bzgl.) der Form der Tabelle zu erkennen.
 
 Während die ersten vier Zeilen noch unauffällig erscheinen, besitzt die fünfte Zeile 
@@ -339,13 +343,28 @@ in mehreren Zeileneinträgen Überläufe bei den Arbeitswerten bzw. den Teilenum
 In der letzte Zeile ist außerdem zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
 was eine eindeutige Erkennung der Positionierung noch weiter erschwert.
 Inhaltlich werden Jobs mit den dazu gehörigen Joblines darunter folgend dargestellt. 
+
 Dies ist durch die Codierung der Arbeitswerte bzw. der Teilenummer zu erkennen 
 und die Hierarchie ist durch das jeweilige Dealer-Management-System vorgegeben.
-
 Unterhalb der Tabelle werden am Ende des Dokuments noch die gesamten Kosten summiert aus den Betragseinträgen dargestellt, 
 welche wiederum sich in den Kosten der Arbeit und der Teile aufteilen lassen.
 
-In Abbildung \ref{fig:formel1_r} 
+In Abbildung~\ref{fig:formel1_r} wird eine Rechnung der Formel 1 DMS dargestellt.
+Hier ist im Vergleich zur vorherigen Abbildung~\ref{fig:care_g} ein ähnlicher Aufbau ersichtlich.
+Während das Adressfeld gewöhnlich erscheint, sind jedoch die Fahrzeug- und Kundendaten diesmal 
+in zwei unterschiedlichen Tabellen aufgeteilt.
+
+Die Erste von diesen Tabellen befindet sich im oberen Teil der rechten Seite des Dokuments, 
+in welchen die einzelnen Kundeninformationen aufgelistet sind.
+Die Tabelle für die Fahrzeuginformationen befindet sich im unteren Bereich der oberen Hälfte des Dokuments 
+und erweist sich durch das Vorhandensein der Trennlinien als eine klassische Tabelle.
+Im letzten Teil der Formel 1 Rechnung befindet sich die Liste der Job und Joblines.
+
+Hier fallen ähnliche Problematiken, wie die unterschiedlichen Abstände zwischen den Spalten der Einträge, 
+im Vergleich zu dem Care Garantieauftrag auf.
+Auch existieren Überläufe der Einträge, allerdings treten diese nur für die Felder der Bezeichnung auf.
+Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträge. 
+
 
 
 \begin{figure}[htb]
