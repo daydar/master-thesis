@@ -23,14 +23,16 @@
 \include{vorspann} % Titelseite, Erklärungen, etc.
 
 \begin{abstract} 
+
 PDF-Dokumente besitzen viele Informationen, aus denen sich neue Daten generieren lassen können.
 Doch das Extrahieren von solchen Daten ist heutzutage immer noch mit Hürden verbunden.
 Dies gilt auch für die Dokumente, die in den Prozessen von Autohäusern und deren Kfz-Werkstätten verwendet 
 und anschließend gelagert werden.
 Um die Frage zu beantworten, inwiefern neue Daten aus dieser Art von Dokumenten verarbeitet werden können, 
-wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt, welches es ermöglichen soll, weiteres Wissen zu gestalten.
-Dieses System soll dabei Ansätze aus der künstlichen Intelligenz nutzen und 
-eine grafische Schnittstelle für die Benutzer des Systems anbieten.
+wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt, welches es ermöglichen soll, weiteres Wissen zu gestalten 
+beziehungsweise zu generieren.
+Dieses System will dabei Ansätze aus der künstlichen Intelligenz nutzen und 
+eine grafische Schnittstelle für die Möglichkeit der menschlichen Nutzung anbieten.
 
 \end{abstract}
 
@@ -257,7 +259,7 @@ bei Anpassungen der ursprünglichen Information neu verarbeitet werden müssen.
 Da sich die Problematik im Rahmen der Thesis auf Dokumente, die bereits im ERP-System archiviert  wurden, 
 bezieht, trifft dieser Fall hier nicht zu.
 
-\subsection{Extraktionswerkzeuge}\label{sec:exwerk}
+\subsection{Extraktionsbibliotheken}\label{sec:exwerk}
 
 Für das Data Mining von PDF Dateien existieren bereits Lösungen, die von großen Unternehmen wie Amazon Web Services (AWS) 
 oder Adobe bereits angeboten werden. 
@@ -287,8 +289,12 @@ wird durch eine fehlende grafische Komponente eingeschränkt.
 Aus dieser Problematik kommend, zeigt sich, dass community-angetriebene Projekte wie PdfMiner.six~\cite{pdfminerWelcomePdfminerSix}, 
 welches eine Abspaltung des bereits erwähnten PdfMiner ist, und PdfPlumber~\cite{singer-vinePdfplumber2022}, 
 welches wiederum auf PdfMiner.six basiert, als geeignete Alternativen darstellen. 
-PdfPlumber bietet im Vergleich zu seinem Ausgangsprojekt dazu noch eine Tabellenextraktion und bietet für beide Aspekte 
+PdfPlumber stellt im Vergleich zu seinem Ausgangsprojekt dazu noch eine Tabellenextraktion bereit und bietet für beide Aspekte 
 der Extraktion eine Schnittstelle an. 
+Es hält eine Kommandozeile, die Möglichkeit, visuelles Debugging zu nutzen (siehe Abbildung ...), 
+und Funktionalitäten wie das Entfernen von Duplikaten in Texten, bereit.
+Letzteres genannte Feature kann dann zum Einsatz kommen, wenn Dokumente bei ihrer Erstellung oder Verarbeitung 
+versehentlich die selben Einträge nochmal im Quellcode des PDFs besitzen. 
 
 Die Hürden für eine komplett automatische Extraktion bestehen trotzdem noch.
 So ist nämlich nicht klar, wie das zu erwartende Verhalten der Logik der Extraktion für den generellen Fall auszusehen hat.
@@ -328,8 +334,10 @@ den zuletzt abgelesen Kilometerzählerstand, der Arbeitsauftragsnummer, der Fahr
 `Vehicle Identification Number' (VIN) und das Datum der Erstellung des Arbeitsauftrags.
 
 Dagegen wird im unteren Bereich eine Tabelle durch die Aufzählung der einzelnen Jobs und Joblines dargestellt.
-Die Tabelle ist an der Kopfzeile zu erkennen, welche die Jobs und Joblines in den Arbeitswert beziehungsweise in die Teilenummer, 
-in der Bezeichnung, in die Menge des Arbeitswertes, in den Preis und in den Betrag übersichtlich aufteilt.
+Die Tabelle ist an der Kopfzeile zu erkennen, welche die Jobs und Joblines in den Arbeitszeitwert beziehungsweise in die Teilenummer, 
+in der Bezeichnung, in die Menge des Arbeitszeitwertes, in den Preis und in den Betrag übersichtlich aufteilt.
+Der Arbeitszeitwert ist eine Einheit, die für eine genaue Abrechnung der Arbeitszeiten, 
+um eine Aufteilung der Stunden zu ermöglichen.~\cite{BedeutungAWArbeitswert}
 Die Menge wird hierbei als Reparaturzeit oder Anzahl angegeben.
 AUßerdem existiert b<ei dieser Tabelle nur für die Kopfzeile eine untere Trennlinie.
 Auch hier sind Probleme bezüglich (bzgl.) der Form der Tabelle zu erkennen.
@@ -339,15 +347,23 @@ bei der Bezeichnung einen längeren Text, sodass der restliche Text in weiteren 
 darunter geschrieben steht.
 
 Während die Abstände zwischen den Spalten insgesamt konsistenter erscheinen, sind in der Abbildung~\ref{fig:care_g} 
-in mehreren Zeileneinträgen Überläufe bei den Arbeitswerten bzw. den Teilenummern zu erkennen.
+in mehreren Zeileneinträgen Überläufe bei den Arbeitszeitwerten bzw. den Teilenummern zu erkennen.
 In der letzte Zeile ist außerdem zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
 was eine eindeutige Erkennung der Positionierung noch weiter erschwert.
 Inhaltlich werden Jobs mit den dazu gehörigen Joblines darunter folgend dargestellt. 
 
-Dies ist durch die Codierung der Arbeitswerte bzw. der Teilenummer zu erkennen 
+Dies ist durch die Codierung der Arbeitszeitwerte bzw. der Teilenummer zu erkennen 
 und die Hierarchie ist durch das jeweilige Dealer-Management-System vorgegeben.
+So fangen die Codes der Jobs mit `00' an und Reparaturzeiten mit besitzen eine sechsstellige Zeichenkette aus Ziffern.
 Unterhalb der Tabelle werden am Ende des Dokuments noch die gesamten Kosten summiert aus den Betragseinträgen dargestellt, 
 welche wiederum sich in den Kosten der Arbeit und der Teile aufteilen lassen.
+
+\begin{figure}[htb]
+    \centering
+    \frame{\includegraphics[width=.7\textwidth]{images/formel1_rechnung.pdf}}
+    \caption{Exemplar einer Rechnung}
+~\label{fig:formel1_r}
+\end{figure}
 
 In Abbildung~\ref{fig:formel1_r} wird eine Rechnung der Formel 1 DMS dargestellt.
 Hier ist im Vergleich zur vorherigen Abbildung~\ref{fig:care_g} ein ähnlicher Aufbau ersichtlich.
@@ -363,16 +379,7 @@ Im letzten Teil der Formel 1 Rechnung befindet sich die Liste der Job und Joblin
 Hier fallen ähnliche Problematiken, wie die unterschiedlichen Abstände zwischen den Spalten der Einträge, 
 im Vergleich zu dem Care Garantieauftrag auf.
 Auch existieren Überläufe der Einträge, allerdings treten diese nur für die Felder der Bezeichnung auf.
-Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträge. 
-
-
-
-\begin{figure}[htb]
-    \centering
-    \frame{\includegraphics[width=.7\textwidth]{images/formel1_rechnung.pdf}}
-    \caption{Exemplar einer Rechnung}
-~\label{fig:formel1_r}
-\end{figure}
+Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträge angezeigt.
 
 \begin{figure}[htb]
     \centering
@@ -381,10 +388,55 @@ Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträg
 ~\label{fig:kfz3000_w}
 \end{figure}
 
+Die letzten Dokumentart wird in der Abbildung~\ref{fig:kfz3000_w} dargestellt.
+Hier handelt es sich um einen Werkstattauftrag von dem Dealer-Management-System KFZ3000.
+Dieser Auftrag lässt sich von der Aufteilung der Segmente mit dem Care Warranty Dokument geeigneter vergleichen.
+Während auch das Adressfeld sich wieder normiert darstellt, werden Kunden- und Fahrzeugdaten 
+über Schlüssel-Wert Anordnungen in einem größeren Feld dargestellt.
+
+Die untere Hälfte des Werkstattauftrags besitzt auch wie die bereits anderen genannten Dokumente 
+eine tabellenähnliche Auflistung der Job und Joblines. 
+Auch hier sind wieder Überläufe und unterschiedliche Abstände in dem Bereich zu erkennen.
+Dazu kommt, dass, im Gegensatz zu den anderen Dokumentarten, 
+zwischen den Zeilen ein Art Summenstrich hinzugefügt wird, der die Anzahl der Jobs anzeigen soll.
+Außerdem wird im unteren Bereich des Dokuments nur die gesamte Betragssumme dargestellt.
+
+Insgesamt lässt sich feststellen, dass alle vorgestellten Dokumentarten mehrere Hürden 
+als gemeinsame Problematik verbindet. 
+Die dargebotene Darstellung der Kunden- und Fahrzeuginformationen wird entweder in einer Tabellenform 
+gemeinsam oder in zwei verschiedenen Tabellen abgebildet.
+Diese Tabellenform besitzt außerdem selten Trennlinien, um die eine derartige Tabelle als solche definieren zu können.
+Für die Job und Joblines tritt das selbe Problem auf.
+Diese Auflistung wird nur durch ihre Anordnung der Einträge und deren Abstände dazwischen als solche erkenntlich, 
+bricht in den prototypartigen Dokumenten aber mindestens einmal die Form durch Überläufe oder Verschiebungen der Texte.
+Damit diese Formen durch eine Logik des Extrahierens abgedeckt werden, scheint die Möglichkeit der Fallunterscheidung zu bestehen.
+Bei dieser Unterscheidung sollen die Dokumente anhand ihrer Arten konzipiert und definiert werden, 
+sodass die Entnahme detaillierter stattfinden kann.
+
+Für andere Bereiche eines Dokuments wie dem Adressfeld werden gewöhnliche Funktionalitäten der Extraktion genutzt und zur Verfügung gestellt.
+Diese können dann von allen weiteren Dokumentarten geteilt und genutzt werden, 
+womit eine Verallgemeinerung verschiedener Dokumententypen ermöglicht wird.
+
+\subsection{Frameworks}
+
+Damit das System für den Prozess der Extraktion als solches sich zeitnah umsetzen lässt, 
+können Frameworks dem ganzen entgegenkommen.
+
+
+
 
 \chapter{Konzeption und Umsetzung}\label{chap:konundum} %KAPITEL
 
+\section{Aufbau}
+
+\section{Symbolische KI}
+
+\section{Entwicklungsumgebung}
+
+\section{Machine Learning}
+
 Für den Sprung zur Umsetzung bedarf es als Nächstes die Konzeption des technischen Rahmens. 
+
 
 \chapter{Ergebnisse}\label{chap:erg}
 
