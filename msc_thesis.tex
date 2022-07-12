@@ -23,12 +23,16 @@
 \include{vorspann} % Titelseite, Erklärungen, etc.
 
 \begin{abstract} 
-PDF-Dokumente besitzen viele Informationen aus denen sich neue Daten generieren lassen können.
+
+PDF-Dokumente besitzen viele Informationen, aus denen sich neue Daten generieren lassen können.
 Doch das Extrahieren von solchen Daten ist heutzutage immer noch mit Hürden verbunden.
-Dies gilt auch für die Dokumente die in den Prozessen von Autohäusern und deren Kfz-Werkstätten verwendet 
+Dies gilt auch für die Dokumente, die in den Prozessen von Autohäusern und deren Kfz-Werkstätten verwendet 
 und anschließend gelagert werden.
-Um die Frage zu beantworten, inwiefern neue Daten aus diese Art von Dokumenten verarbeiten lassen, 
-wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt welches es ermöglichen soll weiteres Wissen zu gestalten.
+Um die Frage zu beantworten, inwiefern neue Daten aus dieser Art von Dokumenten verarbeitet werden können, 
+wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt, welches es ermöglichen soll, weiteres Wissen zu gestalten 
+beziehungsweise zu generieren.
+Dieses System will dabei Ansätze aus der künstlichen Intelligenz nutzen und 
+eine grafische Schnittstelle für die Möglichkeit der menschlichen Nutzung anbieten.
 
 \end{abstract}
 
@@ -38,13 +42,13 @@ wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt welches es erm
 \chapter{Einleitung}\label{chap:einf}
 
 „Digitalisierung im Alltag voranbringen“ – Das war einer der Wahlslogans während der Bundestagswahl 2021. 
-Gemeint war damit eine zunehmende Digitalisierung im privaten Alltag vieler Bürger:innen, 
+Gemeint war damit die Forderung nach einer zunehmende Digitalisierung im privaten Alltag vieler Bürger:innen, 
 aber auch in der Wirtschaft machte sich wachsend der Wunsch nach mehr digitalen Alternativen breit (vgl. Bundesregierung 2021). 
 Dieser Wunsch beinhaltete vor allem einen Wechsel von gängigen Papierformen verschiedenster Dokumente hin
 zu denselben in digitaler Ausprägung. 
 
-Genau jenes Bedürfnis nach Digitalisierung betrifft auch die vielen Arbeitnehmer:innen und Händler:innen in Autohäusern und deren Kfz-Werkstätten, 
-die durch ihre beruflichen Tätigkeiten mit einer Vielzahl an Unterlagen, 
+Genau jenes Bedürfnis nach Digitalisierung betrifft auch die vielen Arbeitnehmer:innen und Händler:innen in Autohäusern 
+und deren Kfz-Werkstätten, die durch ihre beruflichen Tätigkeiten mit einer Vielzahl an Unterlagen, 
 Dokumenten oder Belegen arbeiten müssen. Unter dieser Vielzahl fallen Dokumente wie Werkstatt-, Kauf- und Mietverträge 
 sowie Rechnungen oder Diagnoseberichte. 
 
@@ -65,7 +69,7 @@ neu verarbeitet werden können. Eine Extraktion der Daten der einzelnen Dokument
 da die Struktur im gängigen Gebrauch im Dateiformat Portable Document Format (PDF) festgelegt ist. 
 
 Jene Limitierung der Datenextraktion wirkt sich gleichermaßen auf die Dealer-Management-Systeme (DMS), 
-mit solchen die Mitarbeiter:innen ihr Prozesse abwickeln, aus. Der daraus resultierende Arbeitsaufwand, 
+mit solchen die Mitarbeiter:innen ihre Prozesse abwickeln, aus. Der daraus resultierende Arbeitsaufwand, 
 welcher dabei entsteht, um die Daten wiederverwendbar zu konstruieren, ist derzeit enorm. 
 
 \section{Zielsetzung}\label{sec:ziel}
@@ -76,31 +80,36 @@ Innerhalb üblicher Methoden werden heutzutage die Daten zunächst über eine gr
 einer bereits existierenden Benutzeranwendung via gängiges Kopieren und Einfügen entnommen. 
 Dieser Schritt funktioniert zwar im Regelfall, ist jedoch oftmals stark fehleranfällig und kann lückenhaft sein. 
 
-In so einem Fall muss das Einfügen und Kopieren manuell durchgeführt werden, was bei einer riesigen Menge an Dokumente zu einer monotonen Arbeit führt. 
+In so einem Fall muss das Einfügen und Kopieren manuell durchgeführt werden, 
+was bei einer riesigen Menge an Dokumente zu einer monotonen Arbeit für die Händler der Autohäuser führt. 
 Andernfalls können die Daten eigenhändig abgeschrieben werden – jener Vorgang benötigt jedoch viele Ressourcen.
-Eher geeignet ist es, einen Datenkonverter für die PDF Dateien zu nutzen, um so die Dokumente in Bilder beispielsweise umzuwandeln, 
-wodurch die Daten zugänglicher sind, aber immer noch verarbeitet werden müssen, was den gesamten Vorgang als eine Notlösung wirken lässt.
+Eher geeignet ist es, einen Datenkonverter für die PDF Dateien zu nutzen, um so die Dokumente beispielsweise in Bilder umzuwandeln, 
+wodurch die Daten zugänglicher sind, aber immer noch verarbeitet werden müssen.
+Die letztgenannte Möglichkeit wirkt allerdings eher wie eine Übergangslösung als eine professionelle endgültige Durchführung.
 
 Aufgrund dieser bisherigen teils aufwendigen und mit Fehlern verbundenen Möglichkeiten möchte ich mich in meiner Thesis 
 von diesen Optionen abwenden und das Data-Mining nutzen. 
 Das Data-Mining soll eine Automatisierung unterstützen, mit der Daten aus dem PDF-Dokument extrahiert werden. 
 Allein über das Data-Mining ist es möglich, Inhalte zu extrahieren und für andere Systeme bereit zu stellen. 
 
-Der Unterschied zum gängigen Data-Mining liegt dabei in den Einschränkungen des Dateiformats: 
+Der Unterschied zwischen meiner Verwendung des Data-Minings und zum gängigen Data-Mining 
+liegt dabei in den Einschränkungen des Dateiformats: 
 der Quelltext einer solchen Datei stellt erstens keine klare Hierarchie der Daten dar und zweitens 
 besitzt es durch das Fehlen von Markierungen keine Informationen darüber, 
 was die Daten an sich darstellen sollen~\cite{docsumoPDFScraperScrape2022}. 
 
 Mit Hilfe dieser Technik des Data-Minings soll es ermöglicht werden, aktuelle Prozesse detaillierter zu steuern und zu überwachen. 
 Des Weiteren können unter anderem Abgleiche von Rechnungen mit dem System durchgeführt werden 
-und weitere Datenanalyse und Reporting kreiert werden.
-Mit dem derzeitigen Stand der Datenextraktion können jedoch lediglich Agierende aus dem technischen Bereich arbeiten. 
+und weitere Datenanalysen und Reporting kreiert werden.
+Mit dem derzeitigen Stand der Datenextraktion können jedoch lediglich Agierende aus dem technischen Bereich arbeiten, 
+da allein sie das dafür technisch notwendige Know-how besitzen. 
 Die Technologien hierfür benutzen unterschiedliche Ansätze und müssen daher zunächst für diesen Fall ausgewählt werden. 
 
 Damit jedoch auch für Agierende innerhalb des technischen Bereichs die Nutzung nicht zu abstrakt bleibt, 
-soll durch die Entwicklung eines Systems der Zugriff greifbarer gestaltet werden, welches wiederum eine benutzerfreundliche Anwendung zur Verfügung stellen soll. 
-Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können. 
-Des Weiteren sollen die Vorgänge eine niedrigere Fehlerquote aufzeigen. 
+soll durch die Entwicklung eines Systems der Zugriff greifbarer gestaltet werden, 
+welches wiederum allein durch eine benutzerfreundliche Anwendung ermöglicht wird. 
+Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können;
+zudem sollen die Vorgänge eine niedrigere Fehlerquote aufzeigen. 
 Die Prozesse müssen außerdem während des gesamten Ablaufs über eine Steuerung und Regelung kontrollierbar sein.
 Solche Prozesse können zum Beispiel über Regeln festgelegt beziehungsweise gesteuert werden, 
 die bei einer Erfüllung weitere Aktionen oder Regeln auslösen können.
@@ -119,7 +128,8 @@ Zudem kann der Ansatz des Machine Learnings (ML), wobei erfolgreiche Verarbeitun
 weitere Dokumente aus Daten extrahieren. 
 Hierbei ist noch offen, welcher Typ des Machine Learnings sich für diesen Fall eignet.
 
-Beide Ansätze – der der symbolischen KI und der des Machine Learnings – bieten als Option die Entwicklung einer grafischen interaktiven Entwicklungsumgebung (IDE) an. 
+Beide Ansätze – der der symbolischen KI und der des Machine Learnings – bieten als Option die Entwicklung 
+einer grafischen interaktiven Entwicklungsumgebung (IDE) an. 
 Jene soll das Festlegen von Definitionen und Regeln erlauben, mit welchen die Dokumente verarbeitet werden können. 
 Außerdem soll diese Oberfläche verschiedene Funktionalitäten anbieten und auch Feedback sowohl bei einem problemlosen Lauf 
 als auch bei einem fehlerhaften Lauf zurückgeben. 
@@ -127,7 +137,8 @@ als auch bei einem fehlerhaften Lauf zurückgeben.
 Des Weiteren soll das System es ermöglichen Änderungen der Definitionen anzumerken und Unterschiede zu erstellen, 
 womit auch bisherige Ergebnisse angezeigt werden.
 Die Festlegung von Definitionen und Regeln soll außerdem durch eine Ansicht der Dokumente unterstützt werden.
-Insgesamt wird das System die zwei Ansätze als Subsysteme aufteilen um die Umsetzung zu modularisieren und einen Vergleich zu ermöglichen.
+Insgesamt wird das System die zwei Ansätze als Subsysteme aufteilen um die Umsetzung zu modularisieren 
+und einen Vergleich zu ermöglichen.
 
 \section{Ablauf}\label{sec:ablauf}
 
@@ -142,7 +153,8 @@ für die Entwicklung eingerichtet werden, mit der die Implementierung der System
 
 Danach widme ich mich der Konzeption und der Entwicklung des Systems.
 Diese beginnt mit der symbolischen KI als ein Subsystem des gesamtem Projekts, sodass ein direkterer Ansatz ermöglicht wird. 
-Die Entwicklung hierbei wird im Wasserfall-Ansatz, einem Ansatz bei der phasenweise die Eigenschaften einer solchen KI umgesetzt werden, 
+Die Entwicklung hierbei wird im Wasserfall-Ansatz, einem Ansatz bei der phasenweise 
+die Eigenschaften einer solchen KI umgesetzt werden, 
 um eine Grundlage für die nächste Komponente zur Verfügung zu stellen.
 
 Bei dieser Komponente handelt es sich um die interaktive Entwicklungsumgebung, die den Zugang für den Benutzer zum System darstellt.
@@ -150,8 +162,10 @@ Deswegen folgt im nächsten Schritt die Konzeptionierung und Entwicklung der int
 welche sich während der Entwicklung der symbolischen KI parallelisieren lässt. 
 Sobald das Gerüst der Benutzeroberfläche fertiggestellt ist, möchte ich dies mit der symbolischen KI verbinden.
 
-Als Gegenstück wird sich dann mit dem Machine Learning Subsystem, bei der gleichermaßen eine Konzeptionierung und Entwicklung stattfindet, gewidmet.
-Hier wird das bisherige Gesamtkonstrukt in einem iterativen Ansatz umgesetzt, sodass der Hauptteil so früh wie möglich verfügbar ist, 
+Als Gegenstück wird sich dann mit dem Machine Learning Subsystem, 
+bei der gleichermaßen eine Konzeptionierung und Entwicklung stattfindet, gewidmet.
+Hier wird das bisherige Gesamtkonstrukt in einem iterativen Ansatz umgesetzt, 
+sodass der Hauptteil so früh wie möglich verfügbar ist, 
 damit das Training des ML-Systems durch die Dokumente auch zeitnah starten kann. 
 Auf das Auswerten dieses Subsystems folgt eine Anpassung dessen. 
 
@@ -190,29 +204,42 @@ Zunächst jedoch wird der Kontext ausführlicher erklärt.
 
 \section{Kontext}\label{sec:kon}
 
-Im Automobilbereich wird der Verkauf von Kraftfahrzeugen in zwei Segmente aufgeteilt: dem Sales-Bereich, bei dem es sich um den Verkauf 
+Im Automobilbereich wird der Verkauf von Kraftfahrzeugen in zwei Segmente aufgeteilt: dem Sales-Bereich, 
+bei dem es sich um den Verkauf 
 von Neu- und Gebrauchtwagen handelt und dem After-Sales-Bereich, bei jenem eine Bindung zum Kunden über den Verkauf von 
 Verschleiß- und Ersatzteilen geschaffen wird.~\cite{theuererWasMachtSales}
-Diese Aufteilung der Segmente wird ebenfalls von den Autohäusern angewendet, zugleich werden für diese jeweils gängige Abläufe als Prozesse benutzt.
+Diese Aufteilung der Segmente wird ebenfalls von den Autohäusern angewendet, zugleich werden für diese 
+jeweils gängige Abläufe als Prozesse benutzt.
 
 Für den After-Sales-Bereich bietet ilexius GmbH zwei Arten von ERP-Systeme an. 
-Die erste Art ist das von der Automobilmarke Jaguar Land Rover finanzierte `vTab', welches eine Plattform für elektronische Fahrzeugkontrollen 
+Die erste Art ist das von der Automobilmarke Jaguar Land Rover finanzierte `vTab', welches eine Plattform 
+für elektronische Fahrzeugkontrollen 
 und ein Backend für Jaguar Land Rover Mitarbeiter:innen, mit dem die Autohäuser bewertet werden können, anbietet.
-Die zweite Art mit dem Namen `ATT' ist eine Plattform. Mit derjenigen können Autohäuser ihre Arbeitsprozesse in Schrift, Sprache und Bild dokumentieren.
-Die Dokumentation erfolgt mittels mobiler Endgeräte und werden an das ERP-System weitergeleitet, sodass die Dokumentation archiviert werden kann.
+Die zweite Art mit dem Namen `ATT' ist eine Plattform. 
+Mit derjenigen können Autohäuser ihre Arbeitsprozesse in Schrift, Sprache und Bild dokumentieren.
+Die Dokumentation erfolgt mittels mobiler Endgeräte und werden an das ERP-System weitergeleitet, 
+sodass die Dokumentation archiviert werden kann.
 
-Die ERP-Systeme, die bereits im Kapitel~\ref{sec:ziel} beschrieben worden sind, unterstützen damit die Kunden:innen von ilexius GmbH 
-in den Autohäusern und deren Werkstätten mit der Planung, der Steuerung sowie der Verwaltung von verschiedenen Aufgaben in ebenjenem After-Sales-Bereich.
+Die ERP-Systeme, die bereits im Kapitel~\ref{sec:ziel} beschrieben worden sind, unterstützen 
+damit die Kunden:innen von ilexius GmbH 
+in den Autohäusern und deren Werkstätten mit der Planung, der Steuerung sowie der Verwaltung 
+von verschiedenen Aufgaben in ebenjenem After-Sales-Bereich.
 
-Eine Art der Aufgaben sind Arbeitsaufträge, bei der es sich in den meisten Fällen um die Behandlung eines Autos inklusive Kundendaten handelt. 
-Diese wiederum unterteilen sich in einzelne Arbeitsschritte, die den gesamten Auftrag in einzelne Teilschritte den Arbeitsauftrag vervollständigen.
+Eine Art der Aufgaben sind Arbeitsaufträge, bei der es sich in den meisten Fällen um die Behandlung 
+eines Autos inklusive Kundendaten handelt. 
+Der Auftrag besteht hierbei aus einer Liste an Arbeitsabläufen, die als Jobs bezeichnet werden. 
+Die Jobs wiederum unterteilen sich in einzelne Arbeitsschritte, die Joblines genannt werden, 
+welche die konkreten Verrichtungen der Arbeit darstellen und somit den gesamten Arbeitsauftrag 
+in einzelne Teilschritte vervollständigen.
 
-Sind diese Aufträge abgeschlossen, benutzen die Autohäuser ihre DMS, um eine Rechnung zu erstellen und diese im ERP-System zu archivieren.
+Sind diese Aufträge abgeschlossen, benutzen die Mitarbeiter:innen der Autohäuser ihre Dealer-Management-Systeme,
+ um eine Rechnung zu erstellen und diese im ERP-System zu archivieren.
 Das ERP bietet des Weiteren eine Schnittstelle für diese Dokumente, wie z.B die Rechnungen oder die Garantieaufträge an, 
 die allein über Scanner die Dokumente übertragen. 
 Dort werden die Dokumente verarbeitet und mit Hilfe eines OCR Scanners digitalisiert. 
 
-Aktuell ist allerdings die Digitalisierung nicht in der Lage, einen Kontext beziehungsweise (bzw.) eine Semantik für diese Dokumente zu erstellen.
+Aktuell ist allerdings die Digitalisierung nicht in der Lage, einen Kontext beziehungsweise (bzw.) 
+eine Semantik für diese Dokumente zu erstellen.
 Idealerweise kann dies genutzt werden, um aus den Dokumenten Arbeitsaufträge zu generieren und somit zu digitalisieren.
 Demzufolge ergibt sich hier an der Stelle die Möglichkeit, einen neuen Ansatz zu testen, sodass die Informationen 
 aus diesen Dokumenten als Daten erhaltbar sind.
@@ -232,18 +259,20 @@ bei Anpassungen der ursprünglichen Information neu verarbeitet werden müssen.
 Da sich die Problematik im Rahmen der Thesis auf Dokumente, die bereits im ERP-System archiviert  wurden, 
 bezieht, trifft dieser Fall hier nicht zu.
 
-\subsection{Extraktionswerkzeuge}\label{sec:exwerk}
+\subsection{Extraktionsbibliotheken}\label{sec:exwerk}
 
 Für das Data Mining von PDF Dateien existieren bereits Lösungen, die von großen Unternehmen wie Amazon Web Services (AWS) 
 oder Adobe bereits angeboten werden. 
-So nutzen Produkte wie Textractor~\cite{amazonIntelligenteExtraktionText} von AWS oder Adobes Extractor API~\cite{developersExtractTextPDF} Künstliche Intelligenz, Machine Learning und Optical Character Recognition (OCR) 
+So nutzen Produkte wie Textractor~\cite{amazonIntelligenteExtraktionText} von AWS oder 
+Adobes Extractor API~\cite{developersExtractTextPDF} Künstliche Intelligenz, Machine Learning und Optical Character Recognition (OCR) 
 um die Extraktion der Daten zu ermöglichen. 
 Unternehmen wie ABBYY~\cite{abbyyPDFSoftwareOpen} habe sich bereits auf diesem Gebiet spezialisiert 
 und sind erfolgreich mit der Datenextraktion. 
 Auch existieren bereits Open-Source Bibliotheken, die sich mit dem Entnehmen der Daten aus PDF Dokumenten beschäftigen.
 
 Die Meisten davon lassen sich hinsichtlich der Aufteilung der Aufgaben gruppieren. 
-So erlauben unter anderem PDFMiner~\cite{unixuserPDFMiner} oder Apache Tika~\cite{apacheApacheTikaApache} Texte aus PDF Dokumenten zu gewinnen. 
+So erlauben unter anderem PDFMiner~\cite{unixuserPDFMiner} oder Apache Tika~\cite{apacheApacheTikaApache} Texte aus 
+PDF Dokumenten zu gewinnen. 
 Funktionalitäten für das Extrahieren von Daten aus Tabellen bieten Projekte wie 
 Tabula~\cite{tabulapdfTabulapdfTabulaTabula} oder Camelot~\cite{camelotCamelotPDFTable2022}
 an womit ein weiterer Aspekt durch die Nutzung abgedeckt wäre. 
@@ -260,8 +289,12 @@ wird durch eine fehlende grafische Komponente eingeschränkt.
 Aus dieser Problematik kommend, zeigt sich, dass community-angetriebene Projekte wie PdfMiner.six~\cite{pdfminerWelcomePdfminerSix}, 
 welches eine Abspaltung des bereits erwähnten PdfMiner ist, und PdfPlumber~\cite{singer-vinePdfplumber2022}, 
 welches wiederum auf PdfMiner.six basiert, als geeignete Alternativen darstellen. 
-PdfPlumber bietet im Vergleich zu seinem Ausgangsprojekt dazu noch eine Tabellenextraktion und bietet für beide Aspekte 
+PdfPlumber stellt im Vergleich zu seinem Ausgangsprojekt dazu noch eine Tabellenextraktion bereit und bietet für beide Aspekte 
 der Extraktion eine Schnittstelle an. 
+Es hält eine Kommandozeile, die Möglichkeit, visuelles Debugging zu nutzen (siehe Abbildung ...), 
+und Funktionalitäten wie das Entfernen von Duplikaten in Texten, bereit.
+Letzteres genannte Feature kann dann zum Einsatz kommen, wenn Dokumente bei ihrer Erstellung oder Verarbeitung 
+versehentlich die selben Einträge nochmal im Quellcode des PDFs besitzen. 
 
 Die Hürden für eine komplett automatische Extraktion bestehen trotzdem noch.
 So ist nämlich nicht klar, wie das zu erwartende Verhalten der Logik der Extraktion für den generellen Fall auszusehen hat.
@@ -278,19 +311,10 @@ Dem Umfang dieser Thesis geschuldet werde ich mich daher auf drei Dokumententype
 und anhand jener drei Typen mein Vorgehen exemplarisch demonstrieren.
 
 In Abbildung~\ref{fig:care_g} wird die erste Art eines Auftrags dargestellt.
-Bei diesem digitalen Schriftstück handelt es sich zunächst von der Form her um eine Garantierechnung.
-In der oberen Hälfte befindet sich das Adressfeld, welches die Kundeninformationen im genormten Adressformat enthält, 
+Bei diesem digitalen Schriftstück handelt es sich zunächst von der Form her um eine Garantierechnung des Care Warranty DMS.
+Das Dokument besitzt hierbei drei Bereiche, die relevante Informationen für einen Arbeitsauftrag enthalten.
+In der oberen Hälfte befindet sich zunächst das Adressfeld, welches die Kundeninformationen im genormten Adressformat enthält, 
 und ein weiterer Abschnitt, welches die Fahrzeugdaten festhält.
-
-Hierbei ist zu beobachten, dass dieser Abschnitt sich mit einer Tabelle vergleichen lässt, 
-da die einzelnen Einträge mit jeweils unterschiedlich großen Abständen verteilt dargestellt werden 
-aber gleichzeitig noch eine Gesamthöhe pro Spalte beziehungsweise eine Gesamtbreite pro Höhe einer Tabelle erfüllen.
-Jedoch fällt auf, dass sich, im Gegensatz zur Anzahl der Zeileneinträge, die Anzahl der Spalteneinträge pro Zeile unterscheidet.
-Außerdem fehlen jegliche Einrahmungen beziehungsweise Trennlinien für die Zeilen und die Spalten.
-
-Dagegen wird im unteren Bereich eine Tabellenform durch die Aufzählung der einzelnen Arbeitsaufträge dargestellt.
-Bei dieser Tabelle existiert nur für die Kopfzeile eine untere Trennlinie.
-
 
 \begin{figure}[htb]
     \centering
@@ -299,12 +323,63 @@ Bei dieser Tabelle existiert nur für die Kopfzeile eine untere Trennlinie.
 ~\label{fig:care_g}
 \end{figure}
 
+Hierbei ist zu beobachten, dass dieser Abschnitt sich mit einer Tabelle vergleichen lässt, 
+da die einzelnen Einträge mit jeweils unterschiedlich großen Abständen verteilt dargestellt werden 
+aber gleichzeitig noch eine Gesamthöhe pro Spalte beziehungsweise eine Gesamtbreite pro Höhe einer Tabelle erfüllen.
+Jedoch fällt auf, dass sich, im Gegensatz zur Anzahl der Zeileneinträge, die Anzahl der Spalteneinträge pro Zeile unterscheidet.
+
+Außerdem fehlen jegliche Einrahmungen beziehungsweise jegliche Trennlinien für die Zeilen und die Spalten.
+Bei den Einträgen in diesem Abschnitt handelt es sich um die Abrechnungsnummer, das Datum der Reparatur, den Fahrzeugmodellnamen, 
+den zuletzt abgelesen Kilometerzählerstand, der Arbeitsauftragsnummer, der Fahrzeug-Identifikationsnummer beziehungsweise der
+`Vehicle Identification Number' (VIN) und das Datum der Erstellung des Arbeitsauftrags.
+
+Dagegen wird im unteren Bereich eine Tabelle durch die Aufzählung der einzelnen Jobs und Joblines dargestellt.
+Die Tabelle ist an der Kopfzeile zu erkennen, welche die Jobs und Joblines in den Arbeitszeitwert beziehungsweise in die Teilenummer, 
+in der Bezeichnung, in die Menge des Arbeitszeitwertes, in den Preis und in den Betrag übersichtlich aufteilt.
+Der Arbeitszeitwert ist eine Einheit, die für eine genaue Abrechnung der Arbeitszeiten, 
+um eine Aufteilung der Stunden zu ermöglichen.~\cite{BedeutungAWArbeitswert}
+Die Menge wird hierbei als Reparaturzeit oder Anzahl angegeben.
+AUßerdem existiert b<ei dieser Tabelle nur für die Kopfzeile eine untere Trennlinie.
+Auch hier sind Probleme bezüglich (bzgl.) der Form der Tabelle zu erkennen.
+
+Während die ersten vier Zeilen noch unauffällig erscheinen, besitzt die fünfte Zeile 
+bei der Bezeichnung einen längeren Text, sodass der restliche Text in weiteren Zeilen in der Spalte der Bezeichnung 
+darunter geschrieben steht.
+
+Während die Abstände zwischen den Spalten insgesamt konsistenter erscheinen, sind in der Abbildung~\ref{fig:care_g} 
+in mehreren Zeileneinträgen Überläufe bei den Arbeitszeitwerten bzw. den Teilenummern zu erkennen.
+In der letzte Zeile ist außerdem zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
+was eine eindeutige Erkennung der Positionierung noch weiter erschwert.
+Inhaltlich werden Jobs mit den dazu gehörigen Joblines darunter folgend dargestellt. 
+
+Dies ist durch die Codierung der Arbeitszeitwerte bzw. der Teilenummer zu erkennen 
+und die Hierarchie ist durch das jeweilige Dealer-Management-System vorgegeben.
+So fangen die Codes der Jobs mit `00' an und Reparaturzeiten mit besitzen eine sechsstellige Zeichenkette aus Ziffern.
+Unterhalb der Tabelle werden am Ende des Dokuments noch die gesamten Kosten summiert aus den Betragseinträgen dargestellt, 
+welche wiederum sich in den Kosten der Arbeit und der Teile aufteilen lassen.
+
 \begin{figure}[htb]
     \centering
     \frame{\includegraphics[width=.7\textwidth]{images/formel1_rechnung.pdf}}
     \caption{Exemplar einer Rechnung}
 ~\label{fig:formel1_r}
 \end{figure}
+
+In Abbildung~\ref{fig:formel1_r} wird eine Rechnung der Formel 1 DMS dargestellt.
+Hier ist im Vergleich zur vorherigen Abbildung~\ref{fig:care_g} ein ähnlicher Aufbau ersichtlich.
+Während das Adressfeld gewöhnlich erscheint, sind jedoch die Fahrzeug- und Kundendaten diesmal 
+in zwei unterschiedlichen Tabellen aufgeteilt.
+
+Die Erste von diesen Tabellen befindet sich im oberen Teil der rechten Seite des Dokuments, 
+in welchen die einzelnen Kundeninformationen aufgelistet sind.
+Die Tabelle für die Fahrzeuginformationen befindet sich im unteren Bereich der oberen Hälfte des Dokuments 
+und erweist sich durch das Vorhandensein der Trennlinien als eine klassische Tabelle.
+Im letzten Teil der Formel 1 Rechnung befindet sich die Liste der Job und Joblines.
+
+Hier fallen ähnliche Problematiken, wie die unterschiedlichen Abstände zwischen den Spalten der Einträge, 
+im Vergleich zu dem Care Garantieauftrag auf.
+Auch existieren Überläufe der Einträge, allerdings treten diese nur für die Felder der Bezeichnung auf.
+Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträge angezeigt.
 
 \begin{figure}[htb]
     \centering
@@ -313,10 +388,60 @@ Bei dieser Tabelle existiert nur für die Kopfzeile eine untere Trennlinie.
 ~\label{fig:kfz3000_w}
 \end{figure}
 
+Die letzten Dokumentart wird in der Abbildung~\ref{fig:kfz3000_w} dargestellt.
+Hier handelt es sich um einen Werkstattauftrag von dem Dealer-Management-System KFZ3000.
+Dieser Auftrag lässt sich von der Aufteilung der Segmente mit dem Care Warranty Dokument geeigneter vergleichen.
+Während auch das Adressfeld sich wieder normiert darstellt, werden Kunden- und Fahrzeugdaten 
+über Schlüssel-Wert Anordnungen in einem größeren Feld dargestellt.
+
+Die untere Hälfte des Werkstattauftrags besitzt auch wie die bereits anderen genannten Dokumente 
+eine tabellenähnliche Auflistung der Job und Joblines. 
+Auch hier sind wieder Überläufe und unterschiedliche Abstände in dem Bereich zu erkennen.
+Dazu kommt, dass, im Gegensatz zu den anderen Dokumentarten, 
+zwischen den Zeilen ein Art Summenstrich hinzugefügt wird, der die Anzahl der Jobs anzeigen soll.
+Außerdem wird im unteren Bereich des Dokuments nur die gesamte Betragssumme dargestellt.
+
+Insgesamt lässt sich feststellen, dass alle vorgestellten Dokumentarten mehrere Hürden 
+als gemeinsame Problematik verbindet. 
+Die dargebotene Darstellung der Kunden- und Fahrzeuginformationen wird entweder in einer Tabellenform 
+gemeinsam oder in zwei verschiedenen Tabellen abgebildet.
+Diese Tabellenform besitzt außerdem selten Trennlinien, welche geeignet sind, um eine derartige Tabelle als solche definieren zu können.
+Für die Job und Joblines tritt das selbe Problem auf.
+Diese Auflistung wird nur durch ihre Anordnung der Einträge und deren Abstände dazwischen als solche erkenntlich, 
+bricht in den prototypischen Dokumenten aber mindestens einmal die Form durch Überläufe oder Verschiebungen der Texte.
+Es ist festzustellen, dass unterschiedliche Tabellenstrukturen zu unterschiedlichen
+Dieses Angelegenheit besteht, da es für Tabellen keine universelle Standardisierung existiert.
+
+Damit diese Formen durch eine Logik des Extrahierens abgedeckt werden, scheint die Möglichkeit der Fallunterscheidung zu bestehen.
+Bei dieser Unterscheidung sollen die Dokumente anhand ihrer Arten konzipiert und definiert werden, 
+sodass die Entnahme detaillierter stattfinden kann.
+Für andere Bereiche eines Dokuments wie dem Adressfeld werden gewöhnliche Funktionalitäten der Extraktion genutzt und zur Verfügung gestellt.
+Diese können dann von allen weiteren Dokumentarten geteilt und genutzt werden, 
+womit eine Verallgemeinerung verschiedener Dokumententypen ermöglicht wird.
+
+\subsection{Frameworks}
+
+Damit das System für den Prozess der Extraktion als solches sich zeitnah im Rahmen einer Thesis sich umsetzen lässt, 
+können Frameworks dem ganzen entgegenkommen.
+Hierbei werden für die Teilsysteme verschiedene Technologien in Erwägung gezogen. 
+So wird zunächst das erste Teilsystem für die symbolische Künstliche Intelligenz abgedeckt und es 
+
+
 
 \chapter{Konzeption und Umsetzung}\label{chap:konundum} %KAPITEL
 
 Für den Sprung zur Umsetzung bedarf es als Nächstes die Konzeption des technischen Rahmens. 
+
+
+\section{Aufbau}
+
+\section{Symbolische KI}
+
+\section{Entwicklungsumgebung}
+
+\section{Machine Learning}
+
+
 
 \chapter{Ergebnisse}\label{chap:erg}
 
@@ -325,8 +450,9 @@ Für den Sprung zur Umsetzung bedarf es als Nächstes die Konzeption des technis
 
 \chapter{Ausblick und Fazit}\label{chap:auf}
  
-Im Rahmen der Abschlussarbeit wurde 
- technische Funktionalitäten eingeführt werden um dem Kapitän die Webanwendung als PWA anzubieten.
+Im Rahmen der Abschlussarbeit wurde ein System konzipiert und umgesetzt, 
+welches eine Extraktion von Dokumenten über zwei Ansätze ermöglicht.
+Über die Teilsysteme wurden technische Funktionalitäten eingeführt werden um dem Kapitän die Webanwendung als PWA anzubieten.
 
 Insgesamt eignen sich Webanwendungen um Ressourcen übersichtlicher darzustellen und mobil zu beobachten.
 Auch können Offline-Zustände dem Benutzer trotzdem erlauben Aspekte der Anwendung weiter zu benutzen.
