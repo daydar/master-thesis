@@ -302,7 +302,7 @@ Das visuelle Debugging, welches in Abbildung~\ref{fig:vd} zu sehen ist, ermögli
 die Texte des Dokuments hervorzuheben, was wiederum die Extraktion greifbarer darstellt 
 und die Entwicklung mit den Funktionalitäten unterstützt.
 
-In dieser Abbildung sind die persöhnliche Daten des Auftrags verpixelt und damit anonymisiert.
+In dieser Abbildung sind die persönlichen Daten des Auftrags verpixelt und damit anonymisiert.
 Auch die Funktionalität des Entfernens von Duplikaten kann dann zum Einsatz kommen, wenn Dokumente bei ihrer Erstellung 
 oder Verarbeitung versehentlich die selben Einträge nochmal im Quellcode des PDFs besitzen. 
 
@@ -333,9 +333,11 @@ Dadurch passiert es, dass es Autohäuser gibt, welche das gleiche DMS verwenden
 und sowohl das selbe als auch ein in Detail angepassten Dokumentenaufbau für ihre Aufträge benutzen. 
 Dem Umfang dieser Thesis geschuldet werde ich mich daher auf drei Dokumententypen von unterschiedlichen Autohäusern 
 mit ihren jeweils genutzten DMS beschränken und anhand jener drei Typen mein Vorgehen exemplarisch demonstrieren.
+Die Abbildungen der Dokumente in diesem Abschnitt zeigen zu Teilen persönliche Daten 
+und wurden deshalb für die Thesis durch Verpixelung der sensitiven Felder anonymisiert.
 
 In Abbildung~\ref{fig:care_g} wird die erste Art eines Auftrags dargestellt.
-Bei diesem digitalen Schriftstück handelt es sich zunächst von der Form her um eine Garantierechnung des Care Warranty DMS\@.
+Bei diesem digitalen Schriftstück handelt es sich zunächst von der Form her um eine Garantierechnung des Dealer-Management-Systems Care\@.
 Das Dokument besitzt hierbei drei Bereiche, die relevante Informationen für einen Arbeitsauftrag enthalten.
 In der oberen Hälfte befindet sich zunächst das Adressfeld, welches die Kundeninformationen im genormten Adressformat enthält, 
 und ein weiterer Abschnitt, welches die Fahrzeugdaten festhält.
@@ -353,9 +355,10 @@ aber gleichzeitig noch eine Gesamthöhe pro Spalte beziehungsweise eine Gesamtbr
 Jedoch fällt auf, dass sich, im Gegensatz zur Anzahl der Zeileneinträge, die Anzahl der Spalteneinträge pro Zeile unterscheidet.
 
 Außerdem fehlen jegliche Einrahmungen beziehungsweise jegliche Trennlinien für die Zeilen und die Spalten.
-Bei den Einträgen in diesem Abschnitt handelt es sich um die Abrechnungsnummer, das Datum der Reparatur, den Fahrzeugmodellnamen, 
-den zuletzt abgelesen Kilometerzählerstand, der Arbeitsauftragsnummer, der Fahrzeug-Identifikationsnummer beziehungsweise der
-`Vehicle Identification Number' (VIN) und das Datum der Erstellung des Arbeitsauftrags.
+Bei den Einträgen in diesem Abschnitt handelt es sich um die Abrechnungsnummer, das Datum der Reparatur, 
+den Fahrzeugmodellnamen, das Kfz-Kennzeichen, den zuletzt abgelesen Kilometerzählerstand, der Arbeitsauftragsnummer, der Fahrzeug-Identifikationsnummer beziehungsweise der
+`Vehicle Identification Number' (VIN), des zuständigen Autohaus Mitarbeiters und das Datum der Erstellung des Arbeitsauftrags.
+Verpixelt und damit anonymisiert wurden die Felder des Kfz-Kennzeichens, der VIN und des zuständigen Mitarbeiters.
 
 Dagegen wird im unteren Bereich eine Tabelle durch die Aufzählung der einzelnen Jobs und Joblines dargestellt.
 Die Tabelle ist an der Kopfzeile zu erkennen, welche die Jobs und Joblines in die Arbeitsnummer beziehungsweise in die Teilenummer, 
@@ -371,7 +374,7 @@ bei der Bezeichnung einen längeren Text, sodass der restliche Text in weiteren 
 darunter geschrieben steht.
 
 Während die Abstände zwischen den Spalten insgesamt konsistenter erscheinen, sind in der Abbildung~\ref{fig:care_g} 
-in mehreren Zeileneinträgen Überläufe bei den Arbeitnummern bzw. den Teilenummern zu erkennen.
+in mehreren Zeileneinträgen Überläufe bei den Arbeitsnummern bzw. den Teilenummern zu erkennen.
 In der letzte Zeile ist außerdem zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
 was eine eindeutige Erkennung der Positionierung noch weiter erschwert.
 Inhaltlich werden Jobs mit den dazu gehörigen Joblines darunter folgend dargestellt. 
@@ -460,12 +463,17 @@ Hierbei werden sich für die Teilsysteme verschiedene Technologien angeschaut un
 So wird zunächst die symbolische künstliche Intelligenz dem ersten Teilsystem zugeordnet und in seiner Art unterschieden. 
 Zudem müssen die Realisierungsmöglichkeiten der symbolischen KI betrachtet 
 und aus den verschiedenen Arten eines wissensbasiertes Systems ein Modell ausgewählt werden.
-Ein solches wissenbasiertes System ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechanismen der Schlussfolgerung nutzen, 
+
+Ein solches wissensbasiertes System ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechanismen der Schlussfolgerung nutzen, 
 um Lösungen für Probleme zu finden~\cite{embreySkillRuleKnowledge}. 
-Es existieren verschiedene Modelle eines wissenbasiertes Systems, die sich, je nach Anwendungsfall, als passend erweisen.
+Es existieren verschiedene Modelle eines wissensbasiertes Systems, die sich, je nach Anwendungsfall, als passend erweisen.
 So gibt es den Ansatz des regelbasierten Systems, bei dem die Schlussfolgerung über Regeln und Fakten, 
 die von einem Benutzer definiert werden, gestaltet wird.
-Bekannt für die Erstellung eines solchen Systems ist CLIPS\cite{clipsCLIPSToolBuilding}, welches über eine eigene Syntax erlaubt, 
+
+Bekannt für die Erstellung eines solchen Systems, ist das in der Programmiersprache C geschriebene Werkzeug CLIPS\cite{clipsCLIPSToolBuilding}, 
+welches über eine eigene Syntax für die Regeln verfügt.
+Diese Umsetzung wird auch mit dem Projekt pyClips in der Programm Python unterstützt.
+Des Weiteren wird
 
 
 
