@@ -297,9 +297,12 @@ PdfPlumber stellt im Vergleich zu seinem Ausgangsprojekt dazu noch eine Tabellen
 der Extraktion eine Schnittstelle an. 
 Es hält eine Kommandozeile, die Möglichkeit, visuelles Debugging zu nutzen, 
 und Funktionalitäten wie das Entfernen von Duplikaten in Texten, bereit.
+
 Das visuelle Debugging, welches in Abbildung~\ref{fig:vd} zu sehen ist, ermöglicht es unter anderem, 
 die Texte des Dokuments hervorzuheben, was wiederum die Extraktion greifbarer darstellt 
 und die Entwicklung mit den Funktionalitäten unterstützt.
+
+In dieser Abbildung sind die persöhnliche Daten des Auftrags verpixelt und damit anonymisiert.
 Auch die Funktionalität des Entfernens von Duplikaten kann dann zum Einsatz kommen, wenn Dokumente bei ihrer Erstellung 
 oder Verarbeitung versehentlich die selben Einträge nochmal im Quellcode des PDFs besitzen. 
 
@@ -323,9 +326,13 @@ Um eine Auswahl zu treffen, müssen die Arten der Dokumente, die in dem ERP-Syst
 \subsection{Dokumentarten}\label{sec:dokart}
 
 Bei den Dokumenten, die in das ERP-System eingescannt werden, handelt es sich in der Mehrheit um Garantie- und Werkstattaufträge sowie Rechnungen. 
-Jedes Autohaus benutzt hierbei ein individuelles Muster für die Arten der Dokumente.
-Dem Umfang dieser Thesis geschuldet werde ich mich daher auf drei Dokumententypen von unterschiedlichen Autohäusern beschränken 
-und anhand jener drei Typen mein Vorgehen exemplarisch demonstrieren.
+Jedes Autohaus benutzt hierbei ein individuelles Muster bzw. Format für die Arten der Dokumente.
+Jedoch ist der Aufbau dieser Dokumente zu Teilen indirekt durch die von den Autohaus genutzten Dealer-Management-Systeme vorgegeben.
+
+Dadurch passiert es, dass es Autohäuser gibt, welche das gleiche DMS verwenden 
+und sowohl das selbe als auch ein in Detail angepassten Dokumentenaufbau für ihre Aufträge benutzen. 
+Dem Umfang dieser Thesis geschuldet werde ich mich daher auf drei Dokumententypen von unterschiedlichen Autohäusern 
+mit ihren jeweils genutzten DMS beschränken und anhand jener drei Typen mein Vorgehen exemplarisch demonstrieren.
 
 In Abbildung~\ref{fig:care_g} wird die erste Art eines Auftrags dargestellt.
 Bei diesem digitalen Schriftstück handelt es sich zunächst von der Form her um eine Garantierechnung des Care Warranty DMS\@.
@@ -351,9 +358,9 @@ den zuletzt abgelesen Kilometerzählerstand, der Arbeitsauftragsnummer, der Fahr
 `Vehicle Identification Number' (VIN) und das Datum der Erstellung des Arbeitsauftrags.
 
 Dagegen wird im unteren Bereich eine Tabelle durch die Aufzählung der einzelnen Jobs und Joblines dargestellt.
-Die Tabelle ist an der Kopfzeile zu erkennen, welche die Jobs und Joblines in den Arbeitszeitwert beziehungsweise in die Teilenummer, 
+Die Tabelle ist an der Kopfzeile zu erkennen, welche die Jobs und Joblines in die Arbeitsnummer beziehungsweise in die Teilenummer, 
 in der Bezeichnung, in die Menge des Arbeitszeitwertes, in den Preis und in den Betrag übersichtlich aufteilt.
-Der Arbeitszeitwert ist eine Einheit, die für eine genaue Abrechnung der Arbeitszeiten, 
+Der Arbeitszeitwert ist dabei eine Einheit, die für eine genaue Abrechnung der Arbeitszeiten, 
 um eine Aufteilung der Stunden zu ermöglichen.~\cite{BedeutungAWArbeitswert}
 Die Menge wird hierbei als Reparaturzeit oder Anzahl angegeben.
 AUßerdem existiert b<ei dieser Tabelle nur für die Kopfzeile eine untere Trennlinie.
@@ -364,16 +371,18 @@ bei der Bezeichnung einen längeren Text, sodass der restliche Text in weiteren 
 darunter geschrieben steht.
 
 Während die Abstände zwischen den Spalten insgesamt konsistenter erscheinen, sind in der Abbildung~\ref{fig:care_g} 
-in mehreren Zeileneinträgen Überläufe bei den Arbeitszeitwerten bzw. den Teilenummern zu erkennen.
+in mehreren Zeileneinträgen Überläufe bei den Arbeitnummern bzw. den Teilenummern zu erkennen.
 In der letzte Zeile ist außerdem zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
 was eine eindeutige Erkennung der Positionierung noch weiter erschwert.
 Inhaltlich werden Jobs mit den dazu gehörigen Joblines darunter folgend dargestellt. 
 
-Dies ist durch die Codierung der Arbeitszeitwerte bzw. der Teilenummer zu erkennen 
+Dies ist durch die Codierung der Arbeitsnummern bzw. der Teilenummer zu erkennen 
 und die Hierarchie ist durch das jeweilige Dealer-Management-System vorgegeben.
 In der ersten Spalte können daher Codes von Jobs, Reparaturzeiten, Ersatzteilen, 
 Fremdleistungen, Stempelzeiten und Kundenbeschwerden auftreten.
 
+Für die Codierung ist keine standardisierte Spezifikation vorhanden, weswegen dies für jedes Autohaus 
+und deren Nutzung der DMS individuell definiert.
 So sind die Codes der Jobs als eine fünfstellige Zeichenkette aus Ziffern definiert, welche mit den Ziffern `00' anfangen müssen
 und die Reparaturzeiten besitzen eine sechsstellige Zeichenkette aus Ziffern.
 Unterhalb der Tabelle werden am Ende des Dokuments noch die gesamten Kosten summiert aus den Betragseinträgen dargestellt, 
@@ -448,12 +457,15 @@ Damit das System für den Prozess der Extraktion als solches sich zeitnah im Rah
 können Frameworks dem ganzen Zeitfenster entgegenkommen.
 Hierbei werden sich für die Teilsysteme verschiedene Technologien angeschaut und in Erwägung gezogen. 
 
-So wird zunächst die symbolische Künstliche Intelligenz dem ersten Teilsystem zugeordnet und in seiner Art unterschieden. 
+So wird zunächst die symbolische künstliche Intelligenz dem ersten Teilsystem zugeordnet und in seiner Art unterschieden. 
 Zudem müssen die Realisierungsmöglichkeiten der symbolischen KI betrachtet 
-und aus den verschiedenen Arten eines KI-Systems ein Modell ausgewählt werden.
-Ein solches System  ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechaniken der Schlussfolgerung nutzen, 
-um Lösungen für Probleme zu finden~\cite{Expertensysteme}. 
-Es existieren verschiedene Modelle eines Expertensystems, die sich, je nach Anwendungsfall, als passend erweisen.
+und aus den verschiedenen Arten eines wissensbasiertes Systems ein Modell ausgewählt werden.
+Ein solches wissenbasiertes System ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechanismen der Schlussfolgerung nutzen, 
+um Lösungen für Probleme zu finden~\cite{embreySkillRuleKnowledge}. 
+Es existieren verschiedene Modelle eines wissenbasiertes Systems, die sich, je nach Anwendungsfall, als passend erweisen.
+So gibt es den Ansatz des regelbasierten Systems, bei dem die Schlussfolgerung über Regeln und Fakten, 
+die von einem Benutzer definiert werden, gestaltet wird.
+Bekannt für die Erstellung eines solchen Systems ist CLIPS\cite{clipsCLIPSToolBuilding}, welches über eine eigene Syntax erlaubt, 
 
 
 
