@@ -274,8 +274,9 @@ und sind erfolgreich mit der Datenextraktion.
 Auch existieren bereits Open-Source Bibliotheken, die sich mit dem Entnehmen der Daten aus PDF Dokumenten beschäftigen.
 
 Die Meisten davon lassen sich hinsichtlich der Aufteilung der Aufgaben gruppieren. 
-So erlauben unter anderem PDFMiner~\cite{unixuserPDFMiner} oder Apache Tika~\cite{apacheApacheTikaApache} Texte aus 
-PDF Dokumenten zu gewinnen. 
+So erlauben unter anderem PDFMiner~\cite{unixuserPDFMiner} oder Apache Tika~\cite{apacheApacheTikaApache}, 
+welches vor der Extraktion der Texte und Metadaten noch die Klassifizierung und Identifizierung des Medientyps von Dateien 
+anhand einer umfangreichen Hierarchie~\cite{mattmannTikaAction2012} besitzt, Texte aus PDF Dokumenten zu gewinnen. 
 Funktionalitäten für das Extrahieren von Daten aus Tabellen bieten Projekte wie 
 Tabula~\cite{tabulapdfTabulapdfTabulaTabula} oder Camelot~\cite{camelotCamelotPDFTable2022}
 an womit ein weiterer Aspekt durch die Nutzung abgedeckt wäre. 
@@ -315,6 +316,15 @@ oder Verarbeitung versehentlich die selben Einträge nochmal im Quellcode des PD
     \caption{visuelles Debugging bei einem Dokument }
 ~\label{fig:vd}
 \end{figure}
+
+Für die Auswahl einer Extraktionsbibliothek ist auch die dazu gehörige Programmiersprache für das System der Datenextraktion relevant, 
+in der die Bibliothek umgesetzt wurde. 
+Hierbei fällt das für die bereits genannten Bibliotheken diese sich in zwei Sprachen gruppieren lassen.
+Projekte wie Tika, Tabula und Textricator sind mit Hilfe von Java implementiert, 
+während die restlichen aufgezählten Bibliotheken in Python geschrieben sind.
+Für Tabula gilt hier die Ausnahme, dass es für das Projekt unterschiedliche Wrapper für weitere Programmiersprachen wie Python gibt.
+Hieraus ist zu beobachten, dass die Nutzung von Python viele mögliche Extraktionswerkzeuge erlaubt, 
+welches sich für die spätere Umsetzung als noch bedeutsam erweist.
 
 Die Hürden für eine komplett automatische Extraktion bestehen trotzdem noch.
 So ist nämlich nicht klar, wie das zu erwartende Verhalten der Logik der Extraktion für den generellen Fall auszusehen hat.
@@ -374,12 +384,12 @@ bei der Bezeichnung einen längeren Text, sodass der restliche Text in weiteren 
 darunter geschrieben steht.
 
 Während die Abstände zwischen den Spalten insgesamt konsistenter erscheinen, sind in der Abbildung~\ref{fig:care_g} 
-in mehreren Zeileneinträgen Überläufe bei den Arbeitsnummern bzw. den Teilenummern zu erkennen.
+in mehreren Zeileneinträgen Überläufe bei den Arbeitsnummern bzw.\ den Teilenummern zu erkennen.
 In der letzte Zeile ist außerdem zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
 was eine eindeutige Erkennung der Positionierung noch weiter erschwert.
 Inhaltlich werden Jobs mit den dazu gehörigen Joblines darunter folgend dargestellt. 
 
-Dies ist durch die Codierung der Arbeitsnummern bzw. der Teilenummer zu erkennen 
+Dies ist durch die Codierung der Arbeitsnummern bzw.\ der Teilenummer zu erkennen 
 und die Hierarchie ist durch das jeweilige Dealer-Management-System vorgegeben.
 In der ersten Spalte können daher Codes von Jobs, Reparaturzeiten, Ersatzteilen, 
 Fremdleistungen, Stempelzeiten und Kundenbeschwerden auftreten.
@@ -399,6 +409,7 @@ welche wiederum sich in den Kosten der Arbeit und der Teile aufteilen lassen.
 \end{figure}
 
 In Abbildung~\ref{fig:formel1_r} wird eine Rechnung der Formel 1 DMS dargestellt.
+Auch hier sind sämtliche personenbezogenen Daten verpixelt und anonymisiert worden.
 Hier ist im Vergleich zur vorherigen Abbildung~\ref{fig:care_g} ein ähnlicher Aufbau ersichtlich.
 Während das Adressfeld gewöhnlich erscheint, sind jedoch die Fahrzeug- und Kundendaten diesmal 
 in zwei unterschiedlichen Tabellen aufgeteilt.
@@ -422,7 +433,8 @@ Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträg
 \end{figure}
 
 Die letzten Dokumentart wird in der Abbildung~\ref{fig:kfz3000_w} dargestellt.
-Hier handelt es sich um einen Werkstattauftrag von dem Dealer-Management-System KFZ3000.
+Hier handelt es sich um einen Werkstattauftrag von dem Dealer-Management-System KFZ3000, 
+welches auch wie die vorherigen Abbildungen anonymisiert wurde.
 Dieser Auftrag lässt sich von der Aufteilung der Segmente mit dem Care Warranty Dokument geeigneter vergleichen.
 Während auch das Adressfeld sich wieder normiert darstellt, werden Kunden- und Fahrzeugdaten 
 über Schlüssel-Wert Anordnungen in einem größeren Feld dargestellt.
@@ -467,15 +479,20 @@ und aus den verschiedenen Arten eines wissensbasiertes Systems ein Modell ausgew
 Ein solches wissensbasiertes System ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechanismen der Schlussfolgerung nutzen, 
 um Lösungen für Probleme zu finden~\cite{embreySkillRuleKnowledge}. 
 Es existieren verschiedene Modelle eines wissensbasiertes Systems, die sich, je nach Anwendungsfall, als passend erweisen.
-So gibt es den Ansatz des regelbasierten Systems, bei dem die Schlussfolgerung über Regeln und Fakten, 
+So gibt es den Ansatz des regelbasierten Systems bzw. Produktionssystems, bei dem die Schlussfolgerung über Regeln und Fakten, 
 die von einem Benutzer definiert werden, gestaltet wird.
 
 Bekannt für die Erstellung eines solchen Systems, ist das in der Programmiersprache C geschriebene Werkzeug CLIPS\cite{clipsCLIPSToolBuilding}, 
 welches über eine eigene Syntax für die Regeln verfügt.
-Diese Umsetzung wird auch mit dem Projekt pyClips in der Programm Python unterstützt.
-Des Weiteren wird
+Diese Umsetzung wird auch mit dem Wrapper `clipspy' für die Programmiersprache Python zur Nutzung bereitgestellt.
+Andere Umsetzungen konzentrieren sich im Vergleich eher auf die Inferenzmaschine, die auch als Regelinterpreter gilt.
+Projekte wie `Pyke'~\cite{frederiksenWelcomePyke}, `Durable Rules'~\cite{ruizDurableRules2022} oder `Experta'~\cite{perezNilp0interExperta2022}, 
+dem Nachfolger von einem Expertensystem Framework namens `pyKnow', erlauben es eine Regelmenge zu definieren 
+und die einzelnen Regeln mit selbstdefinierten Funktionen zu koppeln.
 
-
+Für die Benutzeranwendung, die die Schnittstelle zum System darstellen soll, 
+eignen sich sowohl Benutzerschnittstellen Bibliotheken für den Desktop als auch für den Web.
+So können native Graphische Benutzer
 
 
 \chapter{Konzeption und Umsetzung}\label{chap:konundum} %KAPITEL
