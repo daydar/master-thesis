@@ -108,39 +108,39 @@ Die Technologien hierfür benutzen unterschiedliche Ansätze und müssen daher z
 Damit jedoch auch für Agierende innerhalb des technischen Bereichs die Nutzung nicht zu abstrakt bleibt, 
 soll durch die Entwicklung eines Systems der Zugriff greifbarer gestaltet werden, 
 welches wiederum allein durch eine benutzerfreundliche Anwendung ermöglicht wird. 
-Die Bneutzer sollen eine Möglichkeit bekommen und über eine Eingabe der Steuerung bestimmen können, 
+Die Benutzer sollen eine Möglichkeit bekommen und über eine Eingabe der Steuerung bestimmen können, 
 welche Informationen extrahiert werden sollen.
 
 Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können;
 zudem sollen die Vorgänge eine niedrigere Fehlerquote aufzeigen. 
 Die Prozesse müssen außerdem während des gesamten Ablaufs über eine Steuerung und Regelung kontrollierbar sein.
 Solche Prozesse können zum Beispiel über Regeln festgelegt beziehungsweise gesteuert werden, 
-die bei einer Erfüllung weitere Aktionen oder Regeln auslösen können.
+die hingehen bei einer Erfüllung weitere Aktionen oder Regeln auslösen können.
 
-Diese beschriebene Eigenschaft kann durch eine symbolische künstlichen Intelligenz (KI) abgedeckt werden, 
-welche eine vorgegebene Verarbeitung möglich macht. 
+Diese im vorherigen genannten Absatz beschriebene Eigenschaft kann durch eine symbolische künstlichen Intelligenz (KI) abgedeckt werden, 
+welche eine vorgegebene Verarbeitung zulässt. 
 Hiermit bezeichnet man einen altmodischen Ansatz der KI, bei der über das Festlegen von Symbolen 
-menschliches Wissen in einer Logik gehalten wird und diese benutzt wird um weiteres Wissen zu generieren~\cite{dicksonWhatSymbolicArtificial2019}.
+menschliches Wissen in einer Logik gehalten wird und diese benutzt wird um weiteres Wissen sodann zu generieren~\cite{dicksonWhatSymbolicArtificial2019}.
 Durch eine Parametrisierung einer solchen KI kann dann die Unschärfe der ausgewählten Daten festgelegt werden, 
-damit eine Feineinstellung stattfinden kann. 
-Das heißt, der Benutzer eines solchen Systems soll sich beginnend von groben Definitionen für die Verarbeitung 
+damit eine Feineinstellung erfolgen kann. 
+Das heißt, die Benutzer:innen eines solchen Systems soll sich beginnend von groben Definitionen für die Verarbeitung 
 zu einer detaillierten und angepassteren Definition über Feedback des Systems hinarbeiten. 
 
 Mit Hilfe dieser Annäherung an Definitionen und Regeln kann so für eine bessere Erfolgsquote gesorgt werden. 
-Zudem kann der Ansatz des Machine Learnings (ML), wobei erfolgreiche Verarbeitungen einem System antrainiert werden, 
+Zudem kann der Ansatz des Machine Learnings (ML), mit jenem erfolgreiche Verarbeitungen einem System antrainiert werden, 
 weitere Dokumente aus Daten extrahieren. 
-Hierbei ist noch offen, welcher Typ des Machine Learnings sich für diesen Fall eignet.
+Hierbei ist noch offen, welcher Typ des Machine Learnings sich für diesen Fall am optimalsten eignet.
 
 Beide Ansätze – der der symbolischen KI und der des Machine Learnings – bieten als Option die Entwicklung 
 einer grafischen interaktiven Entwicklungsumgebung (IDE) an. 
-Jene soll das Festlegen von Definitionen und Regeln erlauben, mit welchen die Dokumente verarbeitet werden können. 
-Außerdem soll diese Oberfläche verschiedene Funktionalitäten anbieten und auch Feedback sowohl bei einem problemlosen Lauf 
-als auch bei einem fehlerhaften Lauf zurückgeben. 
+Die IDE soll das Festlegen von Definitionen und Regeln erlauben, mit welchen die Dokumente verarbeitet werden können. 
+Außerdem soll diese Oberfläche verschiedene Funktionalitäten offerieren und auch Feedback sowohl bei einem problemlosen Lauf, 
+als auch bei einem fehlerhaften Lauf, zurückgeben. 
 
-Des Weiteren soll das System es ermöglichen Änderungen der Definitionen anzumerken und Unterschiede zu erstellen, 
-womit auch bisherige Ergebnisse angezeigt werden.
+Des Weiteren soll es das System es ermöglichen, Änderungen der Definitionen anzumerken und Unterschiede zu erstellen. 
+Mit dieser Funktion sollen auch bisherige Ergebnisse angezeigt werden.
 Die Festlegung von Definitionen und Regeln soll außerdem durch eine Ansicht der Dokumente unterstützt werden.
-Insgesamt wird das System die zwei Ansätze als Subsysteme aufteilen um die Umsetzung zu modularisieren 
+Insgemein wird das System die zwei Ansätze als Subsysteme aufteilen um die Umsetzung zu modularisieren 
 und einen Vergleich zu ermöglichen.
 
 \section{Ablauf}\label{sec:ablauf}
@@ -148,14 +148,14 @@ und einen Vergleich zu ermöglichen.
 Um genau dieses optimale System für das beschriebene Szenario entwickeln zu können, werde ich in dieser Arbeit wie folgt vorgehen: 
 
 Für eine vollständige Auseinandersetzung soll eine weitere Analyse stattfinden,
-damit die vorhandenen Grundlagen für den Anwendungsfall evaluiert werden können. 
+damit die vorhandenen Grundlagen für den Anwendungsfall, um den es in der Arbeit geht, evaluiert werden können. 
 Das heißt, es werden mit Hilfe der Funktionalitäten der Bibliotheken Ergebnisse 
 auf Basis der Datensätze erzeugt, um die Erfolgsquoten zu überprüfen. 
 Diese werden dann verglichen und ausgewertet. Parallel dazu soll die Umgebung 
 für die Entwicklung eingerichtet werden, mit der die Implementierung der Systeme stattfinden soll. 
 
 Danach widme ich mich der Konzeption und der Entwicklung des Systems.
-Diese beginnt mit der symbolischen KI als ein Subsystem des gesamtem Projekts, sodass ein direkterer Ansatz ermöglicht wird. 
+Diese beginnt mit der symbolischen KI als ein Subsystem des gesamtem Projekts, durch selbige ein direkterer Ansatz ermöglicht wird. 
 Die Entwicklung hierbei wird im Wasserfall-Ansatz, einem Ansatz bei der phasenweise 
 die Eigenschaften einer solchen KI umgesetzt werden, 
 um eine Grundlage für die nächste Komponente zur Verfügung zu stellen.
@@ -165,7 +165,7 @@ Deswegen folgt im nächsten Schritt die Konzeptionierung und Entwicklung der int
 welche sich während der Entwicklung der symbolischen KI parallelisieren lässt. 
 Sobald das Gerüst der Benutzeroberfläche fertiggestellt ist, möchte ich dies mit der symbolischen KI verbinden.
 
-Als Gegenstück wird sich dann mit dem Machine Learning Subsystem, 
+Als Gegenstück wird sich dann mit dem Machine Learning Ansatz und dem dazugehörigen Subsystem, 
 bei der gleichermaßen eine Konzeptionierung und Entwicklung stattfindet, gewidmet.
 Hier wird das bisherige Gesamtkonstrukt in einem iterativen Ansatz umgesetzt, 
 sodass der Hauptteil so früh wie möglich verfügbar ist, 
@@ -175,20 +175,20 @@ Auf das Auswerten dieses Subsystems folgt eine Anpassung dessen.
 Danach wird das Software Testing für die beiden Subsysteme eingeführt. 
 Mit Unit Testing, Integration Testing und Functional Testing wird das erfolgreiche Ausführen gewisser Eigenschaften abgedeckt.
 Dies dient wiederum als Grundlage dafür, die Continuous Integration (CI) für das System einzuführen, 
-womit eine sichere und konsistente Entwicklung nach dem Prototyping angeboten wird.  
+mit dieser eine sichere und konsistente Entwicklung nach dem Prototyping angeboten wird.  
 
-Wenn dann aber die Systeme gegeben sind, kann das grafische Tool weiter angepasst werden, welches 
-sich dann mit den Systemen verbinden soll, um die Ausführbarkeit der Funktionalitäten zu überprüfen. 
+Wenn hierauf die Systeme gegeben sind, kann das grafische Tool weiter angepasst werden, welches 
+sich dann mit den Systemen verbinden soll, um infolgedessen die Ausführbarkeit der Funktionalität überprüfen zu können. 
 Um ein gemeinsames System zu ermöglichen, welches dann gegebenenfalls weitere Testschritte bedarf,
-werden dann die Komponenten zusammengeführt.  
+werden anschließend die Komponenten zusammengeführt.  
 Sobald jenes eine erfolgreiche Form annimmt, wird der Teil der Continuous Integration mit einbezogen, 
 mit jener das System einen Zustand der Instandhaltung annehmen kann. 
 Über Testing sollen so mögliche Fehlerquellen entdeckt werden, bevor diese überhaupt auftreten können.
 
 Unter die Zielsetzung für meine beiden eben genannten Ansätze fallen die Kundendaten mit den Eigenschaften wie 
-Name, Firma, Adresse und Kundennummer, die Fahrzeugdaten worunter Fahrgestellnummer, Modell, 
-Farbe, Motor, Erstzulassung, Letzter/nächster Service und TÜV fallen und 
-die Abrechnungsdaten wie die Jobs mit Arbeitspositionen und Teilen, Preise etc. 
+Name, Firma, Adresse und Kundennummer. Zu Eigenschaften der Fahrzeugdaten zählen Angaben der Fahrgestellnummer, 
+Modell, Farbe, Motor, Erstzulassung, Letzter/nächster Service und 
+TÜV sowie die Abrechnungsdaten wie die Jobs mit den dazugehörigen Arbeitspositionen, der Reparaturteile, den Preisen etc.
 
 Dazu stehen als weitere Grundlage mehr als 10.000 annotierte unterschiedliche Dokumente mit genau den Daten, 
 die extrahiert werden sollen, als Datenbank zur Verfügung. 
@@ -211,7 +211,7 @@ Im Automobilbereich wird der Verkauf von Kraftfahrzeugen in zwei Segmente aufget
 bei dem es sich um den Verkauf 
 von Neu- und Gebrauchtwagen handelt und dem After-Sales-Bereich, bei jenem eine Bindung zum Kunden über den Verkauf von 
 Verschleiß- und Ersatzteilen geschaffen wird.~\cite{theuererWasMachtSales}
-Diese Aufteilung der Segmente wird ebenfalls von den Autohäusern angewendet, zugleich werden für diese 
+Diese Aufteilung der Segmente wird ebenfalls von den Autohäusern angewendet, zugleich werden für diese Aufteilung
 jeweils gängige Abläufe als Prozesse benutzt.
 
 Für den After-Sales-Bereich bietet ilexius GmbH zwei Arten von ERP-Systeme an. 
@@ -225,26 +225,26 @@ sodass die Dokumentation archiviert werden kann.
 
 Die ERP-Systeme, die bereits im Kapitel~\ref{sec:ziel} beschrieben worden sind, unterstützen 
 damit die Kunden:innen von ilexius GmbH 
-in den Autohäusern und deren Werkstätten mit der Planung, der Steuerung sowie der Verwaltung 
+in den Autohäusern und deren Werkstätten bei der Planung, der Steuerung sowie der Verwaltung 
 von verschiedenen Aufgaben in ebenjenem After-Sales-Bereich.
 
-Eine Art der Aufgaben sind Arbeitsaufträge, bei der es sich in den meisten Fällen um die Behandlung 
+Eine Art der Aufgaben sind Arbeitsaufträge, bei der es sich in den meisten Fällen um die Handhabung und Abfertigung 
 eines Autos inklusive Kundendaten handelt. 
 Der Auftrag besteht hierbei aus einer Liste an Arbeitsabläufen, die als Jobs bezeichnet werden. 
 Die Jobs wiederum unterteilen sich in einzelne Arbeitsschritte, die Joblines genannt werden, 
 welche die konkreten Verrichtungen der Arbeit darstellen und somit den gesamten Arbeitsauftrag 
 in einzelne Teilschritte vervollständigen.
 
-Sind diese Aufträge abgeschlossen, benutzen die Mitarbeiter:innen der Autohäuser ihre Dealer-Management-Systeme,
- um eine Rechnung zu erstellen und diese im ERP-System zu archivieren.
+Sind diese Aufträge abgeschlossen, benutzen die Mitarbeiter:innen der Autohäuser ihre Dealer-Management-Systeme, 
+um eine Rechnung zu erstellen und diese im ERP-System zu archivieren.
 Das ERP bietet des Weiteren eine Schnittstelle für diese Dokumente, wie z.B die Rechnungen oder die Garantieaufträge an, 
 die allein über Scanner die Dokumente übertragen. 
 Dort werden die Dokumente verarbeitet und mit Hilfe eines OCR Scanners digitalisiert. 
 
-Aktuell ist allerdings die Digitalisierung nicht in der Lage, einen Kontext beziehungsweise (bzw.) 
+Derzeit ist allerdings die Digitalisierung nicht in der Lage, einen Kontext beziehungsweise (bzw.) 
 eine Semantik für diese Dokumente zu erstellen.
 Idealerweise kann dies genutzt werden, um aus den Dokumenten Arbeitsaufträge zu generieren und somit zu digitalisieren.
-Demzufolge ergibt sich hier an der Stelle die Möglichkeit, einen neuen Ansatz zu testen, sodass die Informationen 
+Demzufolge ergibt sich hier an der Stelle die Möglichkeit, einen neuen Ansatz zu testen, infolgedessen die Informationen 
 aus diesen Dokumenten als Daten erhaltbar sind.
 
 \section{Analyse}\label{sec:ana}
@@ -490,9 +490,26 @@ Projekte wie `Pyke'~\cite{frederiksenWelcomePyke}, `Durable Rules'~\cite{ruizDur
 dem Nachfolger von einem Expertensystem Framework namens `pyKnow', erlauben es eine Regelmenge zu definieren 
 und die einzelnen Regeln mit selbstdefinierten Funktionen zu koppeln.
 
-Für die Benutzeranwendung, die die Schnittstelle zum System darstellen soll, 
-eignen sich sowohl Benutzerschnittstellen Bibliotheken für den Desktop als auch für den Web.
-So können native Graphische Benutzer
+Für die Entwicklungsumgebung, die den Zugang zum System darstellen soll, 
+eignen sich sowohl Benutzerschnittstellen (UI) Bibliotheken für den Desktop als auch für den Web.
+Die Priorität liegt hierbei bei der Erstellung der einzelnen Komponenten der graphische Benutzeroberflächen (GUI). 
+So können Projekte wie Qt~\cite{qtQtCrossplatformSoftware} und ImGui~\cite{omarDearImGui2022}, welches in C++ geschrieben ist, eine Bibliothek bereitstellen, 
+die auf einer nativen Ebene funktionieren und damit in verschiedenen Anwendungsfällen genutzt werden.
+Letzter genanntes benutzt intern einen Zustandsautomat um die Render-Pipeline darstellen, 
+was etwas mehr Erfahrung mit der Grafikprogrammierung erfordert, um dies verwenden zu können~\cite{furhtCreatingUserInterface2018}.
+
+Dem gegenüber stehen abstraktere UI-Lösungen wie das Benutzen eines Web Frameworks, welche im Front-End Bereich verwendet werden.
+Bekannte Bibliotheken wie Vue und React ermöglichen eine schnelle und gängige Umsetzung einer Oberfläche, 
+die auch die Zwecke einer Entwicklungsumgebung erfüllen können. 
+Weitere Kandidaten wie Svelte~\cite{svelteSvelteCyberneticallyEnhanced} versuchen durch das Nutzen eines Complier, 
+die Arbeit von dem Browser zu der Build Zeit umzulagern.
+
+Für das Teilsystems, welches den Ansatz des maschinellen Lernens nutzen soll, 
+scheinen auch hier ML-Frameworks eine geeignete Lösung zu sein.
+Kandidaten sind hierbei die zurzeit konventionellen Frameworks wie TensorFlow~\cite{tensorflowTensorFlow}, pyTorch~\cite{pytorchPyTorch}
+und spaCy~\cite{explosionSpaCyIndustrialstrengthNatural}, welche für die Anwendungsgebiete unter anderem in der Bilderkennung, 
+der Computer Vision und des Neuro-Linguistische Programmieren (NLP) eine automatisierte Lösung anbieten.
+Weitere Projekte wie Fonduer
 
 
 \chapter{Konzeption und Umsetzung}\label{chap:konundum} %KAPITEL
