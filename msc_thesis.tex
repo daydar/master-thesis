@@ -199,6 +199,7 @@ Hierbei ist es aber auch möglich, aus den bereits bestehenden Daten einen Pool 
 für die Verifikation zu bilden.
 
 Zum Schluss werde ich die Ergebnisse des gesamten Systems betrachten und einen Ausblick zu der Thematik geben.
+Aus Datenschutzgründen werde ich in meiner Arbeit persönliche Informationen in den gezeigten Dokumenten anonymisieren und verpixeln.
 
 \chapter{Hintergrund}\label{chap:hint}
 
@@ -251,63 +252,64 @@ aus diesen Dokumenten als Daten erhaltbar sind.
 
 \section{Analyse}\label{sec:ana}
 
-Das Extrahieren von Daten ist eine gängige Methode um Informationen aus verschiedenen Systemen wie Datenbanken 
-oder Software as a Service (SaaS) Plattformen zu beschaffen. 
-Durch diese Beschaffung können die Daten weiter verarbeitet werden um neue Lösungsmöglichkeiten für das eigene System anzubieten.
+Das Extrahieren von Daten ist eine gängige Methode, um Informationen aus verschiedenen Systemen wie Datenbanken 
+oder Software as a Service (SaaS) Plattformen zu erhalten. 
+Durch diese Beschaffung können die Daten weiter verarbeitet werden, 
+wodurch neue Lösungsmöglichkeiten für das eigene System bereitzustellen.
 Die Arten des Extrahierens unterscheiden sich hierbei im Zeitverlauf und der Herangehensweise. 
-So können Diese extrahiert werden sobald Änderungen der Daten beobachtet oder mitgeteilt werden, 
-wodurch die Daten nach und nach beschafft werden~\cite{stichdataWhatDataExtraction}.
+So können sie extrahiert werden, sobald Änderungen der Daten beobachtet oder mitgeteilt worden sind. 
+Durch diese Herangehensweise werden so die Daten schrittweise herangeschafft~\cite{stichdataWhatDataExtraction}.
 
-Des Weiteren gibt es die Option eine komplette Extraktion durch zu führen. 
+Des Weiteren gibt es die Option, eine komplette Extraktion durchzuführen. 
 Dieser Ansatz kann sich in vielen Fällen als nachteilig erweisen, da die Daten jedes mal 
 bei Anpassungen der ursprünglichen Information neu verarbeitet werden müssen.
-Da sich die Problematik im Rahmen der Thesis auf Dokumente, die bereits im ERP-System archiviert  wurden, 
-bezieht, trifft dieser Fall hier nicht zu.
+Aufgrund des Bezugs der Problematik im Rahmen der Thesis auf Dokumente, die bereits im ERP-System archiviert wurden, 
+trifft dieser Fall hier nicht zu.
 
 \subsection{Extraktionsbibliotheken}\label{sec:exwerk}
 
 Für das Data Mining von PDF Dateien existieren bereits Lösungen, die von großen Unternehmen wie Amazon Web Services (AWS) 
-oder Adobe bereits angeboten werden. 
+oder Adobe angeboten werden. 
 So nutzen Produkte wie Textractor~\cite{amazonIntelligenteExtraktionText} von AWS oder 
-Adobes Extractor API~\cite{developersExtractTextPDF} Künstliche Intelligenz, Machine Learning und Optical Character Recognition (OCR) 
+Adobes Extractor API~\cite{developersExtractTextPDF} künstliche Intelligenz, Machine Learning und Optical Character Recognition (OCR), 
 um die Extraktion der Daten zu ermöglichen. 
-Unternehmen wie ABBYY~\cite{abbyyPDFSoftwareOpen} habe sich bereits auf diesem Gebiet spezialisiert 
-und sind erfolgreich mit der Datenextraktion. 
-Auch existieren bereits Open-Source Bibliotheken, die sich mit dem Entnehmen der Daten aus PDF Dokumenten beschäftigen.
+Unternehmen wie ABBYY~\cite{abbyyPDFSoftwareOpen} haben sich bereits auf diesem Gebiet spezialisiert 
+und sind erfolgreich im Umgang mit der Datenextraktion. 
+Auch existieren bereits Open-Source Bibliotheken, die sich mit dem Entnehmen der Daten aus PDF Dokumenten auseinandersetzen.
 
-Die Meisten davon lassen sich hinsichtlich der Aufteilung der Aufgaben gruppieren. 
+Die meisten der Open-Source Bibliotheken lassen sich hinsichtlich der Aufteilung der Aufgaben gruppieren. 
 So erlauben unter anderem PDFMiner~\cite{unixuserPDFMiner} oder Apache Tika~\cite{apacheApacheTikaApache}, 
 welches vor der Extraktion der Texte und Metadaten noch die Klassifizierung und Identifizierung des Medientyps von Dateien 
-anhand einer umfangreichen Hierarchie~\cite{mattmannTikaAction2012} besitzt, Texte aus PDF Dokumenten zu gewinnen. 
+anhand einer umfangreichen Hierarchie besitzt, Texte aus PDF Dokumenten zu gewinnen~\cite{mattmannTikaAction2012}. 
 Funktionalitäten für das Extrahieren von Daten aus Tabellen bieten Projekte wie 
-Tabula~\cite{tabulapdfTabulapdfTabulaTabula} oder Camelot~\cite{camelotCamelotPDFTable2022}
-an womit ein weiterer Aspekt durch die Nutzung abgedeckt wäre. 
+Tabula~\cite{tabulapdfTabulapdfTabulaTabula} oder Camelot~\cite{camelotCamelotPDFTable2022} an.
+Diese Projekten decken ferner einen weiteren Aspekt durch die Nutzung der Funktionalitäten ab.
 
-Bei Beiden zeigen sich niedrige Fehlerquoten auf~\cite{atlanhqComparisonOtherPDF} und die Nutzung von einer Fuzzy Logik. 
-Camelot ermöglicht dazu noch ein Web Interface womit die simple Extraktion über einen Browser lokal stattfinden kann.
-Andere Bibliotheken wie Textricator~\cite{measuresMeasuresforjusticeTextricatorTextricator} sind umfangreicher gestaltet 
-und ergeben geeignete Schnittstellen für die Anfragen spezifischer Inhalte. 
+Bei den beiden zuletzt genannten Bibliotheken weisen sich niedrige Fehlerquoten~\cite{atlanhqComparisonOtherPDF} 
+und die Nutzung von einer Fuzzy Logik auf. 
+Camelot ermöglicht überdies ein Web Interface, mit dessen Hilfe eine simple Extraktion mittels einen Browser lokal stattfinden kann.
+Weitere Bibliotheken, wie Textricator~\cite{measuresMeasuresforjusticeTextricatorTextricator} sind umfangreicher gestaltet 
+und ergeben für die Anfragen spezifischer Inhalte geeignete Schnittstellen. 
 
 Doch auch wenn dies mit textbasierten Dokumenten funktioniert und der Export flexibel ist, 
 können zunächst weder nicht-textbasierte noch komplexere PDF Dokumente verarbeitet werden. 
-Des Weiteren sind die Verarbeitungen nicht automatisierbar und die Nutzergruppe 
+Des Weiteren sind die Verarbeitungen nicht automatisierbar und die Nutzer:innengruppe 
 wird durch eine fehlende grafische Komponente eingeschränkt.
-Aus dieser Problematik kommend, zeigt sich, dass community-angetriebene Projekte wie PdfMiner.six~\cite{pdfminerWelcomePdfminerSix}, 
-welches eine Abspaltung des bereits erwähnten PdfMiner ist, und PdfPlumber~\cite{singer-vinePdfplumber2022}, 
-welches wiederum auf PdfMiner.six basiert, als geeignete Alternativen darstellen. 
+Aus dieser Problematik resultierend, zeigt sich, dass community-angetriebene Projekte wie PdfMiner.six~\cite{pdfminerWelcomePdfminerSix}, 
+das eine Abspaltung des bereits erwähnten PdfMiner ist, und PdfPlumber~\cite{singer-vinePdfplumber2022}, 
+welches wiederum auf PdfMiner.six basiert, geeignete Alternativen darstellen. 
 
-PdfPlumber stellt im Vergleich zu seinem Ausgangsprojekt dazu noch eine Tabellenextraktion bereit und bietet für beide Aspekte 
+PdfPlumber stellt im Vergleich zu seinem Ausgangsprojekt überdies eine Tabellenextraktion bereit und bietet für beide Aspekte 
 der Extraktion eine Schnittstelle an. 
-Es hält eine Kommandozeile, die Möglichkeit, visuelles Debugging zu nutzen, 
-und Funktionalitäten wie das Entfernen von Duplikaten in Texten, bereit.
+Es stellt eine Kommandozeile, die Möglichkeit, visuelles Debugging zu nutzen, 
+und Funktionalitäten wie das Entfernen von Duplikaten in Texten, zur Verfügung.
 
 Das visuelle Debugging, welches in Abbildung~\ref{fig:vd} zu sehen ist, ermöglicht es unter anderem, 
-die Texte des Dokuments hervorzuheben, was wiederum die Extraktion greifbarer darstellt 
+die Texte des Dokuments hervorzuheben, was wiederum die Extraktion greifbarer darlegt 
 und die Entwicklung mit den Funktionalitäten unterstützt.
-
-In dieser Abbildung sind die persönlichen Daten des Auftrags verpixelt und damit anonymisiert.
 Auch die Funktionalität des Entfernens von Duplikaten kann dann zum Einsatz kommen, wenn Dokumente bei ihrer Erstellung 
 oder Verarbeitung versehentlich die selben Einträge nochmal im Quellcode des PDFs besitzen. 
+In dieser Abbildung sind die persönlichen Daten des Auftrags anonymisiert und deshalb verpixelt.
 
 \begin{figure}[htb]
     \centering
@@ -319,40 +321,40 @@ oder Verarbeitung versehentlich die selben Einträge nochmal im Quellcode des PD
 ~\label{fig:vd}
 \end{figure}
 
-Für die Auswahl einer Extraktionsbibliothek ist auch die dazu gehörige Programmiersprache für das System der Datenextraktion relevant, 
-in der die Bibliothek umgesetzt wurde. 
-Hierbei fällt das für die bereits genannten Bibliotheken diese sich in zwei Sprachen gruppieren lassen.
+Für die Auswahl einer Extraktionsbibliothek ist auch die dazugehörige Programmiersprache für das System der Datenextraktion, 
+in der die Bibliothek umgesetzt worden ist, relevant. 
+Darunter fallen die bereits genannten Bibliotheken, welche sich in zwei Sprachen gruppieren lassen.
 Projekte wie Tika, Tabula und Textricator sind mit Hilfe von Java implementiert, 
-während die restlichen aufgezählten Bibliotheken in Python geschrieben sind.
-Für Tabula gilt hier die Ausnahme, dass es für das Projekt unterschiedliche Wrapper für weitere Programmiersprachen wie Python gibt.
+während die restlichen, aufgezählten Bibliotheken in Python geschrieben sind.
+Für Tabula gilt hier hingegen die Ausnahme, dass es für das Projekt unterschiedliche Wrapper für weitere Programmiersprachen wie Python gibt.
 Hieraus ist zu beobachten, dass die Nutzung von Python viele mögliche Extraktionswerkzeuge erlaubt, 
 welches sich für die spätere Umsetzung als noch bedeutsam erweist.
 
-Die Hürden für eine komplett automatische Extraktion bestehen trotzdem noch.
-So ist nämlich nicht klar, wie das zu erwartende Verhalten der Logik der Extraktion für den generellen Fall auszusehen hat.
-Eine differenzierte Extraktion für weitere Eigenschaften eines Dokuments wie die Zeilenumbrüche von Absätzen, 
+Die Hürden für eine komplett automatische Extraktion bestehen jedoch nach wie vor.
+So ist nämlich nicht ersichtlich, wie das zu erwartende Verhalten der Logik der Extraktion für den generellen Fall auszusehen hat.
+Eine differenzierte Extraktion für weitere Eigenschaften eines Dokuments, wie zum Beispiel Zeilenumbrüche von Absätzen, 
 die Seitennummern, die Kopf- und Fußzeilen, die Formatierung et cetera (etc.) ist daher nötig.
-Die Frage, die sich dabei stellt ist, welche Eigenschaften eines Dokuments genau zusätzlich extrahiert werden sollen. 
-Um eine Auswahl zu treffen, müssen die Arten der Dokumente, die in dem ERP-System auftreten, genauer durchleuchtet werden.
+Die Frage, die sich dabei stellt, ist, welche Eigenschaften eines Dokuments konkret zusätzlich extrahiert werden sollen. 
+Um eine Auswahl zu treffen, müssen die Arten der Dokumente, die in dem ERP-System auftreten, präziser durchleuchtet werden.
 
 \subsection{Dokumentarten}\label{sec:dokart}
 
-Bei den Dokumenten, die in das ERP-System eingescannt werden, handelt es sich in der Mehrheit um Garantie- und Werkstattaufträge sowie Rechnungen. 
-Jedes Autohaus benutzt hierbei ein individuelles Muster bzw. Format für die Arten der Dokumente.
-Jedoch ist der Aufbau dieser Dokumente zu Teilen indirekt durch die von den Autohaus genutzten Dealer-Management-Systeme vorgegeben.
+Bei den Dokumenten, die in das ERP-System eingescannt werden, handelt es sich in der Mehrheit um Garantie- und Werkstattaufträge und Rechnungen. 
+Jedes Autohaus benutzt hierbei ein individuelles Muster bzw. Format für die jeweilige Art des Dokuments.
+Dabei ist jedoch der Aufbau dieser Dokumente zu Teilen indirekt durch die von den Autohaus genutzten Dealer-Management-Systeme vorgegeben.
 
-Dadurch passiert es, dass es Autohäuser gibt, welche das gleiche DMS verwenden 
-und sowohl das selbe als auch ein in Detail angepassten Dokumentenaufbau für ihre Aufträge benutzen. 
-Dem Umfang dieser Thesis geschuldet werde ich mich daher auf drei Dokumententypen von unterschiedlichen Autohäusern 
+Ebendaher passiert es, dass es Autohäuser gibt, welche das gleiche DMS verwenden 
+und zudem darüber hinaus auch einen detailliert angepassten Dokumentenaufbau für ihre Aufträge benutzen.
+Dem Umfang dieser Thesis geschuldet werde ich mich auf drei Dokumententypen von verschiedenen Autohäusern 
 mit ihren jeweils genutzten DMS beschränken und anhand jener drei Typen mein Vorgehen exemplarisch demonstrieren.
-Die Abbildungen der Dokumente in diesem Abschnitt zeigen zu Teilen persönliche Daten 
-und wurden deshalb für die Thesis durch Verpixelung der sensitiven Felder anonymisiert.
+Die Abbildungen der Dokumente in diesem Abschnitt zeigen in einigen Fällen persönliche Daten 
+und wurden deshalb, wie in der Einleitung beschrieben, anonymisiert.
 
 In Abbildung~\ref{fig:care_g} wird die erste Art eines Auftrags dargestellt.
 Bei diesem digitalen Schriftstück handelt es sich zunächst von der Form her um eine Garantierechnung des Dealer-Management-Systems Care\@.
-Das Dokument besitzt hierbei drei Bereiche, die relevante Informationen für einen Arbeitsauftrag enthalten.
-In der oberen Hälfte befindet sich zunächst das Adressfeld, welches die Kundeninformationen im genormten Adressformat enthält, 
-und ein weiterer Abschnitt, welches die Fahrzeugdaten festhält.
+Das Dokument besitzt drei Bereiche, die relevante Informationen für einen Arbeitsauftrag enthalten.
+In der oberen Hälfte befindet sich zunächst das Adressfeld, welches die Kundeninformationen im genormten Adressformat enthält. 
+Unter dem Adressfeld befindet sich ein weiterer Abschnitt, in dem die Fahrzeugdaten festgehalten werden.
 
 \begin{figure}[htb]
     \centering
@@ -361,46 +363,47 @@ und ein weiterer Abschnitt, welches die Fahrzeugdaten festhält.
 ~\label{fig:care_g}
 \end{figure}
 
-Hierbei ist zu beobachten, dass dieser Abschnitt sich mit einer Tabelle vergleichen lässt, 
-da die einzelnen Einträge mit jeweils unterschiedlich großen Abständen verteilt dargestellt werden 
-aber gleichzeitig noch eine Gesamthöhe pro Spalte beziehungsweise eine Gesamtbreite pro Höhe einer Tabelle erfüllen.
-Jedoch fällt auf, dass sich, im Gegensatz zur Anzahl der Zeileneinträge, die Anzahl der Spalteneinträge pro Zeile unterscheidet.
+Hierbei ist zu beobachten, dass dieser Abschnitt sich mit einer Tabelle vergleichen lässt. 
+Die einzelnen Einträge werden mit jeweils unterschiedlich großen Abständen verteilt dargestellt,  
+gleichzeitig erfüllen sie eine Gesamthöhe pro Spalte beziehungsweise eine Gesamtbreite pro Höhe einer Tabelle.
+Gleichwohl fällt auf, dass sich - im Gegensatz zur Anzahl der Zeileneinträge - die Anzahl der Spalteneinträge pro Zeile unterscheidet.
 
-Außerdem fehlen jegliche Einrahmungen beziehungsweise jegliche Trennlinien für die Zeilen und die Spalten.
-Bei den Einträgen in diesem Abschnitt handelt es sich um die Abrechnungsnummer, das Datum der Reparatur, 
-den Fahrzeugmodellnamen, das Kfz-Kennzeichen, den zuletzt abgelesen Kilometerzählerstand, der Arbeitsauftragsnummer, der Fahrzeug-Identifikationsnummer beziehungsweise der
-`Vehicle Identification Number' (VIN), des zuständigen Autohaus Mitarbeiters und das Datum der Erstellung des Arbeitsauftrags.
-Verpixelt und damit anonymisiert wurden die Felder des Kfz-Kennzeichens, der VIN und des zuständigen Mitarbeiters.
+Zudem fehlen jegliche Einrahmungen beziehungsweise jegliche Trennlinien für Zeilen und Spalten.
+Bei den Einträgen in diesem Abschnitt geht es um die Abrechnungsnummer, das Datum der Reparatur, 
+den Fahrzeugmodellnamen, das Kfz-Kennzeichen, den zuletzt abgelesen Kilometerzählerstand, die Arbeitsauftragsnummer, der Fahrzeug-Identifikationsnummer beziehungsweise der
+`Vehicle Identification Number' (VIN), die/die zuständige/n Autohausmitarbeiter:in und das Datum der Erstellung des Arbeitsauftrags.
+Verpixelt und damit anonymisiert wurden die Felder des Kfz-Kennzeichens, der VIN und der/des zuständigen Mitarbeiter:in.
 
-Dagegen wird im unteren Bereich eine Tabelle durch die Aufzählung der einzelnen Jobs und Joblines dargestellt.
-Die Tabelle ist an der Kopfzeile zu erkennen, welche die Jobs und Joblines in die Arbeitsnummer beziehungsweise in die Teilenummer, 
-in der Bezeichnung, in die Menge des Arbeitszeitwertes, in den Preis und in den Betrag übersichtlich aufteilt.
-Der Arbeitszeitwert ist dabei eine Einheit, die für eine genaue Abrechnung der Arbeitszeiten, 
-um eine Aufteilung der Stunden zu ermöglichen.~\cite{BedeutungAWArbeitswert}
-Die Menge wird hierbei als Reparaturzeit oder Anzahl angegeben.
-AUßerdem existiert b<ei dieser Tabelle nur für die Kopfzeile eine untere Trennlinie.
+Im unteren Bereich wird eine Tabelle durch die Aufzählung der einzelnen Jobs und Joblines dargestellt.
+Die Tabelle ist an der Kopfzeile zu erkennen, die die Jobs und Joblines in die Arbeitsnummer beziehungsweise in die Teilenummer, 
+in die Bezeichnung, in die Menge des Arbeitszeitwertes, in den Preis und in den Betrag übersichtlich aufteilt.
+Die Teilenummer beziehen sich hierbei auf die Identifikationsnummer der Reparaturteile.
+Der Arbeitszeitwert ist dabei eine Einheit für die genaue Abrechnung der Arbeitszeiten, 
+um eine Aufschlüsslung der Stunden zu ermöglichen.~\cite{BedeutungAWArbeitswert}
+Die Menge wird hierbei als Reparaturzeit oder als Anzahl der Elemente angegeben.
+Daneben existiert bei dieser Tabelle nur für die Kopfzeile eine untere Trennlinie.
 Auch hier sind Probleme bezüglich (bzgl.) der Form der Tabelle zu erkennen.
 
-Während die ersten vier Zeilen noch unauffällig erscheinen, besitzt die fünfte Zeile 
-bei der Bezeichnung einen längeren Text, sodass der restliche Text in weiteren Zeilen in der Spalte der Bezeichnung 
+Während die ersten vier Zeilen noch dezent erscheinen, besitzt die fünfte Zeile 
+im Abschnitt mit der Bezeichnung einen längeren Text, sodass der restliche Text in weiteren Zeilen in der gleichen Spalte 
 darunter geschrieben steht.
 Die Abstände zwischen den Spalten insgesamt scheinen konsistenter zu sein, sind jedoch in der Abbildung~\ref{fig:care_g} 
-in mehreren Zeileneinträgen Überläufe bei den Arbeitsnummern bzw.\ den Teilenummern zu erkennen.
-In der letzte Zeile ist außerdem zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
+in mehreren Zeileneinträgen Überläufe bei den Arbeitsnummern bzw.\ den Teilenummern zu sehen.
+In der letzte Zeile ist darüber hinaus zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
 was eine eindeutige Erkennung der Positionierung noch weiter erschwert.
-Inhaltlich werden Jobs mit den dazu gehörigen Joblines darunter folgend dargestellt. 
+Inhaltlich werden Jobs mit den dazugehörigen Joblines darunter angereiht dargestellt. 
 
-Dies ist durch die Codierung der Arbeitsnummern bzw.\ der Teilenummer zu erkennen 
-und die Hierarchie ist durch das jeweilige Dealer-Management-System vorgegeben.
+Dies ist durch die Codierung der Arbeitsnummern bzw.\ der Teilenummer zu erkennen, 
+die Hierarchie ist durch das jeweilige Dealer-Management-System vorgegeben.
 In der ersten Spalte können daher Codes von Jobs, Reparaturzeiten, Ersatzteilen, 
 Fremdleistungen, Stempelzeiten und Kundenbeschwerden auftreten.
 
-Für die Codierung ist keine standardisierte Spezifikation vorhanden, weswegen dies für jedes Autohaus 
-und deren Nutzung der DMS individuell definiert.
-So sind die Codes der Jobs als eine fünfstellige Zeichenkette aus Ziffern definiert, welche mit den Ziffern `00' anfangen müssen
-und die Reparaturzeiten besitzen eine sechsstellige Zeichenkette aus Ziffern.
-Unterhalb der Tabelle werden am Ende des Dokuments noch die gesamten Kosten summiert aus den Betragseinträgen dargestellt, 
-welche wiederum sich in den Kosten der Arbeit und der Teile aufteilen lassen.
+Für die Codierung ist keine standardisierte Spezifikation vorhanden, 
+weshalb das für jedes Autohaus und seine Nutzung der DMS individuell definiert ist.
+So sind die Codes der Jobs als eine fünfstellige Zeichenkette aus Ziffern bestimmt, die mit den Ziffern `00' angefangen. 
+Die Reparaturzeiten dagegen besitzen eine sechsstellige Zeichenkette aus Ziffern.
+Unterhalb der Tabelle werden am Ende des Dokuments schließlich die gesamten Kosten aus den Betragseinträgen summiert dargestellt.
+Diese Summe lässt sich wiederum in Kosten der Arbeit und der Teile aufteilen. 
 
 \begin{figure}[htb]
     \centering
@@ -411,20 +414,20 @@ welche wiederum sich in den Kosten der Arbeit und der Teile aufteilen lassen.
 
 In Abbildung~\ref{fig:formel1_r} wird eine Rechnung der Formel 1 DMS dargestellt.
 Auch hier sind sämtliche personenbezogenen Daten verpixelt und anonymisiert worden.
-Hier ist im Vergleich zur vorherigen Abbildung~\ref{fig:care_g} ein ähnlicher Aufbau ersichtlich.
-Während das Adressfeld gewöhnlich erscheint, sind jedoch die Fahrzeug- und Kundendaten diesmal 
+Im Vergleich zur vorherigen Abbildung~\ref{fig:care_g} ist ein ähnlicher Aufbau zu sehen. 
+Während das Adressfeld geläufig aussieht, sind jedoch die Fahrzeug- und Kundendaten diesmal 
 in zwei unterschiedlichen Tabellen aufgeteilt.
 
-Die Erste von diesen Tabellen befindet sich im oberen Teil der rechten Seite des Dokuments, 
-in welchen die einzelnen Kundeninformationen aufgelistet sind.
+Die erste Tabelle befindet sich im oberen Teil der rechten Seite des Dokuments, 
+wo die einzelnen Kundeninformationen aufgelistet sind.
 Die Tabelle für die Fahrzeuginformationen befindet sich im unteren Bereich der oberen Hälfte des Dokuments 
-und erweist sich durch das Vorhandensein der Trennlinien als eine klassische Tabelle.
+und ist aufgrund der vorhandenen Trennlinien eine klassische Tabelle.
 Im letzten Teil der Formel 1 Rechnung befindet sich die Liste der Job und Joblines.
 
-Hier fallen ähnliche Problematiken, wie die unterschiedlichen Abstände zwischen den Spalten der Einträge, 
+Hier fallen ähnliche Problematiken, wie die unterschiedlichen Abstände zwischen den Spalten der Einträge 
 im Vergleich zu dem Care Garantieauftrag auf.
-Auch existieren Überläufe der Einträge, allerdings treten diese nur für die Felder der Bezeichnung auf.
-Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträge angezeigt.
+Auch existieren Überläufe der Einträge, allerdings treten diese nur in den Feldern der Bezeichnung auf.
+Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträge bekannt gegeben.
 
 \begin{figure}[htb]
     \centering
@@ -433,48 +436,49 @@ Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträg
 ~\label{fig:kfz3000_w}
 \end{figure}
 
-Die letzten Dokumentart wird in der Abbildung~\ref{fig:kfz3000_w} dargestellt.
-Hier handelt es sich um einen Werkstattauftrag von dem Dealer-Management-System KFZ3000, 
-welches auch wie die vorherigen Abbildungen anonymisiert wurde.
-Dieser Auftrag lässt sich von der Aufteilung der Segmente mit dem Care Garantieauftrag Dokument geeigneter vergleichen.
-Während auch das Adressfeld sich wieder normiert darstellt, werden Kunden- und Fahrzeugdaten 
+
+Bei der dritten und damit letzten Dokumentart (Abbildung \ref{fig:kfz3000_w}) handelt
+es sich um einen Werkstattauftrag von dem Dealer-Management-System KFZ3000.
+Auch dieses hier abgebildete Dokument wurde aus Datenschutzgründen anonymisiert. 
+Dieser hier gezeigte Auftrag lässt sich in Bezug auf die Aufteilung der einzelnen Segmente mit dem Care-Warranty-Dokument vergleichen. 
+Während auch das Adressfeld erneut normiert abgebildet ist, werden Kunden- und Fahrzeugdaten 
 über Schlüssel-Wert Anordnungen in einem größeren Feld dargestellt.
 
-Die untere Hälfte des Werkstattauftrags besitzt auch wie die bereits anderen genannten Dokumente 
+Die untere Hälfte des Werkstattauftrags besitzt gleicherweise wie die bereits anderen genannten Dokumente 
 eine tabellenähnliche Auflistung der Job und Joblines. 
-Auch hier sind wieder Überläufe und unterschiedliche Abstände in dem Bereich zu erkennen.
-Dazu kommt, dass, im Gegensatz zu den anderen Dokumentarten, 
+Ebenfalls sind hier Überläufe und unterschiedliche Abstände in dem Bereich zu erkennen.
+Hinzu kommt, dass, im Gegensatz zu den anderen Dokumentarten, 
 zwischen den Zeilen ein Art Summenstrich hinzugefügt wird, der die Anzahl der Jobs anzeigen soll.
-Außerdem wird im unteren Bereich des Dokuments nur die gesamte Betragssumme dargestellt.
+Außerdem wird im unteren Bereich des Dokuments lediglich die gesamte Betragssumme gezeigt.
 
-Insgesamt lässt sich feststellen, dass alle vorgestellten Dokumentarten mehrere Hürden 
-als gemeinsame Problematik verbindet. 
-Die dargebotene Darstellung der Kunden- und Fahrzeuginformationen wird entweder in einer Tabellenform 
-gemeinsam oder in zwei verschiedenen Tabellen abgebildet.
+Insgesamt lässt sich feststellen, dass alle hier vorgestellten Dokumentarten 
+durch eine gemeinsame Problematik mehrerer Hürden miteinander verbunden sind.
+Die Darstellung der Kunden- und Fahrzeuginformationen wird entweder in einer Tabellenform 
+gemeinsam (siehe Abbildung~\ref{fig:care_g}) oder in zwei verschiedenen Tabellen (siehe Abbildung~\ref{fig:formel1_r}) abgebildet.
 Diese Tabellenform besitzt außerdem selten Trennlinien, welche geeignet sind, um eine derartige Tabelle als solche definieren zu können.
-Für die Job und Joblines tritt das selbe Problem auf.
+Für die Liste der Job und Joblines tritt das gleiche Problem auf.
 
-Diese Auflistung wird nur durch ihre Anordnung der Einträge und deren Abstände dazwischen als solche erkenntlich, 
-bricht in den prototypischen Dokumenten aber mindestens einmal die Form durch Überläufe oder Verschiebungen der Texte.
-Es ist festzustellen, dass unterschiedliche Tabellenstrukturen zu unterschiedlichen
-Dieses Angelegenheit besteht, da es für Tabellen keine universelle Standardisierung existiert.
+Diese Auflistung wird allein durch ihre Anordnung der Einträge und deren Abstände dazwischen als solche erkenntlich, 
+jedoch bricht sie in den prototypischen Dokumenten aber mindestens (mind.) einmal die Form durch Überläufe oder Verschiebungen der Texte.
+Es ist festzustellen, dass verschiedene Tabellenstrukturen für unterschiedlichen Dokumentarten existieren.
+Dieses Angelegenheit besteht, da bisher für Tabellen keine universelle Standardisierung definiert ist.
 
-Damit diese Formen durch eine Logik des Extrahierens abgedeckt werden, scheint die Möglichkeit der Fallunterscheidung zu bestehen.
+Damit diese Formen durch eine Logik des Extrahierens abgedeckt werden, besteht die Möglichkeit der Fallunterscheidung.
 Bei dieser Unterscheidung sollen die Dokumente anhand ihrer Arten konzipiert und definiert werden, 
 sodass die Entnahme detaillierter stattfinden kann.
 Für andere Bereiche eines Dokuments wie dem Adressfeld werden gewöhnliche Funktionalitäten der Extraktion genutzt und zur Verfügung gestellt.
 Diese können dann von allen weiteren Dokumentarten geteilt und genutzt werden, 
-womit eine Verallgemeinerung verschiedener Dokumententypen ermöglicht wird.
+sodass eine Verallgemeinerung verschiedener Dokumententypen ermöglicht wird.
 
 
 \subsection{Frameworks}
 
 Damit das System für den Prozess der Extraktion als solches sich zeitnah im Rahmen einer Thesis umsetzen lässt, 
 können Frameworks dem ganzen Zeitfenster entgegenkommen.
-Hierbei werden sich für die Teilsysteme verschiedene Technologien angeschaut und in Erwägung gezogen. 
+Im Zuge dessen werden für die Teilsysteme verschiedene Technologien betrachtet und in Erwägung gezogen.
 So wird zunächst die symbolische künstliche Intelligenz dem ersten Teilsystem zugeordnet und in seiner Art unterschieden. 
 Zudem müssen die Realisierungsmöglichkeiten der symbolischen KI betrachtet 
-und aus den verschiedenen Arten eines wissensbasiertes Systems ein Modell ausgewählt werden.
+und aus den verschiedenen Arten eines wissensbasiertes Systems muss ein Modell ausgewählt werden.
 
 Ein solches wissensbasiertes System ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechanismen der Schlussfolgerung nutzen, 
 um Lösungen für Probleme zu finden~\cite{embreySkillRuleKnowledge}. 
@@ -519,7 +523,8 @@ weswegen das für einfache Dokumente sich als praktisch erweisen kann.
 
 Für den Sprung zur Umsetzung bedarf es als Nächstes die Konzeption des technischen Rahmens. 
 Zunächst wird der Aufbau des Projekts vorgestellt, durch welches die beschriebene Problematik gelöst werden soll.
-Danach wird der Verlauf der Entwicklung dargestellt und die 
+Danach wird der Verlauf der Entwicklung über die Aufteilung des Systems in seine Komponente dargestellt, 
+welche im Detail ihre Eigenschaften und Zusammenhänge beschreiben.
 
 
 \section{Aufbau}
@@ -545,6 +550,7 @@ Die Entwicklungsumgebung als zweite Komponente ist im Gegensatz dazu als Client 
 der den Benutzer:innen Änderungen der Regeldefinitionen zulässt. 
 Damit dieser Netzwerkansatz für die Architektur umgesetzt werden kann, müssen die Komponenten Schnittstellen 
 auf der Netzwerkebene bereitstellen.
+
 Für die jeweiligen Komponenten, die sich mit der Extraktionslogik beschäftigen, 
 passt hier der Lösungsansatz der Benutzung eines Webservers, welcher die Anfragen verarbeiten 
 und die verschiedenen Zustände zurückgibt.
@@ -556,11 +562,20 @@ und die daraus folgenden Antworten als Ergebnisse präsentiert.
 Für die praktische Umsetzung beziehungsweise für die Entwicklung wird der Lösungsentwurf 
 als ein Softwareprojekt in Form eines Monoliths konstruiert, welches das ganze System darstellt.
 Das Projekt trägt den Namen `Smart Document Extractor' und wird mit dem gängigen Versionsverwaltungssystem Git aufgesetzt.
+Die darin gegliederten Komponenten werden als `Rule System', `IDE' und `ML' genannt.
+
 Somit wird das Projekt als lokales Repository und als Remote Repository auf dem GitLab Server des Unternehmens festgehalten.
 Im Wurzelverzeichnis wird zudem mit der Container Virtualisierung von Docker 
 eine Betriebssystem-agnostische Umgebung für die Teilsysteme definiert.
 Dies ist nicht nur der Softwareentwicklung, sondern auch der Continuous Integration und deren Testschritte dienlich
 und ermöglicht einen Ausbau der Skalierung der Teilsysteme.
+
+\begin{figure}[htb]
+    \centering
+    \frame{\includegraphics[width=.7\textwidth]{images/projekt_aufbau.png}}
+    \caption{Struktur des Softwareprojekts}
+~\label{fig:projekt_aufbau}
+\end{figure}
 
 Die einzelnen Teilsysteme werden mit Hilfe einer Docker Compose Datei dann orchestriert, 
 sodass die Container gemeinsam gestartet werden und ihre Kommunikation über ein gemeinsames Netzwerk führen.
@@ -569,13 +584,49 @@ sensible Daten wie die Anmeldeinformationen der Zugänge der Teilsysteme
 oder weiteren Dienste für den Arbeitsbereich dynamisch anzupassen.
 Die Konfiguration wird hierbei von dem Versionsverwaltungssystem ignoriert.
 
+Abbildung~\ref{fig:projekt_aufbau} zeigt eine Übersicht des Projekts 
+und seine Eigenschaften, auf die im weiteren Verlauf detaillierter eingegangen wird. 
+Dort sind neben den beschriebenen Konfigurationsdateien die Teilsysteme und deren Module als Komponenten dargestellt.
+
+
+\section{Symbolische KI}
+
+Für das Teilsystem der symbolischen künstlichen Intelligenz wurde der Ansatz 
+beziehungsweise die Nutzung eines wissensbasiertes Systems ausgewählt.
+Dies ermöglicht die Steuerung der Extraktion über definierte Fakten und Regeln.
+In Kapitel~\ref{sec:exwerk} wurde ersichtlich, dass es viele Frameworks gibt, die ein solches System bereitstellen können.
+Doch zeigt sich auch bei jenen, dass die Nutzung eines dieser Frameworks nicht für den Fall passend ist, 
+da mehr Funktionalitäten als benötigt abgedeckt werden.
+
+Ein regelbasiertes System zeichnet sich durch eine Menge von Regeln und Fakten und durch den Regelinterpreter aus.
+Der Interpreter kann mit Hilfe dieser Menge die Schlussfolgerungen in Form einer 
+Vorwärtsverkettung oder Rückwärtsverkettung durchführen. 
+Für den Kontext der Dokumentenextraktion bedarf es als Funktionalitäten die Ausführung von Extraktionen 
+und die Generierung neuer Fakten, sobald die benutzerdefinierten Regeln mit den bereits vorhandenen Fakten erfüllt wurden.
+Die vorgestellten Bibliotheken bringen einen weiteren Aufwand mit sich, welcher den Rahmen des Projekts übersteigt.
+Daher wird hier der Lösungsweg über eine eigen implementiertes Regelsystem verfolgt.
+Der Regelinterpreter wird speziell für den Zweck der Datenextraktion entwickelt 
+und passt damit sich an Nutzung des gesamten Projekts an.
+
+Für die Speicherung der Regeln und Fakten kann dies über den persistenten Ansatz der Datenbanken ermöglicht werden.
+Jedoch erlaubt der Ansatz der Haltung der Regeln und Fakten über eine Datei im Dateisystem den schnellen Zugriff 
+und die schnelle Bearbeitung jener.
+Des Weiteren tritt hier die Frage auf in welchem Dateiformat, die Regeln und Fakten festgehalten werden.
+Ein gängiges Format wie JSON eignet sich durch ein festgelegtes Schema für die Speicherung, 
+da die Daten strukturiert aufbewahrt werden.
+Jedoch existieren weitere Dateiformate, die eine geeignete Alternative darstellen.
+Die Auszeichnungssprache YAML bildet die Obermenge zu JSON ab und ermöglicht neben den generischen Dateitypen, 
+die in JSON definiert sind, eine übersichtlieren Ansatz 
+
+In einem eigenen Modul 
 
 Damit das System für die Datenextraktion von großen Dokumentenmengen ermöglicht wird, 
 bedarf es hier zunächst die konkrete Benutzung der Funktionalitäten der Extraktion. 
 
-\section{Symbolische KI}
-
-Wie im Segment 
+Wie im Kapitel~\ref{sec:dokart} gezeigt wurde, existieren für die verschiedenen Dokumentarten 
+sowohl Gemeinsamkeiten als auch Unterschiede in den Eigenschaften.
+Um dies abzubilden, wird für jede Dokumentart ein Modul definiert, 
+welches die weiteren Bestandteile für den Extraktionsprozess besitzt.
 
 \section{Entwicklungsumgebung}
 
