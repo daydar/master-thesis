@@ -436,7 +436,7 @@ Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträg
 Die letzten Dokumentart wird in der Abbildung~\ref{fig:kfz3000_w} dargestellt.
 Hier handelt es sich um einen Werkstattauftrag von dem Dealer-Management-System KFZ3000, 
 welches auch wie die vorherigen Abbildungen anonymisiert wurde.
-Dieser Auftrag lässt sich von der Aufteilung der Segmente mit dem Care Warranty Dokument geeigneter vergleichen.
+Dieser Auftrag lässt sich von der Aufteilung der Segmente mit dem Care Garantieauftrag Dokument geeigneter vergleichen.
 Während auch das Adressfeld sich wieder normiert darstellt, werden Kunden- und Fahrzeugdaten 
 über Schlüssel-Wert Anordnungen in einem größeren Feld dargestellt.
 
@@ -526,8 +526,8 @@ Danach wird der Verlauf der Entwicklung dargestellt und die
 
 Für die Struktur des Systems ist vorerst die Aufteilung des Projekts relevant. 
 Dies kann je nach einem ausgewählten Architekturmuster unterschiedlich gestaltet werden. 
-Da die Teilsysteme wiederum eigene Systeme darstellen können und für die Anwendungsfälle kommunizieren beziehungsweise interagieren müssen, 
-scheint hier der Ansatz der verteilten Systeme geeignet zu sein.
+Da die Teilsysteme wiederum als eigene Systeme dargestellt werden können und für die Anwendungsfälle kommunizieren beziehungsweise 
+interagieren müssen, scheint hier der Ansatz der verteilten Systeme geeignet zu sein.
 Die Kategorie der verteilte Systeme ist in weitere unterschiedliche Architekturmustern gegliedert.
 Eines dieser Mustern ist die Client-Server Architektur, die es erlaubt über ein Netzwerk die Kommunikation bereitzustellen 
 und die Teilsysteme und ihre Aufgaben aufzuteilen. 
@@ -538,18 +538,40 @@ womit die Daten von mehreren Dokumenten eines Dokumententyps automatisiert erhal
 Die zweite soll die Entwicklungsumgebung umsetzen und damit auch jegliche Erstellung 
 und Bearbeitung von Regeln über Textdateien ermöglichen.  
 Die dritte und letzte Komponente soll für die Extraktion der Dokumente den Lösungsansatz des Machine Learnings umsetzen.
+
 Mit der beschriebenen Architekturmuster fungieren die erste und dritte Komponente als Server, 
 die die Logik der Extraktion ausführen sollen. 
 Die Entwicklungsumgebung als zweite Komponente ist im Gegensatz dazu als Client zu betrachten, 
 der den Benutzer:innen Änderungen der Regeldefinitionen zulässt. 
-Damit dieser Netzwerkansatz für die Architektur umgesetzt werden kann, ist die Benutzung eines Webservers notwendig. 
+Damit dieser Netzwerkansatz für die Architektur umgesetzt werden kann, müssen die Komponenten Schnittstellen 
+auf der Netzwerkebene bereitstellen.
+Für die jeweiligen Komponenten, die sich mit der Extraktionslogik beschäftigen, 
+passt hier der Lösungsansatz der Benutzung eines Webservers, welcher die Anfragen verarbeiten 
+und die verschiedenen Zustände zurückgibt.
+Bei der Komponente der Entwicklungsumgebung eignet sich der Ansatz einer Webanwendung, 
+womit weitere Technologien aus dem Webbereich genutzt werden können.
+Somit wird jegliche Bearbeitung der Definitionen durch die IDE als Anfrage verschickt 
+und die daraus folgenden Antworten als Ergebnisse präsentiert.
 
+Für die praktische Umsetzung beziehungsweise für die Entwicklung wird der Lösungsentwurf 
+als ein Softwareprojekt in Form eines Monoliths konstruiert, welches das ganze System darstellt.
+Das Projekt trägt den Namen `Smart Document Extractor' und wird mit dem gängigen Versionsverwaltungssystem Git aufgesetzt.
+Somit wird das Projekt als lokales Repository und als Remote Repository auf dem GitLab Server des Unternehmens festgehalten.
+Im Wurzelverzeichnis wird zudem mit der Container Virtualisierung von Docker 
+eine Betriebssystem-agnostische Umgebung für die Teilsysteme definiert.
+Dies ist nicht nur der Softwareentwicklung, sondern auch der Continuous Integration und deren Testschritte dienlich
+und ermöglicht einen Ausbau der Skalierung der Teilsysteme.
+
+Die einzelnen Teilsysteme werden mit Hilfe einer Docker Compose Datei dann orchestriert, 
+sodass die Container gemeinsam gestartet werden und ihre Kommunikation über ein gemeinsames Netzwerk führen.
+Die zusätzliche Konfiguration von Umgebungsvariablen in dem Projekt erlaubt es außerdem, 
+sensible Daten wie die Anmeldeinformationen der Zugänge der Teilsysteme 
+oder weiteren Dienste für den Arbeitsbereich dynamisch anzupassen.
+Die Konfiguration wird hierbei von dem Versionsverwaltungssystem ignoriert.
 
 
 Damit das System für die Datenextraktion von großen Dokumentenmengen ermöglicht wird, 
 bedarf es hier zunächst die konkrete Benutzung der Funktionalitäten der Extraktion. 
-
-
 
 \section{Symbolische KI}
 
