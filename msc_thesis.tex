@@ -108,39 +108,39 @@ Die Technologien hierfür benutzen unterschiedliche Ansätze und müssen daher z
 Damit jedoch auch für Agierende innerhalb des technischen Bereichs die Nutzung nicht zu abstrakt bleibt, 
 soll durch die Entwicklung eines Systems der Zugriff greifbarer gestaltet werden, 
 welches wiederum allein durch eine benutzerfreundliche Anwendung ermöglicht wird. 
-Die Bneutzer sollen eine Möglichkeit bekommen und über eine Eingabe der Steuerung bestimmen können, 
+Die Benutzer sollen eine Möglichkeit bekommen und über eine Eingabe der Steuerung bestimmen können, 
 welche Informationen extrahiert werden sollen.
 
 Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können;
 zudem sollen die Vorgänge eine niedrigere Fehlerquote aufzeigen. 
 Die Prozesse müssen außerdem während des gesamten Ablaufs über eine Steuerung und Regelung kontrollierbar sein.
 Solche Prozesse können zum Beispiel über Regeln festgelegt beziehungsweise gesteuert werden, 
-die bei einer Erfüllung weitere Aktionen oder Regeln auslösen können.
+die hingehen bei einer Erfüllung weitere Aktionen oder Regeln auslösen können.
 
-Diese beschriebene Eigenschaft kann durch eine symbolische künstlichen Intelligenz (KI) abgedeckt werden, 
-welche eine vorgegebene Verarbeitung möglich macht. 
+Diese im vorherigen genannten Absatz beschriebene Eigenschaft kann durch eine symbolische künstlichen Intelligenz (KI) abgedeckt werden, 
+welche eine vorgegebene Verarbeitung zulässt. 
 Hiermit bezeichnet man einen altmodischen Ansatz der KI, bei der über das Festlegen von Symbolen 
-menschliches Wissen in einer Logik gehalten wird und diese benutzt wird um weiteres Wissen zu generieren~\cite{dicksonWhatSymbolicArtificial2019}.
+menschliches Wissen in einer Logik gehalten wird und diese benutzt wird um weiteres Wissen sodann zu generieren~\cite{dicksonWhatSymbolicArtificial2019}.
 Durch eine Parametrisierung einer solchen KI kann dann die Unschärfe der ausgewählten Daten festgelegt werden, 
-damit eine Feineinstellung stattfinden kann. 
-Das heißt, der Benutzer eines solchen Systems soll sich beginnend von groben Definitionen für die Verarbeitung 
+damit eine Feineinstellung erfolgen kann. 
+Das heißt, die Benutzer:innen eines solchen Systems soll sich beginnend von groben Definitionen für die Verarbeitung 
 zu einer detaillierten und angepassteren Definition über Feedback des Systems hinarbeiten. 
 
 Mit Hilfe dieser Annäherung an Definitionen und Regeln kann so für eine bessere Erfolgsquote gesorgt werden. 
-Zudem kann der Ansatz des Machine Learnings (ML), wobei erfolgreiche Verarbeitungen einem System antrainiert werden, 
+Zudem kann der Ansatz des Machine Learnings (ML), mit jenem erfolgreiche Verarbeitungen einem System antrainiert werden, 
 weitere Dokumente aus Daten extrahieren. 
-Hierbei ist noch offen, welcher Typ des Machine Learnings sich für diesen Fall eignet.
+Hierbei ist noch offen, welcher Typ des Machine Learnings sich für diesen Fall am optimalsten eignet.
 
 Beide Ansätze – der der symbolischen KI und der des Machine Learnings – bieten als Option die Entwicklung 
 einer grafischen interaktiven Entwicklungsumgebung (IDE) an. 
-Jene soll das Festlegen von Definitionen und Regeln erlauben, mit welchen die Dokumente verarbeitet werden können. 
-Außerdem soll diese Oberfläche verschiedene Funktionalitäten anbieten und auch Feedback sowohl bei einem problemlosen Lauf 
-als auch bei einem fehlerhaften Lauf zurückgeben. 
+Die IDE soll das Festlegen von Definitionen und Regeln erlauben, mit welchen die Dokumente verarbeitet werden können. 
+Außerdem soll diese Oberfläche verschiedene Funktionalitäten offerieren und auch Feedback sowohl bei einem problemlosen Lauf, 
+als auch bei einem fehlerhaften Lauf, zurückgeben. 
 
-Des Weiteren soll das System es ermöglichen Änderungen der Definitionen anzumerken und Unterschiede zu erstellen, 
-womit auch bisherige Ergebnisse angezeigt werden.
+Des Weiteren soll es das System es ermöglichen, Änderungen der Definitionen anzumerken und Unterschiede zu erstellen. 
+Mit dieser Funktion sollen auch bisherige Ergebnisse angezeigt werden.
 Die Festlegung von Definitionen und Regeln soll außerdem durch eine Ansicht der Dokumente unterstützt werden.
-Insgesamt wird das System die zwei Ansätze als Subsysteme aufteilen um die Umsetzung zu modularisieren 
+Insgemein wird das System die zwei Ansätze als Subsysteme aufteilen um die Umsetzung zu modularisieren 
 und einen Vergleich zu ermöglichen.
 
 \section{Ablauf}\label{sec:ablauf}
@@ -148,14 +148,14 @@ und einen Vergleich zu ermöglichen.
 Um genau dieses optimale System für das beschriebene Szenario entwickeln zu können, werde ich in dieser Arbeit wie folgt vorgehen: 
 
 Für eine vollständige Auseinandersetzung soll eine weitere Analyse stattfinden,
-damit die vorhandenen Grundlagen für den Anwendungsfall evaluiert werden können. 
+damit die vorhandenen Grundlagen für den Anwendungsfall, um den es in der Arbeit geht, evaluiert werden können. 
 Das heißt, es werden mit Hilfe der Funktionalitäten der Bibliotheken Ergebnisse 
 auf Basis der Datensätze erzeugt, um die Erfolgsquoten zu überprüfen. 
 Diese werden dann verglichen und ausgewertet. Parallel dazu soll die Umgebung 
 für die Entwicklung eingerichtet werden, mit der die Implementierung der Systeme stattfinden soll. 
 
 Danach widme ich mich der Konzeption und der Entwicklung des Systems.
-Diese beginnt mit der symbolischen KI als ein Subsystem des gesamtem Projekts, sodass ein direkterer Ansatz ermöglicht wird. 
+Diese beginnt mit der symbolischen KI als ein Subsystem des gesamtem Projekts, durch selbige ein direkterer Ansatz ermöglicht wird. 
 Die Entwicklung hierbei wird im Wasserfall-Ansatz, einem Ansatz bei der phasenweise 
 die Eigenschaften einer solchen KI umgesetzt werden, 
 um eine Grundlage für die nächste Komponente zur Verfügung zu stellen.
@@ -165,30 +165,32 @@ Deswegen folgt im nächsten Schritt die Konzeptionierung und Entwicklung der int
 welche sich während der Entwicklung der symbolischen KI parallelisieren lässt. 
 Sobald das Gerüst der Benutzeroberfläche fertiggestellt ist, möchte ich dies mit der symbolischen KI verbinden.
 
-Als Gegenstück wird sich dann mit dem Machine Learning Subsystem, 
+Als Gegenstück wird sich dann mit dem Machine Learning Ansatz und dem dazugehörigen Subsystem, 
 bei der gleichermaßen eine Konzeptionierung und Entwicklung stattfindet, gewidmet.
 Hier wird das bisherige Gesamtkonstrukt in einem iterativen Ansatz umgesetzt, 
 sodass der Hauptteil so früh wie möglich verfügbar ist, 
 damit das Training des ML-Systems durch die Dokumente auch zeitnah starten kann. 
 Auf das Auswerten dieses Subsystems folgt eine Anpassung dessen. 
+Die Komponenten der symbolischen KI und des Machine Learnings erlauben damit einen Vergleich 
+zwischen zwei verschiedene Ansätze aus der Künstlichen Intelligenz.
 
 Danach wird das Software Testing für die beiden Subsysteme eingeführt. 
 Mit Unit Testing, Integration Testing und Functional Testing wird das erfolgreiche Ausführen gewisser Eigenschaften abgedeckt.
 Dies dient wiederum als Grundlage dafür, die Continuous Integration (CI) für das System einzuführen, 
-womit eine sichere und konsistente Entwicklung nach dem Prototyping angeboten wird.  
+mit dieser eine sichere und konsistente Entwicklung nach dem Prototyping angeboten wird.  
 
-Wenn dann aber die Systeme gegeben sind, kann das grafische Tool weiter angepasst werden, welches 
-sich dann mit den Systemen verbinden soll, um die Ausführbarkeit der Funktionalitäten zu überprüfen. 
+Wenn hierauf die Systeme gegeben sind, kann das grafische Tool weiter angepasst werden, welches 
+sich dann mit den Systemen verbinden soll, um infolgedessen die Ausführbarkeit der Funktionalität überprüfen zu können. 
 Um ein gemeinsames System zu ermöglichen, welches dann gegebenenfalls weitere Testschritte bedarf,
-werden dann die Komponenten zusammengeführt.  
+werden anschließend die Komponenten zusammengeführt.  
 Sobald jenes eine erfolgreiche Form annimmt, wird der Teil der Continuous Integration mit einbezogen, 
 mit jener das System einen Zustand der Instandhaltung annehmen kann. 
 Über Testing sollen so mögliche Fehlerquellen entdeckt werden, bevor diese überhaupt auftreten können.
 
 Unter die Zielsetzung für meine beiden eben genannten Ansätze fallen die Kundendaten mit den Eigenschaften wie 
-Name, Firma, Adresse und Kundennummer, die Fahrzeugdaten worunter Fahrgestellnummer, Modell, 
-Farbe, Motor, Erstzulassung, Letzter/nächster Service und TÜV fallen und 
-die Abrechnungsdaten wie die Jobs mit Arbeitspositionen und Teilen, Preise etc. 
+Name, Firma, Adresse und Kundennummer. Zu Eigenschaften der Fahrzeugdaten zählen Angaben der Fahrgestellnummer, 
+Modell, Farbe, Motor, Erstzulassung, Letzter/nächster Service und 
+TÜV sowie die Abrechnungsdaten wie die Jobs mit den dazugehörigen Arbeitspositionen, der Reparaturteile, den Preisen etc.
 
 Dazu stehen als weitere Grundlage mehr als 10.000 annotierte unterschiedliche Dokumente mit genau den Daten, 
 die extrahiert werden sollen, als Datenbank zur Verfügung. 
@@ -211,7 +213,7 @@ Im Automobilbereich wird der Verkauf von Kraftfahrzeugen in zwei Segmente aufget
 bei dem es sich um den Verkauf 
 von Neu- und Gebrauchtwagen handelt und dem After-Sales-Bereich, bei jenem eine Bindung zum Kunden über den Verkauf von 
 Verschleiß- und Ersatzteilen geschaffen wird.~\cite{theuererWasMachtSales}
-Diese Aufteilung der Segmente wird ebenfalls von den Autohäusern angewendet, zugleich werden für diese 
+Diese Aufteilung der Segmente wird ebenfalls von den Autohäusern angewendet, zugleich werden für diese Aufteilung
 jeweils gängige Abläufe als Prozesse benutzt.
 
 Für den After-Sales-Bereich bietet ilexius GmbH zwei Arten von ERP-Systeme an. 
@@ -225,36 +227,36 @@ sodass die Dokumentation archiviert werden kann.
 
 Die ERP-Systeme, die bereits im Kapitel~\ref{sec:ziel} beschrieben worden sind, unterstützen 
 damit die Kunden:innen von ilexius GmbH 
-in den Autohäusern und deren Werkstätten mit der Planung, der Steuerung sowie der Verwaltung 
+in den Autohäusern und deren Werkstätten bei der Planung, der Steuerung sowie der Verwaltung 
 von verschiedenen Aufgaben in ebenjenem After-Sales-Bereich.
 
-Eine Art der Aufgaben sind Arbeitsaufträge, bei der es sich in den meisten Fällen um die Behandlung 
+Eine Art der Aufgaben sind Arbeitsaufträge, bei der es sich in den meisten Fällen um die Handhabung und Abfertigung 
 eines Autos inklusive Kundendaten handelt. 
 Der Auftrag besteht hierbei aus einer Liste an Arbeitsabläufen, die als Jobs bezeichnet werden. 
 Die Jobs wiederum unterteilen sich in einzelne Arbeitsschritte, die Joblines genannt werden, 
 welche die konkreten Verrichtungen der Arbeit darstellen und somit den gesamten Arbeitsauftrag 
 in einzelne Teilschritte vervollständigen.
 
-Sind diese Aufträge abgeschlossen, benutzen die Mitarbeiter:innen der Autohäuser ihre Dealer-Management-Systeme,
- um eine Rechnung zu erstellen und diese im ERP-System zu archivieren.
+Sind diese Aufträge abgeschlossen, benutzen die Mitarbeiter:innen der Autohäuser ihre Dealer-Management-Systeme, 
+um eine Rechnung zu erstellen und diese im ERP-System zu archivieren.
 Das ERP bietet des Weiteren eine Schnittstelle für diese Dokumente, wie z.B die Rechnungen oder die Garantieaufträge an, 
 die allein über Scanner die Dokumente übertragen. 
 Dort werden die Dokumente verarbeitet und mit Hilfe eines OCR Scanners digitalisiert. 
 
-Aktuell ist allerdings die Digitalisierung nicht in der Lage, einen Kontext beziehungsweise (bzw.) 
+Derzeit ist allerdings die Digitalisierung nicht in der Lage, einen Kontext beziehungsweise (bzw.) 
 eine Semantik für diese Dokumente zu erstellen.
 Idealerweise kann dies genutzt werden, um aus den Dokumenten Arbeitsaufträge zu generieren und somit zu digitalisieren.
-Demzufolge ergibt sich hier an der Stelle die Möglichkeit, einen neuen Ansatz zu testen, sodass die Informationen 
+Demzufolge ergibt sich hier an der Stelle die Möglichkeit, einen neuen Ansatz zu testen, infolgedessen die Informationen 
 aus diesen Dokumenten als Daten erhaltbar sind.
 
 \section{Analyse}\label{sec:ana}
 
 Das Extrahieren von Daten ist eine gängige Methode um Informationen aus verschiedenen Systemen wie Datenbanken 
-oder Software as a Service (SaaS) Plattformen zu beschaffen~\cite{stichdataWhatDataExtraction}. 
+oder Software as a Service (SaaS) Plattformen zu beschaffen. 
 Durch diese Beschaffung können die Daten weiter verarbeitet werden um neue Lösungsmöglichkeiten für das eigene System anzubieten.
 Die Arten des Extrahierens unterscheiden sich hierbei im Zeitverlauf und der Herangehensweise. 
 So können Diese extrahiert werden sobald Änderungen der Daten beobachtet oder mitgeteilt werden, 
-wodurch die Daten nach und nach beschafft werden.
+wodurch die Daten nach und nach beschafft werden~\cite{stichdataWhatDataExtraction}.
 
 Des Weiteren gibt es die Option eine komplette Extraktion durch zu führen. 
 Dieser Ansatz kann sich in vielen Fällen als nachteilig erweisen, da die Daten jedes mal 
@@ -274,8 +276,9 @@ und sind erfolgreich mit der Datenextraktion.
 Auch existieren bereits Open-Source Bibliotheken, die sich mit dem Entnehmen der Daten aus PDF Dokumenten beschäftigen.
 
 Die Meisten davon lassen sich hinsichtlich der Aufteilung der Aufgaben gruppieren. 
-So erlauben unter anderem PDFMiner~\cite{unixuserPDFMiner} oder Apache Tika~\cite{apacheApacheTikaApache} Texte aus 
-PDF Dokumenten zu gewinnen. 
+So erlauben unter anderem PDFMiner~\cite{unixuserPDFMiner} oder Apache Tika~\cite{apacheApacheTikaApache}, 
+welches vor der Extraktion der Texte und Metadaten noch die Klassifizierung und Identifizierung des Medientyps von Dateien 
+anhand einer umfangreichen Hierarchie~\cite{mattmannTikaAction2012} besitzt, Texte aus PDF Dokumenten zu gewinnen. 
 Funktionalitäten für das Extrahieren von Daten aus Tabellen bieten Projekte wie 
 Tabula~\cite{tabulapdfTabulapdfTabulaTabula} oder Camelot~\cite{camelotCamelotPDFTable2022}
 an womit ein weiterer Aspekt durch die Nutzung abgedeckt wäre. 
@@ -302,7 +305,7 @@ Das visuelle Debugging, welches in Abbildung~\ref{fig:vd} zu sehen ist, ermögli
 die Texte des Dokuments hervorzuheben, was wiederum die Extraktion greifbarer darstellt 
 und die Entwicklung mit den Funktionalitäten unterstützt.
 
-In dieser Abbildung sind die persöhnliche Daten des Auftrags verpixelt und damit anonymisiert.
+In dieser Abbildung sind die persönlichen Daten des Auftrags verpixelt und damit anonymisiert.
 Auch die Funktionalität des Entfernens von Duplikaten kann dann zum Einsatz kommen, wenn Dokumente bei ihrer Erstellung 
 oder Verarbeitung versehentlich die selben Einträge nochmal im Quellcode des PDFs besitzen. 
 
@@ -315,6 +318,15 @@ oder Verarbeitung versehentlich die selben Einträge nochmal im Quellcode des PD
     \caption{visuelles Debugging bei einem Dokument }
 ~\label{fig:vd}
 \end{figure}
+
+Für die Auswahl einer Extraktionsbibliothek ist auch die dazu gehörige Programmiersprache für das System der Datenextraktion relevant, 
+in der die Bibliothek umgesetzt wurde. 
+Hierbei fällt das für die bereits genannten Bibliotheken diese sich in zwei Sprachen gruppieren lassen.
+Projekte wie Tika, Tabula und Textricator sind mit Hilfe von Java implementiert, 
+während die restlichen aufgezählten Bibliotheken in Python geschrieben sind.
+Für Tabula gilt hier die Ausnahme, dass es für das Projekt unterschiedliche Wrapper für weitere Programmiersprachen wie Python gibt.
+Hieraus ist zu beobachten, dass die Nutzung von Python viele mögliche Extraktionswerkzeuge erlaubt, 
+welches sich für die spätere Umsetzung als noch bedeutsam erweist.
 
 Die Hürden für eine komplett automatische Extraktion bestehen trotzdem noch.
 So ist nämlich nicht klar, wie das zu erwartende Verhalten der Logik der Extraktion für den generellen Fall auszusehen hat.
@@ -333,9 +345,11 @@ Dadurch passiert es, dass es Autohäuser gibt, welche das gleiche DMS verwenden
 und sowohl das selbe als auch ein in Detail angepassten Dokumentenaufbau für ihre Aufträge benutzen. 
 Dem Umfang dieser Thesis geschuldet werde ich mich daher auf drei Dokumententypen von unterschiedlichen Autohäusern 
 mit ihren jeweils genutzten DMS beschränken und anhand jener drei Typen mein Vorgehen exemplarisch demonstrieren.
+Die Abbildungen der Dokumente in diesem Abschnitt zeigen zu Teilen persönliche Daten 
+und wurden deshalb für die Thesis durch Verpixelung der sensitiven Felder anonymisiert.
 
 In Abbildung~\ref{fig:care_g} wird die erste Art eines Auftrags dargestellt.
-Bei diesem digitalen Schriftstück handelt es sich zunächst von der Form her um eine Garantierechnung des Care Warranty DMS\@.
+Bei diesem digitalen Schriftstück handelt es sich zunächst von der Form her um eine Garantierechnung des Dealer-Management-Systems Care\@.
 Das Dokument besitzt hierbei drei Bereiche, die relevante Informationen für einen Arbeitsauftrag enthalten.
 In der oberen Hälfte befindet sich zunächst das Adressfeld, welches die Kundeninformationen im genormten Adressformat enthält, 
 und ein weiterer Abschnitt, welches die Fahrzeugdaten festhält.
@@ -353,9 +367,10 @@ aber gleichzeitig noch eine Gesamthöhe pro Spalte beziehungsweise eine Gesamtbr
 Jedoch fällt auf, dass sich, im Gegensatz zur Anzahl der Zeileneinträge, die Anzahl der Spalteneinträge pro Zeile unterscheidet.
 
 Außerdem fehlen jegliche Einrahmungen beziehungsweise jegliche Trennlinien für die Zeilen und die Spalten.
-Bei den Einträgen in diesem Abschnitt handelt es sich um die Abrechnungsnummer, das Datum der Reparatur, den Fahrzeugmodellnamen, 
-den zuletzt abgelesen Kilometerzählerstand, der Arbeitsauftragsnummer, der Fahrzeug-Identifikationsnummer beziehungsweise der
-`Vehicle Identification Number' (VIN) und das Datum der Erstellung des Arbeitsauftrags.
+Bei den Einträgen in diesem Abschnitt handelt es sich um die Abrechnungsnummer, das Datum der Reparatur, 
+den Fahrzeugmodellnamen, das Kfz-Kennzeichen, den zuletzt abgelesen Kilometerzählerstand, der Arbeitsauftragsnummer, der Fahrzeug-Identifikationsnummer beziehungsweise der
+`Vehicle Identification Number' (VIN), des zuständigen Autohaus Mitarbeiters und das Datum der Erstellung des Arbeitsauftrags.
+Verpixelt und damit anonymisiert wurden die Felder des Kfz-Kennzeichens, der VIN und des zuständigen Mitarbeiters.
 
 Dagegen wird im unteren Bereich eine Tabelle durch die Aufzählung der einzelnen Jobs und Joblines dargestellt.
 Die Tabelle ist an der Kopfzeile zu erkennen, welche die Jobs und Joblines in die Arbeitsnummer beziehungsweise in die Teilenummer, 
@@ -369,14 +384,13 @@ Auch hier sind Probleme bezüglich (bzgl.) der Form der Tabelle zu erkennen.
 Während die ersten vier Zeilen noch unauffällig erscheinen, besitzt die fünfte Zeile 
 bei der Bezeichnung einen längeren Text, sodass der restliche Text in weiteren Zeilen in der Spalte der Bezeichnung 
 darunter geschrieben steht.
-
-Während die Abstände zwischen den Spalten insgesamt konsistenter erscheinen, sind in der Abbildung~\ref{fig:care_g} 
-in mehreren Zeileneinträgen Überläufe bei den Arbeitnummern bzw. den Teilenummern zu erkennen.
+Die Abstände zwischen den Spalten insgesamt scheinen konsistenter zu sein, sind jedoch in der Abbildung~\ref{fig:care_g} 
+in mehreren Zeileneinträgen Überläufe bei den Arbeitsnummern bzw.\ den Teilenummern zu erkennen.
 In der letzte Zeile ist außerdem zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
 was eine eindeutige Erkennung der Positionierung noch weiter erschwert.
 Inhaltlich werden Jobs mit den dazu gehörigen Joblines darunter folgend dargestellt. 
 
-Dies ist durch die Codierung der Arbeitsnummern bzw. der Teilenummer zu erkennen 
+Dies ist durch die Codierung der Arbeitsnummern bzw.\ der Teilenummer zu erkennen 
 und die Hierarchie ist durch das jeweilige Dealer-Management-System vorgegeben.
 In der ersten Spalte können daher Codes von Jobs, Reparaturzeiten, Ersatzteilen, 
 Fremdleistungen, Stempelzeiten und Kundenbeschwerden auftreten.
@@ -396,6 +410,7 @@ welche wiederum sich in den Kosten der Arbeit und der Teile aufteilen lassen.
 \end{figure}
 
 In Abbildung~\ref{fig:formel1_r} wird eine Rechnung der Formel 1 DMS dargestellt.
+Auch hier sind sämtliche personenbezogenen Daten verpixelt und anonymisiert worden.
 Hier ist im Vergleich zur vorherigen Abbildung~\ref{fig:care_g} ein ähnlicher Aufbau ersichtlich.
 Während das Adressfeld gewöhnlich erscheint, sind jedoch die Fahrzeug- und Kundendaten diesmal 
 in zwei unterschiedlichen Tabellen aufgeteilt.
@@ -419,8 +434,9 @@ Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträg
 \end{figure}
 
 Die letzten Dokumentart wird in der Abbildung~\ref{fig:kfz3000_w} dargestellt.
-Hier handelt es sich um einen Werkstattauftrag von dem Dealer-Management-System KFZ3000.
-Dieser Auftrag lässt sich von der Aufteilung der Segmente mit dem Care Warranty Dokument geeigneter vergleichen.
+Hier handelt es sich um einen Werkstattauftrag von dem Dealer-Management-System KFZ3000, 
+welches auch wie die vorherigen Abbildungen anonymisiert wurde.
+Dieser Auftrag lässt sich von der Aufteilung der Segmente mit dem Care Garantieauftrag Dokument geeigneter vergleichen.
 Während auch das Adressfeld sich wieder normiert darstellt, werden Kunden- und Fahrzeugdaten 
 über Schlüssel-Wert Anordnungen in einem größeren Feld dargestellt.
 
@@ -456,29 +472,106 @@ womit eine Verallgemeinerung verschiedener Dokumententypen ermöglicht wird.
 Damit das System für den Prozess der Extraktion als solches sich zeitnah im Rahmen einer Thesis umsetzen lässt, 
 können Frameworks dem ganzen Zeitfenster entgegenkommen.
 Hierbei werden sich für die Teilsysteme verschiedene Technologien angeschaut und in Erwägung gezogen. 
-
 So wird zunächst die symbolische künstliche Intelligenz dem ersten Teilsystem zugeordnet und in seiner Art unterschieden. 
 Zudem müssen die Realisierungsmöglichkeiten der symbolischen KI betrachtet 
 und aus den verschiedenen Arten eines wissensbasiertes Systems ein Modell ausgewählt werden.
-Ein solches wissenbasiertes System ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechanismen der Schlussfolgerung nutzen, 
+
+Ein solches wissensbasiertes System ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechanismen der Schlussfolgerung nutzen, 
 um Lösungen für Probleme zu finden~\cite{embreySkillRuleKnowledge}. 
-Es existieren verschiedene Modelle eines wissenbasiertes Systems, die sich, je nach Anwendungsfall, als passend erweisen.
-So gibt es den Ansatz des regelbasierten Systems, bei dem die Schlussfolgerung über Regeln und Fakten, 
+Es existieren verschiedene Modelle eines wissensbasiertes Systems, die sich, je nach Anwendungsfall, als passend erweisen.
+So gibt es den Ansatz des regelbasierten Systems bzw. Produktionssystems, bei dem die Schlussfolgerung über Regeln und Fakten, 
 die von einem Benutzer definiert werden, gestaltet wird.
-Bekannt für die Erstellung eines solchen Systems ist CLIPS\cite{clipsCLIPSToolBuilding}, welches über eine eigene Syntax erlaubt, 
 
+Bekannt für die Erstellung eines solchen Systems, ist das in der Programmiersprache C geschriebene Werkzeug CLIPS\cite{clipsCLIPSToolBuilding}, 
+welches über eine eigene Syntax für die Regeln verfügt.
+Diese Umsetzung wird auch mit dem Wrapper `clipspy' für die Programmiersprache Python zur Nutzung bereitgestellt.
+Andere Umsetzungen konzentrieren sich im Vergleich eher auf die Inferenzmaschine, die auch als Regelinterpreter gilt.
+Projekte wie `Pyke'~\cite{frederiksenWelcomePyke}, `Durable Rules'~\cite{ruizDurableRules2022} oder `Experta'~\cite{perezNilp0interExperta2022}, 
+dem Nachfolger von einem Expertensystem Framework namens `pyKnow', erlauben es eine Regelmenge zu definieren 
+und die einzelnen Regeln mit selbstdefinierten Funktionen zu koppeln.
 
+Für die Entwicklungsumgebung, die den Zugang zum System darstellen soll, 
+eignen sich sowohl Benutzerschnittstellen (UI) Bibliotheken für den Desktop als auch für den Web.
+Die Priorität liegt hierbei bei der Erstellung der einzelnen Komponenten der graphische Benutzeroberflächen (GUI). 
+So können Projekte wie Qt~\cite{qtQtCrossplatformSoftware} und ImGui~\cite{omarDearImGui2022}, welches in C++ geschrieben ist, eine Bibliothek bereitstellen, 
+die auf einer nativen Ebene funktionieren und damit in verschiedenen Anwendungsfällen genutzt werden.
+Letzter genanntes benutzt intern einen Zustandsautomat um die Render-Pipeline darstellen, 
+was etwas mehr Erfahrung mit der Grafikprogrammierung erfordert, um dies verwenden zu können~\cite{furhtCreatingUserInterface2018}.
+
+Dem gegenüber stehen abstraktere UI-Lösungen wie das Benutzen eines Web Frameworks, welche im Front-End Bereich verwendet werden.
+Bekannte Bibliotheken wie Vue und React ermöglichen eine schnelle und gängige Umsetzung einer Oberfläche, 
+die auch die Zwecke einer Entwicklungsumgebung erfüllen können. 
+Weitere Kandidaten wie Svelte~\cite{svelteSvelteCyberneticallyEnhanced} versuchen durch das Nutzen eines Complier, 
+die Arbeit von dem Browser zu der Build Zeit umzulagern.
+
+Für das Teilsystems, welches den Ansatz des maschinellen Lernens nutzen soll, 
+scheinen auch hier ML-Frameworks eine geeignete Lösung zu sein.
+Kandidaten sind hierbei die zurzeit konventionellen Frameworks wie TensorFlow~\cite{tensorflowTensorFlow}, pyTorch~\cite{pytorchPyTorch}
+und spaCy~\cite{explosionSpaCyIndustrialstrengthNatural}, welche für die Anwendungsgebiete unter anderem in der Bilderkennung, 
+der Computer Vision und des Neuro-Linguistische Programmieren (NLP) eine automatisierte Lösung anbieten.
+Weitere neue Projekte wie Fonduer~\cite{wu2018fonduer} fokussieren sich mit Hilfe von schwachem überwachten Lernen (supervised learning) 
+auf die Extraktion von umfangreichen formatierten Daten, worunter auch PDF Dokumente fallen.
+Dieser Lernansatz findet auch bei nicht vollständig beschrifteten Trainingsdaten einen Anwendungszweck~\cite{10.1093/nsr/nwx106}, 
+weswegen das für einfache Dokumente sich als praktisch erweisen kann.
 
 
 \chapter{Konzeption und Umsetzung}\label{chap:konundum} %KAPITEL
 
 Für den Sprung zur Umsetzung bedarf es als Nächstes die Konzeption des technischen Rahmens. 
+Zunächst wird der Aufbau des Projekts vorgestellt, durch welches die beschriebene Problematik gelöst werden soll.
 Danach wird der Verlauf der Entwicklung dargestellt und die 
 
 
 \section{Aufbau}
 
+Für die Struktur des Systems ist vorerst die Aufteilung des Projekts relevant. 
+Dies kann je nach einem ausgewählten Architekturmuster unterschiedlich gestaltet werden. 
+Da die Teilsysteme wiederum als eigene Systeme dargestellt werden können und für die Anwendungsfälle kommunizieren beziehungsweise 
+interagieren müssen, scheint hier der Ansatz der verteilten Systeme geeignet zu sein.
+Die Kategorie der verteilte Systeme ist in weitere unterschiedliche Architekturmustern gegliedert.
+Eines dieser Mustern ist die Client-Server Architektur, die es erlaubt über ein Netzwerk die Kommunikation bereitzustellen 
+und die Teilsysteme und ihre Aufgaben aufzuteilen. 
 
+So gibt es drei Komponenten mit unterschiedlichen Aufgaben, die die in vorherigen beschriebenen Teilsysteme abgebildet werden: 
+Die erste Komponente kümmert sich um die Extraktion über ein regelbasierte Logik, 
+womit die Daten von mehreren Dokumenten eines Dokumententyps automatisiert erhalten werden.
+Die zweite soll die Entwicklungsumgebung umsetzen und damit auch jegliche Erstellung 
+und Bearbeitung von Regeln über Textdateien ermöglichen.  
+Die dritte und letzte Komponente soll für die Extraktion der Dokumente den Lösungsansatz des Machine Learnings umsetzen.
+
+Mit der beschriebenen Architekturmuster fungieren die erste und dritte Komponente als Server, 
+die die Logik der Extraktion ausführen sollen. 
+Die Entwicklungsumgebung als zweite Komponente ist im Gegensatz dazu als Client zu betrachten, 
+der den Benutzer:innen Änderungen der Regeldefinitionen zulässt. 
+Damit dieser Netzwerkansatz für die Architektur umgesetzt werden kann, müssen die Komponenten Schnittstellen 
+auf der Netzwerkebene bereitstellen.
+Für die jeweiligen Komponenten, die sich mit der Extraktionslogik beschäftigen, 
+passt hier der Lösungsansatz der Benutzung eines Webservers, welcher die Anfragen verarbeiten 
+und die verschiedenen Zustände zurückgibt.
+Bei der Komponente der Entwicklungsumgebung eignet sich der Ansatz einer Webanwendung, 
+womit weitere Technologien aus dem Webbereich genutzt werden können.
+Somit wird jegliche Bearbeitung der Definitionen durch die IDE als Anfrage verschickt 
+und die daraus folgenden Antworten als Ergebnisse präsentiert.
+
+Für die praktische Umsetzung beziehungsweise für die Entwicklung wird der Lösungsentwurf 
+als ein Softwareprojekt in Form eines Monoliths konstruiert, welches das ganze System darstellt.
+Das Projekt trägt den Namen `Smart Document Extractor' und wird mit dem gängigen Versionsverwaltungssystem Git aufgesetzt.
+Somit wird das Projekt als lokales Repository und als Remote Repository auf dem GitLab Server des Unternehmens festgehalten.
+Im Wurzelverzeichnis wird zudem mit der Container Virtualisierung von Docker 
+eine Betriebssystem-agnostische Umgebung für die Teilsysteme definiert.
+Dies ist nicht nur der Softwareentwicklung, sondern auch der Continuous Integration und deren Testschritte dienlich
+und ermöglicht einen Ausbau der Skalierung der Teilsysteme.
+
+Die einzelnen Teilsysteme werden mit Hilfe einer Docker Compose Datei dann orchestriert, 
+sodass die Container gemeinsam gestartet werden und ihre Kommunikation über ein gemeinsames Netzwerk führen.
+Die zusätzliche Konfiguration von Umgebungsvariablen in dem Projekt erlaubt es außerdem, 
+sensible Daten wie die Anmeldeinformationen der Zugänge der Teilsysteme 
+oder weiteren Dienste für den Arbeitsbereich dynamisch anzupassen.
+Die Konfiguration wird hierbei von dem Versionsverwaltungssystem ignoriert.
+
+
+Damit das System für die Datenextraktion von großen Dokumentenmengen ermöglicht wird, 
+bedarf es hier zunächst die konkrete Benutzung der Funktionalitäten der Extraktion. 
 
 \section{Symbolische KI}
 
