@@ -451,8 +451,8 @@ Hinzu kommt, dass, im Gegensatz zu den anderen Dokumentarten,
 zwischen den Zeilen ein Art Summenstrich hinzugefügt wird, der die Anzahl der Jobs anzeigen soll.
 Außerdem wird im unteren Bereich des Dokuments lediglich die gesamte Betragssumme gezeigt.
 
-Insgesamt lässt sich feststellen, dass alle hier vorgestellten Dokumentarten 
-durch eine gemeinsame Problematik mehrerer Hürden miteinander verbunden sind.
+Insgesamt lässt sich feststellen, dass alle hier vorgestellten Dokumentarten und ihre Hürden
+durch eine gemeinsame Problematik miteinander verbunden ist.
 Die Darstellung der Kunden- und Fahrzeuginformationen wird entweder in einer Tabellenform 
 gemeinsam (siehe Abbildung~\ref{fig:care_g}) oder in zwei verschiedenen Tabellen (siehe Abbildung~\ref{fig:formel1_r}) abgebildet.
 Diese Tabellenform besitzt außerdem selten Trennlinien, welche geeignet sind, um eine derartige Tabelle als solche definieren zu können.
@@ -460,6 +460,11 @@ Für die Liste der Job und Joblines tritt das gleiche Problem auf.
 
 Diese Auflistung wird allein durch ihre Anordnung der Einträge und deren Abstände dazwischen als solche erkenntlich, 
 jedoch bricht sie in den prototypischen Dokumenten aber mindestens (mind.) einmal die Form durch Überläufe oder Verschiebungen der Texte.
+Ein weiterer relevanter Aspekt, welcher übersehen werden kann, ist, dass die Aufträge mehr als eine Seite haben können.
+Dies tritt für Dokumente auf, welche eine längere Auflistung der Job und Joblines besitzen 
+und somit auf weiteren Seiten dargestellt werden muss.
+Für die Extraktion der Liste muss daher auch überprüft werden, 
+ob sich diese über weitere Seiten erstreckt um sie zusammenzuführen und zu verarbeiten.
 Es ist festzustellen, dass verschiedene Tabellenstrukturen für unterschiedlichen Dokumentarten existieren.
 Dieses Angelegenheit besteht, da bisher für Tabellen keine universelle Standardisierung definiert ist.
 
@@ -627,12 +632,24 @@ Dafür wird eine gemeinsame Klasse namens `DocumentExtractionType' definiert, vo
 die die jeweilige Dokumentart abbilden. 
 So werden des Weiteren die Dokumentarten durch die Klassen `CareWarranty', `Formel1Invoice' und `KFZ3000Invoice' 
 dargestellt.
+
 Die gemeinsamen Funktionalitäten, die in der Elternklasse definiert sind, bestehen aus der Textextraktion von Textfeldern, 
 der Textextraktion von konventionellen Tabellen, der Textextraktion von unkonventionellen Tabellen 
 und der Textextraktion von benutzerdefinierten Tabellen.
+Damit diese Funktionalitäten ausgeführt werden können, müssen Eigenschaften der Extraktionsbereiche als Parameter angegeben werden.
+Für alle beschriebene Ziele existieren mindestens die Positionierung als Eigenschaft.
+Dies kann als Bounding Box (bbox) mit den X und Y Koordinaten für die jeweiligen Extraktionsziele aufgeführt werden.
+Eine weitere Eigenschaft, die sich aus der Positionierung schließen lässt, ist die Dokumentseite. 
+Dies kann den Funktionen neben den Bounding Boxen als Seitennummer mitgegeben werden.
 
+Die Klassen der einzelnen Dokumentarten dienen für weitere Funktionalitäten, die spezifischere Zwecke für den jeweiligen Dokumenttyp erfüllen 
+und eine Semantik für die extrahierten Texte bilden.
+Diese Methoden erhalten mit Hilfe von regulären Ausdrücken die einzelnen Werte für die gewünschten Felder 
+und weisen diese mit ähnlichen Algorithmen den Feldern zu.
 
 \subsection{Regelsyntax}
+
+Die Texte können nun durch den Extraktionsvorgang erhalten werden.
 
 Für die Speicherung der Regeln und Fakten kann dies über den persistenten Ansatz der Datenbanken ermöglicht werden.
 Jedoch erlaubt der Ansatz der Haltung der Regeln und Fakten über eine Datei im Dateisystem den schnellen Zugriff 
