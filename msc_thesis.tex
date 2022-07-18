@@ -598,25 +598,65 @@ In Kapitel~\ref{sec:exwerk} wurde ersichtlich, dass es viele Frameworks gibt, di
 Doch zeigt sich auch bei jenen, dass die Nutzung eines dieser Frameworks nicht für den Fall passend ist, 
 da mehr Funktionalitäten als benötigt abgedeckt werden.
 
-Ein regelbasiertes System zeichnet sich durch eine Menge von Regeln und Fakten und durch den Regelinterpreter aus.
+Ein regelbasiertes System zeichnet sich durch eine Menge von Regeln, den Produktionsregeln, eine Menge von Fakten, 
+welche sich während des Inferenzsvorgangs verändert, und durch den Regelinterpreter aus.
 Der Interpreter kann mit Hilfe dieser Menge die Schlussfolgerungen in Form einer 
-Vorwärtsverkettung oder Rückwärtsverkettung durchführen. 
-Für den Kontext der Dokumentenextraktion bedarf es als Funktionalitäten die Ausführung von Extraktionen 
-und die Generierung neuer Fakten, sobald die benutzerdefinierten Regeln mit den bereits vorhandenen Fakten erfüllt wurden.
-Die vorgestellten Bibliotheken bringen einen weiteren Aufwand mit sich, welcher den Rahmen des Projekts übersteigt.
-Daher wird hier der Lösungsweg über eine eigen implementiertes Regelsystem verfolgt.
+Vorwärtsverkettung oder Rückwärtsverkettung durchführen~\cite{5709916}. 
+
+Für den Kontext der Dokumentenextraktion bedarf es nur die Ausführung von Extraktionen und die Generierung neuer Fakten, 
+sobald die benutzerdefinierten Regeln mit den bereits vorhandenen Fakten erfüllt wurden, als Funktionalitäten.
+Die vorgestellten Bibliotheken bringen einen größeren Aufwand mit sich, welche weitere Abhängigkeiten mit sich bringen 
+und den Rahmen des Projekts übersteigen.
+Daher wird hier der Lösungsweg über ein eigen implementiertes Regelsystem verfolgt.
 Der Regelinterpreter wird speziell für den Zweck der Datenextraktion entwickelt 
-und passt damit sich an Nutzung des gesamten Projekts an.
+und passt sich damit an Nutzung des gesamten Projekts an.
+
+\subsection{Extraktionsvorgang}
+
+Bevor sich der Regelmaschine gewidmet werden kann, muss zunächst die konkrete Extraktion betrachtet werden.
+Im Abschnitt~\ref{sec:dokart} wurde gezeigt, dass die Hauptproblematik der Dokumente in deren Extraktion von Tabellen liegt.
+Hierfür definieren wir Tabellen, die für jede Zeile und Spalte Trennlinien besitzen, als konventionelle Tabellen.
+Ein Beispiel hierfür ist die Tabelle, die in Abbildung~\ref{fig:formel1_r} die Fahrzeugdaten bereit hält.
+Tabellen, die keine oder nur zu Teilen Trennlinien für die Zeilen und Spalten nutzen, werden als unkonventionelle Tabellen definiert.
+Diese Art der Tabelle tritt in den drei vorgestellten Dokumentarten in Form der Auflistung von den Jobs und Joblines auf.
+Andere Tabellen, die eine beliebige Form und somit die restlichen Tabellenarten darstellen, werden als benutzerdefinierte Tabelle definiert.
+
+Textfelder können im Vergleich zu den definierten Tabellen leichter extrahiert werden, 
+weswegen die Funktionalität für alle Dokumentarten beziehungsweise Dokumententypen benutzt werden kann.
+Dafür wird eine gemeinsame Klasse namens `DocumentExtractionType' definiert, von der die weiteren Klassen erben, 
+die die jeweilige Dokumentart abbilden. 
+So werden des Weiteren die Dokumentarten durch die Klassen `CareWarranty', `Formel1Invoice' und `KFZ3000Invoice' 
+dargestellt.
+Die gemeinsamen Funktionalitäten, die in der Elternklasse definiert sind, bestehen aus der Textextraktion von Textfeldern, 
+der Textextraktion von konventionellen Tabellen, der Textextraktion von unkonventionellen Tabellen 
+und der Textextraktion von benutzerdefinierten Tabellen.
+
+
+\subsection{Regelsyntax}
 
 Für die Speicherung der Regeln und Fakten kann dies über den persistenten Ansatz der Datenbanken ermöglicht werden.
 Jedoch erlaubt der Ansatz der Haltung der Regeln und Fakten über eine Datei im Dateisystem den schnellen Zugriff 
 und die schnelle Bearbeitung jener.
 Des Weiteren tritt hier die Frage auf in welchem Dateiformat, die Regeln und Fakten festgehalten werden.
-Ein gängiges Format wie JSON eignet sich durch ein festgelegtes Schema für die Speicherung, 
+Ein gängiges Serialisierungsformat wie JSON eignet sich durch ein festgelegtes Schema für die Speicherung, 
 da die Daten strukturiert aufbewahrt werden.
 Jedoch existieren weitere Dateiformate, die eine geeignete Alternative darstellen.
-Die Auszeichnungssprache YAML bildet die Obermenge zu JSON ab und ermöglicht neben den generischen Dateitypen, 
-die in JSON definiert sind, eine übersichtlieren Ansatz 
+
+Die Auszeichnungssprache YAML bildet die Obermenge zu JSON ab und ermöglicht neben den generischen Datentypen, 
+die auch in JSON definiert sind, einen übersichtlicheren aber auch komplexeren Ansatz für ein Serialisierungsformat. 
+Diese Sprache besitzt im Vergleich zu JSON eine bessere Lesbarkeit der Syntax, 
+ist kompakter gestaltet und bietet eine hohe Kompatibilität zu dem JSON Format.~\cite{eriksson2011comparison}.
+Die Syntax für Kommentare ist zudem auch verfügbar, wodurch sich diese Auszeichnungssprache für Konfigurationsdateien eignet, 
+was wiederum für die Definitionen der Regeln und Fakten abgebildet werden kann.
+Die Serialisierungsformate unterscheidet sich letztendlich in der Zielsetzung:
+JSON wird für den leichten Datenaustausch für Webanwendungen aufgrund der leichten Serialisierung 
+und Übersetzung mit dem Parser benutzt.   
+YAML dagegen hat eine erhöhte Komplexität für die Serialisierung und Übersetzung, 
+aber ist für Dateien gedacht, die von Menschen bearbeitet und damit genutzt werden sollen. 
+
+Mit Hilfe einer Bibliotheken für die Serialisierung und Übersetzung von YAML-Dateien werden somit die Regeln und Fakten während der Laufzeit 
+geladen, bearbeitet und gespeichert.
+Hierfür pathenize
 
 In einem eigenen Modul 
 
