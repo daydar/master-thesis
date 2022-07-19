@@ -536,52 +536,51 @@ weswegen das für einfache Dokumente sich als praktisch erweisen kann.
 
 \chapter{Konzeption und Umsetzung}\label{chap:konundum} %KAPITEL
 
-Für den Sprung zur Umsetzung bedarf es als Nächstes die Konzeption des technischen Rahmens. 
+Für den Sprung zur Umsetzung bedarf es als nächstes die Konzeption des technischen Rahmens. 
 Zunächst wird der Aufbau des Projekts vorgestellt, durch welches die beschriebene Problematik gelöst werden soll.
-Danach wird der Verlauf der Entwicklung über die Aufteilung des Systems in seine Komponente dargestellt, 
-welche im Detail ihre Eigenschaften und Zusammenhänge beschreiben.
-
+Danach wird der Verlauf der Entwicklung über die Aufteilung des Systems in seine Komponenten dargestellt. 
+Jene beschreiben im Detail ihre Eigenschaften und Zusammenhänge.
 
 \section{Aufbau}
 
-Für die Struktur des Systems ist vorerst die Aufteilung des Projekts relevant. 
-Dies kann je nach einem ausgewählten Architekturmuster unterschiedlich gestaltet werden. 
-Da die Teilsysteme wiederum als eigene Systeme dargestellt werden können und für die Anwendungsfälle kommunizieren beziehungsweise 
-interagieren müssen, scheint hier der Ansatz der verteilten Systeme geeignet zu sein.
-Die Kategorie der verteilte Systeme ist in weitere unterschiedliche Architekturmustern gegliedert.
-Eines dieser Mustern ist die Client-Server Architektur, die es erlaubt über ein Netzwerk die Kommunikation bereitzustellen 
-und die Teilsysteme und ihre Aufgaben aufzuteilen. 
+Für die Struktur des Systems ist vorerst die Untergliederung des Projekts relevant. 
+Sie kann je nach einem ausgewählten Architekturmuster unterschiedlich gestaltet werden. 
+Da die Teilsysteme wiederum als eigene Systeme dargestellt werden können und für die einzelnen Anwendungsfälle kommunizieren beziehungsweise 
+interagieren müssen, ist hier der Ansatz der verteilten Systeme geeignet.
+Die Kategorie der verteilten Systeme ist in weitere unterschiedliche Architekturmuster gegliedert.
+Eines dieser Muster ist die Client-Server Architektur, die es erlaubt, über ein Netzwerk die Kommunikation bereitzustellen 
+und die Teilsysteme und ihre Aufgaben zu fraktionieren. 
 
-So gibt es drei Komponenten mit unterschiedlichen Aufgaben, die die in vorherigen beschriebenen Teilsysteme abgebildet werden: 
-Die erste Komponente kümmert sich um die Extraktion über ein regelbasierte Logik, 
-womit die Daten von mehreren Dokumenten eines Dokumententyps automatisiert erhalten werden.
-Die zweite soll die Entwicklungsumgebung umsetzen und damit auch jegliche Erstellung 
-und Bearbeitung von Regeln über Textdateien ermöglichen.  
-Die dritte und letzte Komponente soll für die Extraktion der Dokumente den Lösungsansatz des Machine Learnings umsetzen.
+Dahin gehend gibt es drei Komponenten mit unterschiedlichen Aufgaben, die in den eben beschriebenden Teilsystemen abgebildet werden: 
+Die erste Komponente befasst sich mit der Extraktion über ein regelbasierte Logik, 
+mit jener die Daten von mehreren Dokumenten eines Dokumententyps automatisiert erhalten werden.
+Die Zweite setzt die Entwicklungsumgebung um und ermöglicht dadurch auch jegliche Erstellung 
+und Bearbeitung von Regeln über Textdateien.  
+Die dritte und letzte Komponente setzt für die Extraktion der Dokumente den Lösungsansatz des Machine Learnings um.
 
-Mit der beschriebenen Architekturmuster fungieren die erste und dritte Komponente als Server, 
+Innerhalb des Architekturmusters fungieren die erste und dritte Komponente als Server, 
 die die Logik der Extraktion ausführen sollen. 
 Die Entwicklungsumgebung als zweite Komponente ist im Gegensatz dazu als Client zu betrachten, 
-der den Benutzer:innen Änderungen der Regeldefinitionen zulässt. 
+der den Benutzer:innen Änderungen in Bezug auf Regeldefinitionen erlaubt. 
 Damit dieser Netzwerkansatz für die Architektur umgesetzt werden kann, müssen die Komponenten Schnittstellen 
 auf der Netzwerkebene bereitstellen.
 
 Für die jeweiligen Komponenten, die sich mit der Extraktionslogik beschäftigen, 
-passt hier der Lösungsansatz der Benutzung eines Webservers, welcher die Anfragen verarbeiten 
-und die verschiedenen Zustände zurückgibt.
+dient hier der Lösungsansatz der Benutzung eines Webservers, welcher die Anfragen verarbeitet 
+und die verschiedenen Zustände als Antwort den Anfragen zurückgibt.
 Bei der Komponente der Entwicklungsumgebung eignet sich der Ansatz einer Webanwendung, 
-womit weitere Technologien aus dem Webbereich genutzt werden können.
+mit welcher weitere Technologien aus dem Webbereich genutzt werden können.
 Somit wird jegliche Bearbeitung der Definitionen durch die IDE als Anfrage verschickt 
 und die daraus folgenden Antworten als Ergebnisse präsentiert.
 
-Für die praktische Umsetzung beziehungsweise für die Entwicklung wird der Lösungsentwurf 
-als ein Softwareprojekt in Form eines Monoliths konstruiert, welches das ganze System darstellt.
+Für die praktische Umsetzung oder für die Entwicklung wird der Lösungsentwurf 
+als ein Softwareprojekt in Form eines Monoliths konstruiert, welches das System als ganzes darstellt.
 Das Projekt trägt den Namen `Smart Document Extractor' und wird mit dem gängigen Versionsverwaltungssystem Git aufgesetzt.
-Die darin gegliederten Komponenten werden als `Rule System', `IDE' und `ML' genannt.
+Die darin gegliederten Komponenten werden `Rule System', `IDE' und `ML' genannt.
 
-Somit wird das Projekt als lokales Repository und als Remote Repository auf dem GitLab Server des Unternehmens festgehalten.
+Demgemäß wird das Projekt als lokales Repository und als Remote Repository auf dem GitLab Server des Unternehmens festgehalten.
 Im Wurzelverzeichnis wird zudem mit der Container Virtualisierung von Docker 
-eine Betriebssystem-agnostische Umgebung für die Teilsysteme definiert.
+eine betriebssystem-agnostische Umgebung für die Teilsysteme definiert.
 Dies ist nicht nur der Softwareentwicklung, sondern auch der Continuous Integration und deren Testschritte dienlich
 und ermöglicht einen Ausbau der Skalierung der Teilsysteme.
 
@@ -592,46 +591,47 @@ und ermöglicht einen Ausbau der Skalierung der Teilsysteme.
 ~\label{fig:projekt_aufbau}
 \end{figure}
 
-Die einzelnen Teilsysteme werden mit Hilfe einer Docker Compose Datei dann orchestriert, 
+Die einzelnen Teilsysteme werden mit Hilfe einer Docker Compose Datei anschließend orchestriert, 
 sodass die Container gemeinsam gestartet werden und ihre Kommunikation über ein gemeinsames Netzwerk führen.
 Die zusätzliche Konfiguration von Umgebungsvariablen in dem Projekt erlaubt es außerdem, 
 sensible Daten wie die Anmeldeinformationen der Zugänge der Teilsysteme 
-oder weiteren Dienste für den Arbeitsbereich dynamisch anzupassen.
+oder weitere Dienste für den Arbeitsbereich dynamisch anzupassen.
 Die Konfiguration wird hierbei von dem Versionsverwaltungssystem ignoriert.
 
 Abbildung~\ref{fig:projekt_aufbau} zeigt eine Übersicht des Projekts 
-und seine Eigenschaften, auf die im weiteren Verlauf detaillierter eingegangen wird. 
-Dort sind neben den beschriebenen Konfigurationsdateien die Teilsysteme und deren Module als Komponenten dargestellt.
+und seine Eigenschaften, auf die im weiteren Verlauf dieser Arbeit detaillierter eingegangen wird. 
+Dort sind neben den beschriebenen Konfigurationsdateien die Teilsysteme und deren Module als Komponenten abgebildet.
 
 
 \section{Symbolische KI}
 
-Für das Teilsystem der symbolischen künstlichen Intelligenz wurde der Ansatz 
-beziehungsweise die Nutzung eines wissensbasiertes Systems ausgewählt.
-Dies ermöglicht die Steuerung der Extraktion über definierte Fakten und Regeln.
-In Kapitel~\ref{sec:frameworks} wurde ersichtlich, dass es viele Frameworks gibt, die ein solches System bereitstellen können.
-Doch zeigt sich auch bei jenen, dass die Nutzung eines dieser Frameworks nicht für den Fall passend ist, 
+Für das Teilsystem der symbolischen künstlichen Intelligenz habe ich den Ansatz bzw.\ 
+die Nutzung eines Wissensbasierten Systems ausgewählt. 
+Dieser Ansatz ermöglicht die Steuerung der Extraktion über definierte Fakten und Regeln.
+Wie in Kapitel~\ref{sec:frameworks} beschrieben, gibt es viele Frameworks, die ein solches System bereitstellen können.
+Doch zeigt sich auch bei jenen, dass die Nutzung eines dieser Frameworks nicht für den Fall geeignet ist, 
 da mehr Funktionalitäten als benötigt abgedeckt werden.
 
-Ein regelbasiertes System zeichnet sich durch eine Menge von Regeln, den Produktionsregeln, eine Menge von Fakten, 
-welche sich während des Inferenzsvorgangs verändert, und durch den Regelinterpreter aus.
+Ein regelbasiertes System zeichnet sich durch eine Anzahl von Regeln (sogenannte Produktionsregeln), Fakten, 
+welche sich während des Inferenzsvorgangs verändern, und durch den Regelinterpreter aus.
 Der Interpreter kann mit Hilfe dieser Menge die Schlussfolgerungen in Form einer 
 Vorwärtsverkettung oder Rückwärtsverkettung durchführen~\cite{5709916}. 
 
-Für den Kontext der Dokumentenextraktion bedarf es nur die Ausführung von Extraktionen und die Generierung neuer Fakten, 
+Für den Kontext der Dokumentenextraktion bedarf es allein die Ausführung von Extraktionen und die Generierung neuer Fakten, 
 sobald die benutzerdefinierten Regeln mit den bereits vorhandenen Fakten erfüllt wurden, als Funktionalitäten.
-Die vorgestellten Bibliotheken verursachen einen größeren Aufwand, welche weitere Abhängigkeiten mit sich bringen 
-und den Rahmen des Projekts übersteigen.
-Daher wird hier der Lösungsweg über ein eigen implementiertes Regelsystem verfolgt.
+
+Die in dieser Arbeit vorgestellten Bibliotheken gehen mit einem größeren Aufwand der Implementierung einher, 
+da jene Bibliotheken weitere Softwareabhängigkeiten zur Folge haben.
+Daher wird hier der Lösungsweg über ein eigens implementiertes Regelsystem gewählt.
 Der Regelinterpreter wird speziell für den Zweck der Datenextraktion entwickelt 
-und passt sich damit an Nutzung des gesamten Projekts an.
+und passt sich damit an die Nutzung des gesamten Projekts an.
 
 \subsection{Extraktionsvorgang}
 
-Bevor sich der Regelmaschine gewidmet werden kann, muss zunächst die konkrete Extraktion betrachtet werden.
+Bevor auf die Regelmaschine genauer eingegangen werden kann, muss zunächst die konkrete Extraktion beleuchtet werden.
 Im Abschnitt~\ref{sec:dokart} wurde gezeigt, dass die Hauptproblematik der Dokumente in der Extraktion der Tabellen liegt.
-Hierfür definieren wir Tabellen, die für jede Zeile und Spalte Trennlinien besitzen, als konventionelle Tabellen.
-Ein Beispiel hierfür ist die Tabelle, die in Abbildung~\ref{fig:formel1_r} die Fahrzeugdaten bereit hält.
+Diesbezüglich definieren wir Tabellen, die für jede Zeile und Spalte Trennlinien besitzen, als konventionelle Tabellen.
+Ein Beispiel hierfür ist die Tabelle, die in Abbildung~\ref{fig:formel1_r} die Fahrzeugdaten beinhaltet.
 Tabellen, die keine oder nur zu Teilen Trennlinien für die Zeilen und Spalten nutzen, werden als unkonventionelle Tabellen definiert.
 Diese Art der Tabelle tritt in den drei vorgestellten Dokumentarten in Form der Auflistung von den Jobs und Joblines auf.
 Andere Tabellen, die eine beliebige Form und somit die restlichen Tabellenarten darstellen, werden als benutzerdefinierte Tabelle definiert.
@@ -649,7 +649,7 @@ der Tabellenextraktion von konventionellen Tabellen, der Textextraktion von unko
 und der Textextraktion von benutzerdefinierten Tabellen.
 Damit diese Funktionalitäten ausgeführt werden können, müssen Eigenschaften der Extraktionsbereiche als Parameter angegeben werden.
 Für alle beschriebenen Ziele existiert mindestens die Positionierung als Eigenschaft.
-Dies kann als Bounding Box (bbox) mit den X und Y Koordinaten für die jeweiligen Extraktionsziele aufgeführt werden.
+Sie kann als Bounding Box (bbox) mit den X und Y Koordinaten für die jeweiligen Extraktionsziele aufgeführt werden.
 
 Eine weitere Eigenschaft, die sich aus der Positionierung schließen lässt, ist die Dokumentenseite. 
 Bei den selektierten Dokumenten treten jeweils mehrere Seiten auf wenn die Liste der Jobs und Joblines so viele Einträge besitzt, 
@@ -688,50 +688,46 @@ Die Klassen der einzelnen Dokumentarten dienen für weitere Funktionalitäten, d
 für den jeweiligen Dokumenttyp erfüllen und eine weitere Semantik für die extrahierten Texte und Tabellen bilden.
 Diese Methoden erhalten mit Hilfe von regulären Ausdrücken die einzelnen Werte für die gewünschten Felder 
 und weisen jene mit ähnlichen Algorithmen den Feldern zu. 
-So werden je nach Dokumentenart die Daten mit
+So werden die Daten je nach Dokumentenart detaillierter erfasst und als komplexe Objekte verarbeitet.
 
 \subsection{Syntax und Grammatik der Regeln}
 
 Die relevanten Daten der Dokumente können nun durch den Extraktionsvorgang erhalten werden.
 Damit die Steuerung bzw.\ die Anfrage für die Datenextraktion den Benutzer:innen zugänglich gemacht wird, 
 muss eine geeignete Syntax für die Regel- und Faktendefinition festgelegt werden.
-Regelbasierte Systeme wie CLIPS nutzen, wie bereits beschrieben, eine eigene Syntax, die sich
+Regelbasierte Systeme wie CLIPS nutzen, wie bereits beschrieben, eine eigene Syntax, die auf der Programmiersprache Lisp basiert.
+Diese Syntax bildet mit Hilfe von Schlüsselwörtern die Ausdrücke für Regeln und Fakten ab.
+
+Lark Grammatik
 
 \subsection{Regelmaschine}
 
-Für die Speicherung der Regeln und Fakten kann dies über den persistenten Ansatz der Datenbanken ermöglicht werden.
-Jedoch erlaubt der Ansatz der Haltung der Regeln und Fakten über eine Datei im Dateisystem den schnellen Zugriff 
+Zur Speicherung der Regeln und Fakten kann dies über den persistenten Ansatz der Datenbanken ermöglicht werden.
+Jedoch erlaubt der Ansatz der Speicherung der Regeln und Fakten über eine Datei im Dateisystem den schnellen Zugriff 
 und die schnelle Bearbeitung jener.
-Des Weiteren tritt hier die Frage auf in welchem Dateiformat, die Regeln und Fakten festgehalten werden.
-Ein gängiges Serialisierungsformat wie JSON eignet sich durch ein festgelegtes Schema für die Speicherung, 
+Des Weiteren kommt hier die Frage auf, in welchem Dateiformat die Regeln und Fakten festgehalten werden.
+Ein gängiges Serialisierungsformat wie JSON eignet sich durch ein festgelegtes Schema zur Speicherung, 
 da die Daten strukturiert aufbewahrt werden.
-Jedoch existieren weitere Dateiformate, die eine geeignete Alternative darstellen.
+Demgegenüber existieren weitere Dateiformate, die eine geeignete Alternative darstellen.
 
 Die Auszeichnungssprache YAML bildet die Obermenge zu JSON ab und ermöglicht neben den generischen Datentypen, 
 die auch in JSON definiert sind, einen übersichtlicheren aber auch komplexeren Ansatz für ein Serialisierungsformat. 
 Diese Sprache besitzt im Vergleich zu JSON eine bessere Lesbarkeit der Syntax, 
 ist kompakter gestaltet und bietet eine hohe Kompatibilität zu dem JSON Format.~\cite{eriksson2011comparison}.
-Die Syntax für Kommentare ist zudem auch verfügbar, wodurch sich diese Auszeichnungssprache für Konfigurationsdateien eignet, 
+Die Syntax für mögliche Kommentare ist obendrein auch verfügbar, 
+wodurch sich diese Auszeichnungssprache für Konfigurationsdateien eignet, 
 was wiederum für die Definitionen der Regeln und Fakten abgebildet werden kann.
-Die Serialisierungsformate unterscheidet sich letztendlich in der Zielsetzung:
+
+Die Serialisierungsformate unterscheiden sich letztendlich in der Zielsetzung:
 JSON wird für den leichten Datenaustausch für Webanwendungen aufgrund der leichten Serialisierung 
 und Übersetzung mit dem Parser benutzt.   
 YAML dagegen hat eine erhöhte Komplexität für die Serialisierung und Übersetzung, 
 aber ist für Dateien gedacht, die von Menschen bearbeitet und damit genutzt werden sollen. 
 
-Mit Hilfe einer Bibliotheken für die Serialisierung und Übersetzung von YAML-Dateien werden somit die Regeln und Fakten während der Laufzeit 
+Mit Hilfe einer Bibliothek für die Serialisierung und Übersetzung von YAML-Dateien werden ebendaher die Regeln und Fakten während der Laufzeit 
 geladen, bearbeitet und gespeichert.
 Hierfür pathenize
 
-In einem eigenen Modul 
-
-Damit das System für die Datenextraktion von großen Dokumentenmengen ermöglicht wird, 
-bedarf es hier zunächst die konkrete Benutzung der Funktionalitäten der Extraktion. 
-
-Wie im Kapitel~\ref{sec:dokart} gezeigt wurde, existieren für die verschiedenen Dokumentarten 
-sowohl Gemeinsamkeiten als auch Unterschiede in den Eigenschaften.
-Um dies abzubilden, wird für jede Dokumentart ein Modul definiert, 
-welches die weiteren Bestandteile für den Extraktionsprozess besitzt.
 
 \section{Entwicklungsumgebung}
 
