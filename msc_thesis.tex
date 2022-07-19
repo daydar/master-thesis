@@ -108,7 +108,7 @@ Die Technologien hierfür benutzen unterschiedliche Ansätze und müssen daher z
 Damit jedoch auch für Agierende innerhalb des technischen Bereichs die Nutzung nicht zu abstrakt bleibt, 
 soll durch die Entwicklung eines Systems der Zugriff greifbarer gestaltet werden, 
 welches wiederum allein durch eine benutzerfreundliche Anwendung ermöglicht wird. 
-Die Benutzer sollen eine Möglichkeit bekommen und über eine Eingabe der Steuerung bestimmen können, 
+Die Benutzer:innen sollen eine Möglichkeit bekommen und über eine Eingabe der Steuerung bestimmen können, 
 welche Informationen extrahiert werden sollen.
 
 Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Datenmenge verarbeiten zu können;
@@ -160,7 +160,7 @@ Die Entwicklung hierbei wird im Wasserfall-Ansatz, einem Ansatz bei der phasenwe
 die Eigenschaften einer solchen KI umgesetzt werden, 
 um eine Grundlage für die nächste Komponente zur Verfügung zu stellen.
 
-Bei dieser Komponente handelt es sich um die interaktive Entwicklungsumgebung, die den Zugang für den Benutzer zum System darstellt.
+Bei dieser Komponente handelt es sich um die interaktive Entwicklungsumgebung, die den Zugang für die Benutzer:innen zum System darstellt.
 Deswegen folgt im nächsten Schritt die Konzeptionierung und Entwicklung der interaktiven Entwicklungsumgebung, 
 welche sich während der Entwicklung der symbolischen KI parallelisieren lässt. 
 Sobald das Gerüst der Benutzeroberfläche fertiggestellt ist, möchte ich dies mit der symbolischen KI verbinden.
@@ -458,9 +458,12 @@ gemeinsam (siehe Abbildung~\ref{fig:care_g}) oder in zwei verschiedenen Tabellen
 Diese Tabellenform besitzt außerdem selten Trennlinien, welche geeignet sind, um eine derartige Tabelle als solche definieren zu können.
 Für die Liste der Job und Joblines tritt das gleiche Problem auf.
 
-Diese Auflistung wird allein durch ihre Anordnung der Einträge und deren Abstände dazwischen als solche erkenntlich, 
-jedoch bricht sie in den prototypischen Dokumenten aber mindestens (mind.) einmal die Form durch Überläufe oder Verschiebungen der Texte.
+Die Auflistung der Job und Joblines als Tabelle wird allein durch ihre Anordnung der Einträge 
+und deren Abstände dazwischen als solche erkenntlich, 
+jedoch bricht sie in den prototypischen Dokumenten aber mindestens (mind.) 
+einmal die Form durch Überläufe oder Verschiebungen der Texte.
 Ein weiterer relevanter Aspekt, welcher übersehen werden kann, ist, dass die Aufträge mehr als eine Seite haben können.
+
 Dies tritt für Dokumente auf, welche eine längere Auflistung der Job und Joblines besitzen 
 und somit auf weiteren Seiten dargestellt werden muss.
 Für die Extraktion der Liste muss daher auch überprüft werden, 
@@ -476,7 +479,7 @@ Diese können dann von allen weiteren Dokumentarten geteilt und genutzt werden,
 sodass eine Verallgemeinerung verschiedener Dokumententypen ermöglicht wird.
 
 
-\subsection{Frameworks}
+\subsection{Frameworks}\label{sec:frameworks}
 
 Damit das System für den Prozess der Extraktion als solches sich zeitnah im Rahmen einer Thesis umsetzen lässt, 
 können Frameworks dem ganzen Zeitfenster entgegenkommen.
@@ -486,38 +489,45 @@ Zudem müssen die Realisierungsmöglichkeiten der symbolischen KI betrachtet
 und aus den verschiedenen Arten eines wissensbasiertes Systems muss ein Modell ausgewählt werden.
 
 Ein solches wissensbasiertes System ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechanismen der Schlussfolgerung nutzen, 
-um Lösungen für Probleme zu finden~\cite{embreySkillRuleKnowledge}. 
-Es existieren verschiedene Modelle eines wissensbasiertes Systems, die sich, je nach Anwendungsfall, als passend erweisen.
-So gibt es den Ansatz des regelbasierten Systems bzw. Produktionssystems, bei dem die Schlussfolgerung über Regeln und Fakten, 
-die von einem Benutzer definiert werden, gestaltet wird.
+um Lösungen für Probleme im dafür gewählten Anwendungsbereich zu finden~\cite{embreySkillRuleKnowledge}. 
+Es existieren verschiedene Modelle eines wissensbasiertes Systems, die sich je nach Anwendungsfall als passend erweisen.
+So gibt es den Ansatz des regelbasierten Systems bzw.\ des Produktionssystems, bei dem die Schlussfolgerung über Regeln und Fakten, 
+die von einer/em Benutzer:in definiert werden, konstruiert wird.
 
-Bekannt für die Erstellung eines solchen Systems, ist das in der Programmiersprache C geschriebene Werkzeug CLIPS\cite{clipsCLIPSToolBuilding}, 
-welches über eine eigene Syntax für die Regeln verfügt.
-Diese Umsetzung wird auch mit dem Wrapper `clipspy' für die Programmiersprache Python zur Nutzung bereitgestellt.
-Andere Umsetzungen konzentrieren sich im Vergleich eher auf die Inferenzmaschine, die auch als Regelinterpreter gilt.
+Bekannt für die Erstellung eines solchen Systems ist das in der Programmiersprache C geschriebene Werkzeug CLIPS\cite{clipsCLIPSToolBuilding}. 
+Dieses Werkzeug verfügt über eine eigene Syntax, welche von der Syntax  
+des von der Inference Corporation entwickelten Expertensystems ART für die Regeln und Fakten abgeleitet wurde und damit dieser sehr ähnelt~\cite{haleyaiHaleyARTSyntax2008}. 
+Die Umsetzung wird ebenso mit dem Wrapper `clipspy' für die Programmiersprache Python zur Nutzung bereitgestellt.
+
+Eine Alternative zu CLIPS, die zeitlich danach entwickelt wurde, ist das Expertensystem NEXPERT OBJECT, 
+welche sich bis auf die Datenbankintegration nur marginal in der Nutzung der Regel und Faktendefinitionen unterscheidet~\cite{https://doi.org/10.1111/j.1468-0394.1990.tb00164.x}
+und für dies keine aktive Entwicklung und Wartung existiert. 
+Andere moderne Umsetzungen konzentrieren sich im Vergleich eher auf die Inferenzmaschine, die auch als Regelinterpreter gilt.
 Projekte wie `Pyke'~\cite{frederiksenWelcomePyke}, `Durable Rules'~\cite{ruizDurableRules2022} oder `Experta'~\cite{perezNilp0interExperta2022}, 
-dem Nachfolger von einem Expertensystem Framework namens `pyKnow', erlauben es eine Regelmenge zu definieren 
+dem Nachfolger von einem Expertensystem Framework namens `pyKnow', erlauben es, eine Regelmenge zu definieren 
 und die einzelnen Regeln mit selbstdefinierten Funktionen zu koppeln.
 
 Für die Entwicklungsumgebung, die den Zugang zum System darstellen soll, 
-eignen sich sowohl Benutzerschnittstellen (UI) Bibliotheken für den Desktop als auch für den Web.
-Die Priorität liegt hierbei bei der Erstellung der einzelnen Komponenten der graphische Benutzeroberflächen (GUI). 
-So können Projekte wie Qt~\cite{qtQtCrossplatformSoftware} und ImGui~\cite{omarDearImGui2022}, welches in C++ geschrieben ist, eine Bibliothek bereitstellen, 
+eignen sich sowohl Benutzerschnittstellen bzw. User Interface (UI) Bibliotheken für den Desktop als auch für den Webbereich.
+Die Priorität liegt hierbei bei der Erstellung der einzelnen Komponenten der graphische Benutzeroberfläche bzw.\ der Graphical User Interface (GUI). 
+Folglich können Projekte wie Qt~\cite{qtQtCrossplatformSoftware} und ImGui~\cite{omarDearImGui2022}, 
+welches in C++ geschrieben ist, Bibliotheken bereitstellen, 
 die auf einer nativen Ebene funktionieren und damit in verschiedenen Anwendungsfällen genutzt werden.
-Letzter genanntes benutzt intern einen Zustandsautomat um die Render-Pipeline darstellen, 
-was etwas mehr Erfahrung mit der Grafikprogrammierung erfordert, um dies verwenden zu können~\cite{furhtCreatingUserInterface2018}.
+Die letztere genannte Bibliothek benutzt intern einen Zustandsautomat, um die Render-Pipeline darzustellen, 
+was etwas mehr Erfahrung mit der Grafikprogrammierung erfordert, dass jenes verwendet werden kann~\cite{furhtCreatingUserInterface2018}.
 
-Dem gegenüber stehen abstraktere UI-Lösungen wie das Benutzen eines Web Frameworks, welche im Front-End Bereich verwendet werden.
+Dem gegenüber stehen abstraktere UI-Lösungen, welche im Front-End Bereich verwendet werden, wie das Benutzen eines Web Frameworks.
 Bekannte Bibliotheken wie Vue und React ermöglichen eine schnelle und gängige Umsetzung einer Oberfläche, 
 die auch die Zwecke einer Entwicklungsumgebung erfüllen können. 
 Weitere Kandidaten wie Svelte~\cite{svelteSvelteCyberneticallyEnhanced} versuchen durch das Nutzen eines Complier, 
 die Arbeit von dem Browser zu der Build Zeit umzulagern.
 
-Für das Teilsystems, welches den Ansatz des maschinellen Lernens nutzen soll, 
-scheinen auch hier ML-Frameworks eine geeignete Lösung zu sein.
-Kandidaten sind hierbei die zurzeit konventionellen Frameworks wie TensorFlow~\cite{tensorflowTensorFlow}, pyTorch~\cite{pytorchPyTorch}
-und spaCy~\cite{explosionSpaCyIndustrialstrengthNatural}, welche für die Anwendungsgebiete unter anderem in der Bilderkennung, 
-der Computer Vision und des Neuro-Linguistische Programmieren (NLP) eine automatisierte Lösung anbieten.
+Für das Teilsystem, welches den Ansatz des maschinellen Lernens nutzen soll, 
+sind gleicherweise hier ML-Frameworks eine geeignete Lösung.
+Kandidaten sind die zurzeit konventionellen Frameworks wie TensorFlow~\cite{tensorflowTensorFlow}, pyTorch~\cite{pytorchPyTorch}
+und spaCy~\cite{explosionSpaCyIndustrialstrengthNatural}.
+Jene bieten für die Anwendungsgebiete unter anderem in der Bilderkennung, 
+der Computer Vision und des Neuro-Linguistische Programmieren (NLP) eine automatisierte Lösung an.
 Weitere neue Projekte wie Fonduer~\cite{wu2018fonduer} fokussieren sich mit Hilfe von schwachem überwachten Lernen (supervised learning) 
 auf die Extraktion von umfangreichen formatierten Daten, worunter auch PDF Dokumente fallen.
 Dieser Lernansatz findet auch bei nicht vollständig beschrifteten Trainingsdaten einen Anwendungszweck~\cite{10.1093/nsr/nwx106}, 
@@ -599,7 +609,7 @@ Dort sind neben den beschriebenen Konfigurationsdateien die Teilsysteme und dere
 Für das Teilsystem der symbolischen künstlichen Intelligenz wurde der Ansatz 
 beziehungsweise die Nutzung eines wissensbasiertes Systems ausgewählt.
 Dies ermöglicht die Steuerung der Extraktion über definierte Fakten und Regeln.
-In Kapitel~\ref{sec:exwerk} wurde ersichtlich, dass es viele Frameworks gibt, die ein solches System bereitstellen können.
+In Kapitel~\ref{sec:frameworks} wurde ersichtlich, dass es viele Frameworks gibt, die ein solches System bereitstellen können.
 Doch zeigt sich auch bei jenen, dass die Nutzung eines dieser Frameworks nicht für den Fall passend ist, 
 da mehr Funktionalitäten als benötigt abgedeckt werden.
 
@@ -610,7 +620,7 @@ Vorwärtsverkettung oder Rückwärtsverkettung durchführen~\cite{5709916}.
 
 Für den Kontext der Dokumentenextraktion bedarf es nur die Ausführung von Extraktionen und die Generierung neuer Fakten, 
 sobald die benutzerdefinierten Regeln mit den bereits vorhandenen Fakten erfüllt wurden, als Funktionalitäten.
-Die vorgestellten Bibliotheken bringen einen größeren Aufwand mit sich, welche weitere Abhängigkeiten mit sich bringen 
+Die vorgestellten Bibliotheken verursachen einen größeren Aufwand, welche weitere Abhängigkeiten mit sich bringen 
 und den Rahmen des Projekts übersteigen.
 Daher wird hier der Lösungsweg über ein eigen implementiertes Regelsystem verfolgt.
 Der Regelinterpreter wird speziell für den Zweck der Datenextraktion entwickelt 
@@ -619,7 +629,7 @@ und passt sich damit an Nutzung des gesamten Projekts an.
 \subsection{Extraktionsvorgang}
 
 Bevor sich der Regelmaschine gewidmet werden kann, muss zunächst die konkrete Extraktion betrachtet werden.
-Im Abschnitt~\ref{sec:dokart} wurde gezeigt, dass die Hauptproblematik der Dokumente in deren Extraktion von Tabellen liegt.
+Im Abschnitt~\ref{sec:dokart} wurde gezeigt, dass die Hauptproblematik der Dokumente in der Extraktion der Tabellen liegt.
 Hierfür definieren wir Tabellen, die für jede Zeile und Spalte Trennlinien besitzen, als konventionelle Tabellen.
 Ein Beispiel hierfür ist die Tabelle, die in Abbildung~\ref{fig:formel1_r} die Fahrzeugdaten bereit hält.
 Tabellen, die keine oder nur zu Teilen Trennlinien für die Zeilen und Spalten nutzen, werden als unkonventionelle Tabellen definiert.
@@ -628,28 +638,66 @@ Andere Tabellen, die eine beliebige Form und somit die restlichen Tabellenarten 
 
 Textfelder können im Vergleich zu den definierten Tabellen leichter extrahiert werden, 
 weswegen die Funktionalität für alle Dokumentarten beziehungsweise Dokumententypen benutzt werden kann.
-Dafür wird eine gemeinsame Klasse namens `DocumentExtractionType' definiert, von der die weiteren Klassen erben, 
-die die jeweilige Dokumentart abbilden. 
-So werden des Weiteren die Dokumentarten durch die Klassen `CareWarranty', `Formel1Invoice' und `KFZ3000Invoice' 
+Für eine Verallgemeinerung der Extraktionsfunktionalitäten wird daher eine gemeinsame Klasse namens `DocumentExtractionType' definiert. 
+Diese gemeinsame Klasse fasst als Obermenge die Methoden, die für alle Dokumentenarten als Unterklasse genutzt werden können, 
+zusammen und bietet die Möglichkeit durch weitere Klassendefinitionen, die den Mechanismus der Vererbung nutzen, an, Abbildungen von unterschiedlichen Dokumententypen zu kreieren.
+So werden daraus folgend die Dokumentarten, die im Kapitel~\ref{sec:dokart} vorgestellt wurden, durch die Klassen `CareWarranty', `Formel1Invoice' und `KFZ3000Invoice' chronologisch
 dargestellt.
 
-Die gemeinsamen Funktionalitäten, die in der Elternklasse definiert sind, bestehen aus der Textextraktion von Textfeldern, 
-der Textextraktion von konventionellen Tabellen, der Textextraktion von unkonventionellen Tabellen 
+Die gemeinsamen Funktionalitäten, die in der Oberklasse definiert sind, bestehen aus der Textextraktion von Textfeldern, 
+der Tabellenextraktion von konventionellen Tabellen, der Textextraktion von unkonventionellen Tabellen 
 und der Textextraktion von benutzerdefinierten Tabellen.
 Damit diese Funktionalitäten ausgeführt werden können, müssen Eigenschaften der Extraktionsbereiche als Parameter angegeben werden.
-Für alle beschriebene Ziele existieren mindestens die Positionierung als Eigenschaft.
+Für alle beschriebenen Ziele existiert mindestens die Positionierung als Eigenschaft.
 Dies kann als Bounding Box (bbox) mit den X und Y Koordinaten für die jeweiligen Extraktionsziele aufgeführt werden.
-Eine weitere Eigenschaft, die sich aus der Positionierung schließen lässt, ist die Dokumentseite. 
-Dies kann den Funktionen neben den Bounding Boxen als Seitennummer mitgegeben werden.
 
-Die Klassen der einzelnen Dokumentarten dienen für weitere Funktionalitäten, die spezifischere Zwecke für den jeweiligen Dokumenttyp erfüllen 
-und eine Semantik für die extrahierten Texte bilden.
+Eine weitere Eigenschaft, die sich aus der Positionierung schließen lässt, ist die Dokumentenseite. 
+Bei den selektierten Dokumenten treten jeweils mehrere Seiten auf wenn die Liste der Jobs und Joblines so viele Einträge besitzt, 
+dass diese nicht auf eine Seite passt, weswegen die Seitennummern relevant für die Beschreibung des Zielbereiches ist.
+Diese Seitennummern können den Funktionen neben den Bounding Boxen mitgegeben werden.
+Daraus folgend werden diese zwei Eigenschaften als notwendige Bedingung für jegliche Extraktionsbereiche behandelt und 
+damit für die Logik der Methoden durch die Parametereingabe als gegeben gesehen. 
+
+Für die Umsetzung der einzelnen Funktionen wird die vorgestellte Bibliothek PdfPlumber benutzt, 
+um für die jeweiligen Extraktionsziele mit verschiedenen Methoden die Daten zu erhalten. 
+Die Methoden nutzen dann die Angabe der Seitennummer und der Bounding Box um zunächst den Bereich der Extraktion einzuschränken.
+Mit dem ausgewählten Bereich werden dann die Funktionalitäten für die Text- oder Tabellenextraktion aufgerufen.
+
+Bei den prototypischen Dokumenten fällt zunächst wieder die hinderliche Tabellenextraktion von unkonventionellen Tabellen 
+und indirekt von benutzerdefinierten Tabellen auf.
+So können die Bibliotheken diese Tabellen mit den dafür konzipierten Funktionen nicht erkennen 
+bzw.\ von diesen keine strukturellen Daten, die die Tabellen abbilden sollen, erhalten.
+Um dies zu umgehen, werden als Lösungswege die unkonventionellen und die benutzerdefinierten Tabellen 
+zunächst als reine Texte extrahiert und danach werden die Einträge der jeweiligen Felder mit Hilfe von regulären Ausdrücken gefiltert.
+
+Auch wenn der Bereich durch die Bounding Box umrahmt ist, kann der Bereich nicht relevante Texte besitzen, 
+die die Verarbeitung erschweren.
+So werden weitere Eigenschaften wie die Angabe eines Start- und Endankers benötigt, um so nur die Zeilen aus dem Rohtext zu erhalten.
+Da bei den elektronisch verarbeiteten Dokumente die Tabellen als Texte mit Zeilenumbrüchen verfasst sind, 
+können die Zeilenumbrüche genutzt werden um so aus den Zeilen eine Liste zu generieren.
+Die Liste wiederum wird mit regulären Ausdrücken weiter verarbeitet, womit die Daten durch Zuweisungen eine strukturierte Form erhalten 
+und somit die Semantik der Tabellen darstellen.
+
+Da auch Dokumente mit mehreren Seiten existieren, bedarf es neben den Start- und Endanker eine Menge von Zwischenankern, 
+die als Brücke für die längeren Listen dienen.
+Für die unkonventionellen und benutzerdefinierten Tabellen werden daher neben der Positionierung und der Seitennummern 
+die Start- und Endanker als Voraussetzung für jene Extraktionsfunktionalitäten. 
+Optional bleiben die Angabe der Zwischenanker.
+
+Die Klassen der einzelnen Dokumentarten dienen für weitere Funktionalitäten, die spezifischere Zwecke 
+für den jeweiligen Dokumenttyp erfüllen und eine weitere Semantik für die extrahierten Texte und Tabellen bilden.
 Diese Methoden erhalten mit Hilfe von regulären Ausdrücken die einzelnen Werte für die gewünschten Felder 
-und weisen diese mit ähnlichen Algorithmen den Feldern zu.
+und weisen jene mit ähnlichen Algorithmen den Feldern zu. 
+So werden je nach Dokumentenart die Daten mit
 
-\subsection{Regelsyntax}
+\subsection{Syntax und Grammatik der Regeln}
 
-Die Texte können nun durch den Extraktionsvorgang erhalten werden.
+Die relevanten Daten der Dokumente können nun durch den Extraktionsvorgang erhalten werden.
+Damit die Steuerung bzw.\ die Anfrage für die Datenextraktion den Benutzer:innen zugänglich gemacht wird, 
+muss eine geeignete Syntax für die Regel- und Faktendefinition festgelegt werden.
+Regelbasierte Systeme wie CLIPS nutzen, wie bereits beschrieben, eine eigene Syntax, die sich
+
+\subsection{Regelmaschine}
 
 Für die Speicherung der Regeln und Fakten kann dies über den persistenten Ansatz der Datenbanken ermöglicht werden.
 Jedoch erlaubt der Ansatz der Haltung der Regeln und Fakten über eine Datei im Dateisystem den schnellen Zugriff 
@@ -689,9 +737,20 @@ welches die weiteren Bestandteile für den Extraktionsprozess besitzt.
 
 Für die graphische Schnittstelle der Benutzer des Systems
 
+\subsection{Editor}
+
+\subsection{Dokumentenanzeige}
+
+\subsection{Output}
+
 \section{Machine Learning}
 
-Während 
+Während
+
+\subsection{Pipeline}
+
+
+ 
 
 \chapter{Ergebnisse}\label{chap:erg}
 

@@ -9,6 +9,7 @@
         "Extraktionsbereiche",
         "Extraktionsbibliothek",
         "Extraktionsbibliotheken",
+        "Extraktionsfunktionalitäten",
         "Extraktionslogik",
         "Extraktionsvorgang",
         "Extraktionswerkzeuge",
@@ -19,10 +20,14 @@
         "Inferenzsvorgang",
         "Inferenzsvorgangs",
         "innengruppe",
+        "innenoberfläche",
+        "innenschnittstellen",
         "Insgemein",
         "Joblines",
         "Konzeptionierung",
         "Neuro",
+        "NEXPERT",
+        "nichtbinärer",
         "optimalsten",
         "Pyke",
         "Rückwärtsverkettung",
@@ -36,6 +41,7 @@
         "verpixeln",
         "verpixelt",
         "Verpixelung",
-        "Vorwärtsverkettung"
+        "Vorwärtsverkettung",
+        "Zwischenankern"
     ]
 }
