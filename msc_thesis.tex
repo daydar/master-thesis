@@ -218,10 +218,10 @@ Diese Aufteilung der Segmente wird ebenfalls von den Autohäusern angewendet, zu
 jeweils gängige Abläufe als Prozesse benutzt.
 
 Für den After-Sales-Bereich bietet ilexius GmbH zwei Arten von ERP-Systeme an. 
-Die erste Art ist das von der Automobilmarke Jaguar Land Rover finanzierte `vTab', welches eine Plattform 
+Die erste Art ist das von der Automobilmarke Jaguar Land Rover finanzierte \textit{vTab}, welches eine Plattform 
 für elektronische Fahrzeugkontrollen 
 und ein Backend für Jaguar Land Rover Mitarbeiter:innen, mit dem die Autohäuser bewertet werden können, anbietet.
-Die zweite Art mit dem Namen `ATT' ist eine Plattform. 
+Die zweite Art mit dem Namen \textit{ATT} ist eine Plattform. 
 Mit derjenigen können Autohäuser ihre Arbeitsprozesse in Schrift, Sprache und Bild dokumentieren.
 Die Dokumentation erfolgt mittels mobiler Endgeräte und werden an das ERP-System weitergeleitet, 
 sodass die Dokumentation archiviert werden kann.
@@ -366,12 +366,12 @@ Unter dem Adressfeld befindet sich ein weiterer Abschnitt, in dem die Fahrzeugda
 Hierbei ist zu beobachten, dass dieser Abschnitt sich mit einer Tabelle vergleichen lässt. 
 Die einzelnen Einträge werden mit jeweils unterschiedlich großen Abständen verteilt dargestellt,  
 gleichzeitig erfüllen sie eine Gesamthöhe pro Spalte beziehungsweise eine Gesamtbreite pro Höhe einer Tabelle.
-Gleichwohl fällt auf, dass sich - im Gegensatz zur Anzahl der Zeileneinträge - die Anzahl der Spalteneinträge pro Zeile unterscheidet.
+Gleichwohl fällt auf, dass sich — im Gegensatz zur Anzahl der Zeileneinträge — die Anzahl der Spalteneinträge pro Zeile unterscheidet.
 
 Zudem fehlen jegliche Einrahmungen beziehungsweise jegliche Trennlinien für Zeilen und Spalten.
 Bei den Einträgen in diesem Abschnitt geht es um die Abrechnungsnummer, das Datum der Reparatur, 
 den Fahrzeugmodellnamen, das Kfz-Kennzeichen, den zuletzt abgelesen Kilometerzählerstand, die Arbeitsauftragsnummer, der Fahrzeug-Identifikationsnummer beziehungsweise der
-`Vehicle Identification Number' (VIN), die/die zuständige/n Autohausmitarbeiter:in und das Datum der Erstellung des Arbeitsauftrags.
+Vehicle Identification Number (VIN), die/die zuständige/n Autohausmitarbeiter:in und das Datum der Erstellung des Arbeitsauftrags.
 Verpixelt und damit anonymisiert wurden die Felder des Kfz-Kennzeichens, der VIN und der/des zuständigen Mitarbeiter:in.
 
 Im unteren Bereich wird eine Tabelle durch die Aufzählung der einzelnen Jobs und Joblines dargestellt.
@@ -400,7 +400,7 @@ Fremdleistungen, Stempelzeiten und Kundenbeschwerden auftreten.
 
 Für die Codierung ist keine standardisierte Spezifikation vorhanden, 
 weshalb das für jedes Autohaus und seine Nutzung der DMS individuell definiert ist.
-So sind die Codes der Jobs als eine fünfstellige Zeichenkette aus Ziffern bestimmt, die mit den Ziffern `00' angefangen. 
+So sind die Codes der Jobs als eine fünfstellige Zeichenkette aus Ziffern bestimmt, die mit den Ziffern \textit{00} angefangen. 
 Die Reparaturzeiten dagegen besitzen eine sechsstellige Zeichenkette aus Ziffern.
 Unterhalb der Tabelle werden am Ende des Dokuments schließlich die gesamten Kosten aus den Betragseinträgen summiert dargestellt.
 Diese Summe lässt sich wiederum in Kosten der Arbeit und der Teile aufteilen. 
@@ -494,41 +494,42 @@ Es existieren verschiedene Modelle eines wissensbasiertes Systems, die sich je n
 So gibt es den Ansatz des regelbasierten Systems bzw.\ des Produktionssystems, bei dem die Schlussfolgerung über Regeln und Fakten, 
 die von einer/em Benutzer:in definiert werden, konstruiert wird.
 
-Bekannt für die Erstellung eines solchen Systems ist das in der Programmiersprache C geschriebene Werkzeug CLIPS\cite{clipsCLIPSToolBuilding}. 
+Bekannt für die Erstellung eines solchen Systems ist das in der Programmiersprache C geschriebene Werkzeug \textit{CLIPS}\cite{clipsCLIPSToolBuilding}. 
 Dieses Werkzeug verfügt über eine eigene Syntax, welche von der Syntax  
-des von der Inference Corporation entwickelten Expertensystems ART für die Regeln und Fakten abgeleitet wurde und damit dieser sehr ähnelt~\cite{haleyaiHaleyARTSyntax2008}. 
-Die Umsetzung wird ebenso mit dem Wrapper `clipspy' für die Programmiersprache Python zur Nutzung bereitgestellt.
+des von der Inference Corporation entwickelten Expertensystems \textit{ART} für die Regeln und Fakten abgeleitet wurde und damit dieser sehr ähnelt~\cite{haleyaiHaleyARTSyntax2008}. 
+Die Umsetzung wird ebenso mit dem Wrapper \textit{clipspy} für die Programmiersprache Python zur Nutzung bereitgestellt.
 
-Eine Alternative zu CLIPS, die zeitlich danach entwickelt wurde, ist das Expertensystem NEXPERT OBJECT, 
+Eine Alternative zu \textit{CLIPS}, die zeitlich danach entwickelt wurde, ist das Expertensystem \textit{NEXPERT OBJECT}, 
 welche sich bis auf die Datenbankintegration nur marginal in der Nutzung der Regel und Faktendefinitionen unterscheidet~\cite{https://doi.org/10.1111/j.1468-0394.1990.tb00164.x}
 und für dies keine aktive Entwicklung und Wartung existiert. 
 Andere moderne Umsetzungen konzentrieren sich im Vergleich eher auf die Inferenzmaschine, die auch als Regelinterpreter gilt.
-Projekte wie `Pyke'~\cite{frederiksenWelcomePyke}, `Durable Rules'~\cite{ruizDurableRules2022} oder `Experta'~\cite{perezNilp0interExperta2022}, 
-dem Nachfolger von einem Expertensystem Framework namens `pyKnow', erlauben es, eine Regelmenge zu definieren 
+Projekte wie \textit{Pyke}~\cite{frederiksenWelcomePyke}, \textit{Durable Rules}~\cite{ruizDurableRules2022} oder \textit{Experta}~\cite{perezNilp0interExperta2022}, 
+dem Nachfolger von einem Expertensystem Framework namens \textit{pyKnow}, erlauben es, eine Regelmenge zu definieren 
 und die einzelnen Regeln mit selbstdefinierten Funktionen zu koppeln.
 
 Für die Entwicklungsumgebung, die den Zugang zum System darstellen soll, 
 eignen sich sowohl Nutzungsschnittstellen bzw. User Interface (UI) Bibliotheken für den Desktop als auch für den Webbereich.
 Die Priorität liegt hierbei bei der Erstellung der einzelnen Komponenten der graphische Benutzungsoberfläche bzw.\ der Graphical User Interface (GUI). 
-Folglich können Projekte wie Qt~\cite{qtQtCrossplatformSoftware} und ImGui~\cite{omarDearImGui2022}, 
+Folglich können Projekte wie \textit{Qt}~\cite{qtQtCrossplatformSoftware} und \textit{ImGui}~\cite{omarDearImGui2022}, 
 welches in C++ geschrieben ist, Bibliotheken bereitstellen, 
 die auf einer nativen Ebene funktionieren und damit in verschiedenen Anwendungsfällen genutzt werden.
 Die letztere genannte Bibliothek benutzt intern einen Zustandsautomat, um die Render-Pipeline darzustellen, 
 was etwas mehr Erfahrung mit der Grafikprogrammierung erfordert, dass jenes verwendet werden kann~\cite{furhtCreatingUserInterface2018}.
 
 Dem gegenüber stehen abstraktere UI-Lösungen, welche im Front-End Bereich verwendet werden, wie das Benutzen eines Web Frameworks.
-Bekannte Bibliotheken wie Vue und React ermöglichen eine schnelle und gängige Umsetzung einer Oberfläche, 
+Bekannte Bibliotheken wie \textit{Vue} und \textit{React} ermöglichen eine schnelle und gängige Umsetzung einer Oberfläche, 
 die auch die Zwecke einer Entwicklungsumgebung erfüllen können. 
-Weitere Kandidaten wie Svelte~\cite{svelteSvelteCyberneticallyEnhanced} versuchen durch das Nutzen eines Complier, 
+Weitere Kandidaten wie \textit{Svelte}~\cite{svelteSvelteCyberneticallyEnhanced} versuchen durch das Nutzen eines Complier, 
 die Arbeit von dem Browser zu der Build Zeit umzulagern.
 
 Für das Teilsystem, welches den Ansatz des maschinellen Lernens nutzen soll, 
 sind gleicherweise hier ML-Frameworks eine geeignete Lösung.
-Kandidaten sind die zurzeit konventionellen Frameworks wie TensorFlow~\cite{tensorflowTensorFlow}, pyTorch~\cite{pytorchPyTorch}
-und spaCy~\cite{explosionSpaCyIndustrialstrengthNatural}.
+Kandidaten sind die zurzeit konventionellen Frameworks wie \textit{TensorFlow}~\cite{tensorflowTensorFlow}, 
+\textit{pyTorch}~\cite{pytorchPyTorch}
+und \textit{spaCy}~\cite{explosionSpaCyIndustrialstrengthNatural}.
 Jene bieten für die Anwendungsgebiete unter anderem in der Bilderkennung, 
 der Computer Vision und des Neuro-Linguistische Programmieren (NLP) eine automatisierte Lösung an.
-Weitere neue Projekte wie Fonduer~\cite{wu2018fonduer} fokussieren sich mit Hilfe von schwachem überwachten Lernen (supervised learning) 
+Weitere neue Projekte wie \textit{Fonduer}~\cite{wu2018fonduer} fokussieren sich mit Hilfe von schwachem überwachten Lernen (supervised learning) 
 auf die Extraktion von umfangreichen formatierten Daten, worunter auch PDF Dokumente fallen.
 Dieser Lernansatz findet auch bei nicht vollständig beschrifteten Trainingsdaten einen Anwendungszweck~\cite{10.1093/nsr/nwx106}, 
 weswegen das für einfache Dokumente sich als praktisch erweisen kann.
@@ -575,8 +576,8 @@ und die daraus folgenden Antworten als Ergebnisse präsentiert.
 
 Für die praktische Umsetzung oder für die Entwicklung wird der Lösungsentwurf 
 als ein Softwareprojekt in Form eines Monoliths konstruiert, welches das System als ganzes darstellt.
-Das Projekt trägt den Namen `Smart Document Extractor' und wird mit dem gängigen Versionsverwaltungssystem Git aufgesetzt.
-Die darin gegliederten Komponenten werden `Rule System', `IDE' und `ML' genannt.
+Das Projekt trägt den Namen \textit{Smart Document Extractor} und wird mit dem gängigen Versionsverwaltungssystem Git aufgesetzt.
+Die darin gegliederten Komponenten werden \textit{Rule System}, \textit{IDE} und \textit{ML} genannt.
 
 Demgemäß wird das Projekt als lokales Repository und als Remote Repository auf dem GitLab Server des Unternehmens festgehalten.
 Im Wurzelverzeichnis wird zudem mit der Container Virtualisierung von Docker 
@@ -639,10 +640,11 @@ Andere Tabellen, die eine beliebige Form und somit die restlichen Tabellenarten 
 
 Textfelder können im Vergleich zu den definierten Tabellen leichter extrahiert werden, 
 weswegen die Funktionalität für alle Dokumentarten beziehungsweise Dokumententypen benutzt werden kann.
-Für eine Verallgemeinerung der Extraktionsfunktionalitäten wird daher eine gemeinsame Klasse namens `DocumentExtractionType' definiert. 
+Für eine Verallgemeinerung der Extraktionsfunktionalitäten wird daher eine gemeinsame Klasse namens \textit{DocumentExtractionType} definiert. 
 Diese gemeinsame Klasse fasst als Obermenge die Methoden, die für alle Dokumentenarten als Unterklasse genutzt werden können, 
 zusammen und bietet die Möglichkeit durch weitere Klassendefinitionen, die den Mechanismus der Vererbung nutzen, an, Abbildungen von unterschiedlichen Dokumententypen zu kreieren.
-So werden daraus folgend die Dokumentarten, die im Kapitel~\ref{sec:dokart} vorgestellt wurden, durch die Klassen `CareWarranty', `Formel1Invoice' und `KFZ3000Invoice' chronologisch
+So werden daraus folgend die Dokumentarten, die im Kapitel~\ref{sec:dokart} vorgestellt wurden, 
+durch die Klassen \textit{CareWarranty}, \textit{Formel1Invoice} und \textit{KFZ300Invoice} chronologisch
 dargestellt.
 
 Die gemeinsamen Funktionalitäten, die in der Oberklasse definiert sind, bestehen aus der Textextraktion von Textfeldern, 
@@ -700,20 +702,20 @@ muss eine geeignete Syntax für die Regel- und Faktendefinition festgelegt werde
 Die Fakten werden dies als eine Menge der zu extrahierenden Objekte definiert.
 So wird eine Obermenge definiert, die als Hierarchie eine Teilmenge von Textfeldern, eine Teilmenge von konventionellen Tabellen, 
 eine Teilmenge von unkonventionellen Tabellen und eine Teilmenge von benutzerdefinierten Tabellen besitzt. 
-Die Teilmengen inkludieren jweils auch die leere Menge und besitzen als Elemente die Extraktionsziele.
+Die Teilmengen inkludieren jeweils auch die leere Menge und besitzen als Elemente die Extraktionsziele.
 Für jedes Extraktionsobjekt gibt es Eigenschaften, denen Werte zugewiesen werden.
 Ein Fakt ist daher eine Wertezuweisung einer Eigenschaftes eines Extraktionsziel.
 
 Regelbasierte Systeme wie CLIPS nutzen, wie bereits beschrieben, eine angepasste Version der Syntax von der Programmiersprache Lisp.
 Diese Syntax bildet mit Hilfe von Schlüsselwörtern die Ausdrücke für Regeln und Fakten ab.
-Python ermöglicht Texte mittels der integrierten eval() Funktion zu evaluieren und falls es sich um eine Python Aussage handelt, 
+Python ermöglicht Texte mittels der integrierten \(eval()\) Funktion zu evaluieren und falls es sich um eine Python Aussage handelt, 
 diese auch auszuführen.
-Die Funktion literal\_eval() aus dem Python-Modul `Abstract Syntax Tree' (ast) erlaubt 
+Die Funktion \( literal\_eval()\) aus dem Python-Modul \textit{Abstract Syntax Tree} (ast) erlaubt 
 die selbe Funktionalität mit einer eingeschränkten Untermenge für die Python Ausdrücke.
 Hierbei werden bei beiden Funktionalitäten die Texteingaben mithilfe des Parsings in abstrakte Syntaxbäume abgebildet, 
 die die daraus generierten Terminale und Operatoren beinhalten.
 Bibliotheken, wie die von Google entwickelte Software Common Expression Language (CEL) erlauben 
-durch das Auswerten von Ausdrücken die Bildung einer Semantik.
+durch das Auswerten von Ausdrücken die Bildung einer Semantik~\cite{googleCommonExpressionLanguage}.
 Dafür wird eine Grammatik benutzt, die die Ausdrücke mit Hilfe von Regeln in ihre Typen und Namen als Bestandteile auflöst.
 
 \begin{listing}[htbp]
@@ -772,28 +774,30 @@ Dafür wird eine Grammatik benutzt, die die Ausdrücke mit Hilfe von Regeln in i
     \label{code:grammar}
     \end{listing}
 
-Das für dieses Pojekt entwickelte regelbasierte System für die Komponente der symbolischen KI 
+Das für dieses Projekt entwickelte regelbasierte System für die Komponente der symbolischen KI 
 bedarf Regeln in Form von Booleschen Ausdrücken.
 Damit das regelbasierte System die Ausdrücke für die Regeln und Fakten gleicherweise auswerten kann, 
 bedarf es eine für den Anwendungsfall angepasste Definition einer Grammatik.
 Hierfür wird die Parsing Bibliothek Lark benutzt, welches die Erstellung einer kontextfreien Grammatik
-in der Erweiterten Backus-Naur-Form (EBNF) erlaubt und basierend auf dieser abstrakte Syntaxbäume aus Texteingaben generiert.
+in der Erweiterten Backus-Naur-Form (EBNF) erlaubt und basierend auf dieser abstrakte Syntaxbäume aus Texteingaben generiert~\cite{lark-parserLarkparserLarkLark}.
 Im Listing~\ref{code:grammar} wird die implementierte Grammatik für das regelbasierte System als Rohstring dargestellt.
 Dieser wird dann dem Parser mitgegeben, womit jeglicher Regel- und Faktenausdruck durch einen abstrakten Syntaxbaum 
-der Logik für die Evalution dieser Regel bereitgestellt wird.
+der Logik für die Evaluation dieser Regel bereitgestellt wird.
 Die booleschen Ausdrücken werden in der Syntax von Python genutzt, womit die Evaluation direkt stattfinden kann.
 
 Der Aufbau der umgesetzten  Grammatik basiert hierbei auf der klassischen Aussagenlogik und ihrer Definitionen\cite{klement2004propositional}.
 Auf der Syntaxebene werden daher in EBNF die Produktionsregeln kleingeschrieben und die Terminale großgeschrieben.
-Die Regel `start' wird zunächst als Startsymbol definiert. 
-Von ihr lässt sich jedes Wort ableiten, welches die `disjunction' Regel erfüllt.
+Die Regel \(start\) wird zunächst als Startsymbol definiert. 
+Von ihr lässt sich jedes Wort ableiten, welches die \(disjunction\) Regel erfüllt.
 Diese stellt eine aussagenlogische Oder-Verknüpfung beziehungsweise eine Disjunktion dar, 
-welche wiederum aus der Regel für die Konjuktion oder für die Oder-Verknüpfung aus Disjunktion und Konjunktion ersetzt werden kann.
-Die Konjunktionsregel `conjunction' kann entweder durch die `'
-Diese Disjunktionsregel beinhaltet wiederum eine eine Konjuktion oder 
-So kann zunächst jede Aussage durch die disjunci. 
-Eine Aussage wiederum kann als Disjunktion dargestellt werden.
+welche wiederum aus der Regel für die Konjunktion oder für die Oder-Verknüpfung aus Disjunktion und Konjunktion ersetzt werden kann.
+Die Konjunktionsregel \(conjunction\) kann entweder durch die \(expression\) Regel ersetzt werden oder 
+durch eine Und-Verknüpfung der \(conjunction\) Regel und der \(expression\) Regel.
+Die \(expression\) Regel stellt einen booleschen Ausdruck dar, welcher sich entweder mit der \(value \) Regel oder aus
+einer Kombination von einer \(expression\) Regel, von einer \(operator\) Regel und von einer weiteren \(expression\) Regel ableiten lässt.
+Bei der \(value\) Regel wird die Mehrdeutigkeit der Terminale definiert, für die alle primitiven Datentypen abgedeckt werden.
 
+% Die Terminale property name wird hier hervorgehoben, da
 
 \subsection{Regelmaschine}
 
