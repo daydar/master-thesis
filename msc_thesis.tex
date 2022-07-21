@@ -813,7 +813,9 @@ bedarf Regeln in Form von Booleschen Ausdrücken.
 Damit das regelbasierte System die Ausdrücke für die Regeln und Fakten gleicherweise auswerten kann, 
 bedarf es eine für den Anwendungsfall angepasste Definition einer Grammatik.
 Hierfür wird die Parsing Bibliothek Lark benutzt, welches die Erstellung einer kontextfreien Grammatik
-in der Erweiterten Backus-Naur-Form (EBNF) erlaubt und basierend auf dieser abstrakte Syntaxbäume aus Texteingaben generiert~\cite{lark-parserLarkparserLarkLark}.
+in der Erweiterten Backus-Naur-Form (EBNF) erlaubt.
+Basierend auf dieser Bibliothek werden unter der Nutzung eines LALR-Parsers 
+abstrakte Syntaxbäume aus Texteingaben generiert~\cite{lark-parserLarkparserLarkLark}.
 Im Listing~\ref{code:grammar} wird die implementierte Grammatik für das regelbasierte System als Rohstring dargestellt.
 Dieser wird dann dem Parser mitgegeben, womit jeglicher Regel- und Faktenausdruck durch einen abstrakten Syntaxbaum 
 der Logik für die Evaluation dieser Regel bereitgestellt wird.
@@ -830,6 +832,13 @@ durch eine Und-Verknüpfung der \(conjunction\) Regel und der \(expression\) Reg
 Die \(expression\) Regel stellt einen booleschen Ausdruck dar, welcher sich entweder mit der \(value \) Regel oder aus
 einer Kombination von einer \(expression\) Regel, von einer \(operator\) Regel und von einer weiteren \(expression\) Regel ableiten lässt.
 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/syntax_baum.png}
+    \caption{Generierter Syntaxbaum vom LALR-Parser}
+~\label{fig:syntaxbaum}
+\end{figure}
+
 Bei der \(value\) Regel wird die Mehrdeutigkeit der Terminale definiert, für die alle primitiven Datentypen abgedeckt werden.
 Die Terminale \(PROPERTY\_NAME\) wird hier hervorgehoben, da diese den regulären Ausdruck einer Eigenschaft eines Extraktionsobjekts abbilden soll.
 Dabei ist dies als eine Verkettung durch weitere Objektnamen durch die Punktnotation definiert.
@@ -837,11 +846,14 @@ Für die \(operator\) Regel bestehen die Mehrdeutigkeiten aus der \(comp\_operat
 welche in der Reihenfolge aufgezählt die Vergleichsoperatoren, die Identitätsoperatoren und die Memberoperatoren abbilden.
 Arithmetische Operatoren, Zuweisungsoperatoren und bitweise Operatoren, die in Python existieren, 
 werden für die aus der Grammatik erzeugten Sprache nicht definiert. 
+Des Weiteren wird das Klammern für die Ausdrücke nicht unterstützt, 
+weswegen die Operatorrangfolge durch die Produktionsregeln der Grammatik fest vorgegeben ist.
 Die restlichen Zeilen beinhalten die Importe der zusätzlichen Module für die Definition der Grammatik.
-Abbildung ... zeigt ein Beispiel wie somit aus einem Regelausdruck ein Syntaxbaum durch den Parser kreiert werden kann.
+Abbildung~\ref{fig:syntaxbaum} zeigt ein Beispiel wie somit aus einem Regelausdruck ein Syntaxbaum durch den Parser kreiert werden kann.
 Mittels der Transformer Klasse der Lark-Bibliothek wird nämlich als Zwischenschritt 
 die Syntax der einzelnen Blätter und Knoten des Baums so angepasst, 
 dass diese für die weitere Verarbeitung beziehungsweise Evaluation der Regelmaschine bereitstehen.
+
 
 \subsection{Regelmaschine}\label{sec:ruleeng}
 
@@ -872,6 +884,13 @@ und Übersetzung mit dem Parser benutzt.
 YAML dagegen hat eine erhöhte Komplexität für die Serialisierung und Übersetzung, 
 aber ist für Dateien gedacht, die von Menschen bearbeitet und damit genutzt werden sollen. 
 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=.9\textwidth]{images/regelmaschine_sequenz.png}
+    \caption{Durchlauf der Regelinterpretationen durch Request}
+~\label{fig:regelmaschine_sequenz}
+\end{figure}
+
 Mit Hilfe einer Bibliothek für die Serialisierung und Übersetzung von YAML-Dateien werden ebendaher die Regeln und Fakten während der Laufzeit 
 geladen, bearbeitet und gespeichert.
 Dabei wird sich für den Ansatz entschieden, die Regeln und Fakten für jede einzelne Dokumentenart zu speichern und zu verwenden.
@@ -885,7 +904,11 @@ Für den Ablauf wird, wie in Kapitel~\ref{sec:webserv} beschrieben, zunächst di
 Diese wiederum instanziiert den Regelspeicher, welcher die Regeln und Fakten bereit hält, und den Regelinterpreter.
 Die Funktionalitäten des Interpreters werden dann aufgerufen, 
 sobald die HTTP Anfrage bezüglich des Durchlaufens der Regelevaluation im WSGI ankommt.
-Die Abbildung zeigt     
+Die Abbildung~\ref{fig:regelmaschine_sequenz} zeigt den Verlauf bei dieser Anfrage.
+So löst zunächst die Route-Anfrage die gekoppelte Funktion \(trigger_run()\) der Flask Instanz aus, 
+welche wiederum die \(run()\) Methode der Regelmaschine auslöst. 
+Diese ruft dann die \(run()\) Methode des Regelinterpreters mit der Angabe für welchen Dokumentart der Vorgang stattfinden soll.
+Dort werden iterativ die Regeln mit Hilfe der Funktion     
 
 
 \section{Entwicklungsumgebung}\label{sec:ide}
