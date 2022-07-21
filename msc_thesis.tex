@@ -702,11 +702,21 @@ muss eine geeignete Syntax für die Regel- und Faktendefinition festgelegt werde
 Die Fakten werden dies als eine Menge der zu extrahierenden Objekte definiert.
 So wird eine Obermenge definiert, die als Hierarchie eine Teilmenge von Textfeldern, eine Teilmenge von konventionellen Tabellen, 
 eine Teilmenge von unkonventionellen Tabellen und eine Teilmenge von benutzerdefinierten Tabellen besitzt. 
-Die Teilmengen inkludieren jeweils auch die leere Menge und besitzen als Elemente die Extraktionsziele.
-Für jedes Extraktionsobjekt gibt es Eigenschaften, denen Werte zugewiesen werden.
+Die Teilmengen inkludieren jeweils auch die leere Menge und besitzen als Elemente die Extraktionsziele, 
+welche nach der Namenskonvention in Python beliebig benannt werden können.
+Für jedes Extraktionsobjekt gibt es benötigte und optionale Eigenschaften, denen Werte zugewiesen werden.
 Ein Fakt ist daher eine Wertezuweisung einer Eigenschaftes eines Extraktionsziel.
 
-Regelbasierte Systeme wie CLIPS nutzen, wie bereits beschrieben, eine angepasste Version der Syntax von der Programmiersprache Lisp.
+Die Regeln werden neben den Fakten als weitere Obermenge definiert. 
+Diese Menge lässt sich als eine Liste von Regeln darstellen, welche nach den selben Namenskonventionen der Fakten benannt werden.
+Als Element in der Regelmenge, besitzt jede Regel einen Regelausdruck, eine Regelaktion und eine Liste von Regelparametern, 
+welche abhängig von der Regelaktion angegeben werden. 
+Die Namen der Regelaktionen müssen dabei mit den Namen der gegebenen Funktionalitäten übereinstimmen, 
+damit diese später von der Regelmaschine erkannt und mit den angegebenen Regelparametern ausgeführt werden können.
+Die Regelausdrücke werden als ein String angegeben und müssen zunächst syntaktisch verarbeitet werden.
+Hierfür existieren verschiedene Syntaxansätze.
+
+Regelbasierte Systeme wie \textit{CLIPS} nutzen, wie bereits beschrieben, eine angepasste Version der Syntax von der Programmiersprache Lisp.
 Diese Syntax bildet mit Hilfe von Schlüsselwörtern die Ausdrücke für Regeln und Fakten ab.
 Python ermöglicht Texte mittels der integrierten \(eval()\) Funktion zu evaluieren und falls es sich um eine Python Aussage handelt, 
 diese auch auszuführen.
@@ -795,11 +805,26 @@ Die Konjunktionsregel \(conjunction\) kann entweder durch die \(expression\) Reg
 durch eine Und-Verknüpfung der \(conjunction\) Regel und der \(expression\) Regel.
 Die \(expression\) Regel stellt einen booleschen Ausdruck dar, welcher sich entweder mit der \(value \) Regel oder aus
 einer Kombination von einer \(expression\) Regel, von einer \(operator\) Regel und von einer weiteren \(expression\) Regel ableiten lässt.
-Bei der \(value\) Regel wird die Mehrdeutigkeit der Terminale definiert, für die alle primitiven Datentypen abgedeckt werden.
 
-% Die Terminale property name wird hier hervorgehoben, da
+Bei der \(value\) Regel wird die Mehrdeutigkeit der Terminale definiert, für die alle primitiven Datentypen abgedeckt werden.
+Die Terminale \(PROPERTY\_NAME\) wird hier hervorgehoben, da diese den regulären Ausdruck einer Eigenschaft eines Extraktionsobjekts abbilden soll.
+Dabei ist dies als eine Verkettung durch weitere Objektnamen durch die Punktnotation definiert.
+Für die \(operator\) Regel bestehen die Mehrdeutigkeiten aus der \(comp\_operator\) Regel, der \(ident\_operator\) Regel und der \(memb\_operator\) Regel, 
+welche in der Reihenfolge aufgezählt die Vergleichsoperatoren, die Identitätsoperatoren und die Memberoperatoren abbilden.
+Arithmetische Operatoren, Zuweisungsoperatoren und bitweise Operatoren, die in Python existieren, 
+werden für die aus der Grammatik erzeugten Sprache nicht definiert. 
+Die restlichen Zeilen beinhalten die Importe der zusätzlichen Module für die Definition der Grammatik.
+Abbildung ... zeigt ein Beispiel wie somit aus einem Regelausdruck ein Syntaxbaum durch den Parser kreiert werden kann.
+Mittels der Transformer Klasse der Lark-Bibliothek wird nämlich als Zwischenschritt 
+die Syntax der einzelnen Blätter und Knoten des Baums so angepasst, 
+dass diese für die weitere Verarbeitung beziehungsweise Evaluation der Regelmaschine bereitstehen.
 
 \subsection{Regelmaschine}
+
+Nachdem nun die Syntax und Grammatik der Regeln gegeben ist, wird die Regelmaschine als Modul entwickelt.
+Dieses Modul bildet sich aus den Klassen für den Regelinterpreter und den Regelspeicher.
+Während die Regelinterpreter Klasse die konkrete Logik der Vorwärtsverkettung beinhaltet, 
+kümmert sich die Regelspeicher Klasse um das Bereitstellen und um die Speicherung der Regeln und Fakten.
 
 Zur Speicherung der Regeln und Fakten kann dies über den persistenten Ansatz der Datenbanken ermöglicht werden.
 Jedoch erlaubt der Ansatz der Speicherung der Regeln und Fakten über eine Datei im Dateisystem den schnellen Zugriff 
@@ -825,7 +850,11 @@ aber ist für Dateien gedacht, die von Menschen bearbeitet und damit genutzt wer
 
 Mit Hilfe einer Bibliothek für die Serialisierung und Übersetzung von YAML-Dateien werden ebendaher die Regeln und Fakten während der Laufzeit 
 geladen, bearbeitet und gespeichert.
-Hierfür pathenize
+Während die booleschen Ausdrücke der Regeln als String dem Parser für die Grammatik übergeben werden, 
+müssen aus den Fakten nach dem Laden während der Laufzeit eine für die Evaluation angepasste Version generiert werden.
+Hierfür werden durch eine Funktionalität die Fakten als eine Liste von Tupeln erzeugt, 
+die den Pfad zur Eigenschaft in der Punktnotation beinhaltet.
+Dies Konvertierung der Fakten ist für die Auswertung mit den Regeln im späteren Prozess geeignet.
 
 
 \section{Entwicklungsumgebung}
