@@ -713,7 +713,7 @@ wird hier das von der Dokumentation vorgegebene Muster für die Application Fact
 Bei dieser Idee wird eine Factory Funktion geschrieben, die neben der Kreierung einer Instanz, 
 die weitere Konfigurationen je nach Anwendungsfall erlaubt.
 Für den hauptsächlichen Verwendungszweck wird hier zunächst die Regelmaschine instanziiert 
-und dann werden die Route Funktionalitäten deklariert.
+und dann werden die Route Funktionalitäten deklariert~\cite{flaskAPIFlaskDocumentation}.
 Die Routes wiederum filtern die Anfragen nach den relevanten Daten, 
 um diese an die Regelmaschinen-Instanz und ihren Funktionen weiterzugeben.
 
@@ -874,12 +874,18 @@ aber ist für Dateien gedacht, die von Menschen bearbeitet und damit genutzt wer
 
 Mit Hilfe einer Bibliothek für die Serialisierung und Übersetzung von YAML-Dateien werden ebendaher die Regeln und Fakten während der Laufzeit 
 geladen, bearbeitet und gespeichert.
+Dabei wird sich für den Ansatz entschieden, die Regeln und Fakten für jede einzelne Dokumentenart zu speichern und zu verwenden.
 Während die booleschen Ausdrücke der Regeln als String dem Parser für die Grammatik übergeben werden, 
 müssen aus den Fakten nach dem Laden während der Laufzeit eine für die Evaluation angepasste Version generiert werden.
-Hierfür werden durch eine Funktionalität die Fakten als eine Liste von Tupeln erzeugt, 
-die den Pfad zur Eigenschaft in der Punktnotation angeben.
+Hierfür werden durch eine Funktionalität die Fakten als eine Menge beziehungsweise als ein Dictionary erzeugt, 
+die den Pfad zur Eigenschaft in der Punktnotation als Schlüssel besitzen, angegeben.
 Dies Konvertierung der Fakten ist für die Auswertung mit den Regeln im späteren Prozess geeignet.
 
+Für den Ablauf wird, wie in Kapitel~\ref{sec:webserv} beschrieben, zunächst die Regelmaschine beim Starten des Systems instanziiert.
+Diese wiederum instanziiert den Regelspeicher, welcher die Regeln und Fakten bereit hält, und den Regelinterpreter.
+Die Funktionalitäten des Interpreters werden dann aufgerufen, 
+sobald die HTTP Anfrage bezüglich des Durchlaufens der Regelevaluation im WSGI ankommt.
+Die Abbildung zeigt     
 
 
 \section{Entwicklungsumgebung}\label{sec:ide}
