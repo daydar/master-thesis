@@ -325,7 +325,7 @@ Für die Auswahl einer Extraktionsbibliothek ist auch die dazugehörige Programm
 in der die Bibliothek umgesetzt worden ist, relevant. 
 Darunter fallen die bereits genannten Bibliotheken, welche sich in zwei Sprachen gruppieren lassen.
 Projekte wie Tika, Tabula und Textricator sind mit Hilfe von Java implementiert, 
-während die restlichen, aufgezählten Bibliotheken in Python geschrieben sind.
+während die restlichen, aufgezählten Bibliotheken in Python geschrieben sind~\cite{10.5555/1593511}.
 Für Tabula gilt hier hingegen die Ausnahme, dass es für das Projekt unterschiedliche Wrapper für weitere Programmiersprachen wie Python gibt.
 Hieraus ist zu beobachten, dass die Nutzung von Python viele mögliche Extraktionswerkzeuge erlaubt, 
 welches sich für die spätere Umsetzung als noch bedeutsam erweist.
@@ -542,7 +542,7 @@ Zunächst wird der Aufbau des Projekts vorgestellt, durch welches die beschriebe
 Danach wird der Verlauf der Entwicklung über die Aufteilung des Systems in seine Komponenten dargestellt. 
 Jene beschreiben im Detail ihre Eigenschaften und Zusammenhänge.
 
-\section{Aufbau}
+\section{Aufbau}\label{sec:auf}
 
 Für die Struktur des Systems ist vorerst die Untergliederung des Projekts relevant. 
 Sie kann je nach einem ausgewählten Architekturmuster unterschiedlich gestaltet werden. 
@@ -604,7 +604,7 @@ und seine Eigenschaften, auf die im weiteren Verlauf dieser Arbeit detaillierter
 Dort sind neben den beschriebenen Konfigurationsdateien die Teilsysteme und deren Module als Komponenten abgebildet.
 
 
-\section{Symbolische KI}
+\section{Symbolische KI}\label{sec:symki}
 
 Für das Teilsystem der symbolischen künstlichen Intelligenz habe ich den Ansatz bzw.\ 
 die Nutzung eines Wissensbasierten Systems ausgewählt. 
@@ -628,7 +628,7 @@ Der Regelinterpreter wird speziell für den Zweck der Datenextraktion entwickelt
 und passt sich damit an die Nutzung des gesamten Projekts an.
 Für die Implementierung dieses Teilsystems wird sich zudem für die Benutzung der Programmiersprache Python entschieden.
 
-\subsection{Extraktionsvorgang}
+\subsection{Extraktionsvorgang}\label{sec:exvor}
 
 Bevor auf die Regelmaschine genauer eingegangen werden kann, muss zunächst die konkrete Extraktion beleuchtet werden.
 Im Abschnitt~\ref{sec:dokart} wurde gezeigt, dass die Hauptproblematik der Dokumente in der Extraktion der Tabellen liegt.
@@ -693,17 +693,41 @@ Diese Methoden erhalten mit Hilfe von regulären Ausdrücken die einzelnen Werte
 und weisen jene mit ähnlichen Algorithmen den Feldern zu. 
 So werden die Daten je nach Dokumentenart detaillierter erfasst und als komplexe Objekte verarbeitet.
 
-\subsection{Syntax und Grammatik der Fakten und Regeln}
+\subsection{Webserver}\label{sec:webserv}
+
+In Kapitel~\ref{sec:auf} wurde die Struktur des gesamten Systems definiert.
+Des Weiteren wurde für das System die Client-Server Architektur festgelegt. 
+Damit die Komponente der symbolischen künstlichen Intelligenz die Kommunikation über Netzwerke erlaubt, 
+bedarf es die Implementierung eines Webservers.
+Insgesamt gibt es viele Ansätze, wie ein solcher Webserver aufgesetzt werden kann.
+Da aber die benötigten Funktionalitäten für die prototypische Entwicklung sich auf die Verarbeitung 
+von gewöhnliche Hypertext Transfer Protocol (HTTP) Anfragen und Antworten beschränken, 
+reicht die Nutzung eines Web Server Gateway Interface (WSGI) Servers aus.
+
+Für diesen Zweck eignet sich das Mikro-Framework Flask, 
+welches eine zeitnahe Umsetzung und Integration in das System ermöglicht~\cite{grinberg2018flask}.
+Über die Umgebungsvariablen erhält dann die Flask Instanz ihre Daten bezüglich der Konfiguration für das Hosting.
+Damit diese Webserver Anwendung auch das Testing und die Continuous Integration unterstützt, 
+wird hier das von der Dokumentation vorgegebene Muster für die Application Factory angewendet.
+
+Bei dieser Idee wird eine Factory Funktion geschrieben, die neben der Kreierung einer Instanz, 
+die weitere Konfigurationen je nach Anwendungsfall erlaubt.
+Für den hauptsächlichen Verwendungszweck wird hier zunächst die Regelmaschine instanziiert 
+und dann werden die Route Funktionalitäten deklariert.
+Die Routes wiederum filtern die Anfragen nach den relevanten Daten, 
+um diese an die Regelmaschinen-Instanz und ihren Funktionen weiterzugeben.
+
+\subsection{Syntax und Grammatik der Fakten und Regeln}\label{sec:sug}
 
 Die relevanten Daten der Dokumente können nun durch den Extraktionsvorgang erhalten werden.
 Damit die Steuerung bzw.\ die Anfrage für die Datenextraktion den Benutzer:innen zugänglich gemacht wird, 
 muss eine geeignete Syntax für die Regel- und Faktendefinition festgelegt werden.
 
-Die Fakten werden dies als eine Menge der zu extrahierenden Objekte definiert.
+Die Fakten werden deshalb zunächst als eine Menge der zu extrahierenden Objekte definiert.
 So wird eine Obermenge definiert, die als Hierarchie eine Teilmenge von Textfeldern, eine Teilmenge von konventionellen Tabellen, 
 eine Teilmenge von unkonventionellen Tabellen und eine Teilmenge von benutzerdefinierten Tabellen besitzt. 
 Die Teilmengen inkludieren jeweils auch die leere Menge und besitzen als Elemente die Extraktionsziele, 
-welche nach der Namenskonvention in Python beliebig benannt werden können.
+welche sich an der Namenskonvention vom Python Style Guide orientieren und somit einen beliebigen Namen tragen können~\cite{pep8}.
 Für jedes Extraktionsobjekt gibt es benötigte und optionale Eigenschaften, denen Werte zugewiesen werden.
 Ein Fakt ist daher eine Wertezuweisung einer Eigenschaftes eines Extraktionsziel.
 
@@ -819,14 +843,14 @@ Mittels der Transformer Klasse der Lark-Bibliothek wird nämlich als Zwischensch
 die Syntax der einzelnen Blätter und Knoten des Baums so angepasst, 
 dass diese für die weitere Verarbeitung beziehungsweise Evaluation der Regelmaschine bereitstehen.
 
-\subsection{Regelmaschine}
+\subsection{Regelmaschine}\label{sec:ruleeng}
 
 Nachdem nun die Syntax und Grammatik der Regeln gegeben ist, wird die Regelmaschine als Modul entwickelt.
-Dieses Modul bildet sich aus den Klassen für den Regelinterpreter und den Regelspeicher.
+Dieses Modul besteht aus den Klassen für den Regelinterpreter und den Regelspeicher.
 Während die Regelinterpreter Klasse die konkrete Logik der Vorwärtsverkettung beinhaltet, 
 kümmert sich die Regelspeicher Klasse um das Bereitstellen und um die Speicherung der Regeln und Fakten.
 
-Zur Speicherung der Regeln und Fakten kann dies über den persistenten Ansatz der Datenbanken ermöglicht werden.
+Die Speicherung der Regeln und Fakten kann über den persistenten Ansatz der Datenbanken ermöglicht werden.
 Jedoch erlaubt der Ansatz der Speicherung der Regeln und Fakten über eine Datei im Dateisystem den schnellen Zugriff 
 und die schnelle Bearbeitung jener.
 Des Weiteren kommt hier die Frage auf, in welchem Dateiformat die Regeln und Fakten festgehalten werden.
@@ -853,25 +877,28 @@ geladen, bearbeitet und gespeichert.
 Während die booleschen Ausdrücke der Regeln als String dem Parser für die Grammatik übergeben werden, 
 müssen aus den Fakten nach dem Laden während der Laufzeit eine für die Evaluation angepasste Version generiert werden.
 Hierfür werden durch eine Funktionalität die Fakten als eine Liste von Tupeln erzeugt, 
-die den Pfad zur Eigenschaft in der Punktnotation beinhaltet.
+die den Pfad zur Eigenschaft in der Punktnotation angeben.
 Dies Konvertierung der Fakten ist für die Auswertung mit den Regeln im späteren Prozess geeignet.
 
 
-\section{Entwicklungsumgebung}
+
+\section{Entwicklungsumgebung}\label{sec:ide}
 
 Für die graphische Schnittstelle der Benutzer des Systems
 
-\subsection{Editor}
+\subsection{Editor}\label{sec:editor}
 
-\subsection{Dokumentenanzeige}
+\subsection{Dokumentenanzeige}\label{sec:docan}
 
-\subsection{Output}
+\subsection{Output}\label{sec:out}
 
-\section{Machine Learning}
+\section{Machine Learning}\label{sec:ml}
 
 Während
 
-\subsection{Pipeline}
+\subsection{Webserver}\label{sec:webserv2}
+
+\subsection{Pipeline}\label{sec:pipe}
 
 
  
@@ -880,8 +907,12 @@ Während
 
 
 
+\section{Testing}\label{sec:test}
 
-\chapter{Konklusion und Ausblick}\label{chap:auf}
+
+
+
+\chapter{Konklusion und Ausblick}\label{chap:kua}
  
 Im Rahmen der Abschlussarbeit wurde ein System konzipiert und umgesetzt, 
 welches eine Extraktion von Dokumenten über zwei Ansätze ermöglicht.
