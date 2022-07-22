@@ -486,41 +486,41 @@ können Frameworks dem ganzen Zeitfenster entgegenkommen.
 Im Zuge dessen werden für die Teilsysteme verschiedene Technologien betrachtet und in Erwägung gezogen.
 So wird zunächst die symbolische künstliche Intelligenz dem ersten Teilsystem zugeordnet und in seiner Art unterschieden. 
 Zudem müssen die Realisierungsmöglichkeiten der symbolischen KI betrachtet 
-und aus den verschiedenen Arten eines wissensbasiertes Systems muss ein Modell ausgewählt werden.
+und aus den verschiedenen Arten eines wissensbasierten Systems muss ein Modell ausgewählt werden.
 
 Ein solches wissensbasiertes System ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechanismen der Schlussfolgerung nutzen, 
 um Lösungen für Probleme im dafür gewählten Anwendungsbereich zu finden~\cite{embreySkillRuleKnowledge}. 
-Es existieren verschiedene Modelle eines wissensbasiertes Systems, die sich je nach Anwendungsfall als passend erweisen.
-So gibt es den Ansatz des regelbasierten Systems bzw.\ des Produktionssystems, bei dem die Schlussfolgerung über Regeln und Fakten, 
-die von einer/em Benutzer:in definiert werden, konstruiert wird.
+Es existieren verschiedene Modelle eines wissensbasierten Systems, die abhängig vom Anwendungsfall passend sind.
+Folgendermaßen gibt es den Ansatz des regelbasierten Systems bzw.\ des Produktionssystems, bei dem die Schlussfolgerung über Regeln und Fakten, 
+die von Benutzer:innen definiert werden, konstruiert wird.
 
 Bekannt für die Erstellung eines solchen Systems ist das in der Programmiersprache C geschriebene Werkzeug \textit{CLIPS}\cite{clipsCLIPSToolBuilding}. 
 Dieses Werkzeug verfügt über eine eigene Syntax, welche von der Syntax  
-des von der Inference Corporation entwickelten Expertensystems \textit{ART} für die Regeln und Fakten abgeleitet wurde und damit dieser sehr ähnelt~\cite{haleyaiHaleyARTSyntax2008}. 
+des von der Inference Corporation entwickelten Expertensystems \textit{ART} für die Regeln 
+und Fakten abgeleitet wurde und damit zahlreiche Gemeinsamkeiten beziehungsweise Ähnlichkeiten aufweisen.~\cite{haleyaiHaleyARTSyntax2008}. 
 Die Umsetzung wird ebenso mit dem Wrapper \textit{clipspy} für die Programmiersprache Python zur Nutzung bereitgestellt.
 
 Eine Alternative zu \textit{CLIPS}, die zeitlich danach entwickelt wurde, ist das Expertensystem \textit{NEXPERT OBJECT}, 
-welche sich bis auf die Datenbankintegration nur marginal in der Nutzung der Regel und Faktendefinitionen unterscheidet~\cite{https://doi.org/10.1111/j.1468-0394.1990.tb00164.x}
-und für dies keine aktive Entwicklung und Wartung existiert. 
-Andere moderne Umsetzungen konzentrieren sich im Vergleich eher auf die Inferenzmaschine, die auch als Regelinterpreter gilt.
+das sich bis auf die Datenbankintegration nur marginal in der Nutzung der Regel- und Faktendefinitionen unterscheidet~\cite{https://doi.org/10.1111/j.1468-0394.1990.tb00164.x}
+und obendrein keine aktive Entwicklung und Wartung existiert. 
+Andere moderne Umsetzungen konzentrieren sich im Vergleich eher auf die als Regelinterpreter verstandene Inferenzmaschine.
 Projekte wie \textit{Pyke}~\cite{frederiksenWelcomePyke}, \textit{Durable Rules}~\cite{ruizDurableRules2022} oder \textit{Experta}~\cite{perezNilp0interExperta2022}, 
 dem Nachfolger von einem Expertensystem Framework namens \textit{pyKnow}, erlauben es, eine Regelmenge zu definieren 
 und die einzelnen Regeln mit selbstdefinierten Funktionen zu koppeln.
 
 Für die Entwicklungsumgebung, die den Zugang zum System darstellen soll, 
 eignen sich sowohl Nutzungsschnittstellen bzw. User Interface (UI) Bibliotheken für den Desktop als auch für den Webbereich.
-Die Priorität liegt hierbei bei der Erstellung der einzelnen Komponenten der graphische Benutzungsoberfläche bzw.\ der Graphical User Interface (GUI). 
-Folglich können Projekte wie \textit{Qt}~\cite{qtQtCrossplatformSoftware} und \textit{ImGui}~\cite{omarDearImGui2022}, 
-welches in C++ geschrieben ist, Bibliotheken bereitstellen, 
-die auf einer nativen Ebene funktionieren und damit in verschiedenen Anwendungsfällen genutzt werden.
-Die letztere genannte Bibliothek benutzt intern einen Zustandsautomat, um die Render-Pipeline darzustellen, 
-was etwas mehr Erfahrung mit der Grafikprogrammierung erfordert, dass jenes verwendet werden kann~\cite{furhtCreatingUserInterface2018}.
+Die Priorität liegt hierbei bei der Erstellung der einzelnen Komponenten der graphischen Benutzungsoberfläche bzw.\ der Graphical User Interface (GUI). 
+Folglich können Projekte wie \textit{Qt}~\cite{qtQtCrossplatformSoftware} und und das in C++ geschriebene \textit{ImGui}~\cite{omarDearImGui2022} Bibliotheken bereitstellen, 
+die auf einer nativen Ebene funktionieren und demgemäß in verschiedenen Anwendungsfällen genutzt werden.
+Die letztere genannte Bibliothek benutzt intern einen Zustandsautomaten, um die Render-Pipeline darzustellen  
+(diese erfordert mehr Erfahrung mit der Grafikprogrammierung), dass jenes verwendet werden kann~\cite{furhtCreatingUserInterface2018}.
 
-Dem gegenüber stehen abstraktere UI-Lösungen, welche im Front-End Bereich verwendet werden, wie das Benutzen eines Web Frameworks.
+Dem gegenüber stehen abstraktere im Front-End Bereich verwendete UI-Lösungen wie das Benutzen eines Web Frameworks.
 Bekannte Bibliotheken wie \textit{Vue} und \textit{React} ermöglichen eine schnelle und gängige Umsetzung einer Oberfläche, 
 die auch die Zwecke einer Entwicklungsumgebung erfüllen können. 
-Weitere Kandidaten wie \textit{Svelte}~\cite{svelteSvelteCyberneticallyEnhanced} versuchen durch das Nutzen eines Complier, 
-die Arbeit von dem Browser zu der Build Zeit umzulagern.
+Weitere Kandidaten wie \textit{Svelte}~\cite{svelteSvelteCyberneticallyEnhanced} versuchen durch das Nutzen eines Compiler, 
+die Arbeit von dem Browser auf die Build Zeit umzulagern.
 
 Für das Teilsystem, welches den Ansatz des maschinellen Lernens nutzen soll, 
 sind gleicherweise hier ML-Frameworks eine geeignete Lösung.
@@ -532,13 +532,13 @@ der Computer Vision und des Neuro-Linguistische Programmieren (NLP) eine automat
 Weitere neue Projekte wie \textit{Fonduer}~\cite{wu2018fonduer} fokussieren sich mit Hilfe von schwachem überwachten Lernen (supervised learning) 
 auf die Extraktion von umfangreichen formatierten Daten, worunter auch PDF Dokumente fallen.
 Dieser Lernansatz findet auch bei nicht vollständig beschrifteten Trainingsdaten einen Anwendungszweck~\cite{10.1093/nsr/nwx106}, 
-weswegen das für einfache Dokumente sich als praktisch erweisen kann.
+weswegen sich das für einfache Dokumente als praktisch erweisen kann.
 
 
 \chapter{Konzeption und Umsetzung}\label{chap:konundum} %KAPITEL
 
 Für den Sprung zur Umsetzung bedarf es als nächstes die Konzeption des technischen Rahmens. 
-Zunächst wird der Aufbau des Projekts vorgestellt, durch welches die beschriebene Problematik gelöst werden soll.
+Zunächst wird der Aufbau des Projekts vorgestellt, wie die beschriebene Problematik gelöst werden soll.
 Danach wird der Verlauf der Entwicklung über die Aufteilung des Systems in seine Komponenten dargestellt. 
 Jene beschreiben im Detail ihre Eigenschaften und Zusammenhänge.
 
@@ -593,9 +593,9 @@ und ermöglicht einen Ausbau der Skalierung der Teilsysteme.
 \end{figure}
 
 Die einzelnen Teilsysteme werden mit Hilfe einer Docker Compose Datei anschließend orchestriert, 
-sodass die Container gemeinsam gestartet werden und ihre Kommunikation über ein gemeinsames Netzwerk führen.
+sodass die Container gemeinsam gestartet werden und ihre Kommunikation über ein gemeinsames Netzwerk geführt werden kann.
 Die zusätzliche Konfiguration von Umgebungsvariablen in dem Projekt erlaubt es außerdem, 
-sensible Daten wie die Anmeldeinformationen der Zugänge der Teilsysteme 
+sensible Daten, wie die Anmeldeinformationen der Zugänge der Teilsysteme 
 oder weitere Dienste für den Arbeitsbereich dynamisch anzupassen.
 Die Konfiguration wird hierbei von dem Versionsverwaltungssystem ignoriert.
 
@@ -636,13 +636,14 @@ Diesbezüglich definieren wir Tabellen, die für jede Zeile und Spalte Trennlini
 Ein Beispiel hierfür ist die Tabelle, die in Abbildung~\ref{fig:formel1_r} die Fahrzeugdaten beinhaltet.
 Tabellen, die keine oder nur zu Teilen Trennlinien für die Zeilen und Spalten nutzen, werden als unkonventionelle Tabellen definiert.
 Diese Art der Tabelle tritt in den drei vorgestellten Dokumentarten in Form der Auflistung von den Jobs und Joblines auf.
-Andere Tabellen, die eine beliebige Form und somit die restlichen Tabellenarten darstellen, werden als benutzerdefinierte Tabelle definiert.
+Andere Tabellen, die eine beliebige Form und somit die restlichen Tabellenarten darstellen, werden als benutzerdefinierte Tabelle bestimmt.
 
-Textfelder können im Vergleich zu den definierten Tabellen leichter extrahiert werden, 
+Textfelder können im Vergleich zu den Tabellen leichter extrahiert werden, 
 weswegen die Funktionalität für alle Dokumentarten beziehungsweise Dokumententypen benutzt werden kann.
 Für eine Verallgemeinerung der Extraktionsfunktionalitäten wird daher eine gemeinsame Klasse namens \textit{DocumentExtractionType} definiert. 
 Diese gemeinsame Klasse fasst als Obermenge die Methoden, die für alle Dokumentenarten als Unterklasse genutzt werden können, 
-zusammen und bietet die Möglichkeit durch weitere Klassendefinitionen, die den Mechanismus der Vererbung nutzen, an, Abbildungen von unterschiedlichen Dokumententypen zu kreieren.
+zusammen. Sie bietet die Möglichkeit an durch weitere Klassendefinitionen, 
+die den Mechanismus der Vererbung nutzen, Abbildungen von unterschiedlichen Dokumententypen zu kreieren.
 So werden daraus folgend die Dokumentarten, die im Kapitel~\ref{sec:dokart} vorgestellt wurden, 
 durch die Klassen \textit{CareWarranty}, \textit{Formel1Invoice} und \textit{KFZ300Invoice} chronologisch
 dargestellt.
@@ -655,39 +656,42 @@ Für alle beschriebenen Ziele existiert mindestens die Positionierung als Eigens
 Sie kann als Bounding Box (bbox) mit den X und Y Koordinaten für die jeweiligen Extraktionsziele aufgeführt werden.
 
 Eine weitere Eigenschaft, die sich aus der Positionierung schließen lässt, ist die Dokumentenseite. 
-Bei den selektierten Dokumenten treten jeweils mehrere Seiten auf wenn die Liste der Jobs und Joblines so viele Einträge besitzt, 
-dass diese nicht auf eine Seite passt, weswegen die Seitennummern relevant für die Beschreibung des Zielbereiches ist.
+Bei den selektierten Dokumenten treten jeweils mehrere Seiten auf, wenn die Liste der Jobs und Joblines so viele Einträge besitzt, 
+dass diese nicht auf eine Seite passen. 
+Aus diesem Grund ist die Seitennummer,die den Funktionen neben den Bounding Boxen mitgegeben werden, relevant für die Beschreibung des Zielbereiches. 
 Diese Seitennummern können den Funktionen neben den Bounding Boxen mitgegeben werden.
-Daraus folgend werden diese zwei Eigenschaften als notwendige Bedingung für jegliche Extraktionsbereiche behandelt und 
+Daraus folgend werden diese zwei Eigenschaften — die der Positionierung und die der Seitennummer — als notwendige Bedingung für jegliche Extraktionsbereiche behandelt und 
 damit für die Logik der Methoden durch die Parametereingabe als gegeben gesehen. 
 
 Für die Umsetzung der einzelnen Funktionen wird die vorgestellte Bibliothek PdfPlumber benutzt, 
 um für die jeweiligen Extraktionsziele mit verschiedenen Methoden die Daten zu erhalten. 
-Die Methoden nutzen dann die Angabe der Seitennummer und der Bounding Box um zunächst den Bereich der Extraktion einzuschränken.
+Die Methoden nutzen dann die Angaben der Seitennummer und der Bounding Box, 
+sodass der Bereich der Extraktion zunächst eingeschränkt werden kann.
 Mit dem ausgewählten Bereich werden dann die Funktionalitäten für die Text- oder Tabellenextraktion aufgerufen.
 
-Bei den prototypischen Dokumenten fällt zunächst wieder die hinderliche Tabellenextraktion von unkonventionellen Tabellen 
-und indirekt von benutzerdefinierten Tabellen auf.
-So können die Bibliotheken diese Tabellen mit den dafür konzipierten Funktionen nicht erkennen 
+Bei den prototypischen Dokumenten fällt vorerst die hinderliche Tabellenextraktion von unkonventionellen Tabellen 
+und indirekt von benutzerdefinierten Tabellen auf:
+Die Bibliotheken können diese Tabellen mit den dafür konzipierten Funktionen nicht erkennen 
 bzw.\ von diesen keine strukturellen Daten, die die Tabellen abbilden sollen, erhalten.
 Um dies zu umgehen, werden als Lösungswege die unkonventionellen und die benutzerdefinierten Tabellen 
 zunächst als reine Texte extrahiert und danach werden die Einträge der jeweiligen Felder mit Hilfe von regulären Ausdrücken gefiltert.
 
 Auch wenn der Bereich durch die Bounding Box umrahmt ist, kann der Bereich nicht relevante Texte besitzen, 
 die die Verarbeitung erschweren.
-So werden weitere Eigenschaften wie die Angabe eines Start- und Endankers benötigt, um so nur die Zeilen aus dem Rohtext zu erhalten.
+Demzufolge werden weitere Eigenschaften wie die Angabe eines Start- und Endankers benötigt, um lediglich die Zeilen aus dem Rohtext zu erhalten.
 Da bei den elektronisch verarbeiteten Dokumente die Tabellen als Texte mit Zeilenumbrüchen verfasst sind, 
-können die Zeilenumbrüche genutzt werden um so aus den Zeilen eine Liste zu generieren.
-Die Liste wiederum wird mit regulären Ausdrücken weiter verarbeitet, womit die Daten durch Zuweisungen eine strukturierte Form erhalten 
-und somit die Semantik der Tabellen darstellen.
+können die Zeilenumbrüche genutzt werden, sodass aus den Zeilen eine Liste generiert wird.
+Die Liste wiederum wird mit regulären Ausdrücken weiter verarbeitet. 
+In Folge dieser Verarbeitung erhalten die Daten durch Zuweisungen eine strukturierte Form 
+und stellen folglich die Semantik der Tabellen dar.
 
 Da auch Dokumente mit mehreren Seiten existieren, bedarf es neben den Start- und Endanker eine Menge von Zwischenankern, 
 die als Brücke für die längeren Listen dienen.
 Für die unkonventionellen und benutzerdefinierten Tabellen werden daher neben der Positionierung und der Seitennummern 
-die Start- und Endanker als Voraussetzung für jene Extraktionsfunktionalitäten. 
+die Start- und Endanker als die Voraussetzung für jene Extraktionsfunktionalitäten benutzt. 
 Optional bleiben die Angabe der Zwischenanker.
 
-Die Klassen der einzelnen Dokumentarten dienen für weitere Funktionalitäten, die spezifischere Zwecke 
+Die Klassen der einzelnen Dokumentarten sind für weitere Funktionalitäten, die spezifischere Zwecke 
 für den jeweiligen Dokumenttyp erfüllen und eine weitere Semantik für die extrahierten Texte und Tabellen bilden.
 Diese Methoden erhalten mit Hilfe von regulären Ausdrücken die einzelnen Werte für die gewünschten Felder 
 und weisen jene mit ähnlichen Algorithmen den Feldern zu. 
@@ -695,8 +699,7 @@ So werden die Daten je nach Dokumentenart detaillierter erfasst und als komplexe
 
 \subsection{Webserver}\label{sec:webserv}
 
-In Kapitel~\ref{sec:auf} wurde die Struktur des gesamten Systems definiert.
-Des Weiteren wurde für das System die Client-Server Architektur festgelegt. 
+In Kapitel~\ref{sec:auf} wurde die Struktur des gesamten Systems definiert und die Client-Server Architektur festgelegt. 
 Damit die Komponente der symbolischen künstlichen Intelligenz die Kommunikation über Netzwerke erlaubt, 
 bedarf es die Implementierung eines Webservers.
 Insgesamt gibt es viele Ansätze, wie ein solcher Webserver aufgesetzt werden kann.
@@ -706,14 +709,14 @@ reicht die Nutzung eines Web Server Gateway Interface (WSGI) Servers aus.
 
 Für diesen Zweck eignet sich das Mikro-Framework Flask, 
 welches eine zeitnahe Umsetzung und Integration in das System ermöglicht~\cite{grinberg2018flask}.
-Über die Umgebungsvariablen erhält dann die Flask Instanz ihre Daten bezüglich der Konfiguration für das Hosting.
+Über die Umgebungsvariablen erhält daraufhin die Flask Instanz ihre Daten bezüglich der Konfiguration für das Hosting.
 Damit diese Webserver Anwendung auch das Testing und die Continuous Integration unterstützt, 
 wird hier das von der Dokumentation vorgegebene Muster für die Application Factory angewendet.
 
-Bei dieser Idee wird eine Factory Funktion geschrieben, die neben der Kreierung einer Instanz, 
+Bei Verfolgung dieses eben genannten Ansatzes wird eine Factory Funktion geschrieben, die neben der Kreierung einer Instanz  
 die weitere Konfigurationen je nach Anwendungsfall erlaubt.
-Für den hauptsächlichen Verwendungszweck wird hier zunächst die Regelmaschine instanziiert 
-und dann werden die Route Funktionalitäten deklariert~\cite{flaskAPIFlaskDocumentation}.
+Für den hauptsächlichen Verwendungszweck wird hier zunächst die Regelmaschine instanziiert.
+Anschließend werden die Route Funktionalitäten deklariert~\cite{flaskAPIFlaskDocumentation}.
 Die Routes wiederum filtern die Anfragen nach den relevanten Daten, 
 um diese an die Regelmaschinen-Instanz und ihren Funktionen weiterzugeben.
 
@@ -724,10 +727,10 @@ Damit die Steuerung bzw.\ die Anfrage für die Datenextraktion den Benutzer:inne
 muss eine geeignete Syntax für die Regel- und Faktendefinition festgelegt werden.
 
 Die Fakten werden deshalb zunächst als eine Menge der zu extrahierenden Objekte definiert.
-So wird eine Obermenge definiert, die als Hierarchie eine Teilmenge von Textfeldern, eine Teilmenge von konventionellen Tabellen, 
+So wird eine Obermenge abgebildet, die als Hierarchie eine Teilmenge von Textfeldern, eine Teilmenge von konventionellen Tabellen, 
 eine Teilmenge von unkonventionellen Tabellen und eine Teilmenge von benutzerdefinierten Tabellen besitzt. 
 Die Teilmengen inkludieren jeweils auch die leere Menge und besitzen als Elemente die Extraktionsziele, 
-welche sich an der Namenskonvention vom Python Style Guide orientieren und somit einen beliebigen Namen tragen können~\cite{pep8}.
+welche sich an der Namenskonvention vom Python Style Guide orientieren, und somit einen beliebigen Namen tragen können~\cite{pep8}.
 Für jedes Extraktionsobjekt gibt es benötigte und optionale Eigenschaften, denen Werte zugewiesen werden.
 Ein Fakt ist daher eine Wertezuweisung einer Eigenschaftes eines Extraktionsziel.
 
@@ -887,7 +890,7 @@ aber ist für Dateien gedacht, die von Menschen bearbeitet und damit genutzt wer
 \begin{figure}[htb]
     \centering
     \includegraphics[width=.9\textwidth]{images/regelmaschine_sequenz.png}
-    \caption{Durchlauf der Regelinterpretationen durch Request}
+    \caption{Durchlauf der Regelinterpretationen durch ein Request}
 ~\label{fig:regelmaschine_sequenz}
 \end{figure}
 
@@ -905,10 +908,10 @@ Diese wiederum instanziiert den Regelspeicher, welcher die Regeln und Fakten ber
 Die Funktionalitäten des Interpreters werden dann aufgerufen, 
 sobald die HTTP Anfrage bezüglich des Durchlaufens der Regelevaluation im WSGI ankommt.
 Die Abbildung~\ref{fig:regelmaschine_sequenz} zeigt den Verlauf bei dieser Anfrage.
-So löst zunächst die Route-Anfrage die gekoppelte Funktion \(trigger_run()\) der Flask Instanz aus, 
+So löst zunächst die Route-Anfrage die gekoppelte Funktion \(trigger\_run()\) der Flask Instanz aus, 
 welche wiederum die \(run()\) Methode der Regelmaschine auslöst. 
-Diese ruft dann die \(run()\) Methode des Regelinterpreters mit der Angabe für welchen Dokumentart der Vorgang stattfinden soll.
-Dort werden iterativ die Regeln mit Hilfe der Funktion     
+Diese ruft dann die \(run()\) Methode des Regelinterpreters mit der Angabe für welchen Dokumentart der Vorgang stattfinden soll auf.
+Dort werden iterativ die Regeln mit Hilfe der Funktion \(invoke\_rule\_action()\)  
 
 
 \section{Entwicklungsumgebung}\label{sec:ide}
