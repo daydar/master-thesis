@@ -864,6 +864,7 @@ Nachdem nun die Syntax und Grammatik der Regeln gegeben ist, wird die Regelmasch
 Dieses Modul besteht aus den Klassen für den Regelinterpreter und den Regelspeicher.
 Während die Regelinterpreter Klasse die konkrete Logik der Vorwärtsverkettung beinhaltet, 
 kümmert sich die Regelspeicher Klasse um das Bereitstellen und um die Speicherung der Regeln und Fakten.
+Für diesen Speicher wird das Singleton Muster benutzt, damit ein fester Zustand der Regel- und Faktenmenge gegeben ist.
 
 Die Speicherung der Regeln und Fakten kann über den persistenten Ansatz der Datenbanken ermöglicht werden.
 Jedoch erlaubt der Ansatz der Speicherung der Regeln und Fakten über eine Datei im Dateisystem den schnellen Zugriff 
@@ -904,19 +905,52 @@ die den Pfad zur Eigenschaft in der Punktnotation als Schlüssel besitzen, angeg
 Dies Konvertierung der Fakten ist für die Auswertung mit den Regeln im späteren Prozess geeignet.
 
 Für den Ablauf wird, wie in Kapitel~\ref{sec:webserv} beschrieben, zunächst die Regelmaschine beim Starten des Systems instanziiert.
-Diese wiederum instanziiert den Regelspeicher, welcher die Regeln und Fakten bereit hält, und den Regelinterpreter.
+Diese wiederum instanziiert den Regelspeicher, welcher die Regeln und Fakten bereit hält, und den Regelinterpreter, 
+welcher den Parser für die Grammatik Instanz erstellt.
 Die Funktionalitäten des Interpreters werden dann aufgerufen, 
 sobald die HTTP Anfrage bezüglich des Durchlaufens der Regelevaluation im WSGI ankommt.
-Die Abbildung~\ref{fig:regelmaschine_sequenz} zeigt den Verlauf bei dieser Anfrage.
+
+Die Abbildung~\ref{fig:regelmaschine_sequenz} zeigt den Verlauf bei dieser Anfrage und den damit entstehenden Aufrufstapel.
 So löst zunächst die Route-Anfrage die gekoppelte Funktion \(trigger\_run()\) der Flask Instanz aus, 
 welche wiederum die \(run()\) Methode der Regelmaschine auslöst. 
 Diese ruft dann die \(run()\) Methode des Regelinterpreters mit der Angabe für welchen Dokumentart der Vorgang stattfinden soll auf.
-Dort werden iterativ die Regeln mit Hilfe der Funktion \(invoke\_rule\_action()\)  
+Dort werden iterativ die aktuell gespeicherten Regeln mit Hilfe der Funktion \(interpret\_rule()\) zunächst evaluiert.
+Diese Funktion übergibt den Ausdruck der einzelnen Regel dem Parser um den Syntaxbaum zu erstellen, 
+mit welchem die Funktion \(eval\_expression\_tree()\) aufgerufen wird.
+
+Dort wird rekursiv über den Syntaxbaum navigiert und die einzelnen booleschen Ausdrücke von den Blättern bis zur Wurzel aufgelöst.
+Dieser boolescher Wert wird bis zum Methodenaufruf in der \(run()\) Funktion danach zurückgeben, 
+sodass dann die Regel bei einem positiven Ergebnis zu der Liste der erfüllten Regeln hinzugefügt wird. 
+Ist die Schleife der Regelevaluation abgeschlossen, werden die Aktionen der erfüllten Regeln mit ihren Parametern 
+in der \(invoke\_rule\_action()\) Funktion ausgeführt.
+Hierbei werden die Aktionen abhängig des ausgewählten Dokumententyps aufgerufen.
+Die Ergebnisse der aufgerufenen Funktionen werden dann mit den Regelnamen indexiert und gesammelt bis zur WSGI Klasse zurückgegeben,
+in welcher der Wert als HTTP Antwort zurückgeschickt wird.
 
 
 \section{Entwicklungsumgebung}\label{sec:ide}
 
-Für die graphische Schnittstelle der Benutzer des Systems
+Damit die Funktionalitäten der Teilsysteme, die die unterschiedlichen Ansätze der künstlichen Intelligenz umsetzen, 
+bedarf es unter anderem die Steuerung dieser über menschliche Eingaben.
+So müssen sowohl die Möglichkeiten der Konfiguration der Regeln und Fakten 
+für die Benutzer:innen als auch das Starten des Machine Learnings über eine Benutzungsschnittstelle gegeben sein.
+Wie in Kapitel~\ref{sec:ruleeng} bereits erwähnt, muss eine Umgebung zur Verfügung gestellt werden, 
+die das Bearbeiten der Regel- und Faktendefinitionen erlaubt.
+Des Weiteren soll der Dokumententyp für den Extraktionsprozess auswählbar sein 
+und die Dokumente für den ausgewählten Dokumententyp in dieser Umgebung als eine Seitenansicht angezeigt werden.
+Auch sind die Ergebnisse der Extraktionsprozesse für die Benutzer:innen für den Abschluss und für die Entwicklung relevant, 
+weswegen eine Anzeige für dies erstellt wird.
+
+Für die graphische Schnittstelle der Benutzer:innen des Systems wird sich für eine Webanwendung entschieden.
+
+In Abbildung~\ref{fig:ide_view} wird die prototypische Version der Entwicklungsumgebung angezeigt.
+
+\begin{figure}[htb]
+    \centering
+    \frame{\includegraphics[width=1.0\textwidth]{images/ide_view.png}}
+    \caption{Hauptansicht der Entwicklungsumgebung}
+~\label{fig:ide_view}
+\end{figure}
 
 \subsection{Editor}\label{sec:editor}
 
