@@ -195,7 +195,7 @@ TÜV sowie die Abrechnungsdaten wie die Jobs mit den dazugehörigen Arbeitsposit
 Dazu stehen als weitere Grundlage mehr als 10.000 annotierte unterschiedliche Dokumente mit genau den Daten, 
 die extrahiert werden sollen, als Datenbank zur Verfügung. 
 In Zukunft sollen für das Mengengerüst mehr als 100.000 Dokumente pro Jahr bearbeitet werden. 
-Hierbei ist es aber auch möglich, aus den bereits bestehenden Daten einen Pool für den Lernprozess bzw. 
+Hierbei ist es aber auch möglich, aus den bereits bestehenden Daten einen Pool für den Lernprozess beziehungsweise 
 für die Verifikation zu bilden.
 
 Zum Schluss werde ich die Ergebnisse des gesamten Systems betrachten und einen Ausblick zu der Thematik geben.
@@ -244,7 +244,7 @@ Das ERP bietet des Weiteren eine Schnittstelle für diese Dokumente, wie z.B die
 die allein über Scanner die Dokumente übertragen. 
 Dort werden die Dokumente verarbeitet und mit Hilfe eines OCR Scanners digitalisiert. 
 
-Derzeit ist allerdings die Digitalisierung nicht in der Lage, einen Kontext beziehungsweise (bzw.) 
+Derzeit ist allerdings die Digitalisierung nicht in der Lage, einen Kontext beziehungsweise
 eine Semantik für diese Dokumente zu erstellen.
 Idealerweise kann dies genutzt werden, um aus den Dokumenten Arbeitsaufträge zu generieren und somit zu digitalisieren.
 Demzufolge ergibt sich hier an der Stelle die Möglichkeit, einen neuen Ansatz zu testen, infolgedessen die Informationen 
@@ -340,7 +340,7 @@ Um eine Auswahl zu treffen, müssen die Arten der Dokumente, die in dem ERP-Syst
 \subsection{Dokumentarten}\label{sec:dokart}
 
 Bei den Dokumenten, die in das ERP-System eingescannt werden, handelt es sich in der Mehrheit um Garantie- und Werkstattaufträge und Rechnungen. 
-Jedes Autohaus benutzt hierbei ein individuelles Muster bzw. Format für die jeweilige Art des Dokuments.
+Jedes Autohaus benutzt hierbei ein individuelles Muster beziehungsweise Format für die jeweilige Art des Dokuments.
 Dabei ist jedoch der Aufbau dieser Dokumente zu Teilen indirekt durch die von den Autohaus genutzten Dealer-Management-Systeme vorgegeben.
 
 Ebendaher passiert es, dass es Autohäuser gibt, welche das gleiche DMS verwenden 
@@ -388,12 +388,12 @@ Während die ersten vier Zeilen noch dezent erscheinen, besitzt die fünfte Zeil
 im Abschnitt mit der Bezeichnung einen längeren Text, sodass der restliche Text in weiteren Zeilen in der gleichen Spalte 
 darunter geschrieben steht.
 Die Abstände zwischen den Spalten insgesamt scheinen konsistenter zu sein, sind jedoch in der Abbildung~\ref{fig:care_g} 
-in mehreren Zeileneinträgen Überläufe bei den Arbeitsnummern bzw.\ den Teilenummern zu sehen.
+in mehreren Zeileneinträgen Überläufe bei den Arbeitsnummern beziehungsweise den Teilenummern zu sehen.
 In der letzte Zeile ist darüber hinaus zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
 was eine eindeutige Erkennung der Positionierung noch weiter erschwert.
 Inhaltlich werden Jobs mit den dazugehörigen Joblines darunter angereiht dargestellt. 
 
-Dies ist durch die Codierung der Arbeitsnummern bzw.\ der Teilenummer zu erkennen, 
+Dies ist durch die Codierung der Arbeitsnummern beziehungsweise der Teilenummer zu erkennen, 
 die Hierarchie ist durch das jeweilige Dealer-Management-System vorgegeben.
 In der ersten Spalte können daher Codes von Jobs, Reparaturzeiten, Ersatzteilen, 
 Fremdleistungen, Stempelzeiten und Kundenbeschwerden auftreten.
@@ -491,7 +491,7 @@ und aus den verschiedenen Arten eines wissensbasierten Systems muss ein Modell a
 Ein solches wissensbasiertes System ist hierbei der Oberbegriff für Programme, die mit Hilfe einer Wissensbasis Mechanismen der Schlussfolgerung nutzen, 
 um Lösungen für Probleme im dafür gewählten Anwendungsbereich zu finden~\cite{embreySkillRuleKnowledge}. 
 Es existieren verschiedene Modelle eines wissensbasierten Systems, die abhängig vom Anwendungsfall passend sind.
-Folgendermaßen gibt es den Ansatz des regelbasierten Systems bzw.\ des Produktionssystems, bei dem die Schlussfolgerung über Regeln und Fakten, 
+Folgendermaßen gibt es den Ansatz des regelbasierten Systems beziehungsweise des Produktionssystems, bei dem die Schlussfolgerung über Regeln und Fakten, 
 die von Benutzer:innen definiert werden, konstruiert wird.
 
 Bekannt für die Erstellung eines solchen Systems ist das in der Programmiersprache C geschriebene Werkzeug \textit{CLIPS}\cite{clipsCLIPSToolBuilding}. 
@@ -509,8 +509,8 @@ dem Nachfolger von einem Expertensystem Framework namens \textit{pyKnow}, erlaub
 und die einzelnen Regeln mit selbstdefinierten Funktionen zu koppeln.
 
 Für die Entwicklungsumgebung, die den Zugang zum System darstellen soll, 
-eignen sich sowohl Nutzungsschnittstellen bzw. User Interface (UI) Bibliotheken für den Desktop als auch für den Webbereich.
-Die Priorität liegt hierbei bei der Erstellung der einzelnen Komponenten der graphischen Benutzungsoberfläche bzw.\ der Graphical User Interface (GUI). 
+eignen sich sowohl Nutzungsschnittstellen beziehungsweise User Interface (UI) Bibliotheken für den Desktop als auch für den Webbereich.
+Die Priorität liegt hierbei bei der Erstellung der einzelnen Komponenten der graphischen Benutzungsoberfläche beziehungsweise der Graphical User Interface (GUI). 
 Folglich können Projekte wie \textit{Qt}~\cite{qtQtCrossplatformSoftware} und und das in C++ geschriebene \textit{ImGui}~\cite{omarDearImGui2022} Bibliotheken bereitstellen, 
 die auf einer nativen Ebene funktionieren und demgemäß in verschiedenen Anwendungsfällen genutzt werden.
 Die letztere genannte Bibliothek benutzt intern einen Zustandsautomaten, um die Render-Pipeline darzustellen  
@@ -606,7 +606,7 @@ Dort sind neben den beschriebenen Konfigurationsdateien die Teilsysteme und dere
 
 \section{Symbolische KI}\label{sec:symki}
 
-Für das Teilsystem der symbolischen künstlichen Intelligenz habe ich den Ansatz bzw.\ 
+Für das Teilsystem der symbolischen künstlichen Intelligenz habe ich den Ansatz beziehungsweise
 die Nutzung eines Wissensbasierten Systems ausgewählt. 
 Dieser Ansatz ermöglicht die Steuerung der Extraktion über definierte Fakten und Regeln.
 Wie in Kapitel~\ref{sec:frameworks} beschrieben, gibt es viele Frameworks, die ein solches System bereitstellen können.
@@ -672,7 +672,7 @@ Mit dem ausgewählten Bereich werden dann die Funktionalitäten für die Text- o
 Bei den prototypischen Dokumenten fällt vorerst die hinderliche Tabellenextraktion von unkonventionellen Tabellen 
 und indirekt von benutzerdefinierten Tabellen auf:
 Die Bibliotheken können diese Tabellen mit den dafür konzipierten Funktionen nicht erkennen 
-bzw.\ von diesen keine strukturellen Daten, die die Tabellen abbilden sollen, erhalten.
+beziehungsweise von diesen keine strukturellen Daten, die die Tabellen abbilden sollen, erhalten.
 Um dies zu umgehen, werden als Lösungswege die unkonventionellen und die benutzerdefinierten Tabellen 
 zunächst als reine Texte extrahiert und danach werden die Einträge der jeweiligen Felder mit Hilfe von regulären Ausdrücken gefiltert.
 
@@ -723,7 +723,7 @@ um diese an die Regelmaschinen-Instanz und ihren Funktionen weiterzugeben.
 \subsection{Syntax und Grammatik der Fakten und Regeln}\label{sec:sug}
 
 Die relevanten Daten der Dokumente können nun durch den Extraktionsvorgang erhalten werden.
-Damit die Steuerung bzw.\ die Anfrage für die Datenextraktion den Benutzer:innen zugänglich gemacht wird, 
+Damit die Steuerung beziehungsweise die Anfrage für die Datenextraktion den Benutzer:innen zugänglich gemacht wird, 
 muss eine geeignete Syntax für die Regel- und Faktendefinition festgelegt werden.
 
 Die Fakten werden deshalb zunächst als eine Menge der zu extrahierenden Objekte definiert.
@@ -736,24 +736,24 @@ Ein Fakt ist daher eine Wertezuweisung einer Eigenschaftes eines Extraktionsziel
 
 Die Regeln werden neben den Fakten als weitere Obermenge definiert. 
 Diese Menge lässt sich als eine Liste von Regeln darstellen, welche nach den selben Namenskonventionen der Fakten benannt werden.
-Als Element in der Regelmenge, besitzt jede Regel einen Regelausdruck, eine Regelaktion und eine Liste von Regelparametern, 
-welche abhängig von der Regelaktion angegeben werden. 
+Als Element in der Regelmenge besitzt jede Regel einen Regelausdruck, eine Regelaktion und eine Liste von Regelparametern, 
+jene abhängig von der Regelaktion angegeben werden. 
 Die Namen der Regelaktionen müssen dabei mit den Namen der gegebenen Funktionalitäten übereinstimmen, 
 damit diese später von der Regelmaschine erkannt und mit den angegebenen Regelparametern ausgeführt werden können.
 Die Regelausdrücke werden als ein String angegeben und müssen zunächst syntaktisch verarbeitet werden.
 Hierfür existieren verschiedene Syntaxansätze.
 
-Regelbasierte Systeme wie \textit{CLIPS} nutzen, wie bereits beschrieben, eine angepasste Version der Syntax von der Programmiersprache Lisp.
-Diese Syntax bildet mit Hilfe von Schlüsselwörtern die Ausdrücke für Regeln und Fakten ab.
-Python ermöglicht Texte mittels der integrierten \(eval()\) Funktion zu evaluieren und falls es sich um eine Python Aussage handelt, 
+Regelbasierte Systeme wie \textit{CLIPS} nutzen, wie bereits beschrieben, eine angepasste Version der Syntax aus der Programmiersprache Lisp.
+Diese Syntax bildet mit Hilfe von Schlüsselwörtern die Ausdrücke für Regeln und Fakten.
+Python ermöglicht es Texte mittels der integrierten \(eval()\) Funktion zu evaluieren und, falls es sich um eine Python Aussage handelt, 
 diese auch auszuführen.
-Die Funktion \( literal\_eval()\) aus dem Python-Modul \textit{Abstract Syntax Tree} (ast) erlaubt 
+Die Funktion \( literal\_eval()\) aus dem Python-Modul \textit{Abstract Syntax Tree} (ast) besitzt 
 die selbe Funktionalität mit einer eingeschränkten Untermenge für die Python Ausdrücke.
-Hierbei werden bei beiden Funktionalitäten die Texteingaben mithilfe des Parsings in abstrakte Syntaxbäume abgebildet, 
+Hierbei werden bei beiden Funktionalitäten die Texteingaben mit Hilfe des Parsings in abstrakte Syntaxbäume abgebildet, 
 die die daraus generierten Terminale und Operatoren beinhalten.
 Bibliotheken, wie die von Google entwickelte Software Common Expression Language (CEL) erlauben 
 durch das Auswerten von Ausdrücken die Bildung einer Semantik~\cite{googleCommonExpressionLanguage}.
-Dafür wird eine Grammatik benutzt, die die Ausdrücke mit Hilfe von Regeln in ihre Typen und Namen als Bestandteile auflöst.
+Hierzu wird eine Grammatik benutzt, dergleichen die Ausdrücke mit Hilfe von Regeln in ihre Typen und Namen als Bestandteile aufsplittet.
 
 \begin{listing}[htbp]
     % \lstset{basicstyle=\small}
@@ -815,20 +815,20 @@ Das für dieses Projekt entwickelte regelbasierte System für die Komponente der
 bedarf Regeln in Form von Booleschen Ausdrücken.
 Damit das regelbasierte System die Ausdrücke für die Regeln und Fakten gleicherweise auswerten kann, 
 bedarf es eine für den Anwendungsfall angepasste Definition einer Grammatik.
-Hierfür wird die Parsing Bibliothek Lark benutzt, welches die Erstellung einer kontextfreien Grammatik
-in der Erweiterten Backus-Naur-Form (EBNF) erlaubt.
+Zu diesem Zweck nutze ich die Parsing Bibliothek Lark. 
+Jene erlaubt die Erstellung einer kontextfreien Grammatik in der Erweiterten-Backus-Naur-Form (EBNF). 
 Basierend auf dieser Bibliothek werden unter der Nutzung eines LALR-Parsers 
 abstrakte Syntaxbäume aus Texteingaben generiert~\cite{lark-parserLarkparserLarkLark}.
 Im Listing~\ref{code:grammar} wird die implementierte Grammatik für das regelbasierte System als Rohstring dargestellt.
-Dieser wird dann dem Parser mitgegeben, womit jeglicher Regel- und Faktenausdruck durch einen abstrakten Syntaxbaum 
+Dieser Rohstring wird dann dem Parser übermittelt, sodass jeglicher Regel- und Faktenausdruck durch einen abstrakten Syntaxbaum 
 der Logik für die Evaluation dieser Regel bereitgestellt wird.
-Die booleschen Ausdrücken werden in der Syntax von Python genutzt, womit die Evaluation direkt stattfinden kann.
+Die booleschen Ausdrücke werden in der Syntax von Python genutzt, infolgedessen die Evaluation direkt stattfinden kann.
 
-Der Aufbau der umgesetzten  Grammatik basiert hierbei auf der klassischen Aussagenlogik und ihrer Definitionen\cite{klement2004propositional}.
+Der Aufbau der umgesetzten  Grammatik basiert auf der klassischen Aussagenlogik und ihrer Definitionen\cite{klement2004propositional}.
 Auf der Syntaxebene werden daher in EBNF die Produktionsregeln kleingeschrieben und die Terminale großgeschrieben.
 Die Regel \(start\) wird zunächst als Startsymbol definiert. 
 Von ihr lässt sich jedes Wort ableiten, welches die \(disjunction\) Regel erfüllt.
-Diese stellt eine aussagenlogische Oder-Verknüpfung beziehungsweise eine Disjunktion dar, 
+Jene Regel stellt eine aussagenlogische Oder-Verknüpfung beziehungsweise eine Disjunktion dar, 
 welche wiederum aus der Regel für die Konjunktion oder für die Oder-Verknüpfung aus Disjunktion und Konjunktion ersetzt werden kann.
 Die Konjunktionsregel \(conjunction\) kann entweder durch die \(expression\) Regel ersetzt werden oder 
 durch eine Und-Verknüpfung der \(conjunction\) Regel und der \(expression\) Regel.
@@ -845,48 +845,49 @@ einer Kombination von einer \(expression\) Regel, von einer \(operator\) Regel u
 Bei der \(value\) Regel wird die Mehrdeutigkeit der Terminale definiert, für die alle primitiven Datentypen abgedeckt werden.
 Die Terminale \(PROPERTY\_NAME\) wird hier hervorgehoben, da diese den regulären Ausdruck einer Eigenschaft eines Extraktionsobjekts abbilden soll.
 Dabei ist dies als eine Verkettung durch weitere Objektnamen durch die Punktnotation definiert.
-Für die \(operator\) Regel bestehen die Mehrdeutigkeiten aus der \(comp\_operator\) Regel, der \(ident\_operator\) Regel und der \(memb\_operator\) Regel, 
-welche in der Reihenfolge aufgezählt die Vergleichsoperatoren, die Identitätsoperatoren und die Memberoperatoren abbilden.
-Arithmetische Operatoren, Zuweisungsoperatoren und bitweise Operatoren, die in Python existieren, 
-werden für die aus der Grammatik erzeugten Sprache nicht definiert. 
+Für die \(operator\) Regel bestehen die Mehrdeutigkeiten aus der \(comp\_operator\) Regel, 
+der \(ident\_operator\) Regel und der \(memb\_operator\) Regel. 
+In der von mir aufgezählten Reihenfolge bilden die Vergleichsoperatoren, die Identitätsoperatoren und die Memberoperatoren ab. 
+Die in Python existenten arithmetischen Operatoren, Zuweisungsoperatoren und bitweisen Operatoren werden 
+für die aus der Grammatik erzeugten Sprache hingegen nicht definiert.
 Des Weiteren wird das Klammern für die Ausdrücke nicht unterstützt, 
 weswegen die Operatorrangfolge durch die Produktionsregeln der Grammatik fest vorgegeben ist.
 Die restlichen Zeilen beinhalten die Importe der zusätzlichen Module für die Definition der Grammatik.
-Abbildung~\ref{fig:syntaxbaum} zeigt ein Beispiel wie somit aus einem Regelausdruck ein Syntaxbaum durch den Parser kreiert werden kann.
-Mittels der Transformer Klasse der Lark-Bibliothek wird nämlich als Zwischenschritt 
+Abbildung~\ref{fig:syntaxbaum} zeigt ein Beispiel wie aus einem Regelausdruck ein Syntaxbaum durch den Parser kreiert werden kann.
+Mittels der Transformer Klasse der Lark-Bibliothek wird als Zwischenschritt 
 die Syntax der einzelnen Blätter und Knoten des Baums so angepasst, 
 dass diese für die weitere Verarbeitung beziehungsweise Evaluation der Regelmaschine bereitstehen.
 
 
 \subsection{Regelmaschine}\label{sec:ruleeng}
 
-Nachdem nun die Syntax und Grammatik der Regeln gegeben ist, wird die Regelmaschine als Modul entwickelt.
+Nachdem unterdessen die Syntax und Grammatik der Regeln gegeben ist, wird die Regelmaschine als Modul entwickelt.
 Dieses Modul besteht aus den Klassen für den Regelinterpreter und den Regelspeicher.
-Während die Regelinterpreter Klasse die konkrete Logik der Vorwärtsverkettung beinhaltet, 
-kümmert sich die Regelspeicher Klasse um das Bereitstellen und um die Speicherung der Regeln und Fakten.
+Während die Regelinterpreter-Klasse die konkrete Logik der Vorwärtsverkettung beinhaltet, 
+kümmert sich die Regelspeicher-Klasse um das Bereitstellen und um die Speicherung der Regeln und Fakten.
 Für diesen Speicher wird das Singleton Muster benutzt, damit ein fester Zustand der Regel- und Faktenmenge gegeben ist.
 
 Die Speicherung der Regeln und Fakten kann über den persistenten Ansatz der Datenbanken ermöglicht werden.
-Jedoch erlaubt der Ansatz der Speicherung der Regeln und Fakten über eine Datei im Dateisystem den schnellen Zugriff 
+Jedoch erlaubt der Ansatz der Speicherung der Regeln und Fakten via einer Datei im Dateisystem den schnellen Zugriff 
 und die schnelle Bearbeitung jener.
-Des Weiteren kommt hier die Frage auf, in welchem Dateiformat die Regeln und Fakten festgehalten werden.
+Des Weiteren stellt sich hier die Frage, in welchem Dateiformat die Regeln und Fakten festgehalten werden:
 Ein gängiges Serialisierungsformat wie JSON eignet sich durch ein festgelegtes Schema zur Speicherung, 
 da die Daten strukturiert aufbewahrt werden.
 Demgegenüber existieren weitere Dateiformate, die eine geeignete Alternative darstellen.
-
-Die Auszeichnungssprache YAML bildet die Obermenge zu JSON ab und ermöglicht neben den generischen Datentypen, 
-die auch in JSON definiert sind, einen übersichtlicheren aber auch komplexeren Ansatz für ein Serialisierungsformat. 
+Eines dieser Alternative ist das Dateiformat YAML, welche auch als eine vereinfachte Auszeichnungssprache gilt. 
+Jene Sprache bildet die Obermenge zu JSON ab und ermöglicht neben den auch in JSON definierten generischen Datentypen 
+einen übersichtlicheren, aber auch komplexeren Ansatz für ein Serialisierungsformat. 
 Diese Sprache besitzt im Vergleich zu JSON eine bessere Lesbarkeit der Syntax, 
 ist kompakter gestaltet und bietet eine hohe Kompatibilität zu dem JSON Format.~\cite{eriksson2011comparison}.
 Die Syntax für mögliche Kommentare ist obendrein auch verfügbar, 
 wodurch sich diese Auszeichnungssprache für Konfigurationsdateien eignet, 
-was wiederum für die Definitionen der Regeln und Fakten abgebildet werden kann.
+das wiederum für die Definitionen der Regeln und Fakten abgebildet werden kann.
 
 Die Serialisierungsformate unterscheiden sich letztendlich in der Zielsetzung:
 JSON wird für den leichten Datenaustausch für Webanwendungen aufgrund der leichten Serialisierung 
 und Übersetzung mit dem Parser benutzt.   
 YAML dagegen hat eine erhöhte Komplexität für die Serialisierung und Übersetzung, 
-aber ist für Dateien gedacht, die von Menschen bearbeitet und damit genutzt werden sollen. 
+aber ist für Dateien konzipiert, die von Menschen bearbeitet und genutzt werden. 
 
 \begin{figure}[htb]
     \centering
@@ -899,10 +900,10 @@ Mit Hilfe einer Bibliothek für die Serialisierung und Übersetzung von YAML-Dat
 geladen, bearbeitet und gespeichert.
 Dabei wird sich für den Ansatz entschieden, die Regeln und Fakten für jede einzelne Dokumentenart zu speichern und zu verwenden.
 Während die booleschen Ausdrücke der Regeln als String dem Parser für die Grammatik übergeben werden, 
-müssen aus den Fakten nach dem Laden während der Laufzeit eine für die Evaluation angepasste Version generiert werden.
+muss aus den Fakten nach dem Laden während der Laufzeit eine für die Evaluation angepasste Version generiert werden.
 Hierfür werden durch eine Funktionalität die Fakten als eine Menge beziehungsweise als ein Dictionary erzeugt, 
 die den Pfad zur Eigenschaft in der Punktnotation als Schlüssel besitzen, angegeben.
-Dies Konvertierung der Fakten ist für die Auswertung mit den Regeln im späteren Prozess geeignet.
+Ebenjene Konvertierung der Fakten ist für die Auswertung mit den Regeln im späteren Prozess geeignet.
 
 Für den Ablauf wird, wie in Kapitel~\ref{sec:webserv} beschrieben, zunächst die Regelmaschine beim Starten des Systems instanziiert.
 Diese wiederum instanziiert den Regelspeicher, welcher die Regeln und Fakten bereit hält, und den Regelinterpreter, 
@@ -926,24 +927,50 @@ in der \(invoke\_rule\_action()\) Funktion ausgeführt.
 Hierbei werden die Aktionen abhängig des ausgewählten Dokumententyps aufgerufen.
 Die Ergebnisse der aufgerufenen Funktionen werden dann mit den Regelnamen indexiert und gesammelt bis zur WSGI Klasse zurückgegeben,
 in welcher der Wert als HTTP Antwort zurückgeschickt wird.
+Der Vorgang deckt somit den Hauptprozess des regelbasierten Ansatzes im Teilsystem.
 
 
 \section{Entwicklungsumgebung}\label{sec:ide}
 
-Damit die Funktionalitäten der Teilsysteme, die die unterschiedlichen Ansätze der künstlichen Intelligenz umsetzen, 
-bedarf es unter anderem die Steuerung dieser über menschliche Eingaben.
+Damit die Funktionalitäten der Teilsysteme, die die unterschiedlichen Ansätze der künstlichen Intelligenz umsetzen, genutzt werden, 
+bedarf es unter anderem die Steuerung jener über menschliche Eingaben.
 So müssen sowohl die Möglichkeiten der Konfiguration der Regeln und Fakten 
-für die Benutzer:innen als auch das Starten des Machine Learnings über eine Benutzungsschnittstelle gegeben sein.
+für die Benutzer:innen als auch das Starten des maschinellen Lernens über eine Benutzungsschnittstelle gegeben sein.
 Wie in Kapitel~\ref{sec:ruleeng} bereits erwähnt, muss eine Umgebung zur Verfügung gestellt werden, 
 die das Bearbeiten der Regel- und Faktendefinitionen erlaubt.
+
+Die Hauptfunktionalitäten wie das Starten, Überprüfen der Änderungen und das Pausieren sollen direkt erreichbar sein, 
+weswegen sich die Positionierung dieser in der Navigationsleiste eignet.
 Des Weiteren soll der Dokumententyp für den Extraktionsprozess auswählbar sein 
 und die Dokumente für den ausgewählten Dokumententyp in dieser Umgebung als eine Seitenansicht angezeigt werden.
 Auch sind die Ergebnisse der Extraktionsprozesse für die Benutzer:innen für den Abschluss und für die Entwicklung relevant, 
 weswegen eine Anzeige für dies erstellt wird.
+Das Layout der Benutzungsoberfläche orientiert sich hierbei an bekannte Entwicklungsumgebungen 
+wie Visual Studio~\cite{microsoftVisualStudioIDE} oder IntelliJ~\cite{jetbrainsIntelliJIDEACapable},
+womit eine intuitivere Interaktion geboten wird.
 
-Für die graphische Schnittstelle der Benutzer:innen des Systems wird sich für eine Webanwendung entschieden.
+Da die Schnittstellen über das Netzwerk der Client-Server-Architektur gegeben sind 
+und die Priorität bei der Zugänglichkeit und Integration in das System liegt,
+habe ich mich für die Umsetzung der Entwicklungsumgebung als Webanwendung entschieden.
+Für die graphische Schnittstelle der Benutzer:innen des Systems wird daher die UI Bibliothek Vue benutzt, 
+die für eine kleine prototypische Umsetzung mit anderen Bibliotheken wie React bei der Performance mithalten kann~\cite{pikkanen2021react}.
+Bei Vue wurde sich für die dritte Hauptversion mit der Komposition Application Interface (API), 
+die eine reaktive Programmierung für das ermöglicht, 
+und für die Nutzung von dem Dateiformat Single File Components (SFC) entschieden~\cite{vueCompositionAPIFAQ}. 
+Des Weiteren wird das Build Tool Vite benutzt, die mit Hilfe eines Optimierungsansatzes 
+die Kompilierung und die Übersetzung des Codes auf das Frontend umlagert~\cite{viteVite}.
 
-In Abbildung~\ref{fig:ide_view} wird die prototypische Version der Entwicklungsumgebung angezeigt.
+Für Vite wird daher eine Konfigurationsdatei angelegt, 
+die Einträge über den Entwicklungsserver und die verschiedenen Worker für den im späteren Verlauf vorgestellten Editor besitzt.
+Dazu wird konventionell der Node Package Manager (npm) benutzt, 
+um weitere Abhängigkeiten für das Frontend zu installieren~\cite{npmNpm}.
+Weitere Eigenschaften des Frontends sind die Nutzung von TypeScript, 
+mit welcher die Typsicherheit für die dynamische Skriptsprache gewährleistet wird~\cite{bierman2014understanding}, und PostCSS, 
+womit eine detailliertere und übersichtliche Definition für die Style Selektoren ermöglicht wird~\cite{postcssPostCSSToolTransforming}.
+Als Einstiegspunkt wird klassischerweise eine Hyper Text Markup Language (HTML) Datei genutzt, 
+die den Skript zum Instanziieren der Vue Anwendung auslöst. 
+An jener Stelle werden wiederum die weiteren Bibliotheken, die über npm installiert wurden, 
+als Plugin in die Vue Anwendung installiert.
 
 \begin{figure}[htb]
     \centering
@@ -952,11 +979,60 @@ In Abbildung~\ref{fig:ide_view} wird die prototypische Version der Entwicklungsu
 ~\label{fig:ide_view}
 \end{figure}
 
+Für die Vue Anwendung wird die Struktur modular gehalten, weswegen verschiedene Vue Komponente definiert werden.
+Diese werden in die Hauptkomponenten und weiteren Unterkomponenten hierarchisiert.
+So instanziiert die Hauptkomponente, die Komponenten für die Bereiche der Hauptansicht.
+Darunter fallen die Bereiche für die Navigationsleiste, für den Editor, für die PDF-Ansicht und für den Output 
+für die die jeweiligen Komponenten als Modul definiert sind.
+In Abbildung~\ref{fig:ide_view} wird die prototypische Version der Entwicklungsumgebung, 
+die im Rahmen der Thesis entwickelt wurde, angezeigt.
+Eine wichtige Eigenschaft ist die Nutzung eines State-Management-Systems mit Hilfe der Bibliothek \(Pinia\)~\cite{piniaPinia}.
+Dies ermöglicht das Zwischenspeichern der einzelnen Zustände der Komponenten, 
+welche den Servern mitgeteilt werden können oder das Erhalten des letzten Zustands für das Neuladen der Webanwendung.
+
 \subsection{Editor}\label{sec:editor}
+
+Die Konfiguration der Regeln und Fakten bedarf eine UI Schnittstelle für das Erstellen und Bearbeiten dieser.
+Dies wird gängigerweise in Form eines Texteditors ermöglicht.
+Im Webbereich stehen für die Integration eines Texteditors mindestens ein paar Bibliotheken als Kandidaten zu Verfügung.
+Im Rahmen des Projekts wurde sich für die Nutzung des Monaco-Editors entschieden, 
+welches die Kernkomponente des Editors Visual Studio Code~\cite{microsoftVisualStudioCode} darstellt 
+und unabhängig als Open-Source bereitgestellt wird.
+
+Es bietet viele Funktionalitäten für die angenehme Bearbeitung wie die Autovervollständigung 
+durch IntelliSense, Textsuche und Code Linting.
+Die Bibliothek wird durch eine große Community gewartet, 
+hat aber eine hohe Bundle Größe und erlaubt auch keine Lazy Loading der Funktionalitäten als Entwurfsmuster.
+Des Weiteren müssen die Worker für die einzelnen genutzten Sprachen, konfiguriert werden.
+Diese Worker werden in der zuständigen Vue Komponente definiert.
+
+Danach wird nach der Reihenfolge das JSON Schema vom Server angefragt und in den Editor geladen, 
+welches für IntelliSense und das Code Linting zusätzlich definiert wurde~\cite{jsonJSONSchema}.
+Danach werde weitere Einstellungen für den Monaco-Editor angegeben, sodass dieser instanziiert werden kann.
+Hier wird zunächst ein Request zum Laden der Einträge des ausgewählten Dokumenttyps ausgeführt.
+Als Callback wird dann festgelegt, dass nach jeder Textänderung paar Sekunden später ein Request 
+für die Speicherung dieser Änderungen zu dem jeweiligen Dokumententyp geschickt wird.
+
 
 \subsection{Dokumentenanzeige}\label{sec:docan}
 
+Damit die Entwicklung und das Anpassen der Regeln und Fakten angenehmer verläuft, 
+bedarf es eine Anzeige der Dokumente als Orientierungspunkt.
+Die umgesetzte Anzeige erlaubt es, eine einzelne Seitenansicht der Dokumente des ausgewählten Dokumenttyps darzustellen.
+Hierfür steht ein Selektor bereit, welcher einer Auswahl aus allen Dokumenten des Dokumenttyps ermöglicht 
+und einen schnellen Wechsel anbietet. 
+Daneben ist das Blättern mit Hilfe einer Seitenanzahl gegeben.
+Damit die Positionierung des zu extrahierten Bereichs konfiguriert werden kann, 
+helfen die Koordinaten abhängig des Mauszeigers als Referenzpunkt
+
 \subsection{Output}\label{sec:out}
+
+Nachdem die Benutzer:innen ihre Konfiguration festgelegt haben und den Durchlauf starten, 
+bedarf es für die Interaktion eine Rückgabe des Systems.
+Hierfür wurde sich für ein Output Bereich entschieden welches zwei Fenster besitzt:
+Das erste Fenster stellt die Ergebnisse in einer Anzeige für JSON Dateien dar 
+und ermöglicht damit eine genauere Betrachtung für die Benutzer:innen. 
+
 
 \section{Machine Learning}\label{sec:ml}
 
@@ -964,29 +1040,78 @@ Während
 
 \subsection{Webserver}\label{sec:webserv2}
 
+Damit die künstliche Intelligenz des Machine Learnings 
+
 \subsection{Pipeline}\label{sec:pipe}
 
+Fonduer setzt den Machine Learning Ansatz mit Hilfe eines abgeschwächten überwachten Lernen (weak supervised learing)
 
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=1.0\textwidth]{images/fonduer_pipeline.png}
+    \caption{Fonduer Pipeline für das maschinelle Lernen}
+~\label{fig:fpipeline}
+\end{figure}
  
 
 \chapter{Ergebnisse}\label{chap:erg}
+
+Das Projekt hat verschiedene Merkmale der Problematik hervorgehoben.
 
 
 
 \section{Testing}\label{sec:test}
 
-
+Für die prototypische und zukünftige Entwicklung des Projekts ist das Testing für die weitere Benutzung relevant. 
 
 
 \chapter{Konklusion und Ausblick}\label{chap:kua}
  
 Im Rahmen der Abschlussarbeit wurde ein System konzipiert und umgesetzt, 
 welches eine Extraktion von Dokumenten über zwei Ansätze ermöglicht.
+
+
 Über die Teilsysteme wurden technische Funktionalitäten eingeführt werden um dem Kapitän die Webanwendung als PWA anzubieten.
 
 Insgesamt eignen sich Webanwendungen um Ressourcen übersichtlicher darzustellen und mobil zu beobachten.
 Auch können Offline-Zustände dem Benutzer trotzdem erlauben Aspekte der Anwendung weiter zu benutzen.
-Aus den Konzepten und der Umsetzung ergeben sich viele weitere Ideen und Ansätze, die realisierbar sind und implementiert werden können.  
+Aus den Konzepten und der Umsetzung ergeben sich viele weitere Ideen und Ansätze, 
+die realisierbar sind und implementiert werden können.  
+
+
+In dieser Arbeit ging es darum, Informationen aus digital verarbeiteten PDF-Dokumenten zu extrahieren und 
+aus diesen neuen Daten zu generieren. 
+Die Dokumente, um die es in dieser Arbeit ging, stammten von Kund:innen von Ilexius GmbH. 
+Jene Kund:innen sind unter anderem Beschäftigte von Autohäusern und deren Werkstätten.  
+Mit meiner Systementwicklung, die ich in dieser Thesis demonstriert habe, 
+werden Informationen aus dem Endprodukt aller Arbeitsschritte der Kund:innen für die Entwickelnden besser zugänglich gemacht, 
+indem die Daten leichter extrahiert werden, sodass ilexius diese Daten für weitere Arbeitsschritte bereitgestellt werden kann.
+Für meine Entwicklung habe ich das Data-Mining im Bereich der Dokumentenextraktion genutzt, das dabei hilft, 
+laufende Prozesse detaillierter zu steuern und zu überwachen. 
+Neben dem Data-Mining nutzte ich zudem den Ansatz einer symbolischen künstlichen Intelligenz. 
+Diese KI ermöglichte mir während meines Arbeitsprozesses in jedem Schritt eine Feinschleifung meiner bisherigen Arbeit. 
+Durch diese KI kann sich jede/r Benutzer/in meines hier entwickelten Systems von groben zu detaillierten 
+und angepassten Definitionen über ein eigenständiges Feedback des Systems annähern. 
+Im Verlauf meiner Arbeit übernahm diese Annäherung das Machine Learning.
+Bevor meine symbolische KI als auch das Machine Learning starten konnte, 
+habe ich zu Beginn die Funktionalitäten der Bibliotheken genutzt, um durch Ergebnisse der Datenansätze die Erfolgsquote zu überprüfen. 
+Anschließend stellte ich das die Benutzungsoberfläche fertig, sodass ich diese mit der symbolischen KI verbinden kann. 
+Nebstdem konzeptionierte und entwickelte ich die zu dem Machine Learning gehörende Subsysteme. 
+Dies tat ich in einem iterativen Ansatz, sodass das Training des Machine Learnings baldmöglichst beginnen konnte. 
+Im Anschluss daran fing ich mit dem Software-Testing an. 
+Dadurch konnte die Ausführung aller meiner noch folgenden Prozesse gewährleitet werden. 
+Als letzte Vorbereitung passte ich das grafische Tool weiter an, dass sich dieses mit den Systemen verbindet, 
+wodurch die Ausführbarkeit der Funktionalität überprüft werden kann.
+
+Meine Ergebnisse dieser Arbeit…
+	Komplikationen nennen	
+    Was kannst du ich Zukunft aus den Komplikationen lernen, welche Schritte bedarf es für eine Verbesserung
+	Danach wieder zu einem positiven Feedback kommen, schöner Abschlusssatz, wie hilfreich deine Arbeit war
+
+
+
+
+
 
 \newpage
 
