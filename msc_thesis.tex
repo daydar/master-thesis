@@ -1069,23 +1069,40 @@ bedarf es nun die Konzeption und Umsetzung des Machine-Learning-Ansatz.
 Für die gleiche Problematik, die bereits von dem Teilsystem der symbolischen KI thematisiert und verarbeitet wurde, 
 soll mit dem Ansatz ein weiterer Lösungsweg zur Bewältigung dieser gewählt werden.
 
-Für das maschinelle Lernen existieren die Arten des überwachten Lernens und des nicht überwachten Lernens
+Für das maschinelle Lernen existieren unter anderem die Arten des überwachten Lernens (supervised Learning) 
+und des nicht überwachten Lernens (unsupervised Learning).
+Beide haben ihre Einsatzgebiete, so auch im Falle der Dokumentenextraktion.
+Hierbei zählen in dem Bereich der Extraktion verschiedene Dokumentarten wie Text- oder HTML Dokumenten hinzu, 
+bei welchem die letztere genannte Art 
+präzise Ergebnisse über die Methoden des überwachten Lernens verschafft~\cite{gopinath2018automatic}.
+Nicht überwachtes Lernen hat im Gegensatz bei Dokumenten, die kein Labeling besitzen, einen höheren Wirksamkeit.
 
-\subsection{Webserver}\label{sec:webserv2}
-
-Damit die Steuerung der künstliche Intelligenz des maschinellen Lernens und ihre Funktionalitäten gegeben ist, 
-wird die Kommunikation der Teilsysteme benötigt.
-Diese Kommunikation findet über das interne Netzwerk statt und ermöglicht damit auch die Interaktion der Docker Container Umgebung.
-Damit diese nötigen Eigenschaften für das Teilsystem erfüllt werden können, 
-wird der selbe Ansatz des als erstes vorgestelltes Teilsystems umgesetzt.
-Dies bedeutet, dass sich für die WSGI Schnittstelle entschieden wurde, 
-was auch die Nutzung einer Flask Anwendung als Webserver zur Folge hat. 
-So wird auch 
+Über beide Arten des maschinellen Lernens können Daten strukturiert und modelliert werden.
+Doch existieren neben den weit verbreiteten zwei Kategorien auch weitere Bereiche im Machine Learning.
+Das semi-überwachtes Lernen verhilft das Labeling durch weitere Annahmen der Struktur, 
+durch semi-überwachte Klassifikation und durch eingeschränktes Clustering zum Durchbruch~\cite{zhu2009introduction}.
+Das schwache überwachte Lernen baut als Technik die Datenmodelle über neu generierte Daten.
+Dies ist für den Fall geeignet, wenn man mit neuen Daten aus Dokumenten arbeiten will.
+Für diesen Ansatz ergibt die Bibliothek Fonduer mit der Erstellung einer Pipeline Struktur einen neue Lösungsmöglichkeit.
 
 \subsection{Pipeline}\label{sec:pipe}
 
 Fonduer setzt den Machine Learning Ansatz mit Hilfe der Kategorie 
 eines abgeschwächten überwachten Lernen (weak supervised learning) um.
+Genauer beschrieben, wird hier die Idee des Knowledge Base Construction (KBC), 
+also des Aufbaus einer Wissensbasis über stark formatierte Daten verfolgt.
+Diese Wissensbasis wird über eine Datenbank abgebildet, die die Daten strukturiert bereithält.
+Damit dies auch für vielschichtige Daten geht, wird hier ein spezielles Datenmodell benutzt, 
+welches die Dokumente und ihre Besonderheiten darstellt.
+So fallen verschieden Formate von Dokumenten wie XML, HTML und auch PDF unter dem Begriff der reichlich formatierten Daten.
+Hier sollen die textlichen, visuellen und strukturellen Eigenschaften der Dokumente mit ihrer semantischen Informationen 
+verbunden werden, um sie für die weitere Verarbeitung zu nutzen. 
+Diese Eigenschaft wird als Multimodalität bezeichnet und taucht in der Prozesskette an verschiedenen Stellen auf.
+
+
+
+Das hierfür zuständige 
+
 In Abbildung~\ref{fig:fpipeline} wird die komplette Pipeline für die Verarbeitung des maschinellen Lernens dargestellt.
 
 
@@ -1097,31 +1114,42 @@ In Abbildung~\ref{fig:fpipeline} wird die komplette Pipeline für die Verarbeitu
 ~\label{fig:fpipeline}
 \end{figure}
  
+\subsection{Webserver}\label{sec:webserv2}
+
+Damit die Steuerung der künstliche Intelligenz des maschinellen Lernens und ihre Funktionalitäten gegeben ist, 
+wird die Kommunikation der Teilsysteme benötigt.
+Diese Kommunikation findet über das interne Netzwerk statt und ermöglicht damit auch die Interaktion der Docker Container Umgebung.
+Damit diese nötigen Eigenschaften für das Teilsystem erfüllt werden können, 
+wird der selbe Ansatz des als erstes vorgestelltes Teilsystems umgesetzt.
+Das bedeutet, dass sich für die Nutzung der WSGI Schnittstelle entschieden wurde, 
+was auch die Verwendung einer Flask Anwendung als Webserver zur Folge hat. 
+
+So wird auch eine Factory-Methode für verschiedene Anwendungsfälle, 
+wie unter anderem für die Continuous Integration, bereitgestellt.
+Die Entwicklungsumgebung erlaubt hierbei das Starten der Verarbeitung der Trainingsdaten,
+weswegen sich hier die die Funktionalität nur auf den Durchlauf mittels des Machine-Learning-Ansatzes reduziert.
+
 
 \chapter{Ergebnisse}\label{chap:erg}
 
 Das Projekt hat verschiedene Merkmale der Problematik hervorgehoben.
+So ist aufgefallen, dass die Dokumente, auf die sich im Rahmen der Thesis eingeschränkt wurde, verschiedene Formen besitzen.
+Außerdem fiel auf dass, die 
 
 
 
 \section{Testing}\label{sec:test}
 
 Für die prototypische und zukünftige Entwicklung des Projekts ist das Testing für die weitere Benutzung relevant. 
+Hauptsächlich hierfür verantwortlich soll die Continuous Integration Pipeline dafür sein.
+Zur Grunde liegen hier die Images der Teilsysteme, die als Dockerfile beschrieben sind 
+und in der Container Registry vom unternehmensinternen Repository gespeichert werden.
+Über verschiedene Stages sollen dann die Hauptaspekte der Teilsysteme und dann in das System integriert werden.
+
+Hier werden diese Komponente auf verschieden Eigenschaften überprüft.
 
 
 \chapter{Konklusion und Ausblick}\label{chap:kua}
- 
-Im Rahmen der Abschlussarbeit wurde ein System konzipiert und umgesetzt, 
-welches eine Extraktion von Dokumenten über zwei Ansätze ermöglicht.
-
-
-Über die Teilsysteme wurden technische Funktionalitäten eingeführt werden um dem Kapitän die Webanwendung als PWA anzubieten.
-
-Insgesamt eignen sich Webanwendungen um Ressourcen übersichtlicher darzustellen und mobil zu beobachten.
-Auch können Offline-Zustände dem Benutzer trotzdem erlauben Aspekte der Anwendung weiter zu benutzen.
-Aus den Konzepten und der Umsetzung ergeben sich viele weitere Ideen und Ansätze, 
-die realisierbar sind und implementiert werden können.  
-
 
 In dieser Arbeit ging es darum, Informationen aus digital verarbeiteten PDF-Dokumenten zu extrahieren und 
 aus diesen neuen Daten zu generieren. 
@@ -1129,9 +1157,10 @@ Die Dokumente, um die es in dieser Arbeit ging, stammten von Kund:innen von Ilex
 Jene Kund:innen sind unter anderem Beschäftigte von Autohäusern und deren Werkstätten.  
 Mit meiner Systementwicklung, die ich in dieser Thesis demonstriert habe, 
 werden Informationen aus dem Endprodukt aller Arbeitsschritte der Kund:innen für die Entwickelnden besser zugänglich gemacht, 
-indem die Daten leichter extrahiert werden, sodass ilexius diese Daten für weitere Arbeitsschritte bereitgestellt werden kann.
+indem die Daten leichter extrahiert werden, sodass ilexius diese Daten für weitere Arbeitsschritte im ERP-System bereitgestellt werden kann.
 Für meine Entwicklung habe ich das Data-Mining im Bereich der Dokumentenextraktion genutzt, das dabei hilft, 
 laufende Prozesse detaillierter zu steuern und zu überwachen. 
+
 Neben dem Data-Mining nutzte ich zudem den Ansatz einer symbolischen künstlichen Intelligenz. 
 Diese KI ermöglichte mir während meines Arbeitsprozesses in jedem Schritt eine Feinschleifung meiner bisherigen Arbeit. 
 Durch diese KI kann sich jede/r Benutzer/in meines hier entwickelten Systems von groben zu detaillierten 
@@ -1139,7 +1168,8 @@ und angepassten Definitionen über ein eigenständiges Feedback des Systems ann�
 Im Verlauf meiner Arbeit übernahm diese Annäherung das Machine Learning.
 Bevor meine symbolische KI als auch das Machine Learning starten konnte, 
 habe ich zu Beginn die Funktionalitäten der Bibliotheken genutzt, um durch Ergebnisse der Datenansätze die Erfolgsquote zu überprüfen. 
-Anschließend stellte ich das die Benutzungsoberfläche fertig, sodass ich diese mit der symbolischen KI verbinden kann. 
+Danach 
+Anschließend stellte ich die Benutzungsoberfläche fertig, sodass ich diese mit der symbolischen KI verbinden konnte. 
 Nebstdem konzeptionierte und entwickelte ich die zu dem Machine Learning gehörende Subsysteme. 
 Dies tat ich in einem iterativen Ansatz, sodass das Training des Machine Learnings baldmöglichst beginnen konnte. 
 Im Anschluss daran fing ich mit dem Software-Testing an. 
@@ -1153,7 +1183,16 @@ Meine Ergebnisse dieser Arbeit…
 	Danach wieder zu einem positiven Feedback kommen, schöner Abschlusssatz, wie hilfreich deine Arbeit war
 
 
-
+    Im Rahmen der Abschlussarbeit wurde ein System konzipiert und umgesetzt, 
+    welches eine Extraktion von Dokumenten über zwei Ansätze ermöglicht.
+    
+    
+    Über die Teilsysteme wurden technische Funktionalitäten eingeführt werden um dem Kapitän die Webanwendung als PWA anzubieten.
+    
+    Insgesamt eignen sich Webanwendungen um Ressourcen übersichtlicher darzustellen und mobil zu beobachten.
+    Auch können Offline-Zustände dem Benutzer trotzdem erlauben Aspekte der Anwendung weiter zu benutzen.
+    Aus den Konzepten und der Umsetzung ergeben sich viele weitere Ideen und Ansätze, 
+    die realisierbar sind und implementiert werden können. 
 
 
 
