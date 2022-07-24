@@ -693,6 +693,7 @@ Optional bleiben die Angabe der Zwischenanker.
 
 Die Klassen der einzelnen Dokumentarten sind für weitere Funktionalitäten, die spezifischere Zwecke 
 für den jeweiligen Dokumenttyp erfüllen und eine weitere Semantik für die extrahierten Texte und Tabellen bilden.
+Hier sind weitere Eigenschaften wie die Reihenfolge der Jobs für die Zuweisung der Werte relevant.
 Diese Methoden erhalten mit Hilfe von regulären Ausdrücken die einzelnen Werte für die gewünschten Felder 
 und weisen jene mit ähnlichen Algorithmen den Feldern zu. 
 So werden die Daten je nach Dokumentenart detaillierter erfasst und als komplexe Objekte verarbeitet.
@@ -1092,6 +1093,10 @@ eines abgeschwächten überwachten Lernen (weak supervised learning) um.
 Genauer beschrieben, wird hier die Idee des Knowledge Base Construction (KBC), 
 also des Aufbaus einer Wissensbasis über stark formatierte Daten verfolgt.
 Diese Wissensbasis wird über eine Datenbank abgebildet, die die Daten strukturiert bereithält.
+Daher besteht für die Nutzung dieser Bibliothek eine Abhängigkeit zu dem Datenbanksystem PostgreSQL~\cite{elmasriFundamentalsDatabaseSystems2007}. 
+Des Weiteren wird die Bibliothek spaCy genutzt, weswegen die Sprachmodelle für die deutsche Sprache 
+in dem Dockerfile des Teilsystems mit geladen und verlinkt werden.
+
 Damit dies auch für vielschichtige Daten geht, wird hier ein spezielles Datenmodell benutzt, 
 welches die Dokumente und ihre Besonderheiten darstellt.
 So fallen verschieden Formate von Dokumenten wie XML, HTML und auch PDF unter dem Begriff der reichlich formatierten Daten.
@@ -1099,13 +1104,21 @@ Hier sollen die textlichen, visuellen und strukturellen Eigenschaften der Dokume
 verbunden werden, um sie für die weitere Verarbeitung zu nutzen. 
 Diese Eigenschaft wird als Multimodalität bezeichnet und taucht in der Prozesskette an verschiedenen Stellen auf.
 
+Die Eingabe für das Teilsystem findet in Form der Dokumente statt.
+Auch für dieses Teilsystem wird sich auf die Dokumente bezogen, die im Rahmen der Thesis betrachtet werden.
+Hierfür werden, wie auch im anderen Extraktionssystem, die PDF-Dokumente in ihre drei Dokumenttypen unterteilt.
+Die Menge der Dokumente für die jeweilige Art unterscheiden sich in ihre Dimension:
+Für die Dokumente der Care Garantieaufträge ist die Anzahl der Elemente dreistellig, für die Formel1 Rechnung vierstellig 
+und für die KFZ300 Rechnung fünfstellig. 
+Dies soll eine Relation der Verarbeitung ermöglichen und damit einen zeitlichen Zeitverlauf darstellen.
 
-
-Das hierfür zuständige 
-
+Der Durchlauf von den Eingabedaten zu der Erstellung des Machine-Learning Modells wird als Pipeline bezeichnet.
 In Abbildung~\ref{fig:fpipeline} wird die komplette Pipeline für die Verarbeitung des maschinellen Lernens dargestellt.
-
-
+Hierbei sind die fünf Phasen relevant, die in der Hauptfunktionalität im Teilsystem umgesetzt wurden:
+In der ersten Phase wird zunächst die KBC über ein spezielles Schema und 
+daraus folgenden über die iterative Erstellung eines Eingabekorpus initialisiert.
+Dafür wird die Hostadresse der benötigten Datenbank angegeben und diese einer Meta-Objekt, welcher die Brücke zur Persistenz darstellt, übergeben, 
+um die Datenbank parallel zu starten.
 
 \begin{figure}[htb]
     \centering
@@ -1113,7 +1126,33 @@ In Abbildung~\ref{fig:fpipeline} wird die komplette Pipeline für die Verarbeitu
     \caption{Fonduer Pipeline für das maschinelle Lernen}
 ~\label{fig:fpipeline}
 \end{figure}
- 
+
+Die multimodale Datenmodellierung wird in dieser Phase durch das parallele Parsen der Dokumente ermöglicht, 
+welches inhaltliche, strukturelle, tabellarische und visuelle Informationen bereit hält.
+Für das Parsing findet hierbei die Nutzung der HOCRDocPreprocessor-Klasse statt, 
+welches den Pfad der zu übersetzenden Dateien bei Instanziierung mitgegeben wird.
+Als Zwischenschritt werden die PDF-Dokumente als HOCR Dateien, einem Optical Character Recognition (OCR) Datenformat, 
+welches auf HTML aufbaut, mittels einer internen Klasse übersetzt.
+Ein weiterer Weg wäre dies über den HTMLPreprocessor umzusetzen, was aber bei digital verarbeiteten Dateien nicht von der 
+Dokumentation empfohlen wird.
+
+Als nächstes wird der Korpus-Parser benutzt der mit Hilfe der Bibliothek spaCy die Dokumente in einzelne Sätze und Tokens aufteilt 
+und über weitere Parametrisierung die Inklusion der strukturellen und sprachlichen Informationen angegeben wird.
+In der zweiten Phase werden Mentions, welche die potentiellen Kandidaten für die Datenextraktion darstellen, definiert.
+In dem Anwendungsfall des Projekts wird für jedes Feld, die sich in den Aufträgen und den Rechnungen befinden 
+und extrahiert werden sollen, eine Mentions festgelegt.
+Beispiele hierfür wären, wie aus dem Teilsystem der symbolischen KI bereits bekannt, die Jobs, die Reparaturzeiten, 
+die Fahrzeugmodelle und die Jobbeschreibungen.
+
+Damit diese Mentions auch vollwertige Kandidaten des Extraktionsziels werden, bedarf es die Definitionen von Matchers, 
+die über eine Filterangabe eine präzise Erkennung ergeben sollen,
+Die Matchers gibt es in verschiedenen Variationen, in diesem Anwendungsfall 
+wird sich für die Filterung über reguläre Ausdrücke entschieden, da diese bei der symbolischen KI ihre Anwendungen fanden.
+So wird zu jedem Mention Objekt ein Matcher Objekt entwickelt.
+Dazu kommen noch jeweils Definitionen für die N-Gramm Darstellung der Mention-Objekte um so die Größe der Fragmente festzulegen.
+
+
+
 \subsection{Webserver}\label{sec:webserv2}
 
 Damit die Steuerung der künstliche Intelligenz des maschinellen Lernens und ihre Funktionalitäten gegeben ist, 
