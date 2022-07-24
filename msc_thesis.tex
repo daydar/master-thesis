@@ -1151,7 +1151,28 @@ wird sich für die Filterung über reguläre Ausdrücke entschieden, da diese be
 So wird zu jedem Mention Objekt ein Matcher Objekt entwickelt.
 Dazu kommen noch jeweils Definitionen für die N-Gramm Darstellung der Mention-Objekte um so die Größe der Fragmente festzulegen.
 
+Damit die Extraction der Mentions mit all diesen zusätzlichen Einschränkungen stattfinden kann, 
+wird ein MentionExtractor-Objekt definiert, 
+welches die Mentions und deren Matchers und N-Gramms mitgegeben wird, 
+um mit dieser Kombination an Informationen die erwünschten Daten zu extrahieren.
+Nachdem dieses Informationen auf das MentionExtractor-Objekt angewendet werden, 
+wird das Schema der Kandidaten für die Extraktion angegeben.
+Hierfür definieren für jede Dokumentenart eine eigene Unterklasse der Candidate-Klassen,
+So definieren wir ein Warranty-Objekt für die Care Aufträge, ein Invoice-Objekt für die Formel1 Rechnungen 
+und ein Invoice-Objekt für die KFZ3000 Rechnungen.
+Diese bekommen wie bei der Mentions-Klasse, die selben Matcher übergeben.
 
+Dazu werden Throttlers, Funktionen die als weitere starke Filter fungieren, 
+definiert, um die Genauigkeit der validen Extraktionskandidaten zu ermöglichen. 
+In diesem Anwendungsfall definieren wir Throttlers, die sich mit den Ausrichtungen der verschiedenen Einträgen beschäftigen.
+So wird zum Beispiel überprüft, ob die Kandidaten für die Reparaturzeiten, 
+der Beschreibung und der Menge horizontal zueinander ausgerichtet sind.
+Nachdem dies festgelegt ist, werden diese Paradigmen in einem CandidateExtractor-Objekt kombiniert und angewendet.
+Für die Anwendung werden die Dokumente in Trainings- und Testsätze unterteilt.
+
+In der dritten Phasen werden den Kandidaten der Trainings- und Testsätzen durch multimodale Featurisierung Merkmale annotiert.
+Hierfür wird ein Featurizer-Objekt definiert, welches die Verbindung zur Datenbank 
+und den Kandidaten der jeweiligen Dokumentenart übergeben bekommt.
 
 \subsection{Webserver}\label{sec:webserv2}
 
