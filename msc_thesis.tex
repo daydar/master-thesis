@@ -529,7 +529,7 @@ Kandidaten sind die zurzeit konventionellen Frameworks wie \textit{TensorFlow}~\
 und \textit{spaCy}~\cite{explosionSpaCyIndustrialstrengthNatural}.
 Jene bieten für die Anwendungsgebiete unter anderem in der Bilderkennung, 
 der Computer Vision und des Neuro-Linguistische Programmieren (NLP) eine automatisierte Lösung an.
-Weitere neue Projekte wie \textit{Fonduer}~\cite{wu2018fonduer} fokussieren sich mit Hilfe von schwachem überwachten Lernen (supervised learning) 
+Weitere neue Projekte wie \textit{Fonduer}~\cite{wu2018fonduer} fokussieren sich mit Hilfe von schwachem überwachten Lernen (weak supervised learning) 
 auf die Extraktion von umfangreichen formatierten Daten, worunter auch PDF Dokumente fallen.
 Dieser Lernansatz findet auch bei nicht vollständig beschrifteten Trainingsdaten einen Anwendungszweck~\cite{10.1093/nsr/nwx106}, 
 weswegen sich das für einfache Dokumente als praktisch erweisen kann.
@@ -856,7 +856,7 @@ Die restlichen Zeilen beinhalten die Importe der zusätzlichen Module für die D
 Abbildung~\ref{fig:syntaxbaum} zeigt ein Beispiel wie aus einem Regelausdruck ein Syntaxbaum durch den Parser kreiert werden kann.
 Mittels der Transformer Klasse der Lark-Bibliothek wird als Zwischenschritt 
 die Syntax der einzelnen Blätter und Knoten des Baums so angepasst, 
-dass diese für die weitere Verarbeitung beziehungsweise Evaluation der Regelmaschine bereitstehen.
+dass diese für die weitere Verarbeitung und Evaluation der Regelmaschine bereitstehen.
 
 
 \subsection{Regelmaschine}\label{sec:ruleeng}
@@ -865,7 +865,9 @@ Nachdem unterdessen die Syntax und Grammatik der Regeln gegeben ist, wird die Re
 Dieses Modul besteht aus den Klassen für den Regelinterpreter und den Regelspeicher.
 Während die Regelinterpreter-Klasse die konkrete Logik der Vorwärtsverkettung beinhaltet, 
 kümmert sich die Regelspeicher-Klasse um das Bereitstellen und um die Speicherung der Regeln und Fakten.
-Für diesen Speicher wird das Singleton Muster benutzt, damit ein fester Zustand der Regel- und Faktenmenge gegeben ist.
+Softwaretechnisch wird für diese Speicher-Klasse das Singleton Entwurfsmuster benutzt, 
+womit die Regelmaschine nur eine Regelspeicher Instanz referenzieren kann.
+Dadurch ist ein fester Zustand der Regel- und Faktenmenge gegeben.
 
 Die Speicherung der Regeln und Fakten kann über den persistenten Ansatz der Datenbanken ermöglicht werden.
 Jedoch erlaubt der Ansatz der Speicherung der Regeln und Fakten via einer Datei im Dateisystem den schnellen Zugriff 
@@ -874,11 +876,11 @@ Des Weiteren stellt sich hier die Frage, in welchem Dateiformat die Regeln und F
 Ein gängiges Serialisierungsformat wie JSON eignet sich durch ein festgelegtes Schema zur Speicherung, 
 da die Daten strukturiert aufbewahrt werden.
 Demgegenüber existieren weitere Dateiformate, die eine geeignete Alternative darstellen.
-Eines dieser Alternative ist das Dateiformat YAML, welche auch als eine vereinfachte Auszeichnungssprache gilt. 
+Eines dieser Alternativen ist das Dateiformat YAML, welches auch als eine vereinfachte Auszeichnungssprache gilt. 
 Jene Sprache bildet die Obermenge zu JSON ab und ermöglicht neben den auch in JSON definierten generischen Datentypen 
 einen übersichtlicheren, aber auch komplexeren Ansatz für ein Serialisierungsformat. 
-Diese Sprache besitzt im Vergleich zu JSON eine bessere Lesbarkeit der Syntax, 
-ist kompakter gestaltet und bietet eine hohe Kompatibilität zu dem JSON Format.~\cite{eriksson2011comparison}.
+Die Sprache YAML besitzt im Vergleich zu JSON eine bessere Lesbarkeit der Syntax, 
+ist kompakter gestaltet und bietet eine hohe Kompatibilität.~\cite{eriksson2011comparison}.
 Die Syntax für mögliche Kommentare ist obendrein auch verfügbar, 
 wodurch sich diese Auszeichnungssprache für Konfigurationsdateien eignet, 
 das wiederum für die Definitionen der Regeln und Fakten abgebildet werden kann.
@@ -908,25 +910,26 @@ Ebenjene Konvertierung der Fakten ist für die Auswertung mit den Regeln im spä
 Für den Ablauf wird, wie in Kapitel~\ref{sec:webserv} beschrieben, zunächst die Regelmaschine beim Starten des Systems instanziiert.
 Diese wiederum instanziiert den Regelspeicher, welcher die Regeln und Fakten bereit hält, und den Regelinterpreter, 
 welcher den Parser für die Grammatik Instanz erstellt.
-Die Funktionalitäten des Interpreters werden dann aufgerufen, 
+Die Funktionalitäten des Interpreters werden aufgerufen, 
 sobald die HTTP Anfrage bezüglich des Durchlaufens der Regelevaluation im WSGI ankommt.
 
 Die Abbildung~\ref{fig:regelmaschine_sequenz} zeigt den Verlauf bei dieser Anfrage und den damit entstehenden Aufrufstapel.
 So löst zunächst die Route-Anfrage die gekoppelte Funktion \(trigger\_run()\) der Flask Instanz aus, 
-welche wiederum die \(run()\) Methode der Regelmaschine auslöst. 
-Diese ruft dann die \(run()\) Methode des Regelinterpreters mit der Angabe für welchen Dokumentart der Vorgang stattfinden soll auf.
+welche wiederum die \(run()\) Methode der Regelmaschine betätigt. 
+Diese ruft dann die \(run()\) Methode des Regelinterpreters mit der Angabe, für welche Dokumentart der Vorgang stattfinden soll, auf.
 Dort werden iterativ die aktuell gespeicherten Regeln mit Hilfe der Funktion \(interpret\_rule()\) zunächst evaluiert.
-Diese Funktion übergibt den Ausdruck der einzelnen Regel dem Parser um den Syntaxbaum zu erstellen, 
-mit welchem die Funktion \(eval\_expression\_tree()\) aufgerufen wird.
+Diese Funktion übergibt den Ausdruck der einzelnen Regel dem Parser, 
+mit welchem die Funktion \(eval\_expression\_tree()\) aufgerufen wird, um den Syntaxbaum zu erstellen.
 
-Dort wird rekursiv über den Syntaxbaum navigiert und die einzelnen booleschen Ausdrücke von den Blättern bis zur Wurzel aufgelöst.
-Dieser boolescher Wert wird bis zum Methodenaufruf in der \(run()\) Funktion danach zurückgeben, 
-sodass dann die Regel bei einem positiven Ergebnis zu der Liste der erfüllten Regeln hinzugefügt wird. 
+Innerhalb dieser Methode wird rekursiv über den Syntaxbaum navigiert und die einzelnen booleschen Ausdrücke 
+von den Blättern bis zur Wurzel aufgelöst.
+Dieser boolescher Wert wird danach bis zum Methodenaufruf in der \(run()\) Funktion zurückgeben, 
+sodass daraufhin die Regel bei einem positiven Ergebnis zu der Liste der erfüllten Regeln hinzugefügt wird. 
 Ist die Schleife der Regelevaluation abgeschlossen, werden die Aktionen der erfüllten Regeln mit ihren Parametern 
 in der \(invoke\_rule\_action()\) Funktion ausgeführt.
 Hierbei werden die Aktionen abhängig des ausgewählten Dokumententyps aufgerufen.
-Die Ergebnisse der aufgerufenen Funktionen werden dann mit den Regelnamen indexiert und gesammelt bis zur WSGI Klasse zurückgegeben,
-in welcher der Wert als HTTP Antwort zurückgeschickt wird.
+Die Ergebnisse der aufgerufenen Funktionen werden dann mit den Regelnamen indexiert und bis zur WSGI Klasse,
+in welcher der Wert als HTTP Antwort zurückgeschickt wird, gesammelt zurückzugeben.
 Der Vorgang deckt somit den Hauptprozess des regelbasierten Ansatzes im Teilsystem.
 
 
@@ -939,22 +942,22 @@ für die Benutzer:innen als auch das Starten des maschinellen Lernens über eine
 Wie in Kapitel~\ref{sec:ruleeng} bereits erwähnt, muss eine Umgebung zur Verfügung gestellt werden, 
 die das Bearbeiten der Regel- und Faktendefinitionen erlaubt.
 
-Die Hauptfunktionalitäten wie das Starten, Überprüfen der Änderungen und das Pausieren sollen direkt erreichbar sein, 
+Die Hauptfunktionalitäten wie das Starten, das Überprüfen der Änderungen und das Pausieren sollen direkt erreichbar sein, 
 weswegen sich die Positionierung dieser in der Navigationsleiste eignet.
 Des Weiteren soll der Dokumententyp für den Extraktionsprozess auswählbar sein 
 und die Dokumente für den ausgewählten Dokumententyp in dieser Umgebung als eine Seitenansicht angezeigt werden.
 Auch sind die Ergebnisse der Extraktionsprozesse für die Benutzer:innen für den Abschluss und für die Entwicklung relevant, 
-weswegen eine Anzeige für dies erstellt wird.
-Das Layout der Benutzungsoberfläche orientiert sich hierbei an bekannte Entwicklungsumgebungen 
-wie Visual Studio~\cite{microsoftVisualStudioIDE} oder IntelliJ~\cite{jetbrainsIntelliJIDEACapable},
-womit eine intuitivere Interaktion geboten wird.
+weswegen eine Anzeige dafür erstellt wird.
+Das Layout der Benutzungsoberfläche orientiert sich hierbei an bekannten Entwicklungsumgebungen 
+wie Visual Studio~\cite{microsoftVisualStudioIDE} oder IntelliJ~\cite{jetbrainsIntelliJIDEACapable}.
+Durch dieses Layout wird eine intuitivere Interaktion geboten.
 
 Da die Schnittstellen über das Netzwerk der Client-Server-Architektur gegeben sind 
-und die Priorität bei der Zugänglichkeit und Integration in das System liegt,
+und die Priorität auf der Zugänglichkeit und Integration in das System liegt,
 habe ich mich für die Umsetzung der Entwicklungsumgebung als Webanwendung entschieden.
 Für die graphische Schnittstelle der Benutzer:innen des Systems wird daher die UI Bibliothek Vue benutzt, 
-die für eine kleine prototypische Umsetzung mit anderen Bibliotheken wie React bei der Performance mithalten kann~\cite{pikkanen2021react}.
-Bei Vue wurde sich für die dritte Hauptversion mit der Komposition Application Interface (API), 
+die für eine kleine prototypische Umsetzung mit anderen Bibliotheken wie React bei dem Kompilieren und Laden zeitlich mithalten kann~\cite{pikkanen2021react}.
+Bei Vue habe ich mich für die dritte Hauptversion mit der Composition Application Interface (API), 
 die eine reaktive Programmierung für das ermöglicht, 
 und für die Nutzung von dem Dateiformat Single File Components (SFC) entschieden~\cite{vueCompositionAPIFAQ}. 
 Des Weiteren wird das Build Tool Vite benutzt, die mit Hilfe eines Optimierungsansatzes 
@@ -962,14 +965,15 @@ die Kompilierung und die Übersetzung des Codes auf das Frontend umlagert~\cite{
 
 Für Vite wird daher eine Konfigurationsdatei angelegt, 
 die Einträge über den Entwicklungsserver und die verschiedenen Worker für den im späteren Verlauf vorgestellten Editor besitzt.
-Dazu wird konventionell der Node Package Manager (npm) benutzt, 
+Dazu nutzt man konventionell der Node Package Manager (npm), 
 um weitere Abhängigkeiten für das Frontend zu installieren~\cite{npmNpm}.
-Weitere Eigenschaften des Frontends sind die Nutzung von TypeScript, 
-mit welcher die Typsicherheit für die dynamische Skriptsprache gewährleistet wird~\cite{bierman2014understanding}, und PostCSS, 
-womit eine detailliertere und übersichtliche Definition für die Style Selektoren ermöglicht wird~\cite{postcssPostCSSToolTransforming}.
-Als Einstiegspunkt wird klassischerweise eine Hyper Text Markup Language (HTML) Datei genutzt, 
-die den Skript zum Instanziieren der Vue Anwendung auslöst. 
-An jener Stelle werden wiederum die weiteren Bibliotheken, die über npm installiert wurden, 
+Weitere Eigenschaften des Frontends sind die Nutzung von der Programmiersprache TypeScript, 
+mit welcher die Typsicherheit für die dynamische Skriptsprache gewährleistet wird~\cite{bierman2014understanding}, 
+und dem Entwicklungswerkzeug PostCSS.
+ Mit PostCSS wird eine detaillierte und übersichtliche Definition für Style Selektoren ermöglicht~\cite{postcssPostCSSToolTransforming}.
+Als Einstiegspunkt wird klassischerweise eine Hyper Text Markup Language (HTML) Datei verwendet, 
+die das Skript zum Instanziieren der Vue Anwendung auslöst. 
+An jener Stelle werden wiederum die weiteren über npm bereits installierten Bibliotheken 
 als Plugin in die Vue Anwendung installiert.
 
 \begin{figure}[htb]
@@ -981,70 +985,110 @@ als Plugin in die Vue Anwendung installiert.
 
 Für die Vue Anwendung wird die Struktur modular gehalten, weswegen verschiedene Vue Komponente definiert werden.
 Diese werden in die Hauptkomponenten und weiteren Unterkomponenten hierarchisiert.
-So instanziiert die Hauptkomponente, die Komponenten für die Bereiche der Hauptansicht.
+So instanziiert die Hauptkomponente die Komponenten für die Bereiche der Hauptansicht.
 Darunter fallen die Bereiche für die Navigationsleiste, für den Editor, für die PDF-Ansicht und für den Output 
-für die die jeweiligen Komponenten als Modul definiert sind.
-In Abbildung~\ref{fig:ide_view} wird die prototypische Version der Entwicklungsumgebung, 
-die im Rahmen der Thesis entwickelt wurde, angezeigt.
-Eine wichtige Eigenschaft ist die Nutzung eines State-Management-Systems mit Hilfe der Bibliothek \(Pinia\)~\cite{piniaPinia}.
+für diese die jeweiligen Komponenten als Modul definiert sind.
+In Abbildung~\ref{fig:ide_view} die im Rahmen meiner Thesis entwickelten prototypische Version der Entwicklungsumgebung angezeigt.
+Hier sind die beschriebenen Bereiche zu sehen, die in eigene Module unterteilt wurden.
+Zwischen den Hauptbereichen befinden sich Trennbalken, die durch eine weitere Bibliothek implementiert wurde 
+und mit deren Hilfe die Größen der verschiedenen Bereiche verändert werden können.
+Eine wichtige Eigenschaft ist die Nutzung eines State-Management-Systems unter Zuhilfenahme der Bibliothek \(Pinia\)~\cite{piniaPinia}.
 Dies ermöglicht das Zwischenspeichern der einzelnen Zustände der Komponenten, 
-welche den Servern mitgeteilt werden können oder das Erhalten des letzten Zustands für das Neuladen der Webanwendung.
+die dem Server mitgeteilt werden kann, oder das Erhalten des letzten Zustands für das Neuladen der Webanwendung.
+So können beim initialen Aufruf die letzten Werte geladen, womit diese Anwendung offline-fähig dargestellt werden kann.
 
 \subsection{Editor}\label{sec:editor}
 
 Die Konfiguration der Regeln und Fakten bedarf eine UI Schnittstelle für das Erstellen und Bearbeiten dieser.
 Dies wird gängigerweise in Form eines Texteditors ermöglicht.
-Im Webbereich stehen für die Integration eines Texteditors mindestens ein paar Bibliotheken als Kandidaten zu Verfügung.
-Im Rahmen des Projekts wurde sich für die Nutzung des Monaco-Editors entschieden, 
+Im Webbereich stehen für die Integration eines Texteditors mindestens mehrere Bibliotheken als Kandidaten zu Verfügung.
+Im Rahmen des Projekts wurde sich für die Nutzung des Monaco-Editor entschieden, 
 welches die Kernkomponente des Editors Visual Studio Code~\cite{microsoftVisualStudioCode} darstellt 
-und unabhängig als Open-Source bereitgestellt wird.
+und unabhängig von ihr als Open-Source Projekt bereitgestellt wird.
 
-Es bietet viele Funktionalitäten für die angenehme Bearbeitung wie die Autovervollständigung 
+Die folgenden Eigenschaften führten zu der Auswahl:
+Der Monaco-Editor bietet viele Funktionalitäten für eine angenehme Bearbeitung, darunter die Autovervollständigung 
 durch IntelliSense, Textsuche und Code Linting.
-Die Bibliothek wird durch eine große Community gewartet, 
-hat aber eine hohe Bundle Größe und erlaubt auch keine Lazy Loading der Funktionalitäten als Entwurfsmuster.
-Des Weiteren müssen die Worker für die einzelnen genutzten Sprachen, konfiguriert werden.
+Die Bibliothek wird durch eine weite Community gewartet, 
+besitzt allerdings einen hohen Umfang des Software-Bundlings und 
+erlaubt auch keine Lazy Loading der Funktionalitäten als Entwurfsmuster.
+Des Weiteren müssen die Worker für die einzeln genutzten Sprachen konfiguriert werden.
 Diese Worker werden in der zuständigen Vue Komponente definiert.
 
 Danach wird nach der Reihenfolge das JSON Schema vom Server angefragt und in den Editor geladen, 
-welches für IntelliSense und das Code Linting zusätzlich definiert wurde~\cite{jsonJSONSchema}.
-Danach werde weitere Einstellungen für den Monaco-Editor angegeben, sodass dieser instanziiert werden kann.
+welches zusätzlich für IntelliSense und das Code Linting definiert wurde~\cite{jsonJSONSchema}.
+Im weiteren Code Verlauf werden weitere Einstellungen, wie die gewählte Sprache, für den Monaco-Editor angegeben, 
+sodass dieser instanziiert werden kann.
+So wird die Sprache für das Highlighting auf YAML gestellt, welches als Dateiformat für die Regeln und Fakten gewählt wurde.
 Hier wird zunächst ein Request zum Laden der Einträge des ausgewählten Dokumenttyps ausgeführt.
-Als Callback wird dann festgelegt, dass nach jeder Textänderung paar Sekunden später ein Request 
-für die Speicherung dieser Änderungen zu dem jeweiligen Dokumententyp geschickt wird.
+
+Als Callback wird daraufhin festgelegt, dass nach jeder Textänderung wenige Sekunden später ein Request 
+für die Speicherung dieser Änderungen zu dem jeweiligen Dokumententyp geschickt wird. 
+Somit werden die Zustände der Konfiguration auf der Server Seite festgehalten.
+Auf der Benutzungsoberfläche wird dann Texteditor angezeigt, der auch die Navigation über Tabs unterstützt.
+So können die Regeln und Fakten in einem Tab oder in zwei getrennte Tabs gehalten werden, 
+was wiederum eine übersichtlichere Aufteilung verschafft.
 
 
 \subsection{Dokumentenanzeige}\label{sec:docan}
 
 Damit die Entwicklung und das Anpassen der Regeln und Fakten angenehmer verläuft, 
-bedarf es eine Anzeige der Dokumente als Orientierungspunkt.
-Die umgesetzte Anzeige erlaubt es, eine einzelne Seitenansicht der Dokumente des ausgewählten Dokumenttyps darzustellen.
-Hierfür steht ein Selektor bereit, welcher einer Auswahl aus allen Dokumenten des Dokumenttyps ermöglicht 
+bedarf es einer Anzeige der Dokumente als Orientierungspunkt.
+Diese umgesetzte Anzeige erlaubt es, eine einzelne Seitenansicht der Dokumente des ausgewählten Dokumenttyps darzustellen.
+Hierfür steht ein Selektor bereit, welcher eine Auswahl aus allen Dokumenten des Dokumenttyps gewährleistet 
 und einen schnellen Wechsel anbietet. 
-Daneben ist das Blättern mit Hilfe einer Seitenanzahl gegeben.
-Damit die Positionierung des zu extrahierten Bereichs konfiguriert werden kann, 
-helfen die Koordinaten abhängig des Mauszeigers als Referenzpunkt
+Daneben ist das Vor- und Zurückblättern mit zwei Knöpfen beziehungsweise das Umblättern mit Hilfe einer Seitenanzahl gegeben.
+
+Damit die Positionierung des zu extrahierenden Bereichs konfiguriert werden kann, 
+helfen die Koordinaten, die abhängig des Mauszeigers als Referenzpunkt angezeigt werden.
+Dies wurde dynamisch mit der Hover-Funktion umgesetzt, womit die Benutzer:innen direkt die X- und Y-Koordinaten erhalten können.
+Außerdem soll die Anzeige im Zusammenspiel mit dem Editor es ermöglichen, 
+die Bounding Box eines Bereichs durch das Ziehen mit der Maus 
+auf der ausgewählten Seite zu generieren und diese in eine ausgewählte Stelle im Editor einzusetzen.
 
 \subsection{Output}\label{sec:out}
 
-Nachdem die Benutzer:innen ihre Konfiguration festgelegt haben und den Durchlauf starten, 
+Nachdem die Benutzer:innen ihre Konfiguration festgelegt und den Durchlauf gestartet haben, 
 bedarf es für die Interaktion eine Rückgabe des Systems.
-Hierfür wurde sich für ein Output Bereich entschieden welches zwei Fenster besitzt:
+Hierfür wurde sich für ein Ausgabebereich entschieden, welches zwei Fenster besitzt:
 Das erste Fenster stellt die Ergebnisse in einer Anzeige für JSON Dateien dar 
 und ermöglicht damit eine genauere Betrachtung für die Benutzer:innen. 
+Hierbei werden sowohl die konkreten Ergebnisse des Durchlaufs der Regeln als 
+auch die Ergebnisse der Auswirkungen der Änderungen angezeigt.
 
+Beim zweiten Fenster werden Informationen, die abseits von Ergebnisse, wie Zustände des Systems oder Fehlermeldungen.
+Dieses Fenster soll es ermöglichen, einen aktuellen Zustand und eine Rückmeldung zu präsentieren, 
+womit die Mensch-Computer-Interaktion verbessert wird und die Nutzungsbarriere zum System niedriger wird.
+Unter den Zuständen zählen die erfolgreiche Inbetriebnahme, Hinweise zur Nutzung und Fehlermeldungen, 
+die im System auftreten potentiell können.
 
 \section{Machine Learning}\label{sec:ml}
 
-Während
+Während die Teilsysteme der symbolischen künstlichen Intelligenz und der Entwicklungsumgebung implementiert sind, 
+bedarf es nun die Konzeption und Umsetzung des Machine-Learning-Ansatz.
+Für die gleiche Problematik, die bereits von dem Teilsystem der symbolischen KI thematisiert und verarbeitet wurde, 
+soll mit dem Ansatz ein weiterer Lösungsweg zur Bewältigung dieser gewählt werden.
+
+Für das maschinelle Lernen existieren die Arten des überwachten Lernens und des nicht überwachten Lernens
 
 \subsection{Webserver}\label{sec:webserv2}
 
-Damit die künstliche Intelligenz des Machine Learnings 
+Damit die Steuerung der künstliche Intelligenz des maschinellen Lernens und ihre Funktionalitäten gegeben ist, 
+wird die Kommunikation der Teilsysteme benötigt.
+Diese Kommunikation findet über das interne Netzwerk statt und ermöglicht damit auch die Interaktion der Docker Container Umgebung.
+Damit diese nötigen Eigenschaften für das Teilsystem erfüllt werden können, 
+wird der selbe Ansatz des als erstes vorgestelltes Teilsystems umgesetzt.
+Dies bedeutet, dass sich für die WSGI Schnittstelle entschieden wurde, 
+was auch die Nutzung einer Flask Anwendung als Webserver zur Folge hat. 
+So wird auch 
 
 \subsection{Pipeline}\label{sec:pipe}
 
-Fonduer setzt den Machine Learning Ansatz mit Hilfe eines abgeschwächten überwachten Lernen (weak supervised learing)
+Fonduer setzt den Machine Learning Ansatz mit Hilfe der Kategorie 
+eines abgeschwächten überwachten Lernen (weak supervised learning) um.
+In Abbildung~\ref{fig:fpipeline} wird die komplette Pipeline für die Verarbeitung des maschinellen Lernens dargestellt.
+
+
 
 \begin{figure}[htb]
     \centering
