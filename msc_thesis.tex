@@ -24,15 +24,17 @@
 
 \begin{abstract} 
 
-PDF-Dokumente besitzen viele Informationen, aus denen sich neue Daten generieren lassen können.
+PDF-Dokumente besitzen viele Informationen, aus denen sich neue Daten generieren lassen.
 Doch das Extrahieren von solchen Daten ist heutzutage immer noch mit Hürden verbunden.
-Dies gilt auch für die Dokumente, die in den Prozessen von Autohäusern und deren Kfz-Werkstätten verwendet 
+Dies gilt auch für die Dokumente, die für die einzelnen Arbeitsprozesse von Autohäusern und deren Kfz-Werkstätten verwendet 
 und anschließend gelagert werden.
 Um die Frage zu beantworten, inwiefern neue Daten aus dieser Art von Dokumenten verarbeitet werden können, 
 wird im Rahmen dieser Arbeit ein System konzipiert und entwickelt, welches es ermöglichen soll, weiteres Wissen zu gestalten 
-beziehungsweise zu generieren.
+und zu generieren.
 Dieses System will dabei zwei verschiedene Ansätze aus der künstlichen Intelligenz nutzen, um einen automatisierten Lösungsweg zu kreieren, und
 eine grafische Schnittstelle für die Möglichkeit der menschlichen Nutzung anbieten.
+Der erste Ansatz handelt um die Nutzung der symbolischen künstlichen Intelligenz, 
+während demgegenüber der zweite Ansatz die modernen Techniken des maschinellen Lernens für das Lösen dieser Problematik nutzt.
 
 \end{abstract}
 
@@ -42,7 +44,7 @@ eine grafische Schnittstelle für die Möglichkeit der menschlichen Nutzung anbi
 \chapter{Einleitung}\label{chap:einf}
 
 „Digitalisierung im Alltag voranbringen“ – Das war einer der Wahlslogans während der Bundestagswahl 2021. 
-Gemeint war damit die Forderung nach einer zunehmende Digitalisierung im privaten Alltag vieler Bürger:innen, 
+Gemeint war damit die Forderung nach einer zunehmenden Digitalisierung im privaten Alltag vieler Bürger:innen, 
 aber auch in der Wirtschaft machte sich wachsend der Wunsch nach mehr digitalen Alternativen breit (vgl. Bundesregierung 2021). 
 Dieser Wunsch beinhaltete vor allem einen Wechsel von gängigen Papierformen verschiedenster Dokumente hin
 zu denselben in digitaler Ausprägung. 
@@ -65,7 +67,8 @@ Durch bisherige erste Schritte der Digitalisierung sind diese benötigten Dokume
 bereits elektronisch aufgearbeitet und den Beschäftigten in Autohäusern und deren Kfz-Werkstätten zur Verfügung gestellt worden. 
 
 Die Folge dessen ist, dass alle Dokumente standardisiert sind und dadurch die in den Dokumenten beinhalteten Informationen 
-neu verarbeitet werden können. Eine Extraktion der Daten der einzelnen Dokumente ist jedoch nur eingeschränkt möglich, 
+neu verarbeitet werden müssen. 
+Eine Extraktion der Daten der einzelnen Dokumente ist jedoch nur eingeschränkt möglich, 
 da die Struktur im gängigen Gebrauch im Dateiformat Portable Document Format (PDF) festgelegt ist. 
 
 Jene Limitierung der Datenextraktion wirkt sich gleichermaßen auf die Dealer-Management-Systeme (DMS), 
@@ -76,12 +79,13 @@ welcher dabei entsteht, um die Daten wiederverwendbar zu konstruieren, ist derze
 
 Aus diesem Grund möchte ich innerhalb dieser Master-Thesis ein System entwickeln, 
 das genau jene Problematik erleichtert und löst.
+
 Innerhalb üblicher Methoden werden heutzutage die Daten zunächst über eine grafische Anzeige mithilfe 
 einer bereits existierenden Benutzeranwendung via gängiges Kopieren und Einfügen entnommen. 
 Dieser Schritt funktioniert zwar im Regelfall, ist jedoch oftmals stark fehleranfällig und kann lückenhaft sein. 
 
 In so einem Fall muss das Einfügen und Kopieren manuell durchgeführt werden, 
-was bei einer riesigen Menge an Dokumente zu einer monotonen Arbeit für die Händler der Autohäuser führt. 
+was bei einer enormen Menge an Dokumente zu einer monotonen Arbeit für die Händler:innen der Autohäuser führt. 
 Andernfalls können die Daten eigenhändig abgeschrieben werden – jener Vorgang benötigt jedoch viele Ressourcen.
 Eher geeignet ist es, einen Datenkonverter für die PDF Dateien zu nutzen, um so die Dokumente beispielsweise in Bilder umzuwandeln, 
 wodurch die Daten zugänglicher sind, aber immer noch verarbeitet werden müssen.
@@ -103,11 +107,11 @@ Des Weiteren können unter anderem Abgleiche von Rechnungen mit dem System durch
 und weitere Datenanalysen und Reporting kreiert werden.
 Mit dem derzeitigen Stand der Datenextraktion können jedoch lediglich Agierende aus dem technischen Bereich arbeiten, 
 da allein sie das dafür technisch notwendige Know-how besitzen. 
-Die Technologien hierfür benutzen unterschiedliche Ansätze und müssen daher zunächst für diesen Fall ausgewählt werden. 
+Die Technologien der Datenextraktion benutzen unterschiedliche Ansätze und müssen daher zunächst für diesen Fall ausgewählt werden. 
 
 Damit jedoch auch für Agierende innerhalb des technischen Bereichs die Nutzung nicht zu abstrakt bleibt, 
-soll durch die Entwicklung eines Systems der Zugriff greifbarer gestaltet werden, 
-welches wiederum allein durch eine benutzerfreundliche Anwendung ermöglicht wird. 
+soll durch die Entwicklung meines Systems der Zugriff greifbarer gestaltet werden, 
+welches wiederum allein durch eine benutzungsfreundliche Anwendung ermöglicht wird. 
 Die Benutzer:innen sollen eine Möglichkeit bekommen und über eine Eingabe der Steuerung bestimmen können, 
 welche Informationen extrahiert werden sollen.
 
@@ -115,21 +119,21 @@ Darüber hinaus muss eine Automatisierung vorhanden sein, um auch eine große Da
 zudem sollen die Vorgänge eine niedrigere Fehlerquote aufzeigen. 
 Die Prozesse müssen außerdem während des gesamten Ablaufs über eine Steuerung und Regelung kontrollierbar sein.
 Solche Prozesse können zum Beispiel über Regeln festgelegt beziehungsweise gesteuert werden, 
-die hingehen bei einer Erfüllung weitere Aktionen oder Regeln auslösen können.
+die hingegen bei einer Erfüllung weitere Aktionen oder Regeln auslösen können.
 
 Diese im vorherigen genannten Absatz beschriebene Eigenschaft kann durch eine symbolische künstlichen Intelligenz (KI) abgedeckt werden, 
 welche eine vorgegebene Verarbeitung zulässt. 
-Hiermit bezeichnet man einen altmodischen Ansatz der KI, bei der über das Festlegen von Symbolen 
-menschliches Wissen in einer Logik gehalten wird und diese benutzt wird um weiteres Wissen sodann zu generieren~\cite{dicksonWhatSymbolicArtificial2019}.
+Hiermit bezeichnet man einen unzeitgemäßen Ansatz der KI, bei der über das Festlegen von Symbolen 
+menschliches Wissen in einer Logik gehalten wird und diese benutzt wird, um weiteres Wissen sodann zu generieren~\cite{dicksonWhatSymbolicArtificial2019}.
 Durch eine Parametrisierung einer solchen KI kann dann die Unschärfe der ausgewählten Daten festgelegt werden, 
 damit eine Feineinstellung erfolgen kann. 
-Das heißt, die Benutzer:innen eines solchen Systems soll sich beginnend von groben Definitionen für die Verarbeitung 
+Das heißt, die Benutzer:innen eines solchen Systems sollen sich beginnend von groben Definitionen für die Verarbeitung 
 zu einer detaillierten und angepassteren Definition über Feedback des Systems hinarbeiten. 
 
 Mit Hilfe dieser Annäherung an Definitionen und Regeln kann so für eine bessere Erfolgsquote gesorgt werden. 
 Zudem kann der Ansatz des Machine Learnings (ML), mit jenem erfolgreiche Verarbeitungen einem System antrainiert werden, 
 weitere Dokumente aus Daten extrahieren. 
-Hierbei ist noch offen, welcher Typ des Machine Learnings sich für diesen Fall am optimalsten eignet.
+Hierbei werde ich im Laufe der Entwicklung feststellen, welcher Typ des Machine Learnings sich für diesen Fall am optimalsten eignet.
 
 Beide Ansätze – der der symbolischen KI und der des Machine Learnings – bieten als Option die Entwicklung 
 einer grafischen interaktiven Entwicklungsumgebung (IDE) an. 
@@ -137,10 +141,10 @@ Die IDE soll das Festlegen von Definitionen und Regeln erlauben, mit welchen die
 Außerdem soll diese Oberfläche verschiedene Funktionalitäten offerieren und auch Feedback sowohl bei einem problemlosen Lauf, 
 als auch bei einem fehlerhaften Lauf, zurückgeben. 
 
-Des Weiteren soll es das System es ermöglichen, Änderungen der Definitionen anzumerken und Unterschiede zu erstellen. 
+Des Weiteren soll es das System ermöglichen, Änderungen der Definitionen anzumerken und Unterschiede zu erstellen. 
 Mit dieser Funktion sollen auch bisherige Ergebnisse angezeigt werden.
 Die Festlegung von Definitionen und Regeln soll außerdem durch eine Ansicht der Dokumente unterstützt werden.
-Insgemein wird das System die zwei Ansätze als Subsysteme aufteilen um die Umsetzung zu modularisieren 
+Insgemein wird das System die zwei Ansätze als Subsysteme aufteilen, um die Umsetzung zu modularisieren 
 und einen Vergleich zu ermöglichen.
 
 \section{Ablauf}\label{sec:ablauf}
@@ -152,12 +156,12 @@ damit die vorhandenen Grundlagen für den Anwendungsfall, um den es in der Arbei
 Das heißt, es werden mit Hilfe der Funktionalitäten der Bibliotheken Ergebnisse 
 auf Basis der Datensätze erzeugt, um die Erfolgsquoten zu überprüfen. 
 Diese werden dann verglichen und ausgewertet. Parallel dazu soll die Umgebung 
-für die Entwicklung eingerichtet werden, mit der die Implementierung der Systeme stattfinden soll. 
+für die Entwicklung eingerichtet werden, mit der die Implementierung der Systeme stattfindet. 
 
 Danach widme ich mich der Konzeption und der Entwicklung des Systems.
 Diese beginnt mit der symbolischen KI als ein Subsystem des gesamtem Projekts, durch selbige ein direkterer Ansatz ermöglicht wird. 
 Die Entwicklung hierbei wird im Wasserfall-Ansatz, einem Ansatz bei der phasenweise 
-die Eigenschaften einer solchen KI umgesetzt werden, 
+die Eigenschaften einer solchen KI durchgeführt werden, 
 um eine Grundlage für die nächste Komponente zur Verfügung zu stellen.
 
 Bei dieser Komponente handelt es sich um die interaktive Entwicklungsumgebung, die den Zugang für die Benutzer:innen zum System darstellt.
@@ -172,15 +176,15 @@ sodass der Hauptteil so früh wie möglich verfügbar ist,
 damit das Training des ML-Systems durch die Dokumente auch zeitnah starten kann. 
 Auf das Auswerten dieses Subsystems folgt eine Anpassung dessen. 
 Die Komponenten der symbolischen KI und des Machine Learnings erlauben damit einen Vergleich 
-zwischen zwei verschiedene Ansätze aus der Künstlichen Intelligenz.
+zwischen zwei verschiedenen Ansätze aus der Künstlichen Intelligenz.
 
-Danach wird das Software Testing für die beiden Subsysteme eingeführt. 
+Im Anschluss daran wird das Software Testing für die beiden Subsysteme eingeführt. 
 Mit Unit Testing, Integration Testing und Functional Testing wird das erfolgreiche Ausführen gewisser Eigenschaften abgedeckt.
 Dies dient wiederum als Grundlage dafür, die Continuous Integration (CI) für das System einzuführen, 
 mit dieser eine sichere und konsistente Entwicklung nach dem Prototyping angeboten wird.  
 
 Wenn hierauf die Systeme gegeben sind, kann das grafische Tool weiter angepasst werden, welches 
-sich dann mit den Systemen verbinden soll, um infolgedessen die Ausführbarkeit der Funktionalität überprüfen zu können. 
+sich hiernach mit den Systemen verbinden soll, um infolgedessen die Ausführbarkeit der Funktionalität überprüfen zu können. 
 Um ein gemeinsames System zu ermöglichen, welches dann gegebenenfalls weitere Testschritte bedarf,
 werden anschließend die Komponenten zusammengeführt.  
 Sobald jenes eine erfolgreiche Form annimmt, wird der Teil der Continuous Integration mit einbezogen, 
@@ -192,13 +196,14 @@ Name, Firma, Adresse und Kundennummer. Zu Eigenschaften der Fahrzeugdaten zähle
 Modell, Farbe, Motor, Erstzulassung, Letzter/nächster Service und 
 TÜV sowie die Abrechnungsdaten wie die Jobs mit den dazugehörigen Arbeitspositionen, der Reparaturteile, den Preisen etc.
 
-Dazu stehen als weitere Grundlage mehr als 10.000 annotierte unterschiedliche Dokumente mit genau den Daten, 
-die extrahiert werden sollen, als Datenbank zur Verfügung. 
+Dazu stehen als weitere Grundlage mehr als 10.000 annotierte unterschiedliche Dokumente 
+mit genau den zu extrahierenden Daten als Datenbank zur Verfügung. 
 In Zukunft sollen für das Mengengerüst mehr als 100.000 Dokumente pro Jahr bearbeitet werden. 
 Hierbei ist es aber auch möglich, aus den bereits bestehenden Daten einen Pool für den Lernprozess beziehungsweise 
 für die Verifikation zu bilden.
 
 Zum Schluss werde ich die Ergebnisse des gesamten Systems betrachten und einen Ausblick zu der Thematik geben.
+
 Aus Datenschutzgründen werde ich in meiner Arbeit persönliche Informationen in den gezeigten Dokumenten anonymisieren und verpixeln.
 
 \chapter{Hintergrund}\label{chap:hint}
@@ -221,9 +226,9 @@ Für den After-Sales-Bereich bietet ilexius GmbH zwei Arten von ERP-Systeme an.
 Die erste Art ist das von der Automobilmarke Jaguar Land Rover finanzierte \textit{vTab}, welches eine Plattform 
 für elektronische Fahrzeugkontrollen 
 und ein Backend für Jaguar Land Rover Mitarbeiter:innen, mit dem die Autohäuser bewertet werden können, anbietet.
-Die zweite Art mit dem Namen \textit{ATT} ist eine Plattform. 
-Mit derjenigen können Autohäuser ihre Arbeitsprozesse in Schrift, Sprache und Bild dokumentieren.
-Die Dokumentation erfolgt mittels mobiler Endgeräte und werden an das ERP-System weitergeleitet, 
+Die zweite Art mit dem Namen \textit{ATT} ist eine Plattform, 
+mit der Autohäuser ihre Arbeitsprozesse in Schrift, Sprache und Bild dokumentieren.
+Die Dokumentation erfolgt mittels mobiler Endgeräte und wird an das ERP-System weitergeleitet, 
 sodass die Dokumentation archiviert werden kann.
 
 Die ERP-Systeme, die bereits im Kapitel~\ref{sec:ziel} beschrieben worden sind, unterstützen 
@@ -257,11 +262,11 @@ oder Software as a Service (SaaS) Plattformen zu erhalten.
 Durch diese Beschaffung können die Daten weiter verarbeitet werden, 
 wodurch neue Lösungsmöglichkeiten für das eigene System bereitzustellen.
 Die Arten des Extrahierens unterscheiden sich hierbei im Zeitverlauf und der Herangehensweise. 
-So können sie extrahiert werden, sobald Änderungen der Daten beobachtet oder mitgeteilt worden sind. 
+Sie können extrahiert werden, sobald Änderungen der Daten beobachtet oder mitgeteilt worden sind. 
 Durch diese Herangehensweise werden so die Daten schrittweise herangeschafft~\cite{stichdataWhatDataExtraction}.
 
 Des Weiteren gibt es die Option, eine komplette Extraktion durchzuführen. 
-Dieser Ansatz kann sich in vielen Fällen als nachteilig erweisen, da die Daten jedes mal 
+Dieser Ansatz kann sich in vielen Fällen als nachteilig erweisen, da die Daten jedes Mal 
 bei Anpassungen der ursprünglichen Information neu verarbeitet werden müssen.
 Aufgrund des Bezugs der Problematik im Rahmen der Thesis auf Dokumente, die bereits im ERP-System archiviert wurden, 
 trifft dieser Fall hier nicht zu.
@@ -270,7 +275,7 @@ trifft dieser Fall hier nicht zu.
 
 Für das Data Mining von PDF Dateien existieren bereits Lösungen, die von großen Unternehmen wie Amazon Web Services (AWS) 
 oder Adobe angeboten werden. 
-So nutzen Produkte wie Textractor~\cite{amazonIntelligenteExtraktionText} von AWS oder 
+Zum Beispiel nutzen Produkte wie Textractor~\cite{amazonIntelligenteExtraktionText} von AWS oder 
 Adobes Extractor API~\cite{developersExtractTextPDF} künstliche Intelligenz, Machine Learning und Optical Character Recognition (OCR), 
 um die Extraktion der Daten zu ermöglichen. 
 Unternehmen wie ABBYY~\cite{abbyyPDFSoftwareOpen} haben sich bereits auf diesem Gebiet spezialisiert 
@@ -295,14 +300,14 @@ Doch auch wenn dies mit textbasierten Dokumenten funktioniert und der Export fle
 können zunächst weder nicht-textbasierte noch komplexere PDF Dokumente verarbeitet werden. 
 Des Weiteren sind die Verarbeitungen nicht automatisierbar und die Nutzer:innengruppe 
 wird durch eine fehlende grafische Komponente eingeschränkt.
-Aus dieser Problematik resultierend, zeigt sich, dass community-angetriebene Projekte wie PdfMiner.six~\cite{pdfminerWelcomePdfminerSix}, 
-das eine Abspaltung des bereits erwähnten PdfMiner ist, und PdfPlumber~\cite{singer-vinePdfplumber2022}, 
-welches wiederum auf PdfMiner.six basiert, geeignete Alternativen darstellen. 
+Aus dieser Problematik resultierend zeigt sich, dass community-angetriebene Projekte wie PdfMiner.six~\cite{pdfminerWelcomePdfminerSix} 
+(das eine Abspaltung des bereits erwähnten PdfMiner ist) und PdfPlumber~\cite{singer-vinePdfplumber2022} 
+(welches wiederum auf PdfMiner.six basiert) geeignete Alternativen darstellen. 
 
 PdfPlumber stellt im Vergleich zu seinem Ausgangsprojekt überdies eine Tabellenextraktion bereit und bietet für beide Aspekte 
 der Extraktion eine Schnittstelle an. 
 Es stellt eine Kommandozeile, die Möglichkeit, visuelles Debugging zu nutzen, 
-und Funktionalitäten wie das Entfernen von Duplikaten in Texten, zur Verfügung.
+und Funktionalitäten wie das Entfernen von Duplikaten in Texten zur Verfügung.
 
 Das visuelle Debugging, welches in Abbildung~\ref{fig:vd} zu sehen ist, ermöglicht es unter anderem, 
 die Texte des Dokuments hervorzuheben, was wiederum die Extraktion greifbarer darlegt 
@@ -810,7 +815,8 @@ Hierzu wird eine Grammatik benutzt, dergleichen die Ausdrücke mit Hilfe von Reg
     \end{lstlisting}
     \caption{kontextfreie Grammatik für die Regelevaluation}
     \label{code:grammar}
-    \end{listing}
+
+\end{listing}
 
 Das für dieses Projekt entwickelte regelbasierte System für die Komponente der symbolischen KI 
 bedarf Regeln in Form von Booleschen Ausdrücken.
@@ -1177,11 +1183,15 @@ Für die Anwendung werden die Dokumente in Trainings- und Testsätze unterteilt.
 In der dritten Phasen werden den Kandidaten der Trainings- und Testsätzen durch multimodale Featurisierung Merkmale annotiert.
 Hierfür wird ein Featurizer-Objekt definiert, welches die Verbindung zur Datenbank 
 und den Kandidaten der jeweiligen Dokumentenart übergeben bekommt.
-Für die vierte Phase findet das schwache überwachte Lernen und die Klassifikation über Labeling-Funktionen.
+Für die vierte Phase findet das schwache überwachte Lernen und die Klassifikation über Labeling-Funktionen statt.
 Dafür werden diese Funktionen, welche weitere Bedingungen für die Kandidaten stellen und 
 die es zu erfüllen gilt, definiert, um als wahrhaftiger Kandidat weiterverarbeitet zu werden.
 Die Labeling Funktionalitäten werden hierbei durch die Bibliothek Snorkel zur Verfügung gestellt, 
 welche das Labeling der Trainingssätze durch das schwache maschinelle Lernen schneller und günstiger der Ressourcenkosten gestaltet~\cite{Ratner_2017}.
+In dem Listing~\ref{code:labeling} werden zwei Beispiele der für das Teilsystem implementierte Label-Funktionen dargestellt.
+Hierfür wird neben den zwei gängigen Wahrheitswerten ein Wahrheitswert mit dem Schlüsselwort ABSTAIN definiert, 
+welches gesetzt wird, wenn keine Entscheidung für eines der zwei Wahrheitswerte TRUE oder FALSE 
+zu dem ausgeführten Zeitpunkt für das Labeling möglich ist.
 
 \begin{listing}[htbp]
     % \lstset{basicstyle=\small}
@@ -1216,7 +1226,7 @@ Hierbei können weitere Statistiken des Vorgangs als Feedback mitgegeben werden.
 Ist das Training abgeschlossen, werden als Nächstes in der Pipeline die Labeling-Funktionen modelliert, 
 sodass Konflikte betrachtet werden können.
 Mit Wahrscheinlichkeitsberechnungen werden dann weitere Labels auf die Trainingssätze angewendet, 
-sodass danach ein generatives Modell angelernt ist.
+sodass danach ein generatives Modell angelernt ist. hsd
 
 Dies ermöglicht dem System und der Entwicklung iterativ die Labeling Funktionen für eine höhere Genauigkeit zu verbessern.
 Hierfür müssen die Konflikte und die Überlappungen programmatisch weiter überprüft werden.
