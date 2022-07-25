@@ -1102,6 +1102,8 @@ Diese Wissensbasis wird über eine Datenbank abgebildet, die die Daten strukturi
 Daher besteht für die Nutzung dieser Bibliothek eine Abhängigkeit zu dem Datenbanksystem PostgreSQL~\cite{elmasriFundamentalsDatabaseSystems2007}. 
 Des Weiteren wird die Bibliothek spaCy genutzt, weswegen die Sprachmodelle für die deutsche Sprache 
 in dem Dockerfile des Teilsystems mit geladen und verlinkt werden.
+Über die Kompositionsdatei von Docker werden dann die Container für die Machine-Learning Komponente 
+und die dazugehörige Datenbank virtuell aufgesetzt und mit dieser entwickelt.
 
 Damit dies auch für vielschichtige Daten geht, wird hier ein spezielles Datenmodell benutzt, 
 welches die Dokumente und ihre Besonderheiten darstellt.
@@ -1186,6 +1188,7 @@ und den Kandidaten der jeweiligen Dokumentenart übergeben bekommt.
 Für die vierte Phase findet das schwache überwachte Lernen und die Klassifikation über Labeling-Funktionen statt.
 Dafür werden diese Funktionen, welche weitere Bedingungen für die Kandidaten stellen und 
 die es zu erfüllen gilt, definiert, um als wahrhaftiger Kandidat weiterverarbeitet zu werden.
+
 Die Labeling Funktionalitäten werden hierbei durch die Bibliothek Snorkel zur Verfügung gestellt, 
 welche das Labeling der Trainingssätze durch das schwache maschinelle Lernen schneller und günstiger der Ressourcenkosten gestaltet~\cite{Ratner_2017}.
 In dem Listing~\ref{code:labeling} werden zwei Beispiele der für das Teilsystem implementierte Label-Funktionen dargestellt.
@@ -1226,12 +1229,12 @@ Hierbei können weitere Statistiken des Vorgangs als Feedback mitgegeben werden.
 Ist das Training abgeschlossen, werden als Nächstes in der Pipeline die Labeling-Funktionen modelliert, 
 sodass Konflikte betrachtet werden können.
 Mit Wahrscheinlichkeitsberechnungen werden dann weitere Labels auf die Trainingssätze angewendet, 
-sodass danach ein generatives Modell angelernt ist. hsd
+sodass danach ein generatives Modell angelernt ist.
 
 Dies ermöglicht dem System und der Entwicklung iterativ die Labeling Funktionen für eine höhere Genauigkeit zu verbessern.
 Hierfür müssen die Konflikte und die Überlappungen programmatisch weiter überprüft werden.
 Für das weitere Training der Datensätze wird das discriminative Modell durch Regression antrainiert.
-Dafür benutzt Fonduer das Machine-Learning Framework Emmental, welches die Funktionalitäten für die Modellierung bereitstellt\cite{wu2019emmental}.
+Dafür benutzt Fonduer das Machine-Learning Framework Emmental, welches die Funktionalitäten für die Modellierung bereitstellt~\cite{wu2019emmental}.
 In diesem Prozess werden weitere Tokens und Rauschproben generiert, damit das Modelltraining unterstützt wird.
 Zum Schluss können die Testsätze mit ihrem Labeling genutzt werden, um die Vorhersage durch das Training der KI zu evaluieren.
 
@@ -1255,10 +1258,10 @@ weswegen sich hier die die Funktionalität nur auf den Durchlauf mittels des Mac
 
 Das Projekt hat verschiedene Merkmale der Problematik hervorgehoben.
 So wurde durch die Analyse gezeigt, dass eine weitere Verarbeitung der aus den Autohäusern entstandenen Dokumente 
-über einen sinnvollen Anwendungsbereich für das von den Mitarbeiter:innen genutzte ERP-System verfügt.
+einen sinnvollen Anwendungsbereich für das von den Mitarbeiter:innen genutzte ERP-System verfügt.
 Des Weiteren ist aufgefallen, dass die Dokumente, auf die sich im Rahmen der Thesis eingeschränkt wurden, 
-viele verschiedene Formen besitzen beziehungsweise haben können.
-Die Unterschiede liegen bei der Mehrheit in den Details der einzelnen Extraktionsbereiche.
+viele verschiedene Formen besitzen beziehungsweise teilweise beliebig gewählt werden können.
+Des Weiteren liegen die Unterschiede bei der Mehrheit in den Details der einzelnen Extraktionsbereiche.
 Das Data-Mining dafür erwies sich mit den passenden Extraktionsbibliothek als hilfreich, 
 da die Daten für das System und deren Logik greifbarer waren.
 
@@ -1266,8 +1269,9 @@ Eine Anpassung für die Definitionen der Formen muss in der symbolischen künstl
 durch eine Kategorisierung in Dokumentarten vorgenommen werden.
 Außerdem fiel auf, dass sowohl die Definitionen von Tabellen in elektronisch verarbeiteten Dokumenten, 
 als auch die Erkennung dieser Tabellen sich als umständlich erweist.
-
+Verschiedene Semantiken für die einzelnen vorgestellten Felder benötigen eine weitere Differenzierung der Extraktion.
 So bedarf es zunächst Analysen der Struktur und des Kontexts um eine angemessene Verarbeitung zu ermöglichen.
+
 Das System, dass im Rahmen dieser Thesis entwickelt wurde, erwies sich als Prototypen umsetzbar.
 Die Struktur für die Teilsysteme wurde durch eine container-getriebene Entwicklung modular gehalten 
 und sorgte durch die Architektur für eine gemeinsame Kommunikationsebene für diese Komponenten.
@@ -1275,17 +1279,30 @@ So konnte ein Projekt aufgesetzt werden, welches die neuesten Technologien in de
 nutzen um die erwünschten Extraktionsziele zu erhalten oder eine Annäherung mindestens zu erreichen. 
 Texte und Tabellen können über Regel- und Faktendefinitionen extrahiert werden 
 und übersichtlich in einer Webanwendung dargestellt werden.
+
 Der Webansatz für die Entwicklungsumgebung zeigt bis auf die zusätzliche Build-Zeit 
 während des initialen Ladens eine konsistente Verwendung und kein fehlerhaftes Verhalten auf. 
 Die Entwicklung einer Grammatik war wirksam für den Anwendungsfall, 
 da sich dadurch eine Sprache für die Ausdrücke entwickeln ließ, 
 mit welcher die Benutzer:innen beziehungsweise die Entwickler:innen schnelle und simple Regeln konfigurieren konnten.
 Die Verarbeitung der Dokumente wird durch die daraus generierten Webanfragen ermöglicht, 
-womit der Durchstich der Funktionalitäten ermöglicht.
-Ein Dokument 
-Für die Umsetzung des Machine-Learning Ansatzes erwiesen sich der Ansatz 
-des schwachen maschinellen Lernens als vielversprechende Alternative 
+womit der Durchstich der Funktionalitäten stattfindet.
 
+Des Weiteren können die Unterschiede bei Veränderungen der Regeln und Fakten angezeigt werden, 
+was die iterative Entwicklung dieser Konfigurationen anbietet.
+Für die Umsetzung des Machine-Learning Ansatzes erwiesen sich der Ansatz 
+des schwachen maschinellen Lernens als eine vielversprechende Alternative.
+So war die Umsetzung einer Pipeline für die PDF Dokumente möglich.
+Dafür wurden für jede Dokumentenart Trainings- und Testsätze der Dokumente genutzt, 
+um die Supervision und Klassifikation zu nutzen.
+
+Die Datenbank wurde mit Informationen durch die KI befüllt, wodurch sowohl Tabellen für die Erwähnungen und Kandidaten, 
+als auch für die einzelnen Felder die für die Extraktionsfunktionalität definiert wurden, erstellt.
+Hierbei wurde beobachtet, dass über einen längeren Zeitverlauf die Tabellen der Sätze und Paragraphen zuerst genutzt wurden, 
+um die multimodale Modellierung der Dokumente abzubilden.
+Für den weiteren Verlauf zeigte sich aber auch, dass das genutzte Machine-Learning Framework sehr ressourcenfressend ist.
+Trotz Virtualisierung traten bei einem längeren Trainingsdurchlauf Abstürze auf, 
+welche die Einträge in der Datenbank trotz Wiederherstellung über Mounting beeinträchtigten.
 
 
 \section{Testing}\label{sec:test}
@@ -1296,13 +1313,19 @@ Zur Grunde liegen hier die Images der Teilsysteme, die als Dockerfile beschriebe
 und in der Container Registry vom unternehmensinternen Repository gespeichert werden.
 Über verschiedene Stages sollen dann die Hauptaspekte der Teilsysteme und dann in das System integriert werden.
 Hier werden diese Komponente auf verschieden Eigenschaften überprüft.
-Für das Teilsystem der symbolischen KI werden die 
+
+Für das Teilsystem der symbolischen KI wurden das Unit Testing 
+und das nicht funktionale Testing über die Continuous Integration unterstützt.
+Für die Entwicklungsumgebung wurde der Ansatz der UI Tests gewählt, um nicht nur die Benutzung 
+sondern auch die mögliche Automatisierung für weitere Eingaben zu überprüfen.
+Bei dem für das maschinelle Lernen zuständige Teilsystem wurde das Testing über die Testsätze, 
+die durch das beschriebene ERP-System bereitgestellt wurden, ermöglicht.
 
 
 \chapter{Konklusion und Ausblick}\label{chap:kua}
 
 In dieser Arbeit ging es darum, Informationen aus digital verarbeiteten PDF-Dokumenten zu extrahieren und 
-aus diesen neuen Daten zu generieren. 
+aus diesen neue Daten zu generieren. 
 Die Dokumente, um die es in dieser Arbeit ging, stammten von Kund:innen von Ilexius GmbH. 
 Jene Kund:innen sind unter anderem Beschäftigte von Autohäusern und deren Werkstätten.  
 Mit meiner Systementwicklung, die ich in dieser Thesis demonstriert habe, 
@@ -1312,37 +1335,36 @@ Für meine Entwicklung habe ich das Data-Mining im Bereich der Dokumentenextrakt
 laufende Prozesse detaillierter zu steuern und zu überwachen. 
 
 Neben dem Data-Mining nutzte ich zudem den Ansatz einer symbolischen künstlichen Intelligenz. 
-Diese KI ermöglichte mir während meines Arbeitsprozesses in jedem Schritt eine Feinschleifung meiner bisherigen Arbeit. 
+Diese KI ermöglichte mir während meines Arbeitsprozesses in jedem Schritt eine 
+Feinschleifung meiner bisherigen Arbeit der manuellen Extraktion. 
 Durch diese KI kann sich jede/r Benutzer/in meines hier entwickelten Systems von groben zu detaillierten 
-und angepassten Definitionen über ein eigenständiges Feedback des Systems annähern. 
-Im Verlauf meiner Arbeit übernahm diese Annäherung das Machine Learning.
+und angepassten Definitionen über ein eigenständige Umgebung erstellen, welche über Feedback des Systems eine Annäherung erlaubt. 
+Im späteren Verlauf meiner Arbeit wurde der Ansatz diese Annäherung im Teilsystem des Machine Learnings betrachtet.
 Bevor meine symbolische KI als auch das Machine Learning starten konnte, 
-habe ich zu Beginn die Funktionalitäten der Bibliotheken genutzt, um durch Ergebnisse der Datenansätze die Erfolgsquote zu überprüfen. 
-Danach 
+habe ich zu Beginn die Funktionalitäten der Bibliotheken genutzt, 
+um durch Extraktionsergebnisse der Datenansätze die Erfolgsquote zu überprüfen. 
+Danach definierte ich das Format für die Regeln und Fakten des Extraktionsvorgang mit Hilfe einer eigens entworfenen Grammatik. 
+
 Anschließend stellte ich die Benutzungsoberfläche fertig, sodass ich diese mit der symbolischen KI verbinden konnte. 
-Nebstdem konzeptionierte und entwickelte ich die zu dem Machine Learning gehörende Subsysteme. 
-Dies tat ich in einem iterativen Ansatz, sodass das Training des Machine Learnings baldmöglichst beginnen konnte. 
-Im Anschluss daran fing ich mit dem Software-Testing an. 
-Dadurch konnte die Ausführung aller meiner noch folgenden Prozesse gewährleitet werden. 
-Als letzte Vorbereitung passte ich das grafische Tool weiter an, dass sich dieses mit den Systemen verbindet, 
+Nebenbei konzeptionierte und entwickelte ich die zu dem Machine Learning gehörende Subsysteme. 
+Dies tat ich in einem iterativen Ansatz, sodass eine Pipeline-Struktur erbaut wurde womit
+ das Training des Machine Learnings baldmöglichst beginnen konnte. 
+Im Anschluss daran fing ich an mich in dem gegebenen Rahmen mit dem Software-Testing an zu beschäftigen. 
+Dadurch konnte die Ausführung aller meiner noch folgenden Prozesse gewährleistet werden. 
+Als letzte Vorbereitung passte ich die grafische Benutzungsoberfläche weiter an, dass sich dieses mit den Systemen verbindet, 
 wodurch die Ausführbarkeit der Funktionalität überprüft werden kann.
 
-Meine Ergebnisse dieser Arbeit…
+Meine Ergebnisse dieser Arbeit zeigten einige Komplikationen auf.
+So ist zu einem der Extraktionsvorgang sehr abhängig zur Semantik des Extraktionsziels.
+Hier kann die entwickelte Struktur dafür sorgen, dass weitere Dokumentenarten ihre angepasste Extraktionslogik bekommen.
+
 	Komplikationen nennen	
     Was kannst du ich Zukunft aus den Komplikationen lernen, welche Schritte bedarf es für eine Verbesserung
 	Danach wieder zu einem positiven Feedback kommen, schöner Abschlusssatz, wie hilfreich deine Arbeit war
 
+Im Rahmen der Abschlussarbeit wurde ein System konzipiert und umgesetzt, welches eine Extraktion von Dokumenten über zwei Ansätze ermöglicht.
 
-    Im Rahmen der Abschlussarbeit wurde ein System konzipiert und umgesetzt, 
-    welches eine Extraktion von Dokumenten über zwei Ansätze ermöglicht.
-    
-    
-    Über die Teilsysteme wurden technische Funktionalitäten eingeführt werden um dem Kapitän die Webanwendung als PWA anzubieten.
-    
-    Insgesamt eignen sich Webanwendungen um Ressourcen übersichtlicher darzustellen und mobil zu beobachten.
-    Auch können Offline-Zustände dem Benutzer trotzdem erlauben Aspekte der Anwendung weiter zu benutzen.
-    Aus den Konzepten und der Umsetzung ergeben sich viele weitere Ideen und Ansätze, 
-    die realisierbar sind und implementiert werden können. 
+
 
 
 
