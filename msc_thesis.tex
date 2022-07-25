@@ -309,11 +309,11 @@ der Extraktion eine Schnittstelle an.
 Es stellt eine Kommandozeile, die Möglichkeit, visuelles Debugging zu nutzen, 
 und Funktionalitäten wie das Entfernen von Duplikaten in Texten zur Verfügung.
 
-Das visuelle Debugging, welches in Abbildung~\ref{fig:vd} zu sehen ist, ermöglicht es unter anderem, 
+Das in Abbildung~\ref{fig:vd} zu sehende Debugging ermöglicht, ermöglicht es unter anderem, 
 die Texte des Dokuments hervorzuheben, was wiederum die Extraktion greifbarer darlegt 
 und die Entwicklung mit den Funktionalitäten unterstützt.
 Auch die Funktionalität des Entfernens von Duplikaten kann dann zum Einsatz kommen, wenn Dokumente bei ihrer Erstellung 
-oder Verarbeitung versehentlich die selben Einträge nochmal im Quellcode des PDFs besitzen. 
+oder Verarbeitung versehentlich dieselben Einträge erneut im Quellcode des PDFs besitzen. 
 In dieser Abbildung sind die persönlichen Daten des Auftrags anonymisiert und deshalb verpixelt.
 
 \begin{figure}[htb]
@@ -328,12 +328,12 @@ In dieser Abbildung sind die persönlichen Daten des Auftrags anonymisiert und d
 
 Für die Auswahl einer Extraktionsbibliothek ist auch die dazugehörige Programmiersprache für das System der Datenextraktion, 
 in der die Bibliothek umgesetzt worden ist, relevant. 
-Darunter fallen die bereits genannten Bibliotheken, welche sich in zwei Sprachen gruppieren lassen.
+Darunter fallen die bereits genannten Bibliotheken, welche sich in zwei Sprachen gruppieren lassen:
 Projekte wie Tika, Tabula und Textricator sind mit Hilfe von Java implementiert, 
-während die restlichen, aufgezählten Bibliotheken in Python geschrieben sind~\cite{10.5555/1593511}.
-Für Tabula gilt hier hingegen die Ausnahme, dass es für das Projekt unterschiedliche Wrapper für weitere Programmiersprachen wie Python gibt.
+während die restlichen aufgezählten Bibliotheken in Python geschrieben sind~\cite{10.5555/1593511}.
+Für Tabula gilt hier hingegen die Ausnahme, dass für das Projekt unterschiedliche Wrapper für weitere Programmiersprachen wie Python existieren.
 Hieraus ist zu beobachten, dass die Nutzung von Python viele mögliche Extraktionswerkzeuge erlaubt, 
-welches sich für die spätere Umsetzung als noch bedeutsam erweist.
+die sich für die spätere Umsetzung als noch bedeutsam erweisen.
 
 Die Hürden für eine komplett automatische Extraktion bestehen jedoch nach wie vor.
 So ist nämlich nicht ersichtlich, wie das zu erwartende Verhalten der Logik der Extraktion für den generellen Fall auszusehen hat.
@@ -373,16 +373,16 @@ Die einzelnen Einträge werden mit jeweils unterschiedlich großen Abständen ve
 gleichzeitig erfüllen sie eine Gesamthöhe pro Spalte beziehungsweise eine Gesamtbreite pro Höhe einer Tabelle.
 Gleichwohl fällt auf, dass sich — im Gegensatz zur Anzahl der Zeileneinträge — die Anzahl der Spalteneinträge pro Zeile unterscheidet.
 
-Zudem fehlen jegliche Einrahmungen beziehungsweise jegliche Trennlinien für Zeilen und Spalten.
+Zudem fehlen jegliche Einrahmungen oder jegliche Trennlinien für Zeilen und Spalten.
 Bei den Einträgen in diesem Abschnitt geht es um die Abrechnungsnummer, das Datum der Reparatur, 
 den Fahrzeugmodellnamen, das Kfz-Kennzeichen, den zuletzt abgelesen Kilometerzählerstand, die Arbeitsauftragsnummer, der Fahrzeug-Identifikationsnummer beziehungsweise der
 Vehicle Identification Number (VIN), die/die zuständige/n Autohausmitarbeiter:in und das Datum der Erstellung des Arbeitsauftrags.
 Verpixelt und damit anonymisiert wurden die Felder des Kfz-Kennzeichens, der VIN und der/des zuständigen Mitarbeiter:in.
 
 Im unteren Bereich wird eine Tabelle durch die Aufzählung der einzelnen Jobs und Joblines dargestellt.
-Die Tabelle ist an der Kopfzeile zu erkennen, die die Jobs und Joblines in die Arbeitsnummer beziehungsweise in die Teilenummer, 
+Die Tabelle ist an der Kopfzeile zu erkennen, die die Jobs und Joblines in die Arbeitsnummer/Teilenummer, 
 in die Bezeichnung, in die Menge des Arbeitszeitwertes, in den Preis und in den Betrag übersichtlich aufteilt.
-Die Teilenummer beziehen sich hierbei auf die Identifikationsnummer der Reparaturteile.
+Die Teilenummern beziehen sich hierbei auf die Identifikationsnummer der Reparaturteile.
 Der Arbeitszeitwert ist dabei eine Einheit für die genaue Abrechnung der Arbeitszeiten, 
 um eine Aufschlüsslung der Stunden zu ermöglichen.~\cite{BedeutungAWArbeitswert}
 Die Menge wird hierbei als Reparaturzeit oder als Anzahl der Elemente angegeben.
@@ -393,19 +393,19 @@ Während die ersten vier Zeilen noch dezent erscheinen, besitzt die fünfte Zeil
 im Abschnitt mit der Bezeichnung einen längeren Text, sodass der restliche Text in weiteren Zeilen in der gleichen Spalte 
 darunter geschrieben steht.
 Die Abstände zwischen den Spalten insgesamt scheinen konsistenter zu sein, sind jedoch in der Abbildung~\ref{fig:care_g} 
-in mehreren Zeileneinträgen Überläufe bei den Arbeitsnummern beziehungsweise den Teilenummern zu sehen.
+in mehreren Zeileneinträgen als Überläufe bei den Arbeitsnummern beziehungsweise den Teilenummern zu sehen.
 In der letzte Zeile ist darüber hinaus zu erkennen, dass die Einträge zu Teilen auch verschoben dargestellt werden, 
 was eine eindeutige Erkennung der Positionierung noch weiter erschwert.
 Inhaltlich werden Jobs mit den dazugehörigen Joblines darunter angereiht dargestellt. 
 
-Dies ist durch die Codierung der Arbeitsnummern beziehungsweise der Teilenummer zu erkennen, 
+Dies ist durch die Codierung der Arbeitsnummern beziehungsweise der Teilenummern zu erkennen, 
 die Hierarchie ist durch das jeweilige Dealer-Management-System vorgegeben.
 In der ersten Spalte können daher Codes von Jobs, Reparaturzeiten, Ersatzteilen, 
 Fremdleistungen, Stempelzeiten und Kundenbeschwerden auftreten.
 
 Für die Codierung ist keine standardisierte Spezifikation vorhanden, 
 weshalb das für jedes Autohaus und seine Nutzung der DMS individuell definiert ist.
-So sind die Codes der Jobs als eine fünfstellige Zeichenkette aus Ziffern bestimmt, die mit den Ziffern \textit{00} angefangen. 
+So sind die Codes der Jobs als eine fünfstellige Zeichenkette aus Ziffern bestimmt, die mit den Ziffern \textit{00} anfangen. 
 Die Reparaturzeiten dagegen besitzen eine sechsstellige Zeichenkette aus Ziffern.
 Unterhalb der Tabelle werden am Ende des Dokuments schließlich die gesamten Kosten aus den Betragseinträgen summiert dargestellt.
 Diese Summe lässt sich wiederum in Kosten der Arbeit und der Teile aufteilen. 
@@ -417,7 +417,7 @@ Diese Summe lässt sich wiederum in Kosten der Arbeit und der Teile aufteilen.
 ~\label{fig:formel1_r}
 \end{figure}
 
-In Abbildung~\ref{fig:formel1_r} wird eine Rechnung der Formel 1 DMS dargestellt.
+In Abbildung~\ref{fig:formel1_r} wird eine Rechnung der Formel 1 DMS gezeigt.
 Auch hier sind sämtliche personenbezogenen Daten verpixelt und anonymisiert worden.
 Im Vergleich zur vorherigen Abbildung~\ref{fig:care_g} ist ein ähnlicher Aufbau zu sehen. 
 Während das Adressfeld geläufig aussieht, sind jedoch die Fahrzeug- und Kundendaten diesmal 
@@ -444,7 +444,7 @@ Die Gesamtkosten werden dann am Ende des Dokuments in den Teilsummen der Beträg
 
 Bei der dritten und damit letzten Dokumentart (Abbildung \ref{fig:kfz3000_w}) handelt
 es sich um einen Werkstattauftrag von dem Dealer-Management-System KFZ3000.
-Auch dieses hier abgebildete Dokument wurde aus Datenschutzgründen anonymisiert. 
+Auch dieses hier abgebildete Dokument wurde anonymisiert. 
 Dieser hier gezeigte Auftrag lässt sich in Bezug auf die Aufteilung der einzelnen Segmente mit dem Care-Warranty-Dokument vergleichen. 
 Während auch das Adressfeld erneut normiert abgebildet ist, werden Kunden- und Fahrzeugdaten 
 über Schlüssel-Wert Anordnungen in einem größeren Feld dargestellt.
@@ -453,27 +453,27 @@ Die untere Hälfte des Werkstattauftrags besitzt gleicherweise wie die bereits a
 eine tabellenähnliche Auflistung der Job und Joblines. 
 Ebenfalls sind hier Überläufe und unterschiedliche Abstände in dem Bereich zu erkennen.
 Hinzu kommt, dass, im Gegensatz zu den anderen Dokumentarten, 
-zwischen den Zeilen ein Art Summenstrich hinzugefügt wird, der die Anzahl der Jobs anzeigen soll.
+zwischen den Zeilen ein Art Summenstrich hinzugefügt wird, der die Anzahl der Jobs anzeigt.
 Außerdem wird im unteren Bereich des Dokuments lediglich die gesamte Betragssumme gezeigt.
 
 Insgesamt lässt sich feststellen, dass alle hier vorgestellten Dokumentarten und ihre Hürden
-durch eine gemeinsame Problematik miteinander verbunden ist.
+durch eine gemeinsame Problematik miteinander verbunden sind.
 Die Darstellung der Kunden- und Fahrzeuginformationen wird entweder in einer Tabellenform 
 gemeinsam (siehe Abbildung~\ref{fig:care_g}) oder in zwei verschiedenen Tabellen (siehe Abbildung~\ref{fig:formel1_r}) abgebildet.
-Diese Tabellenform besitzt außerdem selten Trennlinien, welche geeignet sind, um eine derartige Tabelle als solche definieren zu können.
+Diese Tabellenform besitzt außerdem selten Trennlinien, welche essentiell sind, um eine derartige Tabelle als solche definieren zu können.
 Für die Liste der Job und Joblines tritt das gleiche Problem auf.
 
 Die Auflistung der Job und Joblines als Tabelle wird allein durch ihre Anordnung der Einträge 
 und deren Abstände dazwischen als solche erkenntlich, 
-jedoch bricht sie in den prototypischen Dokumenten aber mindestens (mind.) 
+jedoch bricht sie in den prototypischen Dokumenten aber mindestens 
 einmal die Form durch Überläufe oder Verschiebungen der Texte.
 Ein weiterer relevanter Aspekt, welcher übersehen werden kann, ist, dass die Aufträge mehr als eine Seite haben können.
 
-Dies tritt für Dokumente auf, welche eine längere Auflistung der Job und Joblines besitzen 
-und somit auf weiteren Seiten dargestellt werden muss.
+Dies tritt für Dokumente auf, welche eine längere Auflistung der Jobs und Joblines besitzen 
+und somit auf weiteren Seiten dargestellt werden müssen.
 Für die Extraktion der Liste muss daher auch überprüft werden, 
-ob sich diese über weitere Seiten erstreckt um sie zusammenzuführen und zu verarbeiten.
-Es ist festzustellen, dass verschiedene Tabellenstrukturen für unterschiedlichen Dokumentarten existieren.
+ob sich diese über weitere Seiten erstreckt, um sie zusammenzuführen und zu verarbeiten.
+Es ist festzustellen, dass verschiedene Tabellenstrukturen für unterschiedliche Dokumentarten existieren.
 Dieses Angelegenheit besteht, da bisher für Tabellen keine universelle Standardisierung definiert ist.
 
 Damit diese Formen durch eine Logik des Extrahierens abgedeckt werden, besteht die Möglichkeit der Fallunterscheidung.
@@ -481,7 +481,7 @@ Bei dieser Unterscheidung sollen die Dokumente anhand ihrer Arten konzipiert und
 sodass die Entnahme detaillierter stattfinden kann.
 Für andere Bereiche eines Dokuments wie dem Adressfeld werden gewöhnliche Funktionalitäten der Extraktion genutzt und zur Verfügung gestellt.
 Diese können dann von allen weiteren Dokumentarten geteilt und genutzt werden, 
-sodass eine Verallgemeinerung verschiedener Dokumententypen ermöglicht wird.
+sodass dadurch eine Verallgemeinerung verschiedener Dokumententypen ermöglicht wird.
 
 
 \subsection{Frameworks}\label{sec:frameworks}
@@ -502,12 +502,12 @@ die von Benutzer:innen definiert werden, konstruiert wird.
 Bekannt für die Erstellung eines solchen Systems ist das in der Programmiersprache C geschriebene Werkzeug \textit{CLIPS}\cite{clipsCLIPSToolBuilding}. 
 Dieses Werkzeug verfügt über eine eigene Syntax, welche von der Syntax  
 des von der Inference Corporation entwickelten Expertensystems \textit{ART} für die Regeln 
-und Fakten abgeleitet wurde und damit zahlreiche Gemeinsamkeiten beziehungsweise Ähnlichkeiten aufweisen.~\cite{haleyaiHaleyARTSyntax2008}. 
+und Fakten abgeleitet wurde und damit zahlreiche Gemeinsamkeiten und Ähnlichkeiten aufweisen.~\cite{haleyaiHaleyARTSyntax2008}. 
 Die Umsetzung wird ebenso mit dem Wrapper \textit{clipspy} für die Programmiersprache Python zur Nutzung bereitgestellt.
 
 Eine Alternative zu \textit{CLIPS}, die zeitlich danach entwickelt wurde, ist das Expertensystem \textit{NEXPERT OBJECT}, 
 das sich bis auf die Datenbankintegration nur marginal in der Nutzung der Regel- und Faktendefinitionen unterscheidet~\cite{https://doi.org/10.1111/j.1468-0394.1990.tb00164.x}
-und obendrein keine aktive Entwicklung und Wartung existiert. 
+und für das keine aktive Entwicklung und Wartung existiert. 
 Andere moderne Umsetzungen konzentrieren sich im Vergleich eher auf die als Regelinterpreter verstandene Inferenzmaschine.
 Projekte wie \textit{Pyke}~\cite{frederiksenWelcomePyke}, \textit{Durable Rules}~\cite{ruizDurableRules2022} oder \textit{Experta}~\cite{perezNilp0interExperta2022}, 
 dem Nachfolger von einem Expertensystem Framework namens \textit{pyKnow}, erlauben es, eine Regelmenge zu definieren 
@@ -516,7 +516,7 @@ und die einzelnen Regeln mit selbstdefinierten Funktionen zu koppeln.
 Für die Entwicklungsumgebung, die den Zugang zum System darstellen soll, 
 eignen sich sowohl Nutzungsschnittstellen beziehungsweise User Interface (UI) Bibliotheken für den Desktop als auch für den Webbereich.
 Die Priorität liegt hierbei bei der Erstellung der einzelnen Komponenten der graphischen Benutzungsoberfläche beziehungsweise der Graphical User Interface (GUI). 
-Folglich können Projekte wie \textit{Qt}~\cite{qtQtCrossplatformSoftware} und und das in C++ geschriebene \textit{ImGui}~\cite{omarDearImGui2022} Bibliotheken bereitstellen, 
+Folglich können Projekte wie \textit{Qt}~\cite{qtQtCrossplatformSoftware} und das in C++ geschriebene \textit{ImGui}~\cite{omarDearImGui2022} Bibliotheken bereitstellen, 
 die auf einer nativen Ebene funktionieren und demgemäß in verschiedenen Anwendungsfällen genutzt werden.
 Die letztere genannte Bibliothek benutzt intern einen Zustandsautomaten, um die Render-Pipeline darzustellen  
 (diese erfordert mehr Erfahrung mit der Grafikprogrammierung), dass jenes verwendet werden kann~\cite{furhtCreatingUserInterface2018}.
@@ -528,16 +528,17 @@ Weitere Kandidaten wie \textit{Svelte}~\cite{svelteSvelteCyberneticallyEnhanced}
 die Arbeit von dem Browser auf die Build Zeit umzulagern.
 
 Für das Teilsystem, welches den Ansatz des maschinellen Lernens nutzen soll, 
-sind gleicherweise hier ML-Frameworks eine geeignete Lösung.
+sind hier gleicherweise ML-Frameworks eine geeignete Lösung.
 Kandidaten sind die zurzeit konventionellen Frameworks wie \textit{TensorFlow}~\cite{tensorflowTensorFlow}, 
 \textit{pyTorch}~\cite{pytorchPyTorch}
 und \textit{spaCy}~\cite{explosionSpaCyIndustrialstrengthNatural}.
 Jene bieten für die Anwendungsgebiete unter anderem in der Bilderkennung, 
 der Computer Vision und des Neuro-Linguistische Programmieren (NLP) eine automatisierte Lösung an.
-Weitere neue Projekte wie \textit{Fonduer}~\cite{wu2018fonduer} fokussieren sich mit Hilfe von schwachem überwachten Lernen (weak supervised learning) 
+Weitere neue Projekte wie \textit{Fonduer}~\cite{wu2018fonduer} fokussieren sich mit Hilfe 
+von schwachem überwachten Lernen (weak supervised learning) 
 auf die Extraktion von umfangreichen formatierten Daten, worunter auch PDF Dokumente fallen.
 Dieser Lernansatz findet auch bei nicht vollständig beschrifteten Trainingsdaten einen Anwendungszweck~\cite{10.1093/nsr/nwx106}, 
-weswegen sich das für einfache Dokumente als praktisch erweisen kann.
+weswegen sich weak supervised learning für einfache Dokumente als praktisch erweisen kann.
 
 
 \chapter{Konzeption und Umsetzung}\label{chap:konundum} %KAPITEL
@@ -624,7 +625,7 @@ Der Interpreter kann mit Hilfe dieser Menge die Schlussfolgerungen in Form einer
 Vorwärtsverkettung oder Rückwärtsverkettung durchführen~\cite{5709916}. 
 
 Für den Kontext der Dokumentenextraktion bedarf es allein die Ausführung von Extraktionen und die Generierung neuer Fakten, 
-sobald die benutzerdefinierten Regeln mit den bereits vorhandenen Fakten erfüllt wurden, als Funktionalitäten.
+sobald die benutzerdefinierten Regeln mit den bereits vorhandenen Fakten erfüllt worden sind, als Funktionalitäten.
 
 Die in dieser Arbeit vorgestellten Bibliotheken gehen mit einem größeren Aufwand der Implementierung einher, 
 da jene Bibliotheken weitere Softwareabhängigkeiten zur Folge haben.
@@ -663,7 +664,7 @@ Sie kann als Bounding Box (bbox) mit den X und Y Koordinaten für die jeweiligen
 Eine weitere Eigenschaft, die sich aus der Positionierung schließen lässt, ist die Dokumentenseite. 
 Bei den selektierten Dokumenten treten jeweils mehrere Seiten auf, wenn die Liste der Jobs und Joblines so viele Einträge besitzt, 
 dass diese nicht auf eine Seite passen. 
-Aus diesem Grund ist die Seitennummer,die den Funktionen neben den Bounding Boxen mitgegeben werden, relevant für die Beschreibung des Zielbereiches. 
+Aus diesem Grund ist die Seitennummer, die den Funktionen neben den Bounding Boxen mitgegeben werden, relevant für die Beschreibung des Zielbereiches. 
 Diese Seitennummern können den Funktionen neben den Bounding Boxen mitgegeben werden.
 Daraus folgend werden diese zwei Eigenschaften — die der Positionierung und die der Seitennummer — als notwendige Bedingung für jegliche Extraktionsbereiche behandelt und 
 damit für die Logik der Methoden durch die Parametereingabe als gegeben gesehen. 
@@ -671,20 +672,20 @@ damit für die Logik der Methoden durch die Parametereingabe als gegeben gesehen
 Für die Umsetzung der einzelnen Funktionen wird die vorgestellte Bibliothek PdfPlumber benutzt, 
 um für die jeweiligen Extraktionsziele mit verschiedenen Methoden die Daten zu erhalten. 
 Die Methoden nutzen dann die Angaben der Seitennummer und der Bounding Box, 
-sodass der Bereich der Extraktion zunächst eingeschränkt werden kann.
+sodass der Bereich der Extraktion zunächst limitiert werden kann.
 Mit dem ausgewählten Bereich werden dann die Funktionalitäten für die Text- oder Tabellenextraktion aufgerufen.
 
 Bei den prototypischen Dokumenten fällt vorerst die hinderliche Tabellenextraktion von unkonventionellen Tabellen 
 und indirekt von benutzerdefinierten Tabellen auf:
 Die Bibliotheken können diese Tabellen mit den dafür konzipierten Funktionen nicht erkennen 
-beziehungsweise von diesen keine strukturellen Daten, die die Tabellen abbilden sollen, erhalten.
+und dadurch von diesen keine strukturellen Daten, die die Tabellen abbilden sollen, erhalten.
 Um dies zu umgehen, werden als Lösungswege die unkonventionellen und die benutzerdefinierten Tabellen 
-zunächst als reine Texte extrahiert und danach werden die Einträge der jeweiligen Felder mit Hilfe von regulären Ausdrücken gefiltert.
+zunächst als reine Texte extrahiert und danach die Einträge der jeweiligen Felder mit Hilfe von regulären Ausdrücken gefiltert.
 
 Auch wenn der Bereich durch die Bounding Box umrahmt ist, kann der Bereich nicht relevante Texte besitzen, 
 die die Verarbeitung erschweren.
 Demzufolge werden weitere Eigenschaften wie die Angabe eines Start- und Endankers benötigt, um lediglich die Zeilen aus dem Rohtext zu erhalten.
-Da bei den elektronisch verarbeiteten Dokumente die Tabellen als Texte mit Zeilenumbrüchen verfasst sind, 
+Da bei den elektronisch verarbeiteten Dokumenten die Tabellen als Texte mit Zeilenumbrüchen verfasst sind, 
 können die Zeilenumbrüche genutzt werden, sodass aus den Zeilen eine Liste generiert wird.
 Die Liste wiederum wird mit regulären Ausdrücken weiter verarbeitet. 
 In Folge dieser Verarbeitung erhalten die Daten durch Zuweisungen eine strukturierte Form 
@@ -754,7 +755,7 @@ Diese Syntax bildet mit Hilfe von Schlüsselwörtern die Ausdrücke für Regeln 
 Python ermöglicht es Texte mittels der integrierten \(eval()\) Funktion zu evaluieren und, falls es sich um eine Python Aussage handelt, 
 diese auch auszuführen.
 Die Funktion \( literal\_eval()\) aus dem Python-Modul \textit{Abstract Syntax Tree} (ast) besitzt 
-die selbe Funktionalität mit einer eingeschränkten Untermenge für die Python Ausdrücke.
+dieselbe Funktionalität mit einer eingeschränkten Untermenge für die Python Ausdrücke.
 Hierbei werden bei beiden Funktionalitäten die Texteingaben mit Hilfe des Parsings in abstrakte Syntaxbäume abgebildet, 
 die die daraus generierten Terminale und Operatoren beinhalten.
 Bibliotheken, wie die von Google entwickelte Software Common Expression Language (CEL) erlauben 
@@ -821,7 +822,7 @@ Hierzu wird eine Grammatik benutzt, dergleichen die Ausdrücke mit Hilfe von Reg
 Das für dieses Projekt entwickelte regelbasierte System für die Komponente der symbolischen KI 
 bedarf Regeln in Form von Booleschen Ausdrücken.
 Damit das regelbasierte System die Ausdrücke für die Regeln und Fakten gleicherweise auswerten kann, 
-bedarf es eine für den Anwendungsfall angepasste Definition einer Grammatik.
+braucht es eine für den Anwendungsfall angepasste Definition einer Grammatik.
 Zu diesem Zweck nutze ich die Parsing Bibliothek Lark. 
 Jene erlaubt die Erstellung einer kontextfreien Grammatik in der Erweiterten-Backus-Naur-Form (EBNF). 
 Basierend auf dieser Bibliothek werden unter der Nutzung eines LALR-Parsers 
@@ -873,7 +874,7 @@ Dieses Modul besteht aus den Klassen für den Regelinterpreter und den Regelspei
 Während die Regelinterpreter-Klasse die konkrete Logik der Vorwärtsverkettung beinhaltet, 
 kümmert sich die Regelspeicher-Klasse um das Bereitstellen und um die Speicherung der Regeln und Fakten.
 Softwaretechnisch wird für diese Speicher-Klasse das Singleton Entwurfsmuster benutzt, 
-womit die Regelmaschine nur eine Regelspeicher Instanz referenzieren kann.
+mit diesem die Regelmaschine nur eine Regelspeicher Instanz referenzieren kann.
 Dadurch ist ein fester Zustand der Regel- und Faktenmenge gegeben.
 
 Die Speicherung der Regeln und Fakten kann über den persistenten Ansatz der Datenbanken ermöglicht werden.
@@ -1002,7 +1003,7 @@ und mit deren Hilfe die Größen der verschiedenen Bereiche verändert werden k�
 Eine wichtige Eigenschaft ist die Nutzung eines State-Management-Systems unter Zuhilfenahme der Bibliothek \(Pinia\)~\cite{piniaPinia}.
 Dies ermöglicht das Zwischenspeichern der einzelnen Zustände der Komponenten, 
 die dem Server mitgeteilt werden kann, oder das Erhalten des letzten Zustands für das Neuladen der Webanwendung.
-So können beim initialen Aufruf die letzten Werte geladen, womit diese Anwendung offline-fähig dargestellt werden kann.
+So können beim initialen Aufruf die letzten Werte geladen werden, sodass diese Anwendung offline-fähig dargestellt werden kann.
 
 \subsection{Editor}\label{sec:editor}
 
@@ -1013,9 +1014,9 @@ Im Rahmen des Projekts wurde sich für die Nutzung des Monaco-Editor entschieden
 welches die Kernkomponente des Editors Visual Studio Code~\cite{microsoftVisualStudioCode} darstellt 
 und unabhängig von ihr als Open-Source Projekt bereitgestellt wird.
 
-Die folgenden Eigenschaften führten zu der Auswahl:
+Die folgenden Eigenschaften führten zu dieser Auswahl:
 Der Monaco-Editor bietet viele Funktionalitäten für eine angenehme Bearbeitung, darunter die Autovervollständigung 
-durch IntelliSense, Textsuche und Code Linting.
+durch IntelliSense, Textsuche und Code Linting an.
 Die Bibliothek wird durch eine weite Community gewartet, 
 besitzt allerdings einen hohen Umfang des Software-Bundlings und 
 erlaubt auch keine Lazy Loading der Funktionalitäten als Entwurfsmuster.
@@ -1032,7 +1033,7 @@ Hier wird zunächst ein Request zum Laden der Einträge des ausgewählten Dokume
 Als Callback wird daraufhin festgelegt, dass nach jeder Textänderung wenige Sekunden später ein Request 
 für die Speicherung dieser Änderungen zu dem jeweiligen Dokumententyp geschickt wird. 
 Somit werden die Zustände der Konfiguration auf der Server Seite festgehalten.
-Auf der Benutzungsoberfläche wird dann Texteditor angezeigt, der auch die Navigation über Tabs unterstützt.
+Auf der Benutzungsoberfläche wird dann der Texteditor angezeigt, der auch die Navigation über Tabs unterstützt.
 So können die Regeln und Fakten in einem Tab oder in zwei getrennte Tabs gehalten werden, 
 was wiederum eine übersichtlichere Aufteilung verschafft.
 
@@ -1048,7 +1049,7 @@ Daneben ist das Vor- und Zurückblättern mit zwei Knöpfen beziehungsweise das 
 
 Damit die Positionierung des zu extrahierenden Bereichs konfiguriert werden kann, 
 helfen die Koordinaten, die abhängig des Mauszeigers als Referenzpunkt angezeigt werden.
-Dies wurde dynamisch mit der Hover-Funktion umgesetzt, womit die Benutzer:innen direkt die X- und Y-Koordinaten erhalten können.
+Dies wurde dynamisch mit der Hover-Funktion umgesetzt, mit dieser die Benutzer:innen direkt die X- und Y-Koordinaten erhalten können.
 Außerdem soll die Anzeige im Zusammenspiel mit dem Editor es ermöglichen, 
 die Bounding Box eines Bereichs durch das Ziehen mit der Maus 
 auf der ausgewählten Seite zu generieren und diese in eine ausgewählte Stelle im Editor einzusetzen.
@@ -1063,9 +1064,9 @@ und ermöglicht damit eine genauere Betrachtung für die Benutzer:innen.
 Hierbei werden sowohl die konkreten Ergebnisse des Durchlaufs der Regeln als 
 auch die Ergebnisse der Auswirkungen der Änderungen angezeigt.
 
-Beim zweiten Fenster werden Informationen, die abseits von Ergebnisse, wie Zustände des Systems oder Fehlermeldungen.
+Beim zweiten Fenster werden Informationen, die abseits von Ergebnissen, wie Zustände des Systems oder Fehlermeldungen angezeigt.
 Dieses Fenster soll es ermöglichen, einen aktuellen Zustand und eine Rückmeldung zu präsentieren, 
-womit die Mensch-Computer-Interaktion verbessert wird und die Nutzungsbarriere zum System niedriger wird.
+sodass im Zuge dessen die Mensch-Computer-Interaktion verbessert und die Nutzungsbarriere zum System niedriger wird.
 Unter den Zuständen zählen die erfolgreiche Inbetriebnahme, Hinweise zur Nutzung und Fehlermeldungen, 
 die im System auftreten potentiell können.
 
@@ -1076,60 +1077,61 @@ bedarf es nun die Konzeption und Umsetzung des Machine-Learning-Ansatz.
 Für die gleiche Problematik, die bereits von dem Teilsystem der symbolischen KI thematisiert und verarbeitet wurde, 
 soll mit dem Ansatz ein weiterer Lösungsweg zur Bewältigung dieser gewählt werden.
 
-Für das maschinelle Lernen existieren unter anderem die Arten des überwachten Lernens (supervised Learning) 
+Neben dem maschinellen Lernen existieren unter anderem die Arten des überwachten Lernens (supervised Learning) 
 und des nicht überwachten Lernens (unsupervised Learning).
-Beide haben ihre Einsatzgebiete, so auch im Falle der Dokumentenextraktion.
-Hierbei zählen in dem Bereich der Extraktion verschiedene Dokumentarten wie Text- oder HTML Dokumenten hinzu, 
+Beide haben ihre Einsatzgebiete auch innerhalb der Dokumentenextraktion.
+Hierbei zählen zu dem Bereich der Extraktion verschiedene Dokumentarten wie Text- oder HTML Dokumenten hinzu, 
 bei welchem die letztere genannte Art 
-präzise Ergebnisse über die Methoden des überwachten Lernens verschafft~\cite{gopinath2018automatic}.
-Nicht überwachtes Lernen hat im Gegensatz bei Dokumenten, die kein Labeling besitzen, einen höheren Wirksamkeit.
+präzise Ergebnisse bei der Verwendung der Methoden des überwachten Lernens verschafft~\cite{gopinath2018automatic}.
+Nicht überwachtes Lernen hat im Gegensatz zu Dokumenten, die kein Labeling besitzen, einen höheren Wirksamkeit.
 
 Über beide Arten des maschinellen Lernens können Daten strukturiert und modelliert werden.
 Doch existieren neben den weit verbreiteten zwei Kategorien auch weitere Bereiche im Machine Learning.
-Das semi-überwachtes Lernen verhilft das Labeling durch weitere Annahmen der Struktur, 
-durch semi-überwachte Klassifikation und durch eingeschränktes Clustering zum Durchbruch~\cite{zhu2009introduction}.
-Das schwache überwachte Lernen baut als Technik die Datenmodelle über neu generierte Daten.
-Dies ist für den Fall geeignet, wenn man mit neuen Daten aus Dokumenten arbeiten will.
-Für diesen Ansatz ergibt die Bibliothek Fonduer mit der Erstellung einer Pipeline Struktur einen neue Lösungsmöglichkeit.
+Das semi-überwachte Lernen verhilft das Labeling durch weitere Annahmen der Struktur 
+unter Zuhilfenahme von semi-überwachter Klassifikation und durch eingeschränktes Clustering zum Durchbruch~\cite{zhu2009introduction}.
+Das schwache überwachte Lernen verwendet als Technik die Datenmodelle über neu generierte Daten.
+Dies ist für den Fall vorgesehen, wenn man mit neuen Daten aus Dokumenten arbeiten möchte.
+In solch einem Fall eröffnet die Bibliothek Fonduer mit der Erstellung einer Pipeline-Struktur eine neue Lösungsmöglichkeit.
+
 
 \subsection{Pipeline}\label{sec:pipe}
 
-Fonduer setzt den Machine Learning Ansatz mit Hilfe der Kategorie 
+Fonduer setzt den Machine-Learning-Ansatz mit Hilfe der Kategorie 
 eines abgeschwächten überwachten Lernen (weak supervised learning) um.
-Genauer beschrieben, wird hier die Idee des Knowledge Base Construction (KBC), 
+Genauer gesagt wird hier die Idee des Knowledge Base Construction (KBC), 
 also des Aufbaus einer Wissensbasis über stark formatierte Daten verfolgt.
 Diese Wissensbasis wird über eine Datenbank abgebildet, die die Daten strukturiert bereithält.
-Daher besteht für die Nutzung dieser Bibliothek eine Abhängigkeit zu dem Datenbanksystem PostgreSQL~\cite{elmasriFundamentalsDatabaseSystems2007}. 
+Daher besteht für die Nutzung dieser Bibliothek eine Abhängigkeit von dem Datenbanksystem PostgreSQL~\cite{elmasriFundamentalsDatabaseSystems2007}. 
 Des Weiteren wird die Bibliothek spaCy genutzt, weswegen die Sprachmodelle für die deutsche Sprache 
-in dem Dockerfile des Teilsystems mit geladen und verlinkt werden.
+in dem Dockerfile des Teilsystems mitgeladen und verlinkt werden.
 Über die Kompositionsdatei von Docker werden dann die Container für die Machine-Learning Komponente 
 und die dazugehörige Datenbank virtuell aufgesetzt und mit dieser entwickelt.
 
-Damit dies auch für vielschichtige Daten geht, wird hier ein spezielles Datenmodell benutzt, 
+Damit dies auch für vielschichtige Daten funktioniert, wird hier ein spezielles Datenmodell benutzt, 
 welches die Dokumente und ihre Besonderheiten darstellt.
 So fallen verschieden Formate von Dokumenten wie XML, HTML und auch PDF unter dem Begriff der reichlich formatierten Daten.
 Hier sollen die textlichen, visuellen und strukturellen Eigenschaften der Dokumente mit ihrer semantischen Informationen 
 verbunden werden, um sie für die weitere Verarbeitung zu nutzen. 
-Diese Eigenschaft wird als Multimodalität bezeichnet und taucht in der Prozesskette an verschiedenen Stellen auf.
+Diese Eigenschaft wird als Multimodalität bezeichnet und existiert in der Prozesskette an verschiedenen Stellen.
 
 Die Eingabe für das Teilsystem findet in Form der Dokumente statt.
 Auch für dieses Teilsystem wird sich auf die Dokumente bezogen, die im Rahmen der Thesis betrachtet werden.
 Hierfür werden, wie auch im anderen Extraktionssystem, die PDF-Dokumente in ihre drei Dokumenttypen unterteilt.
-Die Menge der Dokumente für die jeweilige Art unterscheiden sich in ihre Dimension:
+Die Menge der Dokumente für die jeweilige Art unterscheiden sich in ihrer Dimension:
 Für die Dokumente der Care Garantieaufträge ist die Anzahl der Elemente dreistellig, für die Formel1 Rechnung vierstellig 
 und für die KFZ300 Rechnung fünfstellig. 
 Dies soll eine Relation der Verarbeitung ermöglichen und damit einen zeitlichen Zeitverlauf darstellen.
 
 Der Durchlauf von den Eingabedaten zu der Erstellung des Machine-Learning Modells wird als Pipeline bezeichnet.
 In Abbildung~\ref{fig:fpipeline} wird die komplette Pipeline für die Verarbeitung des maschinellen Lernens dargestellt.
-So sind die einzelnen Phasen in zwei Kategorien aufgeteilt zu sehen. 
+So sind die einzelnen Phasen — aufgeteilt in zwei Kategorien — zu sehen. 
 Die erste Hälfte der Phasen ist statisch vorgegeben und kann strukturell nicht verändert werden.
 Bei der zweiten Hälfte sind Eingriffe der Benutzer:innen beziehungsweise 
 bei den Entwickler:innen möglich um die Datenmodelle zu präzisieren.
 Insgesamt sind die fünf Phasen relevant, die in der Hauptfunktionalität im Teilsystem umgesetzt wurden:
-In der ersten Phase wird zunächst die KBC über ein spezielles Schema und 
-daraus folgenden über die iterative Erstellung eines Eingabekorpus initialisiert.
-Dafür wird die Hostadresse der benötigten Datenbank angegeben und diese einer Meta-Objekt, welcher die Brücke zur Persistenz darstellt, übergeben, 
+In der ersten Phase wird zunächst die KBC über ein spezielles Schema
+und die daraus folgenden iterative Erstellung eines Eingabekorpus initialisiert.
+Dafür wird die Hostadresse der benötigten Datenbank angegeben und dergleichen einem Meta-Objekt, welches die Brücke zur Persistenz darstellt, übergeben, 
 um die Datenbank parallel zu starten.
 
 \begin{figure}[htb]
@@ -1142,52 +1144,54 @@ um die Datenbank parallel zu starten.
 Die multimodale Datenmodellierung wird in dieser Phase durch das parallele Parsen der Dokumente ermöglicht, 
 welches inhaltliche, strukturelle, tabellarische und visuelle Informationen bereit hält.
 Für das Parsing findet hierbei die Nutzung der HOCRDocPreprocessor-Klasse statt, 
-welches den Pfad der zu übersetzenden Dateien bei Instanziierung mitgegeben wird.
+welche den Pfad der zu übersetzenden Dateien bei Instanziierung mitgegeben wird.
 Als Zwischenschritt werden die PDF-Dokumente als HOCR Dateien, einem Optical Character Recognition (OCR) Datenformat, 
 welches auf HTML aufbaut, mittels einer internen Klasse übersetzt.
-Ein weiterer Weg wäre dies über den HTMLPreprocessor umzusetzen, was aber bei digital verarbeiteten Dateien nicht von der 
+Ein weiterer Weg wäre es, dies über den HTMLPreprocessor umzusetzen, was aber bei digital verarbeiteten Dateien nicht von der 
 Dokumentation empfohlen wird.
 
-Als nächstes wird der Korpus-Parser benutzt der mit Hilfe der Bibliothek spaCy die Dokumente in einzelne Sätze und Tokens aufteilt 
-und über weitere Parametrisierung die Inklusion der strukturellen und sprachlichen Informationen angegeben wird.
+Als nächstes wird der Korpus-Parser benutzt, der mit Hilfe der Bibliothek spaCy die Dokumente in einzelne Sätze und Tokens aufteilt 
+und über weitere Parametrisierung die Inklusion der strukturellen und sprachlichen Informationen angibt.
 In der zweiten Phase werden Mentions, welche die potentiellen Kandidaten für die Datenextraktion darstellen, definiert.
-In dem Anwendungsfall des Projekts wird für jedes Feld, die sich in den Aufträgen und den Rechnungen befinden 
-und extrahiert werden sollen, eine Mentions festgelegt.
-Beispiele hierfür wären, wie aus dem Teilsystem der symbolischen KI bereits bekannt, die Jobs, die Reparaturzeiten, 
+In dem Anwendungsfall des Projekts wird für jedes Feld, das sich in den Aufträgen und den Rechnungen befindet 
+und extrahiert werden soll, eine Mentions festgelegt.
+Beispiele hierfür sind, wie aus dem Teilsystem der symbolischen KI bereits bekannt, die Jobs, die Reparaturzeiten, 
 die Fahrzeugmodelle und die Jobbeschreibungen.
 
 Damit diese Mentions auch vollwertige Kandidaten des Extraktionsziels werden, bedarf es die Definitionen von Matchers, 
-die über eine Filterangabe eine präzise Erkennung ergeben sollen,
-Die Matchers gibt es in verschiedenen Variationen, in diesem Anwendungsfall 
-wird sich für die Filterung über reguläre Ausdrücke entschieden, da diese bei der symbolischen KI ihre Anwendungen fanden.
-So wird zu jedem Mention Objekt ein Matcher Objekt entwickelt.
-Dazu kommen noch jeweils Definitionen für die N-Gramm Darstellung der Mention-Objekte um so die Größe der Fragmente festzulegen.
+die über eine Filterangabe eine präzise Erkennung geben sollen.
+Die Matchers gibt es in verschiedenen Variationen. 
+In diesem Anwendungsfall wird sich für die Filterung über reguläre Ausdrücke entschieden, 
+da diese bei der symbolischen KI ihre Anwendungen finden.
+So wird zu jedem Mention-Objekt ein Matcher-Objekt entwickelt.
+Dazu kommen noch jeweils Definitionen für die N-Gramm Darstellung der Mention-Objekte, um so die Größe der Fragmente festzulegen.
 
 Damit die Extraction der Mentions mit all diesen zusätzlichen Einschränkungen stattfinden kann, 
 wird ein MentionExtractor-Objekt definiert, 
 welches die Mentions und deren Matchers und N-Gramms mitgegeben wird, 
 um mit dieser Kombination an Informationen die erwünschten Daten zu extrahieren.
-Nachdem dieses Informationen auf das MentionExtractor-Objekt angewendet werden, 
+Nachdem diese Informationen auf das MentionExtractor-Objekt angewendet werden, 
 wird das Schema der Kandidaten für die Extraktion angegeben.
-Hierfür definieren für jede Dokumentenart eine eigene Unterklasse der Candidate-Klassen,
-So definieren wir ein Warranty-Objekt für die Care Aufträge, ein Invoice-Objekt für die Formel1 Rechnungen 
-und ein Invoice-Objekt für die KFZ3000 Rechnungen.
-Diese bekommen wie bei der Mentions-Klasse, die selben Matcher übergeben.
+Hierfür braucht es eine Definition für jede Dokumentenart und ihre eigene Unterklasse der Candidate-Klassen.
+Folglich wird ein Warranty-Objekt für die Care-Aufträge, ein Invoice-Objekt für die Formel 1 Rechnungen 
+und ein Invoice-Objekt für die KFZ3000 Rechnungen definiert.
+Diesen wird wie bei der Mentions-Klasse dieselben Matcher überreicht.
 
-Dazu werden Throttlers, Funktionen die als weitere starke Filter fungieren, 
+Dazu werden Throttlers, das sind Funktionen, die als weitere starke Filter fungieren, 
 definiert, um die Genauigkeit der validen Extraktionskandidaten zu ermöglichen. 
-In diesem Anwendungsfall definieren wir Throttlers, die sich mit den Ausrichtungen der verschiedenen Einträgen beschäftigen.
+In diesem Anwendungsfall definieren wir daher Throttler-Objekte, 
+die sich mit den Ausrichtungen der verschiedenen Einträgen beschäftigen.
 So wird zum Beispiel überprüft, ob die Kandidaten für die Reparaturzeiten, 
 der Beschreibung und der Menge horizontal zueinander ausgerichtet sind.
 Nachdem dies festgelegt ist, werden diese Paradigmen in einem CandidateExtractor-Objekt kombiniert und angewendet.
 Für die Anwendung werden die Dokumente in Trainings- und Testsätze unterteilt.
 
 In der dritten Phasen werden den Kandidaten der Trainings- und Testsätzen durch multimodale Featurisierung Merkmale annotiert.
-Hierfür wird ein Featurizer-Objekt definiert, welches die Verbindung zur Datenbank 
-und den Kandidaten der jeweiligen Dokumentenart übergeben bekommt.
-Für die vierte Phase findet das schwache überwachte Lernen und die Klassifikation über Labeling-Funktionen statt.
+Hierfür wird ein Featurizer-Objekt definiert, welchem die Verbindung zur Datenbank 
+und den Kandidaten der jeweiligen Dokumentenart übergibt wird.
+In der vierten Phase findet das schwache überwachte Lernen und die Klassifikation über Labeling-Funktionen statt.
 Dafür werden diese Funktionen, welche weitere Bedingungen für die Kandidaten stellen und 
-die es zu erfüllen gilt, definiert, um als wahrhaftiger Kandidat weiterverarbeitet zu werden.
+die es zu erfüllen gilt, definiert, um als valider Kandidat weiterverarbeitet zu werden.
 
 Die Labeling Funktionalitäten werden hierbei durch die Bibliothek Snorkel zur Verfügung gestellt, 
 welche das Labeling der Trainingssätze durch das schwache maschinelle Lernen schneller und günstiger der Ressourcenkosten gestaltet~\cite{Ratner_2017}.
@@ -1226,7 +1230,7 @@ Daher reichen zunächst einfache Funktionsmuster, die die tabellarischen Eigensc
 wie zum Beispiel der Fahrzeugmodellnamen, des Kfz-Kennzeichens und des zuletzt abgelesen Kilometerzählerstands, überprüfen.
 Stehen die Labeling Funktionen, können diese auf das Labeler-Objekt angewendet werden.
 Hierbei können weitere Statistiken des Vorgangs als Feedback mitgegeben werden.
-Ist das Training abgeschlossen, werden als Nächstes in der Pipeline die Labeling-Funktionen modelliert, 
+Ist das Training abgeschlossen, werden als nächstes in der Pipeline die Labeling-Funktionen modelliert, 
 sodass Konflikte betrachtet werden können.
 Mit Wahrscheinlichkeitsberechnungen werden dann weitere Labels auf die Trainingssätze angewendet, 
 sodass danach ein generatives Modell angelernt ist.
@@ -1234,7 +1238,7 @@ sodass danach ein generatives Modell angelernt ist.
 Dies ermöglicht dem System und der Entwicklung iterativ die Labeling Funktionen für eine höhere Genauigkeit zu verbessern.
 Hierfür müssen die Konflikte und die Überlappungen programmatisch weiter überprüft werden.
 Für das weitere Training der Datensätze wird das discriminative Modell durch Regression antrainiert.
-Dafür benutzt Fonduer das Machine-Learning Framework Emmental, welches die Funktionalitäten für die Modellierung bereitstellt~\cite{wu2019emmental}.
+Dafür benutzt Fonduer das Machine-Learning Framework Emmental, das die Funktionalitäten für die Modellierung bereitstellt~\cite{wu2019emmental}.
 In diesem Prozess werden weitere Tokens und Rauschproben generiert, damit das Modelltraining unterstützt wird.
 Zum Schluss können die Testsätze mit ihrem Labeling genutzt werden, um die Vorhersage durch das Training der KI zu evaluieren.
 
@@ -1243,50 +1247,52 @@ Zum Schluss können die Testsätze mit ihrem Labeling genutzt werden, um die Vor
 Damit die Steuerung der künstliche Intelligenz des maschinellen Lernens und ihre Funktionalitäten gegeben ist, 
 wird die Kommunikation der Teilsysteme benötigt.
 Diese Kommunikation findet über das interne Netzwerk statt und ermöglicht damit auch die Interaktion der Docker Container Umgebung.
-Damit diese nötigen Eigenschaften für das Teilsystem erfüllt werden können, 
-wird der selbe Ansatz des als erstes vorgestelltes Teilsystems umgesetzt.
-Das bedeutet, dass sich für die Nutzung der WSGI Schnittstelle entschieden wurde, 
-was auch die Verwendung einer Flask Anwendung als Webserver zur Folge hat. 
+Dass diese nötigen Eigenschaften für das Teilsystem erfüllt werden können, 
+wird derselbe Ansatz des als erstes vorgestelltes Teilsystems umgesetzt.
+Das bedeutet eine Nutzung der WSGI Schnittstelle,  
+die auch die Verwendung einer Flask Anwendung als Webserver zur Folge hat. 
 
 So wird auch eine Factory-Methode für verschiedene Anwendungsfälle, 
-wie unter anderem für die Continuous Integration, bereitgestellt.
+wie unter anderem die Continuous Integration, bereitgestellt.
 Die Entwicklungsumgebung erlaubt hierbei das Starten der Verarbeitung der Trainingsdaten,
 weswegen sich hier die die Funktionalität nur auf den Durchlauf mittels des Machine-Learning-Ansatzes reduziert.
 
 
 \chapter{Ergebnisse}\label{chap:erg}
 
-Das Projekt hat verschiedene Merkmale der Problematik hervorgehoben.
-So wurde durch die Analyse gezeigt, dass eine weitere Verarbeitung der aus den Autohäusern entstandenen Dokumente 
-einen sinnvollen Anwendungsbereich für das von den Mitarbeiter:innen genutzte ERP-System verfügt.
-Des Weiteren ist aufgefallen, dass die Dokumente, auf die sich im Rahmen der Thesis eingeschränkt wurden, 
-viele verschiedene Formen besitzen beziehungsweise teilweise beliebig gewählt werden können.
-Des Weiteren liegen die Unterschiede bei der Mehrheit in den Details der einzelnen Extraktionsbereiche.
-Das Data-Mining dafür erwies sich mit den passenden Extraktionsbibliothek als hilfreich, 
-da die Daten für das System und deren Logik greifbarer waren.
+Nachdem ich nun im bisherigen Verlauf meine Vorgehensweise und Durchführung geschildert habe, zeige ich nun meine Ergebnisse:
 
-Eine Anpassung für die Definitionen der Formen muss in der symbolischen künstlichen Intelligenz 
+Mein Projekt hat insgesamt verschiedene Merkmale meiner eingangs geschilderten Problematik hervorgehoben.
+So wurde im Zuge meiner Analyse zuerst gezeigt, dass eine weitere Verarbeitung der aus den Autohäusern entstandenen Dokumente 
+ein sinnvoller Anwendungsbereich für das von den Mitarbeiter:innen genutzte ERP-System ist.
+Des Weiteren wurde deutlich, dass die Dokumente, auf die ich mich im Rahmen der Thesis beschränkt habe, 
+viele verschiedene Formen besitzen und teilweise beliebig gewählt werden können.
+Die Unterschiede zwischen den einzelnen Dokumenten liegen mehrheitlich in den Details der einzelnen Extraktionsbereiche.
+Das Data-Mining dafür erwies sich mit der passenden Extraktionsbibliothek als hilfreich, 
+da die Daten für das System und deren Logik greifbarer und leichter zu verarbeiten waren als zum Beispiel über gängige OCR Erkennung.
+
+Eine Anpassung an die Definitionen des Dokumentenmusters muss in der symbolischen künstlichen Intelligenz 
 durch eine Kategorisierung in Dokumentarten vorgenommen werden.
-Außerdem fiel auf, dass sowohl die Definitionen von Tabellen in elektronisch verarbeiteten Dokumenten, 
-als auch die Erkennung dieser Tabellen sich als umständlich erweist.
+Im Zuge dieser Anpassung fiel auf, dass sowohl die Definitionen von Tabellen in elektronisch verarbeiteten Dokumenten, 
+als auch die Erkennung dieser Tabellen sich als recht umständlich erweist, da die nötige Standardisierung einer Tabelle fehlte.
 Verschiedene Semantiken für die einzelnen vorgestellten Felder benötigen eine weitere Differenzierung der Extraktion.
-So bedarf es zunächst Analysen der Struktur und des Kontexts um eine angemessene Verarbeitung zu ermöglichen.
-
-Das System, dass im Rahmen dieser Thesis entwickelt wurde, erwies sich als Prototypen umsetzbar.
-Die Struktur für die Teilsysteme wurde durch eine container-getriebene Entwicklung modular gehalten 
-und sorgte durch die Architektur für eine gemeinsame Kommunikationsebene für diese Komponenten.
-So konnte ein Projekt aufgesetzt werden, welches die neuesten Technologien in den Bereichen, in denen diese agieren, 
-nutzen um die erwünschten Extraktionsziele zu erhalten oder eine Annäherung mindestens zu erreichen. 
+So bedarf es zunächst Analysen der Struktur und des Kontexts, um eine angemessene Verarbeitung zu ermöglichen.
 Texte und Tabellen können über Regel- und Faktendefinitionen extrahiert werden 
 und übersichtlich in einer Webanwendung dargestellt werden.
 
-Der Webansatz für die Entwicklungsumgebung zeigt bis auf die zusätzliche Build-Zeit 
+Das System, das ich im Rahmen dieser Thesis entwickelt habe, erwies sich als Prototyp späterer Systeme mit derselben Aufgabe.
+Die Struktur für die Teilsysteme wurde durch eine container-getriebene Entwicklung modular gehalten 
+und sorgte durch die Architektur für eine gemeinsame Kommunikationsebene für diese Komponenten.
+So konnte ein Projekt aufgesetzt werden, welches die neuesten Technologien in den Bereichen, in denen diese vorkommen und agieren, 
+nutzte, um die erwünschten Extraktionsziele zu erhalten oder mindestens eine Annäherung zu erreichen. 
+
+Der Webansatz für die Entwicklungsumgebung zeigte bis auf die zusätzliche Build-Zeit 
 während des initialen Ladens eine konsistente Verwendung und kein fehlerhaftes Verhalten auf. 
-Die Entwicklung einer Grammatik war wirksam für den Anwendungsfall, 
-da sich dadurch eine Sprache für die Ausdrücke entwickeln ließ, 
-mit welcher die Benutzer:innen beziehungsweise die Entwickler:innen schnelle und simple Regeln konfigurieren konnten.
+Zudem war die Entwicklung einer Grammatik für den Anwendungsfall wirksam, 
+da sich durch die Entwicklung eine Sprache für die Ausdrücke entwickeln ließ, 
+mit welcher die Benutzer:innen und die Entwickler:innen schnelle und simple Regeln konfigurieren konnten.
 Die Verarbeitung der Dokumente wird durch die daraus generierten Webanfragen ermöglicht, 
-womit der Durchstich der Funktionalitäten stattfindet.
+sodass der Durchstich der Funktionalitäten stattfindet.
 
 Des Weiteren können die Unterschiede bei Veränderungen der Regeln und Fakten angezeigt werden, 
 was die iterative Entwicklung dieser Konfigurationen anbietet.
@@ -1297,10 +1303,10 @@ Dafür wurden für jede Dokumentenart Trainings- und Testsätze der Dokumente ge
 um die Supervision und Klassifikation zu nutzen.
 
 Die Datenbank wurde mit Informationen durch die KI befüllt, wodurch sowohl Tabellen für die Erwähnungen und Kandidaten, 
-als auch für die einzelnen Felder die für die Extraktionsfunktionalität definiert wurden, erstellt.
-Hierbei wurde beobachtet, dass über einen längeren Zeitverlauf die Tabellen der Sätze und Paragraphen zuerst genutzt wurden, 
+als auch für die einzelnen Felder, die für die Extraktionsfunktionalität definiert wurden, erstellt.
+Hierbei habe ich beobachtet, dass über einen längeren Zeitverlauf die Tabellen der Sätze und Paragraphen zuerst genutzt wurden, 
 um die multimodale Modellierung der Dokumente abzubilden.
-Für den weiteren Verlauf zeigte sich aber auch, dass das genutzte Machine-Learning Framework sehr ressourcenfressend ist.
+Für den weiteren Verlauf zeigte sich aber auch, dass das genutzte Machine-Learning Framework sehr viele Ressourcen benötigt.
 Trotz Virtualisierung traten bei einem längeren Trainingsdurchlauf Abstürze auf, 
 welche die Einträge in der Datenbank trotz Wiederherstellung über Mounting beeinträchtigten.
 
@@ -1308,14 +1314,14 @@ welche die Einträge in der Datenbank trotz Wiederherstellung über Mounting bee
 \section{Testing}\label{sec:test}
 
 Für die prototypische und zukünftige Entwicklung des Projekts ist das Testing für die weitere Benutzung relevant. 
-Hauptsächlich hierfür verantwortlich soll die Continuous Integration Pipeline dafür sein.
-Zur Grunde liegen hier die Images der Teilsysteme, die als Dockerfile beschrieben sind 
+Hauptsächlich hierfür verantwortlich soll die Continuous Integration Pipeline sein.
+Zu Grunde liegen hier die Images der Teilsysteme, die als Dockerfile beschrieben sind 
 und in der Container Registry vom unternehmensinternen Repository gespeichert werden.
-Über verschiedene Stages sollen dann die Hauptaspekte der Teilsysteme und dann in das System integriert werden.
+Über verschiedene Stages sollen dann die Hauptaspekte der Teilsysteme in das System integriert werden.
 Hier werden diese Komponente auf verschieden Eigenschaften überprüft.
 
 Für das Teilsystem der symbolischen KI wurden das Unit Testing 
-und das nicht funktionale Testing über die Continuous Integration unterstützt.
+und das nicht funktionale Testing über die Continuous Integration benutzt.
 Für die Entwicklungsumgebung wurde der Ansatz der UI Tests gewählt, um nicht nur die Benutzung 
 sondern auch die mögliche Automatisierung für weitere Eingaben zu überprüfen.
 Bei dem für das maschinelle Lernen zuständige Teilsystem wurde das Testing über die Testsätze, 
@@ -1337,32 +1343,46 @@ laufende Prozesse detaillierter zu steuern und zu überwachen.
 Neben dem Data-Mining nutzte ich zudem den Ansatz einer symbolischen künstlichen Intelligenz. 
 Diese KI ermöglichte mir während meines Arbeitsprozesses in jedem Schritt eine 
 Feinschleifung meiner bisherigen Arbeit der manuellen Extraktion. 
-Durch diese KI kann sich jede/r Benutzer/in meines hier entwickelten Systems von groben zu detaillierten 
-und angepassten Definitionen über ein eigenständige Umgebung erstellen, welche über Feedback des Systems eine Annäherung erlaubt. 
+Durch diese KI kann sich jede/r Benutzer/in meines hier entwickelten Systems grobe bis zu detaillierten 
+und angepassten Definitionen mit Hilfe einer eigenständigen Umgebung erstellen. Jene Definitionen erlauben dem/der Benutzer:in 
+mittels Feedback des Systems eine Annäherung. 
 Im späteren Verlauf meiner Arbeit wurde der Ansatz diese Annäherung im Teilsystem des Machine Learnings betrachtet.
 Bevor meine symbolische KI als auch das Machine Learning starten konnte, 
 habe ich zu Beginn die Funktionalitäten der Bibliotheken genutzt, 
 um durch Extraktionsergebnisse der Datenansätze die Erfolgsquote zu überprüfen. 
-Danach definierte ich das Format für die Regeln und Fakten des Extraktionsvorgang mit Hilfe einer eigens entworfenen Grammatik. 
+Danach definierte ich das Format für die Regeln und Fakten des Extraktionsvorgang unter Zuhilfenahme einer eigens entworfenen Grammatik. 
 
 Anschließend stellte ich die Benutzungsoberfläche fertig, sodass ich diese mit der symbolischen KI verbinden konnte. 
-Nebenbei konzeptionierte und entwickelte ich die zu dem Machine Learning gehörende Subsysteme. 
-Dies tat ich in einem iterativen Ansatz, sodass eine Pipeline-Struktur erbaut wurde womit
- das Training des Machine Learnings baldmöglichst beginnen konnte. 
-Im Anschluss daran fing ich an mich in dem gegebenen Rahmen mit dem Software-Testing an zu beschäftigen. 
+Zeitgleich konzeptionierte und entwickelte ich die zu dem Machine Learning gehörende Subsysteme. 
+Dies tat ich in einem iterativen Ansatz, sodass eine Pipeline-Struktur erbaut wurde, mit der
+das Training des Machine Learnings baldmöglichst beginnen konnte. 
+Im Anschluss daran fing ich an, mich in dem gegebenen Rahmen mit dem Software-Testing zu beschäftigen. 
 Dadurch konnte die Ausführung aller meiner noch folgenden Prozesse gewährleistet werden. 
 Als letzte Vorbereitung passte ich die grafische Benutzungsoberfläche weiter an, dass sich dieses mit den Systemen verbindet, 
-wodurch die Ausführbarkeit der Funktionalität überprüft werden kann.
+wodurch die Ausführbarkeit der Funktionalität überprüft werden konnte.
 
-Meine Ergebnisse dieser Arbeit zeigten einige Komplikationen auf.
-So ist zu einem der Extraktionsvorgang sehr abhängig zur Semantik des Extraktionsziels.
-Hier kann die entwickelte Struktur dafür sorgen, dass weitere Dokumentenarten ihre angepasste Extraktionslogik bekommen.
+Durch meine Arbeit habe ich es geschafft, ein System zu schreiben, das die Extraktion von PDF-Dokumenten ermöglicht. 
+Dafür habe ich insgesamt zwei verschiedene Ansätze verwendet. 
 
-	Komplikationen nennen	
-    Was kannst du ich Zukunft aus den Komplikationen lernen, welche Schritte bedarf es für eine Verbesserung
-	Danach wieder zu einem positiven Feedback kommen, schöner Abschlusssatz, wie hilfreich deine Arbeit war
+Während der Entwicklung meines Systems stieß ich allerdings auch auf einige Komplikationen, die es in Zukunft noch zu bewältigen 
+und zu verbessern gilt.
+So ist unter anderem der Extraktionsvorgang äußerst abhängig von der Semantik des Extraktionsziels des jeweiligen Dokumentationstyps.
+In zukünftigen Arbeiten sollte das System deshalb so entwickelt werden, dass weitere Dokumentenarten ihre angepasste Extraktionslogik 
+erhalten. Durch diese Weiterentwicklung könnten Zeit, als auch Ressourcen gespart werden.
+Darüber hinaus müssen, damit die Sprache für die Regelausdrücke erweitert werden kann, in Zukunft weitere Operatoren 
+als auch die Klammerung in der Grammatik definiert werden. 
 
-Im Rahmen der Abschlussarbeit wurde ein System konzipiert und umgesetzt, welches eine Extraktion von Dokumenten über zwei Ansätze ermöglicht.
+Andernfalls bleibt die Sprache mit ihren jeweiligen Ausdrücken beschränkt,
+sodass mein System auch nur begrenzt nutzbar wäre.
+Zuletzt bedarf es für das maschinelle Lernen noch viele weitere Trainingseinheiten für andere Dokumentarten und 
+eine weitere Anpassung der Label-Funktionen. Aufgrund des begrenzten Zeitraums, in dem mein System entwickelt worden ist, ist das
+Training des Machine Learnings nicht ganz so fortgeschritten, wie ich es zu Beginn meiner Thesis erhofft hatte. Dementsprechend
+gilt es, das Machine Learnings in den nächsten Monaten fortzusetzen, sodass weitere Anpassungsleistungen von Seiten des Machine  Learnings 
+erbracht werden.
+
+Letztendlich habe ich ein System konzipiert und umgesetzt, das Entwickler:innen die Extraktion von Dokumenten für Mitarbeitende 
+in Autohäusern ermöglicht. In der immer mehr digitalisierten Zukunft kann das von mir konzipierte System jedoch nicht nur auf 
+Dokumente aus Autohäusern angewendet werden, sondern auch auf Dokumente jenseits der Automobilindustrie. 
 
 
 
