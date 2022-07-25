@@ -1114,7 +1114,11 @@ Dies soll eine Relation der Verarbeitung ermöglichen und damit einen zeitlichen
 
 Der Durchlauf von den Eingabedaten zu der Erstellung des Machine-Learning Modells wird als Pipeline bezeichnet.
 In Abbildung~\ref{fig:fpipeline} wird die komplette Pipeline für die Verarbeitung des maschinellen Lernens dargestellt.
-Hierbei sind die fünf Phasen relevant, die in der Hauptfunktionalität im Teilsystem umgesetzt wurden:
+So sind die einzelnen Phasen in zwei Kategorien aufgeteilt zu sehen. 
+Die erste Hälfte der Phasen ist statisch vorgegeben und kann strukturell nicht verändert werden.
+Bei der zweiten Hälfte sind Eingriffe der Benutzer:innen beziehungsweise 
+bei den Entwickler:innen möglich um die Datenmodelle zu präzisieren.
+Insgesamt sind die fünf Phasen relevant, die in der Hauptfunktionalität im Teilsystem umgesetzt wurden:
 In der ersten Phase wird zunächst die KBC über ein spezielles Schema und 
 daraus folgenden über die iterative Erstellung eines Eingabekorpus initialisiert.
 Dafür wird die Hostadresse der benötigten Datenbank angegeben und diese einer Meta-Objekt, welcher die Brücke zur Persistenz darstellt, übergeben, 
@@ -1173,6 +1177,27 @@ Für die Anwendung werden die Dokumente in Trainings- und Testsätze unterteilt.
 In der dritten Phasen werden den Kandidaten der Trainings- und Testsätzen durch multimodale Featurisierung Merkmale annotiert.
 Hierfür wird ein Featurizer-Objekt definiert, welches die Verbindung zur Datenbank 
 und den Kandidaten der jeweiligen Dokumentenart übergeben bekommt.
+Für die vierte Phase findet das schwache überwachte Lernen und die Klassifikation über Labeling-Funktionen.
+Dafür werden diese Funktionen, welche weitere Bedingungen für die Kandidaten stellen und 
+die es zu erfüllen gilt, definiert, um als wahrhaftiger Kandidat weiterverarbeitet zu werden.
+Die Labeling Funktionalitäten werden hierbei durch die Bibliothek Snorkel zur Verfügung gestellt, 
+welche das Labeling der Trainingssätze durch das schwache maschinelle Lernen schneller und günstiger der Ressourcenkosten gestaltet~\cite{Ratner_2017}.
+
+Daher reichen zunächst einfache Funktionsmuster, die die tabellarischen Eigenschaften der Felder, 
+wie zum Beispiel der Fahrzeugmodellnamen, des Kfz-Kennzeichens und des zuletzt abgelesen Kilometerzählerstands, überprüfen.
+Stehen die Labeling Funktionen, können diese auf das Labeler-Objekt angewendet werden.
+Hierbei können weitere Statistiken des Vorgangs als Feedback mitgegeben werden.
+Ist das Training abgeschlossen, werden als Nächstes in der Pipeline die Labeling-Funktionen modelliert, 
+sodass Konflikte betrachtet werden können.
+Mit Wahrscheinlichkeitsberechnungen werden dann weitere Labels auf die Trainingssätze angewendet, 
+sodass danach ein generatives Modell angelernt ist.
+
+Dies ermöglicht dem System und der Entwicklung iterativ die Labeling Funktionen für eine höhere Genauigkeit zu verbessern.
+Hierfür müssen die Konflikte und die Überlappungen programmatisch weiter überprüft werden.
+Für das weitere Training der Datensätze wird das discriminative Modell durch Regression antrainiert.
+Dafür benutzt Fonduer das Machine-Learning Framework Emmental, welches die Funktionalitäten für die Modellierung bereitstellt\cite{wu2019emmental}.
+In diesem Prozess werden weitere Tokens und Rauschproben generiert, damit das Modelltraining unterstützt wird.
+Zum Schluss können die Testsätze mit ihrem Labeling genutzt werden, um die Vorhersage durch das Training der KI zu evaluieren.
 
 \subsection{Webserver}\label{sec:webserv2}
 
@@ -1193,8 +1218,22 @@ weswegen sich hier die die Funktionalität nur auf den Durchlauf mittels des Mac
 \chapter{Ergebnisse}\label{chap:erg}
 
 Das Projekt hat verschiedene Merkmale der Problematik hervorgehoben.
-So ist aufgefallen, dass die Dokumente, auf die sich im Rahmen der Thesis eingeschränkt wurde, verschiedene Formen besitzen.
-Außerdem fiel auf dass, die 
+So ist aufgefallen, dass die Dokumente, auf die sich im Rahmen der Thesis eingeschränkt wurde, viele verschiedene Formen besitzen 
+beziehungsweise haben können.
+Eine Anpassung für die Definitionen der Formen muss in der symbolischen künstlichen Intelligenz 
+durch eine Kategorisierung in Dokumentarten vorgenommen werden.
+Außerdem fiel auf dass, sowohl die Definitionen von Tabellen in elektronisch verarbeiteten Dokumenten, 
+als auch die Erkennung dieser sich als umständlich erweist.
+
+So bedarf es zunächst Analysen der Struktur und des Kontexts um eine angemessene Verarbeitung zu ermöglichen.
+Das System, dass im Rahmen dieser Thesis entwickelt wurde, erwies sich als Prototypen umsetzbar.
+Die Struktur für die Teilsysteme wurde durch eine container-getriebene Entwicklung modular gehalten 
+und sorgte durch die Architektur eine gemeinsame Kommunikationsebene für diese Komponenten.
+So konnte ein Projekt aufgesetzt werden, welches die neuesten Technologien in den Bereichen, in denen diese agieren, 
+nutzen um die erwünschten Extraktionsziele zu erhalten oder eine Annäherung mindestens zu erreichen. 
+Texte und Tabellen können über Regel- und Faktendefinitionen extrahiert werden 
+und übersichtlich in einer Webanwendung dargestellt werden.
+Die Entwicklung einer Grammatik 
 
 
 
